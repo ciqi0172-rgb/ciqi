@@ -72,5 +72,126 @@ const panel = `
 <details><summary>题5｜第7—8段：经济激励的真正目的（答案 B）</summary><p class="question">Why does the author propose economic incentives in Paragraph 8?</p><ol type="A"><li>The economic losses associated with habitat protection suggest that private landowners should be exempted from conservation restrictions.</li><li>The economic interests that discourage private landowners from conservation could also be redirected to encourage their participation.</li><li>The success of agricultural programs demonstrates that financial compensation can eliminate the economic costs of protecting endangered species.</li><li>Private landowners are more likely to preserve endangered species when conservation efforts are transferred from federal agencies to market-based organizations.</li></ol><p><b>答案：B。</b>第7段指出经济利益冲突使土地所有者不愿参与；第8段提出反向利用经济因素，通过补偿鼓励参与。C 把案例夸大为消除所有成本，D 凭空加入把保护工作转交市场组织。</p></details>
 <div class="notes-callout"><b>下一轮复习建议</b><p>先不看解析，重新做这5题；尤其解释为什么一个“看起来也有原文依据”的干扰项仍然错误。训练重点是观点主体、因果方向、程度范围和论据作用。</p></div></section>
 </article>`;
-window.renderStudyNotes=function(){const root=document.getElementById('studyPanel');if(root&&!root.dataset.ready){root.innerHTML=panel;root.dataset.ready='1';}};
+
+const vocabByParagraph = [
+ [["administration","政府；行政部门"],["weaken","削弱"],["attempt to","试图做"],["constitute","构成"],["trap","诱捕"],["count as","被算作；被认定为"]],
+ [["roadkill","被车辆撞死的动物"],["flaw","缺陷；逻辑漏洞"],["thrive","繁荣；茁壮成长"],["impose","强加；施加"],["free from","免受……"]],
+ [["status quo","现状"],["assessment","评估"],["alongside","与……并存；除了……之外"],["mass extinction","大规模灭绝"],["incentivize","激励"]],
+ [["enact","颁布（法律）"],["threatened","受威胁的"],["endangered","濒危的"],["Rorschach test","罗夏测验；比喻不同立场的解读"],["delist","从名单中除名"]],
+ [["valid","有道理的；有效的"],["halt","叫停"],["iconic","标志性的"],["charismatic","有魅力的；受关注的"],["intricate","复杂的"],["gut","大幅削弱"]],
+ [["scale","规模"],["invasive species","入侵物种"],["punitive","惩罚性的"],["bureaucratic","官僚化的"],["backlog","积压"],["petition","申请；请愿"],["starved of","严重缺乏"]],
+ [["reside","栖息；居住"],["landowner","土地所有者"],["disincentive","抑制积极性的因素"],["cooperate","合作"],["restriction","限制"]],
+ [["economic forces","经济力量"],["asset","资产"],["financial incentive","财政激励"],["rancher","牧场主"],["be home to","是……的栖息地"]],
+ [["be credited with","被认为对……有贡献"],["reverse","扭转"],["deforestation","森林砍伐"],["adopt","采纳；采用"]],
+ [["incentive structure","激励机制"],["distinction","区别"],["former","前者"],["regulatory relief","监管减免"],["vulnerable","脆弱的"]],
+ [["delist","除名"],["recovery goal","恢复目标"],["litigation","诉讼"],["cool-off period","冷却期；缓冲期"],["monitor","监测"]],
+ [["object to","反对"],["argue","提出理由；论证"],["restriction","限制"],["maintain","维持"],["self-interest","自身利益"]],
+ [["bipartisan","跨党派的"],["appetite","强烈意愿"],["strengthen","加强"],["market-oriented","市场导向的"],["be unlikely to","不太可能"]]
+];
+const logicByParagraph = [
+ "政府试图把法律中的“伤害”缩小为直接针对动物的行为。关键问题：栖息地破坏被排除在法律定义之外。",
+ "用高速公路上的 roadkill 反驳前段逻辑：人类造成的危险不只有直接捕猎，还包括让动物失去安全生存空间。",
+ "作者确立平衡立场：反对削弱保护，但也不主张原封不动维护现状；真正主张是改革现行法案。",
+ "近1700种这一数字像政治罗夏测验：环保主义者和批评者从同一证据得出不同评价。此处是在呈现双方观点。",
+ "作者承认双方观点都有道理，随后强调法案保护栖息地的实际成效，为“不能简单削弱保护”提供依据。",
+ "转折到制度层面：威胁复杂，惩罚措施不够；监管慢、申请积压、资源不足，因此要补足机构能力。",
+ "指出更深层的利益冲突：大量物种生活在私人土地上，保护成本压在土地所有者身上，导致不合作甚至破坏栖息地。",
+ "提出解决方案：把经济利益从阻碍因素转化为激励，让保护物种成为土地所有者的资产。",
+ "用哥斯达黎加案例提供实践依据：财政激励项目被认为有助于扭转森林砍伐，说明类似策略值得借鉴。",
+ "提出具体法律改革：恢复 endangered 与 threatened 的差异，并恢复成功保护后可获得监管减免的激励。",
+ "继续提出制度设计：物种达到恢复目标后，设置诉讼冷却期，并由州官员持续监测。",
+ "预判环保主义者的反对意见，再用奖励州和部落的方式回应，确保解除限制后保护仍有动力。",
+ "总结：虽然特朗普政府不太可能接受改革，但国会存在跨党派保护意愿；作者最终支持市场导向策略。"
+];
+function renderStudyNotes(){
+ const root=document.getElementById('studyPanel');
+ if(!root)return;
+ const sourceRows=[...document.querySelectorAll('#paragraphs .para')];
+ if(!sourceRows.length)return;
+ const temp=document.createElement('div');temp.innerHTML=panel;
+ const grammar=[...temp.querySelectorAll('#n-grammar details')];
+ const extras=['n-translation','n-pitfalls','n-questions'].map(id=>temp.querySelector('#'+id)).filter(Boolean);
+ const title=document.getElementById('articleTitle')?.textContent||'';
+ const subtitle=document.getElementById('articleSubtitle')?.textContent||'';
+ let selected=Number(root.dataset.selected||1);
+ selected=Math.max(1,Math.min(sourceRows.length,selected));
+ let sideMode=root.dataset.sideMode||'vocab';
+ const mainRows=sourceRows.map((row,i)=>{
+   const p=row.querySelector('.para-text')?.textContent||'';
+   return '<div class="study-para'+(i+1===selected?' active':'')+'" data-p="'+(i+1)+'"><span class="study-para-num">'+String(i+1).padStart(2,'0')+'</span><p class="study-para-text"></p></div>';
+ }).join('');
+ root.innerHTML='<div class="study-workbench"><section class="study-main"><header class="study-original-head"><div class="kicker">ARTICLE 01 · ORIGINAL TEXT</div><h2></h2><p></p></header><div class="study-original-paragraphs">'+mainRows+'</div><div class="study-extras"><h3>延伸复习材料</h3><p class="notes-muted">原文始终保留在上方。翻译、易错点和练习题放在下方，不打断阅读。</p><div class="study-extra-sections"></div></div></section><aside class="study-aside"><div class="study-aside-title"><b>段落精读辅助</b><span class="study-current">第'+selected+'段 / '+sourceRows.length+'</span></div><div class="study-side-tabs"><button class="study-side-tab" data-mode="vocab">重点词汇</button><button class="study-side-tab" data-mode="logic">段落逻辑</button><button class="study-side-tab" data-mode="grammar">长难句</button></div><div class="study-side-content"></div><div class="study-side-tip">点击左侧任意原文段落，右侧内容会同步切换。</div></aside></div>';
+ root.querySelector('.study-original-head h2').textContent=title;
+ root.querySelector('.study-original-head p').textContent=subtitle;
+ root.querySelectorAll('.study-para').forEach((el,i)=>{el.querySelector('p').textContent=sourceRows[i].querySelector('.para-text')?.textContent||'';el.onclick=()=>{selected=i+1;root.dataset.selected=String(selected);renderSide();root.querySelectorAll('.study-para').forEach(x=>x.classList.toggle('active',Number(x.dataset.p)===selected))}});
+ const extrasRoot=root.querySelector('.study-extra-sections');
+ extras.forEach((section,i)=>{
+   const d=document.createElement('details');d.open=false;
+   const summary=document.createElement('summary');summary.textContent=['全文参考翻译','本次阅读易错点','考研风格练习题'][i];d.append(summary);
+   const clone=section.cloneNode(true);clone.removeAttribute('id');clone.classList.add('notes-section');
+   if(i===2) buildInteractiveQuiz(clone);
+   d.append(clone);extrasRoot.append(d);
+ });
+ function renderSide(){
+   root.querySelector('.study-current').textContent='第'+selected+'段 / '+sourceRows.length;
+   root.querySelectorAll('.study-side-tab').forEach(b=>b.classList.toggle('active',b.dataset.mode===sideMode));
+   const content=root.querySelector('.study-side-content');content.innerHTML='';
+   if(sideMode==='vocab'){
+     const items=vocabByParagraph[selected-1]||[];
+     content.innerHTML='<h4>第'+selected+'段 · 重点词汇</h4>'+items.map(v=>'<div class="study-vocab"><b></b><span></span></div>').join('')+(items.length?'':'<p>本段暂无单独标注的重点词。</p>');
+     [...content.querySelectorAll('.study-vocab')].forEach((el,i)=>{el.querySelector('b').textContent=items[i][0];el.querySelector('span').textContent=items[i][1]});
+   }else if(sideMode==='logic'){
+     content.innerHTML='<h4>第'+selected+'段 · 逻辑作用</h4><p></p>';
+     content.querySelector('p').textContent=logicByParagraph[selected-1]||'';
+   }else{
+     const d=grammar[selected-1];
+     if(d){
+       const summary=d.querySelector('summary')?.textContent||'长难句';
+       const sent=d.querySelector('.en-sentence')?.innerHTML||'';
+       const paras=[...d.querySelectorAll('p')].map(p=>p.cloneNode(true));
+       content.innerHTML='<h4></h4><div class="study-side-sentence"></div><div class="study-grammar-explain"></div>';
+       content.querySelector('h4').textContent=summary;
+       content.querySelector('.study-side-sentence').innerHTML=sent;
+       paras.forEach(p=>content.querySelector('.study-grammar-explain').append(p));
+     }else content.innerHTML='<h4>第'+selected+'段 · 长难句</h4><p>本段没有单独收录的长难句拆解。可以先结合主句和从句关系自行分析。</p>';
+   }
+ }
+ root.querySelectorAll('.study-side-tab').forEach(b=>b.onclick=()=>{sideMode=b.dataset.mode;root.dataset.sideMode=sideMode;renderSide()});
+ renderSide();
+}
+function buildInteractiveQuiz(section){
+ const cards=[...section.querySelectorAll('details')];
+ cards.forEach((detail,i)=>{
+   const summary=detail.querySelector('summary')?.textContent||('练习题 '+(i+1));
+   const question=detail.querySelector('.question')?.textContent||'';
+   const choices=[...detail.querySelectorAll('ol li')].map(li=>li.textContent);
+   const answerText=[...detail.querySelectorAll('p')].map(p=>p.textContent).find(t=>/答案：\s*[A-D]/.test(t))||'';
+   const key=(answerText.match(/答案：\s*([A-D])/)||[])[1]||'';
+   const explanation=answerText.replace(/^答案：\s*[A-D][。.]?\s*/,'');
+   const card=document.createElement('div');card.className='study-quiz-card';
+   const heading=document.createElement('h4');heading.textContent=summary.replace(/（答案\s*[A-D]）/,'').replace(/\(答案\s*[A-D]\)/,'');
+   const stem=document.createElement('p');stem.className='quiz-stem';stem.textContent=question;
+   card.append(heading,stem);
+   const name='study-q-'+i;
+   choices.forEach((choice,j)=>{
+     const label=document.createElement('label');label.className='study-quiz-option';
+     const input=document.createElement('input');input.type='radio';input.name=name;input.value='ABCD'[j];
+     const text=document.createElement('span');text.textContent='ABCD'[j]+'. '+choice;
+     label.append(input,text);card.append(label);
+   });
+   const submit=document.createElement('button');submit.className='study-quiz-submit';submit.textContent='提交答案并查看解析';
+   const feedback=document.createElement('div');feedback.className='study-quiz-feedback';
+   submit.onclick=()=>{
+     const chosen=card.querySelector('input:checked');
+     if(!chosen){feedback.textContent='请先选择一个答案，再提交。';feedback.className='study-quiz-feedback show';return}
+     const ok=chosen.value===key;
+     feedback.className='study-quiz-feedback show '+(ok?'good':'bad');
+     feedback.textContent=(ok?'回答正确。':'这次没有选对，正确答案是 '+key+'。')+explanation;
+     card.querySelectorAll('input').forEach(input=>input.disabled=true);
+     submit.disabled=true;submit.textContent='已完成';
+   };
+   card.append(submit,feedback);detail.replaceWith(card);
+ });
+}
+window.renderStudyNotes=renderStudyNotes;
 })();
