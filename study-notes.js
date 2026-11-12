@@ -146,6 +146,39 @@ function renderStudyNotes(){
 }
 function buildInteractiveQuiz(section){
  const cards=[...section.querySelectorAll('details')];
+ const optionAnalysis=[
+ [
+  {tag:'绝对化 + 错误因果',words:'failed because（因为……而失败）；excessively（过度地）',why:'把作者讨论的“法律定义过窄”直接升级成“法案失败”，并把栖息地保护说成过度关注的原因。原文并未说保护栖息地本身有问题。',trap:'failed 是整体否定；excessively 是程度放大。题干问隐含观点，不能把局部缺陷扩写成全面失败。'},
+  {tag:'范围完整 + 让步平衡',words:'more than（不止）；although（尽管）；also（也）；needs improvement（需要改进）',why:'前半句概括第1—2段：保护不只是不直接伤害动物，还要保障生存空间；although 引入让步，后半句承认现有框架需要改善，正好对应第3段。',trap:'这是正确项：more than 对应“不能仅限于直接伤害”，although 把“保护仍必要”和“制度需改革”放在同一立场中。'},
+  {tag:'主体偷换 + 主因绝对化',words:'main obstacle（主要障碍）；failed to recognize（未能认识到）',why:'原文批评的是政府提议把 harm 定义得过窄，不是说立法者完全没认识到人类活动的重要性。',trap:'main 把一个问题说成首要障碍；failed to recognize 把政策定义争议改写成认知缺失。'},
+  {tag:'观点主体偷换 + 语气弱化',words:'reasonable in principle（原则上合理）；require more careful implementation（需要更谨慎执行）',why:'政府提议的核心缩窄了“伤害”的范围，作者认为这会削弱保护；D 却把这个提议说成原则上合理，只是执行需要谨慎。',trap:'reasonable in principle 是对提议的正面评价，偷换了作者态度；implementation 把问题从政策本身转移到执行方式。'}
+ ],
+ [
+  {tag:'因果矛盾 + 评价过度',words:'demonstrate（证明）；contradictory results（相互矛盾的结果）',why:'作者是在解释同一个数字为何被不同群体作不同解读，不是在证明法案造成了相互矛盾的结果。',trap:'demonstrate 语气较强；contradictory results 把“评价不同”偷换成“结果彼此矛盾”。'},
+  {tag:'同一证据 + 不同解读',words:'the same evidence（同一证据）；different evaluations（不同评价）',why:'Rorschach test 的比喻正是说同一数字会因观察者立场不同而产生不同判断。',trap:'正确项准确概括“证据相同、解释不同”，没有额外推断谁对谁错。'},
+  {tag:'把他人观点当作者批评',words:'suggest（暗示）；overlook（忽视）；failure to（未能……）',why:'“未能恢复物种”是批评者对法案的解读；作者此处呈现双方如何理解数字，并未据此指责环保人士忽略问题。',trap:'overlook 暗含批评；failure to recover 把一方的评价直接变成作者对另一方的指控。'},
+  {tag:'无中生有 + 比较标准转移',words:'more reliable（更可靠）；measure（衡量标准）',why:'段落没有比较灭绝物种数量与其他指标的可靠性。',trap:'more reliable 引入原文没有的指标比较；看到比较级要找清楚原文是否真的建立了比较。'}
+ ],
+ [
+  {tag:'观点单一化 + 最有效绝对化',words:'should be strengthened（应加强）；remain the most effective（仍是最有效的）',why:'作者认可保护的价值，但明确指出仅靠惩罚性措施不够；A 把“需要更全面策略”改成继续把惩罚作为最有效手段。',trap:'most effective 是最高级断言，原文没有支持，且与 go beyond punitive measures 的方向相反。'},
+  {tag:'让步被抹掉 + 现状维护',words:'justify（足以证明……合理）；maintaining（维持）；despite（尽管）',why:'作者承认法案有成效，同时指出监管体系存在缺陷；B 却认为成就足以证明应维持现有结构。',trap:'justify 把“有优点”推成“足以支持维持现状”；despite 将缺陷降为可以忽略的附带问题。'},
+  {tag:'转折平衡 + 策略扩展',words:'remain valuable（仍有价值）；but（但是）；extend beyond（超越/不局限于）；address（处理）',why:'前半句对应第5段保护栖息地的价值，but 后半句对应第6段：保护方式应超越惩罚措施，并解决机构资源和程序问题。',trap:'正确项同时保留“保护有价值”和“现有方法不够”两层，正是作者的平衡立场。'},
+  {tag:'错误二选一 + 目标缩窄',words:'focus on A rather than B（专注A而不是B）；preventing（阻止）',why:'作者并未主张放弃阻止破坏生态系统的项目，转而只关注恢复名单中的物种；这把预防与恢复错误地对立起来。',trap:'rather than 制造排他关系；原文主张扩大策略，而不是用一种目标取代另一种目标。'}
+ ],
+ [
+  {tag:'主因偷换 + 范围缩窄',words:'mainly results from（主要源于）；excessive number（数量过多）',why:'申请积压是现象，但作者将缓慢执行与资源、人员不足联系起来，并没有说申请数量过多是主要原因。',trap:'mainly 把原因排成主次；excessive 带有“过多”的负面判断，均超出了原文证据。'},
+  {tag:'因果力度适中 + 证据对应',words:'limited resources（资源有限）；contribute to（促成/导致部分结果）；delays（延误）',why:'原文提到机构长期缺乏资金和人员，同时有申请积压、程序缓慢。contribute to 表示这些因素有所促成，因果强度恰当。',trap:'正确项使用 contribute to 而非 solely cause，避免把多因素问题说成单一原因。'},
+  {tag:'无依据的优先级推断',words:'prioritized A over B（把A置于B之上）',why:'原文指出执行流程缓慢、申请积压、资源不足，但没有比较执法与处理申请之间的优先级。',trap:'prioritized 是对机构内部决策排序的推断；有积压不等于机构主动优先做另一件事。'},
+  {tag:'把局部改善夸大为彻底解决',words:'would eliminate（将消除）；major threats（主要威胁）',why:'增加人员和资金可能改善机构执行能力，但不能消除气候变化、栖息地丧失等生物多样性威胁。',trap:'eliminate 是“彻底消除”，范围远大于资源投入能直接解决的问题。'}
+ ],
+ [
+  {tag:'从补偿跳到豁免',words:'suggest（意味着/表明）；should be exempted（应被豁免）',why:'作者的方案是用经济激励促使土地所有者参与保护，不是取消他们应承担的保护限制。',trap:'exempted 把“补偿成本”偷换成“免除义务”，改变了政策方向。'},
+  {tag:'因果反转 + 经济动力再定向',words:'discourage（阻碍）；could also be redirected（也可以被重新引导）；encourage participation（鼓励参与）',why:'第7段经济损失使土地所有者不愿合作；第8段提出利用同样的经济力量，通过激励让他们愿意保护。',trap:'正确项的核心是 also：不是消灭经济利益，而是改变经济利益推动行为的方向。'},
+  {tag:'案例夸大 + 绝对化',words:'demonstrates（证明）；eliminate（消除）；the economic costs（经济成本）',why:'农业部项目和其他国家案例说明激励措施可能有效，并不能证明补偿能消除保护濒危物种的全部成本。',trap:'eliminate 把降低阻力夸成成本归零；the economic costs 范围过宽。'},
+  {tag:'无中生有 + 主体替换',words:'transferred from A to B（从A转交给B）；market-based organizations（市场组织）',why:'作者提出的是让政府设计经济激励，并未建议把保护工作从联邦机构转交给市场组织。',trap:'transferred 凭空加入治理权转移；market-based organizations 是选项新增主体。'}
+ ]
+ ];
+ const makeBlock=(title,body)=>{const d=document.createElement('div');d.className='quiz-analysis-block';const h=document.createElement('b');h.textContent=title;const p=document.createElement('p');p.textContent=body;d.append(h,p);return d};
  cards.forEach((detail,i)=>{
    const summary=detail.querySelector('summary')?.textContent||('练习题 '+(i+1));
    const question=detail.querySelector('.question')?.textContent||'';
@@ -153,6 +186,7 @@ function buildInteractiveQuiz(section){
    const answerText=[...detail.querySelectorAll('p')].map(p=>p.textContent).find(t=>/答案：\s*[A-D]/.test(t))||'';
    const key=(answerText.match(/答案：\s*([A-D])/)||[])[1]||'';
    const explanation=answerText.replace(/^答案：\s*[A-D][。.]?\s*/,'');
+   const analyses=optionAnalysis[i]||[];
    const card=document.createElement('div');card.className='study-quiz-card';
    const heading=document.createElement('h4');heading.textContent=summary.replace(/（答案\s*[A-D]）/,'').replace(/\(答案\s*[A-D]\)/,'');
    const stem=document.createElement('p');stem.className='quiz-stem';stem.textContent=question;
@@ -164,16 +198,32 @@ function buildInteractiveQuiz(section){
      const text=document.createElement('span');text.textContent='ABCD'[j]+'. '+choice;
      label.append(input,text);card.append(label);
    });
-   const submit=document.createElement('button');submit.className='study-quiz-submit';submit.textContent='提交答案并查看解析';
+   const submit=document.createElement('button');submit.className='study-quiz-submit';submit.textContent='提交答案并拆解选项';
    const feedback=document.createElement('div');feedback.className='study-quiz-feedback';
    submit.onclick=()=>{
      const chosen=card.querySelector('input:checked');
      if(!chosen){feedback.textContent='请先选择一个答案，再提交。';feedback.className='study-quiz-feedback show';return}
      const ok=chosen.value===key;
      feedback.className='study-quiz-feedback show '+(ok?'good':'bad');
-     feedback.textContent=(ok?'回答正确。':'这次没有选对，正确答案是 '+key+'。')+explanation;
+     feedback.innerHTML='';
+     const result=document.createElement('h4');result.textContent=(ok?'回答正确！':'这次没有选对。')+' 正确答案：'+key;feedback.append(result);
+     feedback.append(makeBlock('一、答案依据与整体思路',explanation));
+     const strategy=document.createElement('p');strategy.textContent='命题思路：先确定题干问的是作者态度、段落作用还是因果推断，再把原文证据与选项逐项对齐。干扰项通常保留部分原文词汇，却在观点主体、因果方向、程度范围或论证作用上做手脚。';feedback.append(makeBlock('二、这题在考什么',strategy.textContent));
+     const list=document.createElement('div');list.className='quiz-option-diagnostics';
+     choices.forEach((choice,j)=>{
+       const a=analyses[j]||{tag:j===('ABCD'.indexOf(key))?'正确项':'干扰项',words:'请对照原文关键词',why:'检查该选项是否忠实对应原文信息。',trap:'留意主体、范围、因果、程度和逻辑关系。'};
+       const item=document.createElement('div');item.className='quiz-option-diagnostic';
+       const h=document.createElement('h5');h.textContent='选项 '+'ABCD'[j]+' · '+(j===('ABCD'.indexOf(key))?'正确项':'干扰项')+'｜'+a.tag;
+       const opt=document.createElement('p');opt.textContent=choice;
+       const words=document.createElement('p');words.textContent='高频逻辑词 / 功能词：'+a.words;
+       const why=document.createElement('p');why.textContent='命题思路：'+a.why;
+       const trap=document.createElement('p');trap.textContent='障碍点：'+a.trap;
+       item.append(h,opt,words,why,trap);list.append(item);
+     });
+     feedback.append(list);
+     const method=document.createElement('p');method.textContent='复盘时请自己完成四步：①圈出题干限定词；②标记选项中的逻辑词；③找原文对应证据；④判断选项是否偷换主体、范围、因果、程度或作者态度。';feedback.append(makeBlock('三、把这道题变成可迁移的方法',method.textContent));
      card.querySelectorAll('input').forEach(input=>input.disabled=true);
-     submit.disabled=true;submit.textContent='已完成';
+     submit.disabled=true;submit.textContent='已完成解析';
    };
    card.append(submit,feedback);detail.replaceWith(card);
  });
