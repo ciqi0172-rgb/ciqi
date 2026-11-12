@@ -106,18 +106,11 @@ function renderStudyNotes(){
    const p=row.querySelector('.para-text')?.textContent||'';
    return '<div class="study-para'+(i+1===selected?' active':'')+'" data-p="'+(i+1)+'"><span class="study-para-num">'+String(i+1).padStart(2,'0')+'</span><p class="study-para-text"></p></div>';
  }).join('');
- root.innerHTML='<div class="study-workbench"><section class="study-main"><header class="study-original-head"><div class="kicker">ARTICLE 01 · ORIGINAL TEXT</div><h2></h2><p></p></header><div class="study-original-paragraphs">'+mainRows+'</div><div class="study-extras"><h3>延伸复习材料</h3><p class="notes-muted">原文始终保留在上方。翻译、易错点和练习题放在下方，不打断阅读。</p><div class="study-extra-sections"></div></div></section><aside class="study-aside"><div class="study-aside-title"><b>段落精读辅助</b><span class="study-current">第'+selected+'段 / '+sourceRows.length+'</span></div><div class="study-side-tabs"><button class="study-side-tab" data-mode="vocab">重点词汇</button><button class="study-side-tab" data-mode="logic">段落逻辑</button><button class="study-side-tab" data-mode="grammar">长难句</button></div><div class="study-side-content"></div><div class="study-side-tip">点击左侧任意原文段落，右侧内容会同步切换。</div></aside></div>';
+ root.innerHTML='<div class="study-workbench"><section class="study-main"><header class="study-original-head"><div class="kicker">ARTICLE 01 · ORIGINAL TEXT</div><h2></h2><p></p></header><div class="study-original-paragraphs">'+mainRows+'</div></section><aside class="study-aside"><div class="study-aside-title"><b>精读功能栏</b><span class="study-current">第'+selected+'段 / '+sourceRows.length+'</span></div><div class="study-side-tabs"><button class="study-side-tab" data-mode="vocab">重点词汇</button><button class="study-side-tab" data-mode="logic">段落逻辑</button><button class="study-side-tab" data-mode="grammar">长难句</button><button class="study-side-tab" data-mode="translation">全文翻译</button><button class="study-side-tab" data-mode="pitfalls">易错点</button><button class="study-side-tab" data-mode="questions">练习题</button></div><div class="study-side-content"></div><div class="study-side-tip">点击左侧原文段落同步查看词汇、逻辑与句法；其他复习材料也可从上方功能栏切换。</div></aside></div>';
  root.querySelector('.study-original-head h2').textContent=title;
  root.querySelector('.study-original-head p').textContent=subtitle;
  root.querySelectorAll('.study-para').forEach((el,i)=>{el.querySelector('p').textContent=sourceRows[i].querySelector('.para-text')?.textContent||'';el.onclick=()=>{selected=i+1;root.dataset.selected=String(selected);renderSide();root.querySelectorAll('.study-para').forEach(x=>x.classList.toggle('active',Number(x.dataset.p)===selected))}});
- const extrasRoot=root.querySelector('.study-extra-sections');
- extras.forEach((section,i)=>{
-   const d=document.createElement('details');d.open=false;
-   const summary=document.createElement('summary');summary.textContent=['全文参考翻译','本次阅读易错点','考研风格练习题'][i];d.append(summary);
-   const clone=section.cloneNode(true);clone.removeAttribute('id');clone.classList.add('notes-section');
-   if(i===2) buildInteractiveQuiz(clone);
-   d.append(clone);extrasRoot.append(d);
- });
+ const extraModes={translation:extras[0],pitfalls:extras[1],questions:extras[2]};
  function renderSide(){
    root.querySelector('.study-current').textContent='第'+selected+'段 / '+sourceRows.length;
    root.querySelectorAll('.study-side-tab').forEach(b=>b.classList.toggle('active',b.dataset.mode===sideMode));
@@ -129,7 +122,7 @@ function renderStudyNotes(){
    }else if(sideMode==='logic'){
      content.innerHTML='<h4>第'+selected+'段 · 逻辑作用</h4><p></p>';
      content.querySelector('p').textContent=logicByParagraph[selected-1]||'';
-   }else{
+   }else if(sideMode==='grammar'){
      const d=grammar[selected-1];
      if(d){
        const summary=d.querySelector('summary')?.textContent||'长难句';
@@ -140,6 +133,12 @@ function renderStudyNotes(){
        content.querySelector('.study-side-sentence').innerHTML=sent;
        paras.forEach(p=>content.querySelector('.study-grammar-explain').append(p));
      }else content.innerHTML='<h4>第'+selected+'段 · 长难句</h4><p>本段没有单独收录的长难句拆解。可以先结合主句和从句关系自行分析。</p>';
+   }else{
+     const section=extraModes[sideMode];
+     if(!section){content.textContent='暂无内容';return}
+     const clone=section.cloneNode(true);clone.removeAttribute('id');clone.classList.add('notes-section');
+     content.append(clone);
+     if(sideMode==='questions')buildInteractiveQuiz(clone);
    }
  }
  root.querySelectorAll('.study-side-tab').forEach(b=>b.onclick=()=>{sideMode=b.dataset.mode;root.dataset.sideMode=sideMode;renderSide()});
