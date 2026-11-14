@@ -489,7 +489,7 @@ function showTemplate(id){
 templateTiles.forEach(b=>b.addEventListener('click',()=>showTemplate(b.dataset.template)));
 showTemplate('tpl-letter');
 
-const freq=[["建议信",6,"2007、2009、2012、2014、2021、2024"],["通知／告示",4,"2010、2016、2020、2023"],["推荐信",3,"2011、2015、2017"],["邀请信",3,"2013、2018、2022"],["介绍／回复介绍",3,"2019、2025、2026"],["道歉信",1,"2008"],["辞职信",1,"2005"],["申请信",1,"2006"]];
+const freq=[["建议信",6,"2007、2009、2012、2014、2021、2024"],["通知／告示（含研究项目招募）",4,"2010、2016、2020、2023"],["推荐信",3,"2011、2015、2017"],["邀请信",3,"2013、2018、2022"],["介绍／回复介绍",3,"2019、2025、2026"],["道歉信",1,"2008"],["辞职信",1,"2005"],["申请信",1,"2006"]];
 const freqTable=document.getElementById('freqTable');years.forEach(y=>{const tr=document.createElement('tr');tr.innerHTML='<td>'+y[0]+'</td><td>'+y[1]+'</td><td>'+y[2]+'</td>';freqTable.appendChild(tr)});
 const sel=document.getElementById('yearSelect'),container=document.getElementById('essayContainer');years.forEach(y=>{const o=document.createElement('option');o.value=y[0];o.textContent=y[0]+' · '+y[1];sel.appendChild(o)});
 
@@ -512,7 +512,7 @@ const breakdowns={
 2020:{modules:"通知／比赛告示",fit:"活动告示要回答“什么活动、谁能参加、活动目的、如何报名”。",steps:["标题NOTICE。","说明歌唱比赛及举办主体。","明确留学生也属于欢迎参与的对象。","说明活动目的或文化交流价值。","写报名方式、截止时间及主办方落款。"],caution:"报名截止日期、地点等若题目有给出必须准确呈现；没有给出则不虚构。"},
 2021:{modules:"建议信（针对个人情境）",fit:"给外国朋友在中国求职提建议。不是一般求职指导，要考虑跨文化和在华求职情境。",steps:["回应朋友考虑在中国求职的来信。","建议准备突出相关能力的简历。","建议了解目标行业和雇主要求。","建议提升中文能力并拓展职业联系。","表达祝愿。"],caution:"不要声称中文是所有岗位的硬性要求；表达为可能增加机会的建议更稳妥。"},
 2022:{modules:"邀请信＋组队参赛任务＋活动介绍",fit:"原题要求邀请英国大学教授组织一支队伍，参加将在本校举行的国际创新大赛。核心动作是organize a team to take part in the contest，不能写成仅仅attend，也不是serve as a judge。",steps:["以学生／主办方身份写邮件，明确邀请教授。","准确写出组队参赛：organize a team to take part in the international innovation contest。","介绍比赛的基本内容或参赛价值；题干未给具体日期、主题时不要编造。","表达诚挚邀请并期待回复。"],caution:"2022原题没有要求教授担任评委，也没有给出比赛具体日期、主题或住宿安排。不要使用serve as a judge，不要编造日期、比赛主题或接待细节。"},
-2023:{modules:"通知／志愿者招募",fit:"招募类告示由岗位职责、申请者条件、报名方式构成。",steps:["NOTICE标题和招募事项。","说明体育项目活动场景。","列举准备、引导、现场协助等职责。","说明责任心、合作能力等条件。","给出报名渠道和截止时间。"],caution:"岗位职责和申请条件应对应原题要求，避免凭空增加硬性资格。"},
+2023:{modules:"通知／研究项目助理招募",fit:"原题不是招募校园体育活动志愿者，而是为Smith教授的校园体育活动研究项目招募一名学生。必须写清研究助理职责和任职要求。",steps:["NOTICE标题，点明为Professor Smith的研究项目招募一名学生。","说明研究助理职责：收集、整理数据，观察校园体育活动并记录发现。","补充协助安排会议、整理进度报告等可选职责。","写任职要求：对体育研究有兴趣、沟通能力好、做事细致负责；相关经验可作为加分项。","写申请渠道和截止时间；题干未给的联系方式和期限用插槽，不虚构。"],caution:"原题要求招募一名学生参与教授的research project，并明确specify duties and requirements。不能误写成校园体育活动现场志愿者，也不能把岗位职责替换成活动准备、引导参与者。"},
 2024:{modules:"建议信＋报告结构指导",fit:"建议对象正在准备古代科学家报告。建议内容应按报告写作顺序展开：人物背景—科学成就—历史意义—现代联系—资料来源。",steps:["回应对方正在准备报告。","建议介绍人物生平和时代背景。","建议解释成就／发明的原理或内容。","建议说明当时的意义并联系现代生活。","提醒使用可靠资料。"],caution:"具体科学家及成就必须由题干决定，不能泛写或杜撰。"},
 2025:{modules:"回复信＋介绍展示内容＋请求协助（复合任务）",fit:"Paul问两个问题：年轻工匠会展示什么、他能帮什么。文章要先具体介绍展示内容，再给Paul明确的筹备任务；不能写成单向邀请或泛泛介绍。",steps:["回应Paul对活动的兴趣。","具体说明展示内容，最好举一至两个传统技艺与创新结合的例子。","回应Paul愿意帮忙，分配明确任务，如宣传、翻译或现场接待，必须符合题目情境。","感谢帮助并表达期待合作。"],caution:"题干没有指定具体工艺或Paul的工作内容时，范文中的示例只能作为可替换方案，不得伪装成题目事实。"},
 2026:{modules:"回复信＋传统文化介绍＋展览信息答疑（复合任务）",fit:"Paul提出两项明确请求：多介绍这些手写信，以及说明它们是否正在公开展出、在哪里。正文必须分别回应，不能把“筹备展览”误写成题目要求。",steps:["回应Paul的感受，感谢他关注这些信件。","介绍信件的来源、内容或情感价值；只写有依据的信息。","明确回答是否公开展出。","若正在展出，给出地点和时间；没有可靠信息时使用待填插槽，不编造。","欢迎Paul前往参观并礼貌收尾。"],caution:"展览地点、日期、门票和预约方式均不是题干提供的信息，必须有可靠依据才能写入。当前范文用方括号保留待核实信息。"}
@@ -536,7 +536,7 @@ const yearTeaching={
 2020:{tpl:"B 通知／告示骨架",fixed:"An international singing competition will be held at [地点] on [日期].",fill:"活动为国际歌唱比赛；参与对象明确包括留学生；目的填音乐交流与文化了解；报名部门和截止时间依题干填写。",logic:"标题 → 活动名称与时间地点 → 参与对象 → 活动目的 → 报名方法 → 期待参与。"},
 2021:{tpl:"C 建议信主模板",fixed:"I am writing to offer some suggestions concerning [主题／问题].",fill:"your plan to look for a job in China；建议填简历、了解行业雇主、提升中文并拓展职业联系。",logic:"回应朋友计划 → 简历准备 → 行业信息 → 语言与人脉补充 → 祝愿。由求职材料到市场了解，再到长期竞争力。"},
 2022:{tpl:"D 邀请信主模板＋组队参赛任务模块",fixed:"I am writing to invite you to [活动／担任的角色].",fill:"organize a team for the international innovation contest to be held at our university；原题没有给具体日期、比赛主题或评委职责，不添加这些信息。",logic:"点明邀请 → 明确教授需组织队伍 → 简述国际创新大赛及参赛价值 → 表达诚挚邀请并期待回复。组队是核心任务，不能误写成仅出席或担任评委。"},
-2023:{tpl:"B 通知／告示骨架",fixed:"Volunteers are wanted for [活动／事项].",fill:"the campus sports program；职责填活动准备、引导参与者、现场协助；要求填责任心与合作能力；报名信息按题干。",logic:"标题 → 招募岗位 → 工作内容 → 人员要求 → 报名方式 → 期待参与。"},
+2023:{tpl:"B 通知／告示骨架＋研究助理招募模块",fixed:"Professor Smith is recruiting one student to assist with [研究项目].",fill:"his research project on campus sports activities；职责填数据收集、观察活动、记录研究结果；要求填体育兴趣、沟通能力、细致负责和相关经验。",logic:"NOTICE → 项目背景与招募目的 → 研究助理职责 → 任职要求 → 报名方式 → Li Ming落款。重点是研究项目助理，不是体育活动志愿者。"},
 2024:{tpl:"C 建议信主模板",fixed:"I am writing to offer some suggestions concerning [主题／问题].",fill:"your report on an ancient Chinese scientist；建议填人物背景、成就原理、历史意义、现代联系和可靠资料。",logic:"回应报告任务 → 人物与时代背景 → 解释科学成就 → 说明历史意义 → 联系现代生活并核实来源。按报告本身的论证顺序给建议。"},
 2025:{tpl:"F 介绍／回复主模板＋K 请求模块",fixed:"I am glad to hear from you. I am writing to tell you more about [介绍对象／主题].",fill:"our campus craft demonstration；介绍插槽填传统技艺与现代创意结合、制作过程；请求插槽明确Paul承担的宣传／翻译／接待等具体任务，按题目情境选择。",logic:"回应来信 → 介绍展示内容 → 举例说明工艺 → 回答对方愿意帮忙 → 明确分配任务 → 感谢并期待合作。"},
 2026:{tpl:"F 介绍／回复主模板",fixed:"I am glad to hear from you. I am writing to tell you more about [介绍对象／主题].",fill:"the handwritten letters exchanged among Chinese family members；介绍内容填信件记录的家庭情感与生活；再单独回答是否公开展出、地点和展期，必须有题干依据。",logic:"回应Paul → 介绍信件是什么 → 解释其价值 → 明确回答是否展出 → 给出地点／展期 → 礼貌收尾。两问必须分别作答。"}
@@ -584,10 +584,12 @@ const manualSentenceAudit={
 ["Please feel free to contact","C 后续沟通句：Please feel free to contact me if you need further information." ,"—（固定礼貌收尾，无需填入题目内容）","礼貌提供进一步沟通渠道。"]
 ],
 2010:[
-["Volunteers are wanted","B 招募告示主句：Volunteers are wanted for [活动／事项].","[国际会议名称]；[题目给出的地点]","NOTICE后直接写招募对象和活动；地点按题干填，不得留成未经核实的事实。"],
-["The volunteers will assist","B 岗位职责句：The volunteers will [岗位职责].","reception, guidance and other on-site services","说明实际工作内容，让读者判断岗位要求。"],
-["Applicants should be","B 申请条件句：Applicants should be [必要条件].","responsible, helpful and able to communicate in English","列出与国际会议服务相匹配的素质；若题干限定条件不同，以题干为准。"],
-["If you are interested","B 报名句：If you are interested, please [报名方式] before [截止时间].","submit your application","完成报名动作；渠道和截止时间必须抄准题干。"]
+["Volunteers are wanted","B 招募告示主句：Volunteers are wanted for [活动／事项].","an international conference on globalization","NOTICE后直接写明招募目的，准确对应全球化国际会议。"],
+["The volunteers will assist","B 岗位职责句：The volunteers will [岗位职责].","reception, document distribution, interpretation and on-site guidance","职责要具体，涵盖接待、文件分发、口译和现场引导等示范岗位。"],
+["Applicants should have","B 申请条件句：Applicants should have [必要能力／条件].","a good command of English and strong communication skills","明确语言和沟通能力；其他条件作为合理示范扩展，不是题干硬性限定。"],
+["Previous volunteer experience","B 加分条件句：[相关经验] would be an advantage.","previous volunteer experience or knowledge of another foreign language","把相关经历写成加分项，不把它误写成所有人必须具备的硬条件。"],
+["Patience, responsibility and","B 素质要求句：Applicants are expected to have [个人素质].","patience, responsibility and teamwork","补充国际会议志愿者需要的软技能，属于可替换示范内容。"],
+["If you are interested","B 报名句：If you are interested, please [报名方式] before [截止时间].","send your résumé and application to [联系邮箱／渠道] before [截止时间]","提供可执行报名方式；邮箱和截止日期须按题目或自拟方案填入。"]
 ],
 2011:[
 ["I am writing to recommend","E 推荐目的句：I am writing to recommend [推荐对象] to you.","The Pursuit of Happyness","明确推荐对象；片名是示范选择，原题若给定对象必须替换。"],
@@ -632,12 +634,12 @@ const manualSentenceAudit={
 ["I look forward to discussing","后续交流句：I look forward to [后续交流].","discussing it with you","把推荐与俱乐部活动联系起来。"]
 ],
 2016:[
-["The university library welcomes","B 信息告示句：[机构／场所] welcomes [目标对象].","all international students","直接回应告示面向谁。"],
-["To begin with, the library","F 介绍基本情况：To begin with, [基本情况].","[题目给出的馆藏资源]","介绍馆藏资源；必须填题干给出的资源，不凭常识添加。"],
-["In addition, students can","F 补充重点信息：In addition, [重点信息].","[题目给出的学习空间／数字资源]","补充学习空间或数字资源，覆盖第二项信息要求。"],
-["As for borrowing services","F 分项说明：As for [重点信息二], [具体说明].","[按题目给出的规则说明借阅方式]","说明借阅规则；未给出的校园卡、期限等不得自行补写。"],
-["If you need assistance","求助渠道模块：If you need assistance, please contact [部门／人员].","the library staff","告诉留学生遇到问题找谁。"],
-["We hope this information","B/F 礼貌收尾：We hope this information is helpful.","this information；welcome to use the library","简洁欢迎式收尾。"]
+["The university library welcomes","B 信息告示句：[机构／场所] welcomes [目标对象].","all newly admitted international students","明确面向新录取的留学生。"],
+["As a librarian, I would","A/F 介绍身份与目的句：As a librarian, I would like to provide you with [信息].","useful information about the library","交代发布者身份和告示目的，让信息来源清楚。"],
+["To begin with, the library","F 介绍基本情况：To begin with, [基本情况].","[题目允许的馆藏资源]","介绍馆藏资源；按题目要求或合理示范填入，不把虚构馆藏当成原题事实。"],
+["In addition, you can","F 补充重点信息：In addition, [重点信息].","[阅览空间／网络资源／开放时间等信息]","补充留学生实际使用图书馆时需要的信息。"],
+["As for borrowing services","F 分项说明：As for [重点信息二], [具体说明].","[按题目要求或合理设定说明借阅方式]","说明借阅方式；具体规则若非题目给出，应标为自拟示范。"],
+["We hope you will find","F 礼貌收尾：We hope you will find [设施／信息] helpful.","these facilities helpful","再次欢迎并以读者收获收尾。"]
 ],
 2017:[
 ["I am writing to recommend","E 推荐目的句：I am writing to recommend [推荐对象] to you.","the Palace Museum","故宫是本篇示范选择；如题干指定其他景点，名称、特色和体验都必须同步替换。"],
@@ -685,11 +687,12 @@ const manualSentenceAudit={
 ["I look forward to your","D 邀请收尾：I look forward to your reply.","your reply","期待教授回复。"]
 ],
 2023:[
-["Volunteers are wanted","B 招募告示主句：Volunteers are wanted for [活动／事项].","[校园体育活动名称]；[日期／地点]","先说明招募岗位及活动；具体信息由题干填入。"],
-["The volunteers will help","B 岗位职责句：The volunteers will [岗位职责].","help with event preparation","列明志愿者工作内容。"],
-["Applicants should be","B 申请条件句：Applicants should be [必要条件].","responsible, cooperative and willing to work with others","说明岗位适合的基本素质，不擅自加硬性资格。"],
-["If you are interested","B 报名句：If you are interested, please [报名方式] before [截止时间].","register with","给出报名渠道和期限。"],
-["We look forward to","B 告示收尾：We look forward to your participation.","your participation","号召报名参与。"]
+["Professor Smith is recruiting","B 研究助理招募句：Professor Smith is recruiting one student to assist with [研究项目].","one student；his research project on campus sports activities","点明招募人数、项目负责人和研究主题，准确对应原题。"],
+["The selected student will","B 岗位职责句：The selected student will [岗位职责].","collect and organize data, observe campus sports events and record relevant findings","把duties写成可执行的研究工作，而不是活动现场服务。"],
+["The student may also","B 补充职责句：The student may also [补充职责].","assist in arranging meetings and preparing brief progress reports","补充团队沟通和进度整理，属于可替换示范职责。"],
+["Applicants should have","B 任职要求句：Applicants should have [必要条件].","a strong interest in sports, good communication skills and a careful, responsible attitude","逐项回应requirements，使用并列结构列出素质。"],
+["Previous research or data-handling","B 加分条件句：[相关经验] would be an advantage.","previous research or data-handling experience","把经验设为优先条件，而非题目没有要求的硬门槛。"],
+["If interested, please send","B 报名句：If interested, please [报名方式] before [截止时间].","a brief application to [联系邮箱／渠道] before [截止时间]","交代如何申请；联系方式和截止日期留给题干或自拟合理方案。"]
 ],
 2024:[
 ["I am writing to offer","C 建议目的句：I am writing to offer some suggestions concerning [主题／问题].","your report on an ancient Chinese scientist","明确建议针对报告准备。"],
