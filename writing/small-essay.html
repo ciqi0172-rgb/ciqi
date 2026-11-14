@@ -680,7 +680,7 @@ const manualSentenceAudit={
 ["I am writing to invite","D 邀请目的句：I am writing to invite you to [活动／担任的角色].","organize a team for the international innovation contest","准确填入原题核心动作：请教授组织队伍参赛。"],
 ["The contest will bring","D 活动内容句：The event will feature [活动内容／亮点].","students with creative ideas and innovative projects","介绍比赛参与者和项目特点；不擅自添加题目未给的主题、日期。"],
 ["We believe your academic","D 邀请价值句：We believe your participation would [价值].","academic experience；select suitable team members and guide their preparation","说明教授组织团队的价值，紧扣其学术经验与组队指导。"],
-["We would be honored","D 邀请收尾：We would be grateful if you could join us.","accept our invitation","表达诚挚邀请；此处join us指接受组队参赛邀请。"],
+["We would be honored","D 邀请收尾：We would be honored if you could accept our invitation.","accept our invitation","表达诚挚邀请；此处accept指接受组队参赛邀请。"],
 ["I look forward to your","D 邀请收尾：I look forward to your reply.","your reply","期待教授回复。"]
 ],
 2023:[
@@ -772,8 +772,8 @@ function addBreakdown(article,x){
 }
 function renderMarkedEssay(el,x){
  const legend=document.createElement('div');legend.className='mark-legend';
- legend.innerHTML='<span class="l-template">黄色：与04模板对应的固定结构</span><span class="l-topic">蓝色：本题实际填入的信息</span><span class="l-logic">绿色：逻辑连接表达</span>';el.appendChild(legend);
- const lines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library|\[发布单位|\[日期)/i.test(t));
+ legend.innerHTML='<span class="l-template">黄色：04模板中的固定表达</span><span class="l-topic">蓝色：本题实际填入的信息</span><span class="l-logic">绿色：逻辑连接表达</span>';el.appendChild(legend);
+ const lines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|\[发布单位|\[日期)/i.test(t));
  const sentences=lines.flatMap(line=>line.match(/[^.!?]+[.!?]?/g)||[]).map(t=>t.trim()).filter(Boolean);
  const notes=manualSentenceAudit[x[0]]||[];
  const logic=/\b(To begin with|First(?:ly)?|Second(?:ly)?|Third(?:ly)?|In addition|Furthermore|Moreover|More importantly|Finally|As for|In particular|As a result|For this reason|To address this problem|Due to|because|therefore|while|such as)\b/ig;
@@ -782,8 +782,8 @@ function renderMarkedEssay(el,x){
   const hits=[];
   if(note){
    const source=(note[1].split('：').slice(1).join('：')||'').trim();
-   const prefix=source.split('[')[0].replace(/[.。\s]+$/,'').trim();
-   if(prefix&&sentence.toLowerCase().startsWith(prefix.toLowerCase()))hits.push({a:0,b:prefix.length,c:'mark-template',priority:3});
+   const fixedParts=source.split(/\[[^\]]+\]/g).map(t=>t.replace(/[.。\s]+$/,'').trim()).filter(t=>t.length>1);
+   fixedParts.forEach(part=>{let from=0,at;while((at=sentence.toLowerCase().indexOf(part.toLowerCase(),from))>=0){hits.push({a:at,b:at+part.length,c:'mark-template',priority:3});from=at+part.length;}});
    const candidate=(note[2].split(/[；;]/)[0]||'').trim();
    if(candidate.length>2){const at=sentence.toLowerCase().indexOf(candidate.toLowerCase());if(at>=0)hits.push({a:at,b:at+candidate.length,c:'mark-topic',priority:1});}
   }
