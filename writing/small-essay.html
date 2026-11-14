@@ -345,6 +345,15 @@ function addBreakdown(article,x){
    else if(/I hope|please let|feel free|look forward|thank you|appreciate|would be grateful|honored/i.test(sentence)) purpose='礼貌收尾／请求：完成期待、感谢、邀请确认或进一步联系。要与收信人关系和题目任务相匹配。';
    else purpose='主体信息：把题目中的一个具体要点写成完整句。先用中文明确“对象＋动作／特征＋必要细节”，再组织主干，避免添加题干没有给出的事实。';
    guide.textContent='中文构思与句子功能：'+purpose;
+   const fill=document.createElement('p');fill.className='template-fill-note';
+   let slot='本句填充：先从题目中提取对应任务要点，再把具体对象、动作、时间地点或理由放进模板插槽；题干没有提供的事实不补写。';
+   if(i===0)slot='模板调用：交际目的句。填入“写信目的／主要动作”，本篇要回答的核心是：我写信要完成什么交际任务？';
+   else if(/First|To begin|In addition|Finally|Second|Moreover|Furthermore/i.test(sentence))slot='模板调用：主体展开连接模块。填入本题的下一项任务要点；先判断它与上一点是并列、递进还是补充，再决定连接方式。';
+   else if(/because|due to|as a result|which|so that|would make|would help|enable/i.test(sentence))slot='模板调用：原因／作用解释模块。填入“为什么这样做／这样安排有什么效果”，让建议、活动或特点不止停留在罗列。';
+   else if(/I hope|Please|Thank you|look forward|grateful|appreciate|honored|Best wishes/i.test(sentence))slot='模板调用：礼貌收尾模块。填入与本篇交际目的相符的期待、感谢、请求确认或后续联系。';
+   else if(/NOTICE|will be held|Volunteers are wanted|Applicants should|If you are interested/i.test(sentence))slot='模板调用：告示信息模块。依次填入活动／岗位、对象、内容、要求和报名方式；具体日期地点以题目为准。';
+   else slot+=' 本句主题内容需核对题目要求，不能把示范扩展当作题干事实。';
+   fill.textContent=slot;li.appendChild(fill);
    li.appendChild(original);li.appendChild(guide);sentenceList.appendChild(li);
  });
  body.appendChild(sentenceList);
