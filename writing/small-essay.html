@@ -11,7 +11,7 @@
 .template-card{scroll-margin-top:76px}
 .template-status{font-size:13px;color:#765b27;background:#fff6df;border:1px solid #f0dfb3;border-radius:8px;padding:10px 12px;margin:12px 0 18px}
 
-.template-picker,.template-card{display:none!important}.template-picker{display:none!important}
+/* 模板选择器与模板卡片保持可见，供考场直接调用 */
 .template-tile{min-height:70px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:10px 8px;text-align:left;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:5px}
 .template-tile b{font-size:12px}.template-tile small{font-size:10px;color:var(--muted)}
 .template-tile.active{border:2px solid var(--green);background:var(--green2);padding:9px 7px}
@@ -47,7 +47,7 @@
 </style>
 </head><body><div class="shell">
 <header class="top"><div class="brand"><div class="mark">小</div><div><small>KAOYAN ENGLISH I · WRITING LAB</small><b>英语一小作文训练室</b></div></div><a class="back" href="index.html">← 返回作文训练首页</a></header>
-<section class="hero"><div class="eyebrow">FROM 0 TO 1 · PRACTICAL WRITING</div><h1>小作文：把固定格式练成稳定得分能力</h1><p>不要求你每次从零创造模板。先掌握书信、通知等文体格式，再调用交际功能模块；真正需要现场组织的，只保留少量扣题信息。每一篇真题都按“审题—选框架—填内容—检查格式”拆解。<</section>
+<section class="hero"><div class="eyebrow">FROM 0 TO 1 · PRACTICAL WRITING</div><h1>小作文：把固定格式练成稳定得分能力</h1><p>不要求你每次从零创造模板。先掌握书信、通知等文体格式，再调用交际功能模块；真正需要现场组织的，只保留少量扣题信息。每一篇真题都按“审题—选框架—填内容—检查格式”拆解。</section>
 <div class="layout"><nav class="nav">
 <button class="active" data-tab="method">01 从0到1：真正学会套模板</button><button data-tab="marked">02 模板荧光拆解</button><button data-tab="overview">03 出题规律</button><button data-tab="system">04 通用模板系统</button><button data-tab="types">05 功能模块库</button><button data-tab="years">06 历年真题范文</button><button data-tab="practice">07 从0到1练习</button>
 </nav><main>
@@ -132,7 +132,12 @@
 <div class="foot">频率统计口径：以截图中2005—2026年共22条记录为样本；“介绍信”归为介绍／回复介绍；道歉、辞职、申请合并为低频独立类型。统计仅描述该样本。</div>
 </section>
 <section class="panel" id="system"><div class="head"><span class="tag">核心原则：固定表达＋少量扣题插槽</span><h2>小作文万能模板：固定骨架＋交际模块＋扣题填充</h2><p>万能不是一篇文章通吃，而是“格式骨架＋交际目的句＋主体信息模块＋礼貌收尾”。书信与通知先分开；再判断建议、邀请、推荐、介绍、申请、道歉等交际动作；最后按题干顺序填入对象、内容、时间地点、理由和请求。每道真题只保留完成任务所必需的模块。</p></div>
-<div class="template-status"><b>重构版：</b>不再要求你背13套细碎模板。现在以“通用书信／通知骨架＋主体展开方法＋具体素材库”为主；范文全部写成完整文章，示范细节会在中文注释中说明。</div>
+<div class="template-status"><b>04使用方法：</b>这里提供可以直接记忆、替换和组合的英文模板。先选书信／通知外壳，再选交际目的句，最后用主体展开句补足题目要点。黄色部分尽量固定；方括号是考场必须替换的信息。下面每张卡都附有“何时用、怎么填、不能乱用”。</div>
+<div class="template"><h3>考场套用顺序</h3><div class="en">① 文体格式：Letter / NOTICE
+② 开头：回应来信或说明写作目的
+③ 主体：逐项完成题目要求
+④ 展开：具体行动／细节 → 举例（需要时）→ 直接效果
+⑤ 收尾：请求、期待、感谢或祝愿</div><p><b>可以直接记忆：</b>固定表达可以背；方括号必须替换。题目没有要求的内容不要硬塞，例子只选一个最贴题的，不为凑字数编造事实。</p></div>
 <div class="template-picker" id="templatePicker" aria-label="模板题材选择">
 <button class="template-tile active" type="button" data-template="tpl-letter"><b>通用书信</b><small>称呼、目的、收尾</small></button>
 <button class="template-tile" type="button" data-template="tpl-notice"><b>通知／告示</b><small>发布信息、招募</small></button>
@@ -149,7 +154,7 @@
 <button class="template-tile" type="button" data-template="tpl-combo"><b>复合任务</b><small>欢迎、邀请、介绍等组合</small></button>
 </div>
 <p class="template-picker-hint">点击小方块切换模板。低频类型采用“书信格式＋交际目的句＋主体模块＋礼貌收尾”。申请信用于争取机会／资助并证明条件；请求模块用于请对方完成一件具体事情，两者不能混为一谈。复合题按题目动作组合，不必死背互不相干的整篇文章。</p>
-<div class="template template-card" id="tpl-letter"><h3>A. 通用书信格式</h3><div class="en">Dear [称呼],
+<div class="template template-card template-current" id="tpl-letter"><h3>A. 通用书信格式（直接套用的外壳）</h3><div class="en">Dear [称呼],
 
 I am writing to [写信目的]. / As a [身份], I would like to provide you with [信息／帮助].
 
@@ -222,7 +227,7 @@ Li Ming</div><p class="muted">如果是回复来信，先回应对方来信或�
 
 【个人申请】I am writing to apply for [机会／职位／资助]. I am particularly interested in this opportunity because [申请动机]. I believe my [相关经历／能力] would enable me to [具体行动].
 
-【为他人／项目申请资助】I am writing to apply for financial support for [受助对象／项目]. The support would be used for [具体用途]. The student I hope to support is [符合题目要求的帮扶对象]. The student I hope to support is [符合题目要求的帮扶对象]. To put the plan into practice, I intend to [实施方式一]. In addition, I will [实施方式二] so that the assistance can meet [受助对象／项目]’s needs.
+【为他人／项目申请资助】I am writing to apply for financial support for [受助对象／项目]. The support would be used for [具体用途]. The student should meet [题目要求的受助条件]. To put the plan into practice, I intend to [实施方式一]. In addition, I will [实施方式二] so that the assistance can meet [受助对象／项目]’s needs.
 
 I would be grateful if you could recommend a suitable student and let me know how the plan could be carried out.
 
@@ -833,6 +838,18 @@ const manualSentenceAudit={
 ]
 };
 
+function fallbackTemplate(sentence){
+ const t=sentence.toLowerCase();
+ if(/i am writing to/.test(t))return "I am writing to [交际动作] [主题／对象].";
+ if(/i would be grateful|could you|please let me|we would be grateful/.test(t))return "I would be grateful if you could [对方需要采取的行动].";
+ if(/for example|for instance/.test(t))return "For example, [一个具体行为／场景] can [直接作用].";
+ if(/because|the reason|due to/.test(t))return "This is because [简洁原因].";
+ if(/which|this would|this will|these measures|as a result/.test(t))return "This would help [对象] to [直接效果].";
+ if(/thank you|i hope|look forward|best wishes/.test(t))return "I hope [与交际目的相符的期待／结果].";
+ if(/will be held|are wanted|is recruiting/.test(t))return "[事项／岗位] will be [活动安排／招募信息].";
+ if(/should|could|would be helpful|it is important/.test(t))return "It would be helpful to [具体行动], which can [直接效果].";
+ return "[主体信息] + [具体动作] + [必要细节／作用].";
+}
 function sentenceRole(sentence,index,total){
  const t=sentence.toLowerCase();let role="补充具体信息：把题目要求的内容说清楚，并为读者提供必要细节。";
  if(index===0)role="开头／交际目的：直接告诉收信人为什么写这封信或这则通知。";
@@ -846,7 +863,7 @@ function sentenceRole(sentence,index,total){
 function addBreakdown(article,x){
  const info=breakdowns[x[0]];if(!info)return;
  const box=document.createElement('details');box.className='breakdown';
- const summary=document.createElement('summary');summary.textContent='展开本篇：通用骨架、主体展开与逐句功能';box.appendChild(summary);
+ const summary=document.createElement('summary');summary.textContent='展开本篇：题目拆解、04模板套用、逐句构思';box.appendChild(summary);
  const body=document.createElement('div');
  function section(title,content){const h=document.createElement('h4');h.textContent=title;body.appendChild(h);const p=document.createElement('p');p.textContent=content;body.appendChild(p);}
  const teach=yearTeaching[x[0]];
@@ -863,14 +880,14 @@ function addBreakdown(article,x){
  }
  const h=document.createElement('h4');h.textContent='④ 从题目到文章：逐项完成任务';body.appendChild(h);
  const ol=document.createElement('ol');info.steps.forEach(t=>{const li=document.createElement('li');li.textContent=t;ol.appendChild(li)});body.appendChild(ol);
- const hh=document.createElement('h4');hh.textContent='⑤ 逐句拆解：每句完成什么任务';body.appendChild(hh);
+ const hh=document.createElement('h4');hh.textContent='⑤ 逐句拆解：原句 → 04句型 → 本题填充 → 中文构思';body.appendChild(hh);
  const sentenceList=document.createElement('ol');
  const essayLines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$|\[发布单位|\[日期)/i.test(t));
  const sentences=essayLines.flatMap(line=>line.match(/[^.!?]+[.!?]?/g)||[]).map(t=>t.trim()).filter(Boolean);
  const notes=manualSentenceAudit[x[0]]||[];
  let audited=0;
  sentences.forEach((sentence,i)=>{
-  const note=null;
+  const note=notes.find(n=>sentence.startsWith(n[0]));
   const li=document.createElement('li');
   const original=document.createElement('p');original.textContent=sentence;original.style.fontWeight='600';li.appendChild(original);
   if(note){
@@ -883,11 +900,11 @@ function addBreakdown(article,x){
    li.appendChild(fill);
    const thought=document.createElement('p');thought.textContent='构思与逻辑：'+note[3];li.appendChild(thought);
   }else{
-   const missing=document.createElement('p');missing.className='template-fill-note';missing.textContent=sentenceRole(sentence,i,sentences.length);li.appendChild(missing);
+   const missing=document.createElement('p');missing.className='template-fill-note';missing.textContent='本句功能：'+sentenceRole(sentence,i,sentences.length)+'\n04可迁移句型：'+fallbackTemplate(sentence)+'\n本题填充：本句中除功能表达外的具体对象、动作和细节。\n构思：先确定本句要完成的任务，再选一个核心动词，把对象和必要细节放入句型；若内容较抽象，再补一个贴题例子或效果。';li.appendChild(missing);
   }
   sentenceList.appendChild(li);
  });
- const coverage=document.createElement('p');coverage.className='logic-map';coverage.textContent='逐句功能拆解：'+sentences.length+' 句。每句按交际目的、主体信息、举例、效果或礼貌收尾来判断其写作作用。';body.appendChild(coverage);
+ const coverage=document.createElement('p');coverage.className='logic-map';coverage.textContent='逐句模板对应：'+audited+' / '+sentences.length+' 句匹配到已有句型解析；其余句子显示对应功能句型与构思提示，不把自动判断冒充人工逐字映射。';body.appendChild(coverage);
  body.appendChild(sentenceList);
  section('⑥ 使用时必须核对',info.caution);
  box.appendChild(body);article.appendChild(box);
