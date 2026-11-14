@@ -280,6 +280,192 @@ const years=[
 [2026,"回复信（介绍＋答疑）","回复Paul：介绍中国家庭手写信，并回答是否公开展出、在哪里展出","Dear Paul,\n\nI am glad that the letters moved you. They are handwritten messages exchanged among Chinese family members, recording everyday concerns, affection and important moments. Their personal handwriting and details make them valuable records of family life.\n\nYes, they are currently on public display at [展览地点] until [展览结束时间]. You can visit [具体地点／预约方式，如题目或可靠材料提供]. I would be happy to accompany you and share more stories behind them.\n\nI hope to see you there.\n\nYours,\nLi Ming","这是回复信＋介绍＋答疑。必须回应Paul的两问：这些信是什么／为什么珍贵；是否公开展出、地点信息。方括号是待核实插槽，不能凭空编造博物馆、日期、门票或预约规则。"]
 ];
 
+// 按04栏模板重写的真题范文：正文结构必须先调用模板，再填入本题信息
+const revisedEssays={
+2005:`Dear Editor,
+
+I am writing to inform you of my decision to resign from my position at the magazine.
+This decision is due to [简要、真实的原因]. I sincerely apologize for any inconvenience this may cause.
+I have greatly appreciated the opportunity to work with the magazine. To make the transition as smooth as possible, I will complete my current tasks and prepare the necessary handover materials.
+Thank you for your understanding.
+
+Yours sincerely,
+Li Ming`,
+2006:`Dear Sir or Madam,
+
+I am writing to apply for financial support for a student in need and to introduce my proposed assistance plan.
+The student I hope to support is [符合题目要求的帮扶对象]. The support would be used for [题目要求的具体用途].
+To put the plan into practice, I intend to [具体实施方式一]. In addition, I will [具体实施方式二] so that the assistance can meet the student's needs.
+I would appreciate it if you could consider my application. Thank you for your time and consideration.
+
+Yours sincerely,
+Li Ming`,
+2007:`Dear Librarian,
+
+I am writing to offer some suggestions concerning the improvement of our library services.
+To begin with, it would be helpful to extend the opening hours, especially during examination periods, so that students have more time to study. In addition, providing more seats and quiet study areas would better meet readers' needs.
+I hope these suggestions will be of help. Please feel free to contact me if you need further information.
+
+Yours sincerely,
+Li Ming`,
+2008:`Dear Tom,
+
+I am writing to apologize for forgetting to return the CD to you as promised.
+I understand that this may have caused you inconvenience. The situation occurred because I was busy preparing for an important examination, but I should have kept track of the return date.
+To make things right, I can bring the CD to you tomorrow or send it to your address if that is more convenient.
+Once again, I am sorry for the inconvenience and appreciate your understanding.
+
+Yours sincerely,
+Li Ming`,
+2009:`Dear Friend,
+
+I am writing to offer some suggestions concerning the problem of white pollution.
+To begin with, individuals should use reusable bags instead of disposable plastic bags in their daily lives. In addition, shops can reduce unnecessary plastic packaging. More importantly, public campaigns can encourage people to develop environmentally responsible habits.
+I hope these suggestions will be of help. Please feel free to contact me if you need further information.
+
+Yours sincerely,
+Li Ming`,
+2010:`NOTICE
+
+Volunteers are wanted for [国际会议名称] to be held at [题目给出的地点].
+The volunteers will assist with reception, guidance and other on-site services. Applicants should be responsible, helpful and able to communicate in English.
+If you are interested, please submit your application to [报名部门／渠道] before [题目给出的截止时间].
+
+[发布单位]
+[日期]`,
+2011:`Dear Mike,
+
+I am writing to recommend The Pursuit of Happyness to you.
+What makes it particularly worth recommending is its moving story of a man who keeps striving for a better life despite serious difficulties. In addition, the film highlights perseverance, responsibility and hope. I believe it would be an excellent choice for you because it offers both an engaging story and meaningful inspiration.
+I hope you will find my recommendation helpful. Please let me know what you think after watching it.
+
+Yours sincerely,
+Li Ming`,
+2012:`Dear New Student,
+
+Welcome to our university! I am writing to offer some suggestions to help you adapt to campus life.
+To begin with, it would be helpful to take part in student clubs and campus activities, which can help you make friends. In addition, make good use of the library and online learning resources to support your studies. If you have any questions, do not hesitate to ask your tutors or classmates for help.
+I hope these suggestions will be of help. Please feel free to contact me if you need further information.
+
+Yours sincerely,
+Li Ming`,
+2013:`Dear Professor Smith,
+
+I am writing to invite you to serve as a judge for our English speech contest.
+The contest is scheduled to take place on [题目给出的日期] at [题目给出的地点]. It will feature speeches delivered by students on various topics. We believe your professional experience would be valuable in evaluating the speeches and offering constructive advice.
+We would be delighted if you could accept our invitation. Please let me know whether you will be available.
+
+Yours sincerely,
+Li Ming`,
+2014:`Dear President,
+
+I am writing to offer some suggestions concerning ways to improve students' physical fitness.
+To begin with, it would be helpful to provide more opportunities for physical exercise, such as sports classes and after-school activities. In addition, the university could improve its sports facilities so that students can exercise more conveniently. More importantly, health education can encourage students to develop regular exercise habits.
+I hope these suggestions will be of help. Thank you for your consideration.
+
+Yours sincerely,
+Li Ming`,
+2015:`Dear Club Members,
+
+I am writing to recommend [书名] to our reading club.
+What makes this book particularly worth recommending is [与书籍内容相符的核心特点]. In addition, [另一项具体内容或写作特点]. I believe it would be an excellent choice for our club because it can encourage members to reflect on [相关主题] and share their different perspectives.
+I hope you will find my recommendation helpful. I look forward to discussing it with you.
+
+Yours sincerely,
+Li Ming`,
+2016:`NOTICE
+
+The university library welcomes all international students.
+To begin with, the library provides [题目给出的馆藏资源]. In addition, students can make use of [题目给出的学习空间／数字资源]. As for borrowing services, [按题目给出的规则说明借阅方式]. If you need assistance, please contact the library staff.
+We hope this information is helpful and look forward to seeing you in the library.
+
+The University Library
+[日期]`,
+2017:`Dear Professor,
+
+I am writing to recommend [景点名称] to you during your stay in China.
+What makes it particularly worth visiting is [该景点最突出的自然／文化特色]. In addition, visitors can [与该地点实际情况相符的体验]. I believe it would be an excellent choice for you because it offers an opportunity to appreciate [具体景观／文化价值].
+I hope you will find my recommendation helpful. Please let me know if you would like to know more.
+
+Yours sincerely,
+Li Ming`,
+2018:`Dear Professor Brown,
+
+I am writing to invite you to attend our graduation ceremony.
+The ceremony is scheduled to take place on [题目给出的日期] at [题目给出的地点]. It will be a special occasion for graduates to celebrate their achievements and express gratitude to those who have supported them. We believe your presence would make the occasion even more meaningful to us.
+We would be delighted if you could join us. Please let me know whether you will be available.
+
+Yours sincerely,
+Li Ming`,
+2019:`Dear Volunteer,
+
+I am writing to tell you more about Project Hope.
+To begin with, this program is dedicated to supporting children's education in underdeveloped areas. In particular, it aims to improve learning conditions by [题目要求或材料支持的具体方式]. As for volunteer participation, you can [题目要求的具体参与方式].
+I hope this information is helpful. Please feel free to ask if you would like to know anything else.
+
+Yours sincerely,
+Li Ming`,
+2020:`NOTICE
+
+An international singing competition will be held at [题目给出的地点] on [题目给出的日期].
+The event welcomes all students, including international students, and aims to provide an opportunity to share musical interests and learn about different cultures.
+If you are interested, please register with [报名部门／渠道] before [题目给出的截止时间]. We look forward to your participation.
+
+The Students' Union
+[日期]`,
+2021:`Dear Alex,
+
+I am writing to offer some suggestions concerning your plan to look for a job in China.
+To begin with, it would be helpful to prepare a clear résumé that highlights your relevant skills and experience. In addition, learn about the expectations of employers in your field. More importantly, improving your Chinese and building professional connections may increase your opportunities.
+I hope these suggestions will be of help. Best wishes for your job search!
+
+Yours sincerely,
+Li Ming`,
+2022:`Dear Professor Wang,
+
+I am writing to invite you to [attend our innovation competition / serve as a judge for the competition, as required by the question].
+The event is scheduled to take place on [题目给出的日期] at [题目给出的地点]. It will feature student projects that combine creative ideas with practical applications. We believe your experience would be valuable to the participants and contribute to the success of the event.
+We would be delighted if you could join us. Please let me know whether you will be available.
+
+Yours sincerely,
+Li Ming`,
+2023:`NOTICE
+
+Volunteers are wanted for [校园体育活动名称] to be held on [题目给出的日期／地点].
+The volunteers will help with event preparation, guide participants and provide on-site assistance. Applicants should be responsible, cooperative and willing to work with others.
+If you are interested, please register with [报名部门／渠道] before [题目给出的截止时间]. We look forward to your participation.
+
+The Organizing Committee
+[日期]`,
+2024:`Dear Student,
+
+I am writing to offer some suggestions concerning your report on an ancient Chinese scientist.
+To begin with, it would be helpful to introduce the scientist's life and the historical background of the major achievement. In addition, explain how the discovery or invention worked and why it was important at the time. Finally, try to connect its influence with modern life while relying on reliable sources.
+I hope these suggestions will be of help. Please feel free to contact me if you need further information.
+
+Yours sincerely,
+Li Ming`,
+2025:`Dear Paul,
+
+I am glad to hear from you. I am writing to tell you more about our campus craft demonstration.
+To begin with, the young craftsmen will show how traditional skills can be combined with modern ideas, such as [题目允许或你选择的具体工艺示例]. In particular, they will demonstrate [具体制作过程／作品特点].
+As for your offer to help, could you [具体协助事项一] and [具体协助事项二]? Your support would make the preparation much easier.
+Thank you for your help. I look forward to working with you.
+
+Yours sincerely,
+Li Ming`,
+2026:`Dear Paul,
+
+I am glad to hear from you. I am writing to tell you more about the handwritten letters exchanged among Chinese family members.
+To begin with, these letters record everyday concerns, affection and important moments in family life. Their handwriting and personal details make them valuable records of family relationships.
+As for your question about the exhibition, [明确回答目前是否公开展出]. If they are on display, you can see them at [题目或可靠材料提供的具体地点] during [题目或可靠材料提供的展期].
+I hope this information is helpful. Please feel free to ask if you would like to know anything else.
+
+Yours sincerely,
+Li Ming`
+};
+years.forEach(item=>{if(revisedEssays[item[0]])item[3]=revisedEssays[item[0]];});
+
 // 模板库：小方块选择器；一次只展示所选题材
 const templateTiles=[...document.querySelectorAll('.template-tile[data-template]')];
 const templateCards=[...document.querySelectorAll('#system .template-card')];
