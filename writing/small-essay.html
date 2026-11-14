@@ -18,6 +18,22 @@
 .template-picker-hint{font-size:11px;color:var(--muted);line-height:1.7;margin:8px 0 14px}
 .template-card{display:none}.template-card.template-current{display:block}
 @media(max-width:420px){.template-picker{grid-template-columns:repeat(2,minmax(0,1fr))}.template-tile{min-height:64px}}
+ 
+/* 模板库与逐篇拆解 */
+.template-picker{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:14px 0}
+.template-tile{min-height:68px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:10px 8px;text-align:left;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:5px}
+.template-tile b{font-size:12px}.template-tile small{font-size:10px;color:var(--muted)}
+.template-tile.active{border:2px solid var(--green);background:var(--green2);padding:9px 7px}
+.template-picker-hint{font-size:11px;color:var(--muted);line-height:1.7}
+.template-card{display:none}.template-card.template-current{display:block}
+.template-status{font-size:11px;line-height:1.8;background:#fff8e8;border-left:3px solid #d6a84c;padding:10px 12px;margin:12px 0;color:#705c3c}
+.breakdown{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+.breakdown summary{cursor:pointer;font-weight:700;color:var(--green);font-size:12px;padding:8px 0}
+.breakdown h4{font-size:12px;margin:12px 0 5px}
+.breakdown p,.breakdown li{font-size:11px;line-height:1.85;color:var(--muted)}
+.breakdown ol,.breakdown ul{padding-left:20px}
+.breakdown .mapping{background:#f3f7f2;padding:10px;border-radius:9px;color:var(--ink)}
+@media(max-width:420px){.template-picker{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 </head><body><div class="shell">
 <header class="top"><div class="brand"><div class="mark">小</div><div><small>KAOYAN ENGLISH I · WRITING LAB</small><b>英语一小作文训练室</b></div></div><a class="back" href="index.html">← 返回作文训练首页</a></header>
@@ -181,6 +197,13 @@ I hope this information is helpful. Please feel free to ask if you would like to
 
 Yours sincerely,
 Li Ming</div><p class="muted">如果是回复来信，先回应对方来信或问题；介绍内容必须覆盖题目列出的每个要点。</p></div>
+
+<div class="template template-card" id="tpl-apply"><h3>G. 申请／请求信</h3><div class="en">Dear [称呼],\n\nI am writing to apply for [机会／职位／资助] / to ask for your assistance with [事项].\n\nI am particularly interested in this opportunity because [与申请条件相关的理由]. I believe my [相关经历／能力／计划] would enable me to [具体行动].\n\nI would appreciate it if you could consider my application / let me know whether this arrangement would be possible.\n\nYours sincerely,\nLi Ming</div><p class="muted">申请必须回答资格、目的、计划或题干指定信息；请求信要把请求说清楚，不能只写“希望帮助”。</p></div>
+<div class="template template-card" id="tpl-apology"><h3>H. 道歉／解释信</h3><div class="en">Dear [称呼],\n\nI am writing to apologize for [具体事情].\n\nI understand that this may have caused you [不便／困扰]. The situation occurred because [简洁、真实且题干支持的原因]. To make things right, I would like to [补救措施／解决方案].\n\nOnce again, I am sorry for the inconvenience and appreciate your understanding.\n\nYours sincerely,\nLi Ming</div><p class="muted">顺序是“承认问题—道歉—解释—补救”。解释不能变成推卸责任，补救要可执行。</p></div>
+<div class="template template-card" id="tpl-thanks"><h3>I. 感谢／祝贺信</h3><div class="en">Dear [称呼],\n\nI am writing to express my sincere gratitude / congratulations on [具体事情].\n\nYour [帮助／成就／支持] has [具体影响]. I especially appreciate [具体细节], which [说明意义].\n\nPlease accept my best wishes / heartfelt thanks. I hope we will have another opportunity to [后续联系／合作].\n\nYours sincerely,\nLi Ming</div><p class="muted">必须写明感谢或祝贺的具体缘由；用一个细节支撑情感，避免空泛堆砌形容词。</p></div>
+<div class="template template-card" id="tpl-complaint"><h3>J. 投诉／询问信</h3><div class="en">Dear [称呼],\n\nI am writing to bring to your attention [问题] / to inquire about [事项].\n\nSpecifically, [客观描述情况]. I would like to know [需要确认的信息] / request that [合理诉求]. Could you please [具体希望对方采取的行动]?\n\nI look forward to your reply and hope the matter can be addressed soon.\n\nYours sincerely,\nLi Ming</div><p class="muted">投诉重在事实、影响和诉求；询问重在把问题具体化。语气坚定但保持礼貌。</p></div>
+<div class="template template-card" id="tpl-resign"><h3>K. 辞职／变更通知信</h3><div class="en">Dear [称呼],\n\nI am writing to inform you of my decision to [辞职／调整安排], effective [时间，如题目提供].\n\nThis decision is due to [简洁原因]. I appreciate the opportunity to [工作／合作经历] and apologize for any inconvenience. I will [交接／后续安排] to make the transition as smooth as possible.\n\nThank you for your understanding.\n\nYours sincerely,\nLi Ming</div><p class="muted">辞职信不是单纯道歉：核心是明确告知决定、说明原因、表达感谢／歉意并交代交接。</p></div>
+<div class="template template-card" id="tpl-combo"><h3>L. 复合任务：按题目要点拼装</h3><div class="en">回应来信／说明身份 → 完成主要交际动作（欢迎／邀请／推荐／建议） → 覆盖第二项任务（介绍／安排／解释／准备） → 礼貌收尾。</div><p class="muted">复合任务不另背一篇万能范文。先把题干拆成两个或三个动作，再按逻辑顺序排列。每个要求都要落到具体句子上。</p></div>
 <div class="note"><b>模板不是整段盲套：</b>所有方括号都是扣题插槽。考试时先从题目中提取“对象、目的、动作、时间地点、要求”，再填入。若题目只要求两项内容，就不要为了模板完整而编造第三项。</div>
 </section>
 <section class="panel" id="types"><div class="head"><span class="tag">把低频题变成模块，而不是额外背整篇</span><h2>交际功能模块库</h2><p>题目常常复合。模块可以放入主模板对应位置，完成“邀请＋介绍”“道歉＋解释＋补救”“回复＋建议”等组合任务。</p></div>
@@ -251,6 +274,12 @@ function showTemplate(id){
   templateTiles.forEach(b=>b.classList.toggle('active',b.dataset.template===id));
   templateCards.forEach(card=>card.classList.toggle('template-current',card.id===id));
 }
+templateTiles.forEach(b=>b.addEventListener('click',()=>showTemplate(b.dataset.template)));
+showTemplate('tpl-letter');
+
+const templateTiles=[...document.querySelectorAll('.template-tile[data-template]')];
+const templateCards=[...document.querySelectorAll('#system .template-card')];
+function showTemplate(id){templateTiles.forEach(b=>b.classList.toggle('active',b.dataset.template===id));templateCards.forEach(c=>c.classList.toggle('template-current',c.id===id));}
 templateTiles.forEach(b=>b.addEventListener('click',()=>showTemplate(b.dataset.template)));
 showTemplate('tpl-letter');
 const freq=[["建议信",6,"2007、2009、2012、2014、2021、2024"],["通知／告示",4,"2010、2016、2020、2023"],["推荐信",3,"2011、2015、2017"],["邀请信",3,"2013、2018、2022"],["介绍／回复介绍",3,"2019、2025、2026"],["道歉信",1,"2008"],["辞职信",1,"2005"],["申请信",1,"2006"]];
