@@ -582,7 +582,7 @@ function addBreakdown(article,x){
 
 function renderMarkedEssay(el,x){
  const legend=document.createElement('div');legend.className='mark-legend';
- legend.innerHTML='<span class="l-template">黄色：04栏可复用的模板骨架</span><span class="l-topic">蓝色：本题内容／插槽填充</span><span class="l-logic">绿色：逻辑连接表达</span>';el.appendChild(legend);
+ legend.innerHTML='<span class="l-template">黄色：可复用的模板表达</span><span class="l-topic">蓝色：本题主题信息（逐篇指定）</span><span class="l-logic">绿色：逻辑连接表达</span>';el.appendChild(legend);
  const fixed=[
  /I am writing to inform you of my decision to resign from my position at the magazine/i,
  /I am writing to apply for [^,.!?]*/i,
@@ -591,35 +591,61 @@ function renderMarkedEssay(el,x){
  /I am writing to invite you to [^,.!?]*/i,
  /I am writing to apologize for [^.!?]*/i,
  /I am writing to tell you more about [^.!?]*/i,
- /I am glad to hear from you/i,
- /I am glad to hear that [^.!?]*/i,
- /I would be grateful if [^.!?]*/i,
- /I would appreciate it if [^.!?]*/i,
- /I hope these suggestions will be of help/i,
- /I hope these suggestions will be useful/i,
- /Please feel free to contact me[^.!?]*/i,
- /I look forward to your reply/i,
- /Thank you for your time and consideration/i,
- /Thank you for your understanding/i,
+ /I am glad to hear from you/i,/I am glad to hear that [^.!?]*/i,
+ /I would be grateful if [^.!?]*/i,/I would appreciate it if [^.!?]*/i,
+ /I hope these suggestions will be of help/i,/I hope these suggestions will be useful/i,
+ /Please feel free to contact me[^.!?]*/i,/I look forward to your reply/i,
+ /Thank you for your time and consideration/i,/Thank you for your understanding/i,
  /Once again, I am sorry for the inconvenience and appreciate your understanding/i,
- /The event is scheduled to take place [^.!?]*/i,
- /The event will be held [^.!?]*/i,/The university library welcomes [^.!?]*/i,
+ /The event is scheduled to take place [^.!?]*/i,/The event will be held [^.!?]*/i,
+ /The university library welcomes [^.!?]*/i,
  /What makes it particularly worth recommending is [^.!?]*/i,
  /I believe it would be an excellent choice for you because [^.!?]*/i,
- /To make things right, I can [^.!?]*/i,
- /To make things right, I would like to [^.!?]*/i,
- /If you are interested, please [^.!?]*/i,
- /Volunteers are wanted for [^.!?]*/i,/The volunteers will assist with [^.!?]*/i,/Applicants should be [^.!?]*/i,/To begin with, it would be helpful to/i,/which can/i,/I understand that this may have caused you [^.!?]*/i,/The situation occurred because/i,/I hope this information is helpful/i,/I hope you will find my recommendation helpful/i,/We would be delighted if you could [^.!?]*/i,/I would be happy to [^.!?]*/i
+ /To make things right, I can [^.!?]*/i,/To make things right, I would like to [^.!?]*/i,
+ /If you are interested, please [^.!?]*/i,/Volunteers are wanted for [^.!?]*/i,
+ /The volunteers will assist with [^.!?]*/i,/The volunteers will help with [^.!?]*/i,
+ /Applicants should be [^.!?]*/i,/To begin with, it would be helpful to/i,
+ /I understand that this may have caused you [^.!?]*/i,/The situation occurred because/i,
+ /I hope this information is helpful/i,/I hope you will find my recommendation helpful/i,
+ /We would be delighted if you could [^.!?]*/i,/I would be happy to [^.!?]*/i
  ];
- const logic=/\b(To begin with|First(?:ly)?|Second(?:ly)?|Third(?:ly)?|In addition|Furthermore|Moreover|More importantly|Finally|As for|In particular|Regarding|As a result|For this reason|To address this problem|Due to|because|therefore|while|such as)\b/ig;
- x[3].split(/\n\s*\n/).filter(Boolean).forEach(par=>{
+ const topic={
+ 2005:['resign from my position at the magazine','complete my current tasks','smooth a handover'],
+ 2006:['financial support for a student in need','proposed assistance plan','financially disadvantaged family','educational expenses'],
+ 2007:['improvement of our library services','extend the opening hours','more seats and quiet study areas','online catalogue'],
+ 2008:['return the CD','important examination','bring the CD to you tomorrow','send it to your address'],
+ 2009:['white pollution','reusable bags','disposable plastic bags','plastic packaging','environmentally responsible habits'],
+ 2010:['international conference','reception, guidance','communicate in English','Students’ Union'],
+ 2011:['The Pursuit of Happyness','perseverance, responsibility and hope'],
+ 2012:['adapt to campus life','student clubs and campus activities','library and online learning resources','tutors or classmates'],
+ 2013:['serve as a judge','English speech contest','professional experience','evaluating the speeches'],
+ 2014:['students’ physical fitness','sports classes and after-school activities','sports facilities','regular exercise habits'],
+ 2015:['The Old Man and the Sea','reading club','personal growth','different perspectives'],
+ 2016:['international students','books, journals and digital resources','quiet study spaces','borrowing services','campus cards'],
+ 2017:['the Palace Museum','during your stay in Beijing','cultural heritage','local history and traditions'],
+ 2018:['graduation ceremony','graduating students','celebrate their achievements','express gratitude'],
+ 2019:['Project Hope','children’s education','underdeveloped areas','learning conditions','volunteer participation'],
+ 2020:['international singing competition','international students','musical interests','different cultures'],
+ 2021:['look for a job in China','résumé','employers in your field','improving your Chinese','professional connections'],
+ 2022:['innovation competition','student projects','creative ideas','practical applications'],
+ 2023:['campus sports program','event preparation','guide participants','on-site assistance'],
+ 2024:['ancient Chinese scientist','historical background','discovery or invention','modern life','reliable sources'],
+ 2025:['campus craft demonstration','young craftsmen','traditional skills','modern ideas','making process'],
+ 2026:['handwritten letters exchanged among Chinese family members','everyday concerns','family life','public display','exhibition']
+ };
+ const phrases=topic[x[0]]||[];
+ const logic=/\\b(To begin with|First(?:ly)?|Second(?:ly)?|Third(?:ly)?|In addition|Furthermore|Moreover|More importantly|Finally|As for|In particular|Regarding|As a result|For this reason|To address this problem|Due to|because|therefore|while|such as)\\b/ig;
+ x[3].split(/\\n\\s*\\n/).filter(Boolean).forEach(par=>{
   const p=document.createElement('p');p.style.margin='0 0 9px';
   (par.match(/[^.!?]+[.!?]?/g)||[par]).forEach(sentence=>{
-   const hits=[];fixed.forEach(re=>{re.lastIndex=0;let m;while((m=re.exec(sentence))!==null)hits.push({a:m.index,b:m.index+m[0].length,c:'mark-template'});});
-   logic.lastIndex=0;let m;while((m=logic.exec(sentence))!==null)hits.push({a:m.index,b:m.index+m[0].length,c:'mark-logic'});logic.lastIndex=0;
-   hits.sort((u,v)=>u.a-v.a||v.b-u.b);let pos=0;
-   hits.forEach(h=>{if(h.a<pos)return;if(h.a>pos){const rest=sentence.slice(pos,h.a);const z=document.createElement('span');z.className=/^(Dear |Yours sincerely|Yours,|Li Ming|NOTICE|The Students|The Organizing|The University)/i.test(rest.trim())?'':'mark-topic';z.textContent=rest;p.appendChild(z);}const z=document.createElement('span');z.className=h.c;z.textContent=sentence.slice(h.a,h.b);p.appendChild(z);pos=h.b;});
-   if(pos<sentence.length){const rest=sentence.slice(pos);const z=document.createElement('span');z.className=/^(Dear |Yours sincerely|Yours,|Li Ming|NOTICE|The Students|The Organizing|The University)/i.test(rest.trim())?'':'mark-topic';z.textContent=rest;p.appendChild(z);}
+   const hits=[];
+   fixed.forEach(re=>{re.lastIndex=0;let m;while((m=re.exec(sentence))!==null)hits.push({a:m.index,b:m.index+m[0].length,c:'mark-template',priority:3});});
+   phrases.forEach(phrase=>{let at=sentence.toLowerCase().indexOf(phrase.toLowerCase());while(at>=0){hits.push({a:at,b:at+phrase.length,c:'mark-topic',priority:1});at=sentence.toLowerCase().indexOf(phrase.toLowerCase(),at+phrase.length);}});
+   logic.lastIndex=0;let m;while((m=logic.exec(sentence))!==null)hits.push({a:m.index,b:m.index+m[0].length,c:'mark-logic',priority:2});logic.lastIndex=0;
+   hits.sort((u,v)=>u.a-v.a||v.priority-u.priority||v.b-u.b);
+   let pos=0;
+   hits.forEach(h=>{if(h.a<pos)return;if(h.a>pos)p.appendChild(document.createTextNode(sentence.slice(pos,h.a)));const z=document.createElement('span');z.className=h.c;z.textContent=sentence.slice(h.a,h.b);p.appendChild(z);pos=h.b;});
+   if(pos<sentence.length)p.appendChild(document.createTextNode(sentence.slice(pos)));
    p.appendChild(document.createTextNode(' '));
   });el.appendChild(p);
  });
