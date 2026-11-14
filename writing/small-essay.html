@@ -354,25 +354,19 @@ function addBreakdown(article,x){
 
 function renderMarkedEssay(el,x){
  const legend=document.createElement('div');legend.className='mark-legend';
- legend.innerHTML='<span class="l-template">黄色：与04栏模板固定表达对应</span><span class="l-topic">蓝色：本题专属信息</span><span class="l-logic">绿色：逻辑衔接／关系词</span>';el.appendChild(legend);
- const templatePatterns=[/I am writing to [^,.!?]+/i,/I would like to invite you to [^,.!?]+/i,/I am writing to offer some suggestions[^.]+/i,/I am writing to recommend [^,.]+/i,/I am writing to apply for [^,.]+/i,/I am writing to apologize for [^,.]+/i,/I am writing to express my sincere gratitude[^.]+/i,/I am writing to inform you of my decision to [^,.]+/i,/I am writing to ask whether[^.]+/i,/I would be grateful if[^.]+/i,/I would appreciate it if[^.]+/i,/I look forward to your reply/i,/Please feel free to contact me[^.]+/i,/I hope these suggestions will be useful/i,/I hope you will find[^.]+/i,/Thank you for your understanding/i,/Please accept my sincere apology/i,/On behalf of [^,]+, I would like to invite you to [^,.]+/i,/I am glad to hear from you/i];
- const logicPatterns=[/To begin with/i,/First(?:ly)?/i,/Second(?:ly)?/i,/In addition/i,/Furthermore/i,/Moreover/i,/More importantly/i,/Finally/i,/As for/i,/In particular/i,/For this reason/i,/As a result/i,/so that/i,/not only/i,/but also/i,/because/i,/therefore/i,/Unfortunately/i,/Due to/i,/To address this problem/i,/In order to/i,/If you are interested/i,/If it is more convenient/i];
- const topicPatterns=[/The student comes from[^.]+/i,/The film tells the story[^.]+/i,/The excessive use of[^.]+/i,/The event will be held[^.]+/i,/The exhibition will[^.]+/i,/They are handwritten messages[^.]+/i,/Yes, they are currently[^.]+/i,/Could you \[[^]]+\][^.]+/i];
- const paragraphs=x[3].split(/\n\s*\n/).filter(Boolean);
- paragraphs.forEach(par=>{
+ legend.innerHTML='<span class="l-template">黄色：04栏可复用的固定句型／句段</span><span class="l-topic">蓝色：本题填入的信息</span><span class="l-logic">绿色：逻辑关系表达</span>';el.appendChild(legend);
+ const fixed=[/I am writing to inform you of my decision to [^,.!?]*/i,/I am writing to apply for [^,.!?]*/i,/I am writing to offer some suggestions[^.!?]*/i,/I am writing to share my views on [^,.!?]*/i,/I am writing to recommend [^,.!?]*/i,/I am writing to invite you to [^,.!?]*/i,/I am writing to apologize for [^,.!?]*/i,/I am writing to introduce [^,.!?]*/i,/I am writing to ask whether [^,.!?]*/i,/I am writing to tell you more about [^,.!?]*/i,/I am glad to hear from you/i,/I am glad to hear that [^,.!?]*/i,/On behalf of [^,]+, I would like to invite you to [^,.!?]*/i,/I would like to invite you to [^,.!?]*/i,/I would be grateful if [^.!?]*/i,/I would appreciate it if [^.!?]*/i,/I hope these suggestions will be [^.!?]*/i,/I look forward to your reply/i,/Please feel free to contact me[^.!?]*/i,/Thank you for your time and consideration/i,/Thank you for your understanding/i,/Please accept my sincere apology/i,/The event will be held [^.!?]*/i,/The event is scheduled to take place [^.!?]*/i,/If you are interested, please [^.!?]*/i,/What makes it [^.!?]* is [^.!?]*/i,/I believe it would be [^.!?]*/i,/Your help would be greatly appreciated/i];
+ const logic=/\b(To begin with|First(?:ly)?|Second(?:ly)?|Third(?:ly)?|In addition|Furthermore|Moreover|More importantly|Finally|As for|In particular|Regarding|As a result|For this reason|To address this problem|Due to|because|therefore|while|such as)\b/ig;
+ x[3].split(/\n\s*\n/).filter(Boolean).forEach(par=>{
   const p=document.createElement('p');p.style.margin='0 0 9px';
-  const sentences=par.match(/[^.!?]+[.!?]?/g)||[par];
-  sentences.forEach(sentence=>{
-   const t=sentence.trim();if(!t)return;
-   const span=document.createElement('span');span.textContent=t+' ';
-   let cls='';
-   if(templatePatterns.some(r=>r.test(t))) cls='mark-template';
-   else if(logicPatterns.some(r=>r.test(t))) cls='mark-logic';
-   else if(topicPatterns.some(r=>r.test(t))) cls='mark-topic';
-   if(cls)span.className=cls;
-   p.appendChild(span);
-  });
-  el.appendChild(p);
+  (par.match(/[^.!?]+[.!?]?/g)||[par]).forEach(sentence=>{
+   const hits=[];fixed.forEach(re=>{re.lastIndex=0;const m=re.exec(sentence);if(m)hits.push({a:m.index,b:m.index+m[0].length,c:'mark-template'});});
+   logic.lastIndex=0;let m;while((m=logic.exec(sentence))!==null)hits.push({a:m.index,b:m.index+m[0].length,c:'mark-logic'});
+   hits.sort((u,v)=>u.a-v.a||v.b-u.b);let pos=0;
+   hits.forEach(h=>{if(h.a<pos)return;if(h.a>pos)p.appendChild(document.createTextNode(sentence.slice(pos,h.a)));const z=document.createElement('span');z.className=h.c;z.textContent=sentence.slice(h.a,h.b);p.appendChild(z);pos=h.b;});
+   if(pos<sentence.length){const rest=sentence.slice(pos);const z=document.createElement('span');z.className=/\[[^\]]+\]/.test(rest)?'mark-topic':'';z.textContent=rest;p.appendChild(z);}
+   p.appendChild(document.createTextNode(' '));
+  });el.appendChild(p);
  });
 }
 function renderYear(y){container.innerHTML='';const list=y?years.filter(x=>x[0]===Number(y)):years;list.forEach(x=>{const d=document.createElement('article');d.className='yearitem';d.innerHTML='<h3>'+x[0]+'年 · '+x[1]+'</h3><div class="meta">'+x[2]+'</div><div class="en"></div><p><b>老师拆解：</b>'+x[4]+'</p><button class="btn light copy">复制范文</button>';renderMarkedEssay(d.querySelector('.en'),x);d.querySelector('.copy').addEventListener('click',()=>navigator.clipboard?.writeText(x[3]));addBreakdown(d,x);container.appendChild(d)})}
