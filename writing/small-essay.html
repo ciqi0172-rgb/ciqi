@@ -286,7 +286,46 @@ showTemplate('tpl-letter');
 const freq=[["建议信",6,"2007、2009、2012、2014、2021、2024"],["通知／告示",4,"2010、2016、2020、2023"],["推荐信",3,"2011、2015、2017"],["邀请信",3,"2013、2018、2022"],["介绍／回复介绍",3,"2019、2025、2026"],["道歉信",1,"2008"],["辞职信",1,"2005"],["申请信",1,"2006"]];
 const freqTable=document.getElementById('freqTable');years.forEach(y=>{const tr=document.createElement('tr');tr.innerHTML='<td>'+y[0]+'</td><td>'+y[1]+'</td><td>'+y[2]+'</td>';freqTable.appendChild(tr)});
 const sel=document.getElementById('yearSelect'),container=document.getElementById('essayContainer');years.forEach(y=>{const o=document.createElement('option');o.value=y[0];o.textContent=y[0]+' · '+y[1];sel.appendChild(o)});
-function renderYear(y){container.innerHTML='';const list=y?years.filter(x=>x[0]===Number(y)):years;list.forEach(x=>{const d=document.createElement('article');d.className='yearitem';d.innerHTML='<h3>'+x[0]+'年 · '+x[1]+'</h3><div class="meta">'+x[2]+'</div><div class="en"></div><p><b>老师拆解：</b>'+x[4]+'</p><button class="btn light copy">复制范文</button>';d.querySelector('.en').textContent=x[3];d.querySelector('.copy').addEventListener('click',()=>navigator.clipboard?.writeText(x[3]));container.appendChild(d)})}
+
+const breakdowns={
+2005:{modules:"辞职／变更＋道歉＋原因解释＋交接",fit:"不是单纯套道歉信。题目要求告知辞职决定、说明原因并道歉，因此以辞职通知为主干，道歉和交接为补充。",steps:["先明确决定：inform you of my decision to resign。","再给原因：只说明无法继续投入足够时间，不虚构具体家庭或健康细节。","承认对对方的影响并致歉。","补上完成当前任务、平稳交接，降低对方顾虑。"],caution:"现有范文的“personal circumstances”是泛化示范原因，不是题干事实；正式练习时应替换成你能真实说明且符合题干的理由。"},
+2006:{modules:"申请／请求＋资助计划说明",fit:"申请信主干是提出资助请求；题目另要求说明希望帮助什么样的孩子、如何实施计划，所以正文必须拆成对象条件和实施方案两块。",steps:["开头说明申请目的：apply for financial aid to a child。","描述希望资助的对象特征，不能凭空编造姓名、年龄或家庭细节。","具体写资助如何落实：资金、学习用品、后续联系等，需与题目要求相符。","礼貌请求相关部门协助匹配对象并结束。"],caution:"当前范文中“经济困难家庭、学习费用”等属于参考稿扩展，不应误认成原题给定的具体孩子资料。"},
+2007:{modules:"建议信（问题—建议—作用）",fit:"直接对应建议信模板。题目对象是图书馆管理人员，建议内容必须围绕图书馆服务，而不是泛谈校园建设。",steps:["目的句点明建议主题：library services。","建议一：延长开放时间；补充考试期间这一适用场景。","建议二：增加座位和安静学习区，说明对应学生需求。","建议三：更新在线目录，解释它如何帮助检索。","礼貌收尾。"],caution:"现有范文的三条建议是示范性展开；若原题只要求提出若干建议，确保每条可执行且不重复。"},
+2008:{modules:"道歉＋解释＋补救方案",fit:"道歉信不能只有“I am sorry”。这题的核心是忘记归还物品，因此要把责任、原因、归还方案连成闭环。",steps:["第一句承认具体失误：忘记按约定归还。","明确道歉。","简要解释原因，但不把忙碌当作免责理由。","提出可执行补救：明天送还或按对方方便的方式寄回。","承认造成不便并承诺避免重犯。"],caution:"现有范文写“book”，而常见真题题干是CD；物品名称必须按原题更正，不能照抄参考稿。"},
+2009:{modules:"建议信＋问题说明＋多主体措施",fit:"仍是建议信，但对象和主题变成白色污染。正文按个人、商家、公众三个层次组织，体现措施的不同责任主体。",steps:["目的句说明就塑料污染提出看法和建议。","用一句话概括一次性塑料袋过度使用带来的问题。","个人层面：改用可重复使用的袋子。","商家层面：减少不必要包装。","公众层面：宣传培养环保习惯。"],caution:"不要把白色污染扩写成气候变化、空气污染等无关议题；紧扣塑料制品。"},
+2010:{modules:"通知／招募告示",fit:"这是非书信体。必须使用NOTICE标题，主体覆盖岗位、工作内容、申请者要求和报名方式，不套Dear/Yours sincerely。",steps:["标题NOTICE，直接告知招募志愿者。","交代会议和活动场景。","列出志愿者承担的接待、引导等工作。","列出语言沟通、责任心等要求。","写申请渠道及题干给定的截止时间，落款组织单位。"],caution:"当前范文未填写具体日期、地点和截止日期，实际答题时必须从题干抄准；不能自行编造。"},
+2011:{modules:"推荐信（对象—内容—推荐理由）",fit:"推荐电影给朋友，采用推荐信主干：先报出推荐对象，再概述内容，最后说明为什么适合收信人。",steps:["开头自然引出推荐动作。","明确电影名称，避免只说“a film”。","用一两句概述剧情核心，不写成影评。","提炼主题和观看价值作为推荐理由。","邀请对方看后反馈。"],caution:"电影名称与剧情信息必须核实；现有范文的片名和情节是示范填充，不能当成原题指定内容。"},
+2012:{modules:"欢迎＋建议信（复合任务）",fit:"这篇不是纯建议信。先完成欢迎新生的交际功能，再给校园生活建议；两种功能按“欢迎—帮助适应”自然衔接。",steps:["先欢迎对方来到学校。","说明写信目的是帮助适应校园生活。","建议参加社团活动，理由是结识朋友。","建议利用图书馆和线上学习资源。","给出遇到困难时的求助渠道。","表达祝愿。"],caution:"建议必须围绕新生适应校园，不要写成一般性的大学生活介绍。"},
+2013:{modules:"邀请信＋活动介绍＋邀请理由",fit:"邀请外教担任比赛评委，关键动词不是泛泛的attend，而是serve as a judge。正文要解释活动及受邀者为何合适。",steps:["以主办方身份发出邀请。","明确邀请对方担任评委。","交代比赛形式和参与者。","说明对方专业经验对学生的价值。","礼貌期待接受邀请并请求回复。"],caution:"如果题干要求担任裁判／评委，必须写明职责，不能只写attend the contest。"},
+2014:{modules:"建议信（多维建议）",fit:"给校长提建议，建议对象是学校管理层，因此从制度安排、设施供给、习惯培养三个层面组织。",steps:["目的句点明改善学生体质。","建议增加体育课程和课外活动机会。","建议改善体育设施，解决运动条件问题。","建议加强健康教育，帮助形成长期习惯。","礼貌收尾。"],caution:"避免把建议写成学生个人的简单自律清单；收信人是校长，建议要有学校可执行的层面。"},
+2015:{modules:"推荐信（书籍—特点—读者收益）",fit:"推荐一本书给俱乐部成员。推荐理由要从书的内容特点落到读者和俱乐部活动的收益。",steps:["点明推荐一本适合读书俱乐部的书。","简述书的主题或内容。","说明语言、案例等特点。","解释它能引发反思或讨论的原因。","把推荐与下一次俱乐部活动联系起来。"],caution:"现有范文没有写具体书名，属于不完整示范；最终答案必须明确写出书名，并核对书籍内容。"},
+2016:{modules:"通知／告示＋信息介绍",fit:"这不是普通书信，而是面向留学生的图书馆介绍告示。按资源、空间、使用方式、求助渠道组织信息。",steps:["用NOTICE或合适标题标明信息性质。","说明图书馆欢迎留学生使用。","介绍纸质与数字资源。","说明自习空间和借阅方式。","告知可向馆员求助并作欢迎式结尾。"],caution:"具体借阅规则、校园卡要求等必须以题目提供的信息为准；不能把常见做法当作题干事实。"},
+2017:{modules:"推荐信（景点—特色—体验价值）",fit:"给外国教授推荐旅游景点，推荐对象从书或电影变为地点，但逻辑仍是“名称—特色—适合访问的理由”。",steps:["说明推荐一个值得访问的地点。","明确景点名称和位置（以题干为准）。","介绍自然景观或文化特色。","说明游客能获得的体验。","表示可继续提供信息。"],caution:"当前范文未写景点名称，不能作为可直接背诵的完整真题答案；不得编造历史、交通或开放信息。"},
+2018:{modules:"邀请信＋活动意义＋情感表达",fit:"邀请外籍专家参加毕业典礼。主体不需要虚构复杂流程，重点是活动场合、毕业意义和对方出席的价值。",steps:["代表毕业生发出邀请。","交代毕业典礼的时间地点，须由题干提供。","说明典礼是庆祝成果、表达感谢的场合。","解释对方出席对毕业生的意义。","期待回复。"],caution:"日期地点在现有范文中用泛称代替，正式答案应填入题目给出的准确信息。"},
+2019:{modules:"介绍信／回复信息＋项目介绍",fit:"核心是向志愿者介绍希望工程。按项目宗旨、帮助对象、支持方式组织，不要把介绍写成空泛公益宣传。",steps:["点明介绍对象Project Hope。","说明项目关注的教育支持目标。","说明可能的支持方式。","把志愿者可参与的行动具体化。","表达希望对方参与。"],caution:"志愿者职责必须依据题干给定要求；现有范文中活动方式属于参考扩展。"},
+2020:{modules:"通知／比赛告示",fit:"活动告示要回答“什么活动、谁能参加、活动目的、如何报名”。",steps:["标题NOTICE。","说明歌唱比赛及举办主体。","明确留学生也属于欢迎参与的对象。","说明活动目的或文化交流价值。","写报名方式、截止时间及主办方落款。"],caution:"报名截止日期、地点等若题目有给出必须准确呈现；没有给出则不虚构。"},
+2021:{modules:"建议信（针对个人情境）",fit:"给外国朋友在中国求职提建议。不是一般求职指导，要考虑跨文化和在华求职情境。",steps:["回应朋友考虑在中国求职的来信。","建议准备突出相关能力的简历。","建议了解目标行业和雇主要求。","建议提升中文能力并拓展职业联系。","表达祝愿。"],caution:"不要声称中文是所有岗位的硬性要求；表达为可能增加机会的建议更稳妥。"},
+2022:{modules:"邀请信＋活动介绍＋角色邀请",fit:"邀请教授参加创新大赛。现有范文写attend，但若原题要求担任评委，必须改成serve as a judge，并说明评审角色。",steps:["代表组委会发出邀请。","确认邀请角色：出席还是担任评委，按题干决定。","介绍比赛展示的项目和交流形式。","说明教授经验对参赛者／评审的价值。","请求确认是否方便参加。"],caution:"角色词是得分要点，attend不能替代serve as a judge；必须逐字核对题干任务。"},
+2023:{modules:"通知／志愿者招募",fit:"招募类告示由岗位职责、申请者条件、报名方式构成。",steps:["NOTICE标题和招募事项。","说明体育项目活动场景。","列举准备、引导、现场协助等职责。","说明责任心、合作能力等条件。","给出报名渠道和截止时间。"],caution:"岗位职责和申请条件应对应原题要求，避免凭空增加硬性资格。"},
+2024:{modules:"建议信＋报告结构指导",fit:"建议对象正在准备古代科学家报告。建议内容应按报告写作顺序展开：人物背景—科学成就—历史意义—现代联系—资料来源。",steps:["回应对方正在准备报告。","建议介绍人物生平和时代背景。","建议解释成就／发明的原理或内容。","建议说明当时的意义并联系现代生活。","提醒使用可靠资料。"],caution:"具体科学家及成就必须由题干决定，不能泛写或杜撰。"},
+2025:{modules:"介绍信＋展览准备说明",fit:"这是双任务介绍：既介绍传统手工艺展示内容，又说明准备工作。两项都要明确落笔，不能只谈文化价值。",steps:["回应对方并点明展览主题。","介绍将展示哪些工艺及背后的技艺／文化故事。","说明准备工作：征集作品、布置材料、撰写说明。","说明观众互动安排（若题干支持）。","表达期待。"],caution:"现有范文的展览细节是示范性扩展；具体工艺、展品和准备事项必须按题目给定内容填写。"},
+2026:{modules:"回复来信＋传统文化介绍＋展览准备（复合任务）",fit:"三段逻辑不是重复介绍：先回应Paul，再介绍中国家庭手写信传统，最后说明展览准备情况。",steps:["回应来信，建立交流语境。","介绍手写信在家庭沟通中的用途和情感意义。","转入展览准备，说明征集、分类、说明文字等工作。","表达愿意进一步介绍或邀请参观。"],caution:"不能把某个家庭故事说成普遍事实；使用many families等有限范围表达，并以原题要求为准。"}
+};
+function addBreakdown(article,x){
+ const info=breakdowns[x[0]];if(!info)return;
+ const box=document.createElement('details');box.className='breakdown';
+ const summary=document.createElement('summary');summary.textContent='展开本篇从0到1：模板匹配、构思顺序与逐段生成';box.appendChild(summary);
+ const body=document.createElement('div');
+ function section(title,content){const h=document.createElement('h4');h.textContent=title;body.appendChild(h);const p=document.createElement('p');p.textContent=content;body.appendChild(p);}
+ section('① 这篇实际调用的模板模块',info.modules);
+ section('② 为什么这样匹配',info.fit);
+ const h=document.createElement('h4');h.textContent='③ 从题目到文章：写作顺序';body.appendChild(h);
+ const ol=document.createElement('ol');info.steps.forEach(t=>{const li=document.createElement('li');li.textContent=t;ol.appendChild(li)});body.appendChild(ol);
+ section('④ 这篇范文的逐段生成逻辑',x[3].split(/\n\s*\n/).filter(Boolean).map((p,i)=>'第'+(i+1)+'段：'+(i===0?'完成开头交际动作／点明写信目的。':i===1?'完成题目核心信息，按功能分组展开。':'补充收尾功能，表达请求、期待或致谢。')).join(' '));
+ section('⑤ 使用时必须核对',info.caution);
+ box.appendChild(body);article.appendChild(box);
+}
+function renderYear(y){container.innerHTML='';const list=y?years.filter(x=>x[0]===Number(y)):years;list.forEach(x=>{const d=document.createElement('article');d.className='yearitem';d.innerHTML='<h3>'+x[0]+'年 · '+x[1]+'</h3><div class="meta">'+x[2]+'</div><div class="en"></div><p><b>老师拆解：</b>'+x[4]+'</p><button class="btn light copy">复制范文</button>';d.querySelector('.en').textContent=x[3];d.querySelector('.copy').addEventListener('click',()=>navigator.clipboard?.writeText(x[3]));addBreakdown(d,x);container.appendChild(d)})}
 sel.addEventListener('change',()=>renderYear(sel.value));document.getElementById('showAll').addEventListener('click',()=>{sel.value='';renderYear('')});renderYear(2005);
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab));window.scrollTo({top:0,behavior:'smooth'})}));
 document.getElementById('methodHint').addEventListener('click',()=>{document.getElementById('methodFeedback').textContent='组织顺序：回应对方／点明介绍目的 → 图书馆资源与开放空间 → 借书所需证件或校园卡 → 借阅步骤与归还要求 → 邀请对方有问题继续联系。只写题干支持或校园常规且确定的信息；具体规则以题目给定为准。'});
