@@ -533,53 +533,72 @@ const yearTeaching={
 function addBreakdown(article,x){
  const info=breakdowns[x[0]];if(!info)return;
  const box=document.createElement('details');box.className='breakdown';
- const summary=document.createElement('summary');summary.textContent='展开本篇从0到1：模板匹配、构思顺序与逐段生成';box.appendChild(summary);
+ const summary=document.createElement('summary');summary.textContent='展开本篇：模板调用、内容填充与逐句构思';box.appendChild(summary);
  const body=document.createElement('div');
  function section(title,content){const h=document.createElement('h4');h.textContent=title;body.appendChild(h);const p=document.createElement('p');p.textContent=content;body.appendChild(p);}
- section('① 这篇实际调用的模板模块',info.modules);
- section('② 为什么这样匹配',info.fit);
  const teach=yearTeaching[x[0]];
+ section('① 任务拆分与文体判断',info.fit);
  if(teach){
-  section('③ 本篇调用04栏的哪一个模板',teach.tpl);
-  const th=document.createElement('h4');th.textContent='④ 模板原句与本题填充';body.appendChild(th);
-  const fp=document.createElement('p');fp.className='template-fill-note';fp.innerHTML='<b>04栏模板句：</b>'+teach.fixed+'<br><b>本题实际填入：</b>'+teach.fill;body.appendChild(fp);
-  section('⑤ 这篇文章的整体思路',teach.logic);
+  section('② 本篇调用的04模板模块',teach.tpl);
+  const th=document.createElement('h4');th.textContent='模板原句与本题填充';body.appendChild(th);
+  const fp=document.createElement('p');fp.className='template-fill-note';
+  const f1=document.createElement('b');f1.textContent='04栏模板句：';fp.appendChild(f1);fp.appendChild(document.createTextNode(teach.fixed));
+  fp.appendChild(document.createElement('br'));
+  const f2=document.createElement('b');f2.textContent='本题填充／替换：';fp.appendChild(f2);fp.appendChild(document.createTextNode(teach.fill));
+  body.appendChild(fp);
+  section('③ 全文构思路线',teach.logic);
  }
- const h=document.createElement('h4');h.textContent='③ 从题目到文章：写作顺序';body.appendChild(h);
+ const h=document.createElement('h4');h.textContent='④ 从题目到文章：逐项完成任务';body.appendChild(h);
  const ol=document.createElement('ol');info.steps.forEach(t=>{const li=document.createElement('li');li.textContent=t;ol.appendChild(li)});body.appendChild(ol);
- const logic=document.createElement('p');logic.className='logic-map';
- logic.innerHTML='<b>⑤ 逻辑路线：</b>'+info.steps.map((t,i)=>'<span>'+String(i+1)+'</span> '+t.split(/[：:]/)[0]).join('　→　');
- body.appendChild(logic);
- const h4=document.createElement('h4');h4.textContent='④ 逐句拆解：原句在完成什么任务';body.appendChild(h4);
+ const hh=document.createElement('h4');hh.textContent='⑤ 逐句拆解：句子功能、模板和填充';body.appendChild(hh);
  const sentenceList=document.createElement('ol');
- const essayLines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t && !/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students|The University)/i.test(t));
+ const essayLines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students|The University|The Organizing|\[发布单位|\[日期)/i.test(t));
+ const phrases=({
+ 2005:['resign from my position at the magazine','personal circumstances','complete my current tasks','handover'],
+ 2006:['financial support','student in need','assistance plan','educational expenses','learning materials'],
+ 2007:['library services','opening hours','examination periods','seats and quiet study areas'],
+ 2008:['return the CD','important examination','bring the CD','send it to your address'],
+ 2009:['white pollution','reusable bags','disposable plastic bags','plastic packaging','environmentally responsible habits'],
+ 2010:['international conference','reception','guidance','on-site services','communicate in English'],
+ 2011:['The Pursuit of Happyness','perseverance','responsibility','hope'],
+ 2012:['adapt to campus life','student clubs','campus activities','library','learning resources'],
+ 2013:['serve as a judge','English speech contest','professional experience','evaluating the speeches'],
+ 2014:['physical fitness','sports classes','sports facilities','exercise habits'],
+ 2015:['The Old Man and the Sea','reading club','personal growth','different perspectives'],
+ 2016:['international students','books','digital resources','study spaces','borrowing services'],
+ 2017:['Palace Museum','stay in Beijing','cultural heritage','cultural value'],
+ 2018:['graduation ceremony','graduates','achievements','gratitude'],
+ 2019:['Project Hope','children’s education','underdeveloped areas','learning conditions','volunteer participation'],
+ 2020:['singing competition','international students','musical interests','different cultures'],
+ 2021:['job in China','résumé','employers','Chinese','professional connections'],
+ 2022:['innovation competition','student projects','creative ideas','practical applications'],
+ 2023:['campus sports','event preparation','guide participants','on-site assistance'],
+ 2024:['ancient Chinese scientist','historical background','discovery or invention','modern life','reliable sources'],
+ 2025:['campus craft demonstration','young craftsmen','traditional skills','modern ideas','making process'],
+ 2026:['handwritten letters','Chinese family members','everyday concerns','family life','public display','exhibition']
+ })[x[0]]||[];
  essayLines.forEach((sentence,i)=>{
-   const li=document.createElement('li');
-   const original=document.createElement('p');original.textContent=sentence;original.style.color='var(--ink)';original.style.fontWeight='600';
-   const guide=document.createElement('p');
-   let purpose;
-   if(i===0) purpose='开头／交际动作：先回应收信人或直接点明写信目的。中文先想“我为什么写这封信”，再选对应的功能表达。';
-   else if(/because|due to|as|since|which|so that|would allow|enable|help/i.test(sentence)) purpose='解释／作用：这句话不是继续堆信息，而是在回答“为什么”或“会产生什么效果”。先确定因果关系，再选择 because、which、so that 等结构。';
-   else if(/first|to begin|in addition|more importantly|finally|also|another/i.test(sentence)) purpose='展开／递进：用来引入下一项题目要点。先确定它与上一点是并列、递进还是补充，再选连接表达。';
-   else if(/I hope|please let|feel free|look forward|thank you|appreciate|would be grateful|honored/i.test(sentence)) purpose='礼貌收尾／请求：完成期待、感谢、邀请确认或进一步联系。要与收信人关系和题目任务相匹配。';
-   else purpose='主体信息：把题目中的一个具体要点写成完整句。先用中文明确“对象＋动作／特征＋必要细节”，再组织主干，避免添加题干没有给出的事实。';
-   guide.textContent='中文构思与句子功能：'+purpose;
-   const fill=document.createElement('p');fill.className='template-fill-note';
-   let slot='本句填充：先从题目中提取对应任务要点，再把具体对象、动作、时间地点或理由放进模板插槽；题干没有提供的事实不补写。';
-   if(i===0)slot='模板调用：交际目的句。填入“写信目的／主要动作”，本篇要回答的核心是：我写信要完成什么交际任务？';
-   else if(/First|To begin|In addition|Finally|Second|Moreover|Furthermore/i.test(sentence))slot='模板调用：主体展开连接模块。填入本题的下一项任务要点；先判断它与上一点是并列、递进还是补充，再决定连接方式。';
-   else if(/because|due to|as a result|which|so that|would make|would help|enable/i.test(sentence))slot='模板调用：原因／作用解释模块。填入“为什么这样做／这样安排有什么效果”，让建议、活动或特点不止停留在罗列。';
-   else if(/I hope|Please|Thank you|look forward|grateful|appreciate|honored|Best wishes/i.test(sentence))slot='模板调用：礼貌收尾模块。填入与本篇交际目的相符的期待、感谢、请求确认或后续联系。';
-   else if(/NOTICE|will be held|Volunteers are wanted|Applicants should|If you are interested/i.test(sentence))slot='模板调用：告示信息模块。依次填入活动／岗位、对象、内容、要求和报名方式；具体日期地点以题目为准。';
-   else slot+=' 本句主题内容需核对题目要求，不能把示范扩展当作题干事实。';
-   fill.textContent=slot;li.appendChild(fill);
-   li.appendChild(original);li.appendChild(guide);sentenceList.appendChild(li);
+  const li=document.createElement('li');
+  const original=document.createElement('p');original.textContent=sentence;original.style.fontWeight='600';li.appendChild(original);
+  const found=phrases.filter(q=>sentence.toLowerCase().includes(q.toLowerCase()));
+  let role='主体展开：本句承接前文，补充完成题目中的一项具体信息。';
+  if(/I am writing|I am glad to hear|Welcome to|Volunteers are wanted|NOTICE/i.test(sentence))role='开头／交际动作：先建立书信关系或直接点明通知、申请、建议、邀请等核心目的。';
+  else if(/I hope|Please feel free|look forward|Thank you|We would be delighted|We would be grateful|I would appreciate/i.test(sentence))role='礼貌收尾／请求确认：结束交际动作，表达期待、感谢或请对方回复。';
+  else if(/because|due to|which|so that|would|can help|may increase|aims to/i.test(sentence))role='解释原因或说明作用：回答“为什么这样做／这件事有什么价值”，避免只罗列信息。';
+  else if(/To begin with|First|In addition|Moreover|More importantly|Finally|As for|In particular/i.test(sentence))role='主体要点展开：连接词提示本句与前文的并列、递进或分项关系。';
+  const p=document.createElement('p');p.textContent='句子作用：'+role;li.appendChild(p);
+  const detail=document.createElement('p');detail.className='template-fill-note';
+  if(i===0&&/I am writing|Welcome to|Volunteers are wanted|NOTICE/i.test(sentence))detail.textContent='模板调用：交际目的／通知主句。把本题的交际动作和主题放入对应插槽。';
+  else if(found.length)detail.textContent='本句主题填充：'+found.join('；')+'。这些是本句实际出现的题目主题信息；继续核对它们是否逐项回应题干。';
+  else if(/To begin with|First|In addition|Moreover|More importantly|Finally|As for|In particular/i.test(sentence))detail.textContent='模板调用：主体展开／逻辑连接模块。本句要填入题目要求的下一项信息，并判断它与上一句的关系。';
+  else if(/I hope|Please feel free|look forward|Thank you|We would be delighted|We would be grateful|I would appreciate/i.test(sentence))detail.textContent='模板调用：礼貌收尾模块。根据本篇交际目的选择感谢、期待回复、邀请确认或后续联系。';
+  else detail.textContent='内容填充：本句承担补充题目细节或解释作用的任务。若信息来自示范扩展而非题干，必须按题目材料替换或删除，不可当作已知事实。';
+  li.appendChild(detail);sentenceList.appendChild(li);
  });
  body.appendChild(sentenceList);
  section('⑥ 使用时必须核对',info.caution);
  box.appendChild(body);article.appendChild(box);
 }
-
 function renderMarkedEssay(el,x){
  const legend=document.createElement('div');legend.className='mark-legend';
  legend.innerHTML='<span class="l-template">黄色：可复用的模板表达</span><span class="l-topic">蓝色：本题主题信息（逐篇指定）</span><span class="l-logic">绿色：逻辑连接表达</span>';el.appendChild(legend);
