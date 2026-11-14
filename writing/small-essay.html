@@ -748,13 +748,14 @@ const combinationPlans={
 function inferSentenceModule(sentence,plan){
  const t=sentence.toLowerCase();
  // 先识别本篇明确规划的辅助环节，避免把活动介绍误标为活动安排。
+ if(plan?.main?.includes("⑤") && /volunteers are wanted|the volunteers will|applicants should|recruiting|selected student/.test(t))return "⑤";
  if(plan?.aux?.includes("①") && /student should meet|plan to provide support|contest will bring|event will bring|provide a platform|taking part would|competition is designed|participants may perform|important occasion|opportunity to express our gratitude/.test(t))return "①";
  if(plan?.aux?.includes("②") && /briefing|event schedule|work schedule|schedule will be provided/.test(t))return "②";
  if(plan?.aux?.includes("③") && /to make things right|bring the cd|send it to your address|meet you at a time/.test(t))return "③";
  if(plan?.aux?.includes("⑤") && /if you would like to contribute|you may take part|could you translate|help arrange|your help would be/.test(t))return "⑤";
  if(/apolog|resign|inconvenience|handover|return your|once again, please accept|understanding/.test(t))return "⑥";
  if(/suggest|help .* adapt|would be helpful|could provide|could improve|these measures|first,|to begin with|in addition, improving|try to connect/.test(t))return "③";
- if(/invite|contest|competition|participants|register|volunteers|ceremony|held at|held on|join us|welcome to our university/.test(t))return "②";
+ if(/invite|contest|competition|participants|register|volunteers|ceremony|held at|held on|join us/.test(t))return "②";
  if(/impressed|watched recently|one detail|stayed with me|meaningful|experience|moved|感受/.test(t))return "④";
  if(/ask whether|would be grateful|could you|recruiting|applicants|your help|help identify|assist with|if interested|contribute/.test(t))return "⑤";
  if(/introduce|recommend|film|book|story|letters|library|program|features|valuable|worth|cultural|craft|offers|provides|the event is designed/.test(t))return "①";
