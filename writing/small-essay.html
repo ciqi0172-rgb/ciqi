@@ -862,17 +862,24 @@ const manualSentenceAudit={
 function fallbackTemplate(sentence){
  const t=sentence.toLowerCase();
  if(/i am writing to/.test(t))return "I am writing to [交际动作] [主题／对象].";
+ if(/i am glad to hear/.test(t))return "I am glad to hear from you. I am writing to [回应／介绍内容].";
  if(/on behalf of/.test(t))return "On behalf of [组织／群体], I would like to [交际动作].";
  if(/i would be grateful|could you|please let me|we would be grateful/.test(t))return "I would be grateful if you could [对方需要采取的行动].";
+ if(/your help would be greatly appreciated/.test(t))return "Your help would be greatly appreciated. Could you [具体协助事项]?";
  if(/for example|for instance/.test(t))return "For example, [一个具体行为／场景] can [直接作用].";
  if(/because|the reason|due to/.test(t))return "This is because [简洁原因].";
  if(/which|this would|this will|these measures|as a result/.test(t))return "This would help [对象] to [直接效果].";
  if(/thank you|i hope|look forward|best wishes/.test(t))return "I hope [与交际目的相符的期待／结果].";
  if(/volunteers are wanted/.test(t))return "Volunteers are wanted for [活动／事项].";
  if(/applicants should/.test(t))return "Applicants should have [必要能力／条件].";
+ if(/if interested/.test(t))return "If interested, please [申请方式] before [截止时间].";
  if(/the volunteers will|the selected student will/.test(t))return "The volunteers / selected student will [岗位职责].";
  if(/is recruiting/.test(t))return "[负责人] is recruiting [岗位／人数] to assist with [项目].";
  if(/will be held|will take place/.test(t))return "[活动] will be held / take place on [日期] at [地点].";
+ if(/the contest will|the event will/.test(t))return "The [比赛／活动] will [活动内容／参与方式].";
+ if(/the collection consists of/.test(t))return "The collection consists of [物品／材料] from [来源／时期].";
+ if(/they describe|they record/.test(t))return "They describe / record [具体内容／主题].";
+ if(/^yes,/.test(t))return "Yes, [明确回答问题]. You can find / visit it at [地点] during [时间].";
  if(/the (film|movie|novel|book) tells the story of/.test(t))return "The [作品] tells the story of [人物／经历].";
  if(/the program aims to/.test(t))return "The program aims to [目标] by [主要方式].";
  if(/provides|offers a wide range of/.test(t))return "[机构／场所] provides [资源／服务].";
@@ -951,20 +958,31 @@ function renderMarkedEssay(el,x){
  const sentences=lines.flatMap(line=>line.match(/[^.!?]+[.!?]?/g)||[]).map(t=>t.trim()).filter(Boolean);
  const patterns=[
   {re:/^I am writing to (?:inform you|ask whether|offer|recommend|invite you|apologize|introduce|express|share|tell you)/i,cls:'mark-template'},
+  {re:/^I am glad to/i,cls:'mark-template'},
+  {re:/^Thank you for/i,cls:'mark-template'},
   {re:/^On behalf of/i,cls:'mark-template'},
   {re:/^I would like to invite you to/i,cls:'mark-template'},
   {re:/^I would be grateful if you could/i,cls:'mark-template'},
   {re:/^We would be grateful if you could/i,cls:'mark-template'},
+  {re:/^We would be delighted if/i,cls:'mark-template'},
+  {re:/^Your help would be greatly appreciated/i,cls:'mark-template'},
   {re:/^I sincerely apologize/i,cls:'mark-template'},
   {re:/^I hope/i,cls:'mark-template'},
-  {re:/^Thank you for/i,cls:'mark-template'},
   {re:/^Welcome to/i,cls:'mark-template'},
   {re:/^Volunteers are wanted for/i,cls:'mark-template'},
   {re:/^Applicants should/i,cls:'mark-template'},
+  {re:/^If interested, please/i,cls:'mark-template'},
   {re:/^The volunteers will/i,cls:'mark-template'},
+  {re:/^The selected student will/i,cls:'mark-template'},
   {re:/^Professor .+ is recruiting/i,cls:'mark-template'},
   {re:/^An international .+ will be held/i,cls:'mark-template'},
+  {re:/^The contest will/i,cls:'mark-template'},
+  {re:/^The event will/i,cls:'mark-template'},
+  {re:/^The collection consists of/i,cls:'mark-template'},
+  {re:/^To borrow/i,cls:'mark-template'},
   {re:/^To make (?:things right|the transition)/i,cls:'mark-template'},
+  {re:/^It would be helpful to/i,cls:'mark-template'},
+  {re:/^I would also suggest/i,cls:'mark-template'},
   {re:/^To begin with/i,cls:'mark-logic'},
   {re:/^First(?:ly)?/i,cls:'mark-logic'},
   {re:/^Second(?:ly)?/i,cls:'mark-logic'},
@@ -974,7 +992,7 @@ function renderMarkedEssay(el,x){
   {re:/^For instance/i,cls:'mark-logic'},
   {re:/^As for/i,cls:'mark-logic'},
   {re:/^Finally/i,cls:'mark-logic'}
- ];
+ ];;
  const logic=/\b(which would|which can|so that|because|although|while|as a result|for this reason|in particular|such as)\b/ig;
  sentences.forEach(sentence=>{
   const p=document.createElement('p');p.style.margin='0 0 9px';
