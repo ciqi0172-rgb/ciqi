@@ -321,7 +321,23 @@ function addBreakdown(article,x){
  section('② 为什么这样匹配',info.fit);
  const h=document.createElement('h4');h.textContent='③ 从题目到文章：写作顺序';body.appendChild(h);
  const ol=document.createElement('ol');info.steps.forEach(t=>{const li=document.createElement('li');li.textContent=t;ol.appendChild(li)});body.appendChild(ol);
- section('④ 这篇范文的逐段生成逻辑',x[3].split(/\n\s*\n/).filter(Boolean).map((p,i)=>'第'+(i+1)+'段：'+(i===0?'完成开头交际动作／点明写信目的。':i===1?'完成题目核心信息，按功能分组展开。':'补充收尾功能，表达请求、期待或致谢。')).join(' '));
+ const h4=document.createElement('h4');h4.textContent='④ 逐句拆解：原句在完成什么任务';body.appendChild(h4);
+ const sentenceList=document.createElement('ol');
+ const essayLines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t && !/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students|The University)/i.test(t));
+ essayLines.forEach((sentence,i)=>{
+   const li=document.createElement('li');
+   const original=document.createElement('p');original.textContent=sentence;original.style.color='var(--ink)';original.style.fontWeight='600';
+   const guide=document.createElement('p');
+   let purpose;
+   if(i===0) purpose='开头／交际动作：先回应收信人或直接点明写信目的。中文先想“我为什么写这封信”，再选对应的功能表达。';
+   else if(/because|due to|as|since|which|so that|would allow|enable|help/i.test(sentence)) purpose='解释／作用：这句话不是继续堆信息，而是在回答“为什么”或“会产生什么效果”。先确定因果关系，再选择 because、which、so that 等结构。';
+   else if(/first|to begin|in addition|more importantly|finally|also|another/i.test(sentence)) purpose='展开／递进：用来引入下一项题目要点。先确定它与上一点是并列、递进还是补充，再选连接表达。';
+   else if(/I hope|please let|feel free|look forward|thank you|appreciate|would be grateful|honored/i.test(sentence)) purpose='礼貌收尾／请求：完成期待、感谢、邀请确认或进一步联系。要与收信人关系和题目任务相匹配。';
+   else purpose='主体信息：把题目中的一个具体要点写成完整句。先用中文明确“对象＋动作／特征＋必要细节”，再组织主干，避免添加题干没有给出的事实。';
+   guide.textContent='中文构思与句子功能：'+purpose;
+   li.appendChild(original);li.appendChild(guide);sentenceList.appendChild(li);
+ });
+ body.appendChild(sentenceList);
  section('⑤ 使用时必须核对',info.caution);
  box.appendChild(body);article.appendChild(box);
 }
