@@ -852,7 +852,7 @@ function addBreakdown(article,x){
 }
 function renderMarkedEssay(el,x){
  const legend=document.createElement('div');legend.className='mark-legend';legend.innerHTML='<span class="l-template">黄色：模板表达</span><span class="l-topic">蓝色：题目专属信息</span><span class="l-logic">绿色：逻辑衔接</span>';el.appendChild(legend);
- const lines=x[3].split(/\\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$)/i.test(t));
+ const lines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$)/i.test(t));
  const sentences=lines.flatMap(line=>line.match(/[^.!?]+[.!?]?/g)||[]).map(t=>t.trim()).filter(Boolean);
  function source(t){
   const plan=combinationPlans[x[0]];
