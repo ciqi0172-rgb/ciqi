@@ -423,7 +423,7 @@ Yours sincerely,
 Li Ming`,
 2022:`Dear Professor Wang,
 
-I am writing to invite you to [attend our innovation competition / serve as a judge for the competition, as required by the question].
+I am writing to invite you to attend our innovation competition.
 The event is scheduled to take place on [题目给出的日期] at [题目给出的地点]. It will feature student projects that combine creative ideas with practical applications. We believe your experience would be valuable to the participants and contribute to the success of the event.
 We would be delighted if you could join us. Please let me know whether you will be available.
 
@@ -581,17 +581,44 @@ function addBreakdown(article,x){
 
 function renderMarkedEssay(el,x){
  const legend=document.createElement('div');legend.className='mark-legend';
- legend.innerHTML='<span class="l-template">黄色：04栏可复用的固定句型／句段</span><span class="l-topic">蓝色：本题填入的信息</span><span class="l-logic">绿色：逻辑关系表达</span>';el.appendChild(legend);
- const fixed=[/I am writing to inform you of my decision to [^,.!?]*/i,/I am writing to apply for [^,.!?]*/i,/I am writing to offer some suggestions[^.!?]*/i,/I am writing to share my views on [^,.!?]*/i,/I am writing to recommend [^,.!?]*/i,/I am writing to invite you to [^,.!?]*/i,/I am writing to apologize for [^,.!?]*/i,/I am writing to introduce [^,.!?]*/i,/I am writing to ask whether [^,.!?]*/i,/I am writing to tell you more about [^,.!?]*/i,/I am glad to hear from you/i,/I am glad to hear that [^,.!?]*/i,/On behalf of [^,]+, I would like to invite you to [^,.!?]*/i,/I would like to invite you to [^,.!?]*/i,/I would be grateful if [^.!?]*/i,/I would appreciate it if [^.!?]*/i,/I hope these suggestions will be [^.!?]*/i,/I look forward to your reply/i,/Please feel free to contact me[^.!?]*/i,/Thank you for your time and consideration/i,/Thank you for your understanding/i,/Please accept my sincere apology/i,/The event will be held [^.!?]*/i,/The event is scheduled to take place [^.!?]*/i,/If you are interested, please [^.!?]*/i,/What makes it [^.!?]* is [^.!?]*/i,/I believe it would be [^.!?]*/i,/Your help would be greatly appreciated/i];
+ legend.innerHTML='<span class="l-template">黄色：04栏可复用的模板骨架</span><span class="l-topic">蓝色：本题内容／插槽填充</span><span class="l-logic">绿色：逻辑连接表达</span>';el.appendChild(legend);
+ const fixed=[
+ /I am writing to inform you of my decision to resign from my position at the magazine/i,
+ /I am writing to apply for [^,.!?]*/i,
+ /I am writing to offer some suggestions (?:concerning|on|for) [^.!?]*/i,
+ /I am writing to recommend [^,.!?]*/i,
+ /I am writing to invite you to [^,.!?]*/i,
+ /I am writing to apologize for [^.!?]*/i,
+ /I am writing to tell you more about [^.!?]*/i,
+ /I am glad to hear from you/i,
+ /I am glad to hear that [^.!?]*/i,
+ /I would be grateful if [^.!?]*/i,
+ /I would appreciate it if [^.!?]*/i,
+ /I hope these suggestions will be of help/i,
+ /I hope these suggestions will be useful/i,
+ /Please feel free to contact me[^.!?]*/i,
+ /I look forward to your reply/i,
+ /Thank you for your time and consideration/i,
+ /Thank you for your understanding/i,
+ /Once again, I am sorry for the inconvenience and appreciate your understanding/i,
+ /The event is scheduled to take place [^.!?]*/i,
+ /The event will be held [^.!?]*/i,
+ /What makes it particularly worth recommending is [^.!?]*/i,
+ /I believe it would be an excellent choice for you because [^.!?]*/i,
+ /To make things right, I can [^.!?]*/i,
+ /To make things right, I would like to [^.!?]*/i,
+ /If you are interested, please [^.!?]*/i,
+ /Volunteers are wanted for [^.!?]*/i
+ ];
  const logic=/\b(To begin with|First(?:ly)?|Second(?:ly)?|Third(?:ly)?|In addition|Furthermore|Moreover|More importantly|Finally|As for|In particular|Regarding|As a result|For this reason|To address this problem|Due to|because|therefore|while|such as)\b/ig;
  x[3].split(/\n\s*\n/).filter(Boolean).forEach(par=>{
   const p=document.createElement('p');p.style.margin='0 0 9px';
   (par.match(/[^.!?]+[.!?]?/g)||[par]).forEach(sentence=>{
-   const hits=[];fixed.forEach(re=>{re.lastIndex=0;const m=re.exec(sentence);if(m)hits.push({a:m.index,b:m.index+m[0].length,c:'mark-template'});});
-   logic.lastIndex=0;let m;while((m=logic.exec(sentence))!==null)hits.push({a:m.index,b:m.index+m[0].length,c:'mark-logic'});
+   const hits=[];fixed.forEach(re=>{re.lastIndex=0;let m;while((m=re.exec(sentence))!==null)hits.push({a:m.index,b:m.index+m[0].length,c:'mark-template'});});
+   logic.lastIndex=0;let m;while((m=logic.exec(sentence))!==null)hits.push({a:m.index,b:m.index+m[0].length,c:'mark-logic'});logic.lastIndex=0;
    hits.sort((u,v)=>u.a-v.a||v.b-u.b);let pos=0;
-   hits.forEach(h=>{if(h.a<pos)return;if(h.a>pos)p.appendChild(document.createTextNode(sentence.slice(pos,h.a)));const z=document.createElement('span');z.className=h.c;z.textContent=sentence.slice(h.a,h.b);p.appendChild(z);pos=h.b;});
-   if(pos<sentence.length){const rest=sentence.slice(pos);const z=document.createElement('span');z.className=/\[[^\]]+\]/.test(rest)?'mark-topic':'';z.textContent=rest;p.appendChild(z);}
+   hits.forEach(h=>{if(h.a<pos)return;if(h.a>pos){const rest=sentence.slice(pos,h.a);const z=document.createElement('span');z.className=/^(Dear |Yours sincerely|Yours,|Li Ming|NOTICE|The Students|The Organizing|The University)/i.test(rest.trim())?'':'mark-topic';z.textContent=rest;p.appendChild(z);}const z=document.createElement('span');z.className=h.c;z.textContent=sentence.slice(h.a,h.b);p.appendChild(z);pos=h.b;});
+   if(pos<sentence.length){const rest=sentence.slice(pos);const z=document.createElement('span');z.className=/^(Dear |Yours sincerely|Yours,|Li Ming|NOTICE|The Students|The Organizing|The University)/i.test(rest.trim())?'':'mark-topic';z.textContent=rest;p.appendChild(z);}
    p.appendChild(document.createTextNode(' '));
   });el.appendChild(p);
  });
