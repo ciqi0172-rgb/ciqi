@@ -489,7 +489,7 @@ const freqTable=document.getElementById('freqTable');years.forEach(y=>{const tr=
 const sel=document.getElementById('yearSelect'),container=document.getElementById('essayContainer');years.forEach(y=>{const o=document.createElement('option');o.value=y[0];o.textContent=y[0]+' · '+y[1];sel.appendChild(o)});
 
 const breakdowns={
-2005:{modules:"辞职／变更＋道歉＋原因解释＋交接",fit:"不是单纯套道歉信。题目要求告知辞职决定、说明原因并道歉，因此以辞职通知为主干，道歉和交接为补充。",steps:["先明确决定：inform you of my decision to resign。","再给原因：只说明无法继续投入足够时间，不虚构具体家庭或健康细节。","承认对对方的影响并致歉。","补上完成当前任务、平稳交接，降低对方顾虑。"],caution:"本篇以学业任务增加作为完整示范原因，不是题干给定事实；正式作答时应采用符合题目情境的合理原因。"},
+2005:{modules:"辞职／变更＋道歉＋原因解释＋交接",fit:"不是单纯套道歉信。题目要求告知辞职决定、说明原因并道歉，因此以辞职通知为主干，道歉和交接为补充。",steps:["先明确决定：inform you of my decision to resign。","再给原因：只说明无法继续投入足够时间，不虚构具体家庭或健康细节。","承认对对方的影响并致歉。","补上完成当前任务、平稳交接，降低对方顾虑。"],caution:"“个人情况发生变化”是克制的示范性原因，并非题干给定事实；正式作答时应采用符合题目情境的合理原因。"},
 2006:{modules:"求助信＋受助对象介绍＋资助计划",fit:"题目要求向有关部门求助，请其协助寻找合适的资助对象，同时说明受助对象条件和具体帮扶计划。重点是寻求部门协助，不是申请者为自己申请资助。",steps:["开头明确请求部门协助寻找资助对象。","列出受助对象应符合的条件，按题目要求填写，不虚构具体姓名和家庭资料。","说明资助用途、方式和后续帮扶安排。","请求部门推荐合适对象，并礼貌收尾。"],caution:"受助对象的具体身份、家庭情况和资助细节必须按原题要求或明确标注为自拟方案，不能伪装成题干事实。"},
 2007:{modules:"建议信（问题—建议—作用）",fit:"直接对应建议信模板。题目对象是图书馆管理人员，建议内容必须围绕图书馆服务，而不是泛谈校园建设。",steps:["目的句点明建议主题：library services。","建议一：延长开放时间，补充考试期间这一适用场景，并解释学生有更多备考时间。","建议二：增加安静学习空间和座位；用楼层闲置角落改造成阅读区作为具体例子。","建议三：定期更新在线目录，说明它能帮助读者提前查询书籍位置和可借状态。","用一句话概括改进效果，再礼貌收尾。"],caution:"本版正文实际展开三项建议：延长开放时间、增加安静学习空间、更新在线目录；其中例子进一步说明如何利用闲置角落改善阅读空间。正式答题应按原题要求确定建议数量。"},
 2008:{modules:"道歉＋解释＋补救方案",fit:"道歉信不能只有“I am sorry”。这题的核心是忘记归还物品，因此要把责任、原因、归还方案连成闭环。",steps:["第一句承认具体失误：忘记按约定归还CD。","明确道歉。","简要解释原因，但不把忙碌当作免责理由。","提出可执行补救：明天送还或按对方方便的方式寄回。","承认造成不便并承诺避免重犯。"],caution:"本篇正文应统一写CD，不能在拆解中误写成book；物品名称必须与题目一致。"},
@@ -525,7 +525,7 @@ const yearTeaching={
 2014:{tpl:"C 建议信主模板",fixed:"I am writing to offer some suggestions concerning [主题／问题].",fill:"ways to improve students' physical fitness；建议按运动机会、体育设施、健康教育三个学校管理层面填入。",logic:"点明体质问题 → 提供运动机会 → 改善设施 → 培养长期习惯。由条件供给推进到行为养成。"},
 2015:{tpl:"E 推荐信主模板",fixed:"I am writing to recommend [推荐对象] to you.",fill:"The Old Man and the Sea；这是本篇范文主动选择的示范书目，不是题干指定事实；如果题目给定书名，必须替换书名及与之对应的内容。",logic:"明确推荐哪本书 → 提炼其独特内容 → 补充可读性／讨论价值 → 说明适合读书俱乐部的原因。"},
 2016:{tpl:"B 信息告示骨架＋F 介绍信息模块",fixed:"The university library welcomes [目标对象]. As a [身份], I would like to provide you with [信息].",fill:"all newly admitted international students；图书馆资源、阅览空间／网络资源／开放时间和借阅方式作为可填信息，题干未提供的具体设施与规则须标为示范或保留插槽。",logic:"NOTICE → 欢迎新录取留学生 → 说明发布者身份和告示目的 → 介绍馆藏资源 → 补充空间／网络／开放时间 → 说明借阅方式 → 欢迎收尾。"},
-2017:{tpl:"E 推荐信主模板",fixed:"I am writing to recommend [推荐对象] to you.",fill:"本篇示范填入City Museum和Riverside Park；前者用历史照片和地方文物介绍城市历史，后者提供河畔景色与当地居民生活体验。这些是示范地点，不代表题干指定地点。",logic:"欢迎新到任的James Cook → 点明推荐对象 → 博物馆：历史照片／地方文物／城市变迁 → 河滨公园：自然景色／居民日常 → 解释两处分别提供文化与休闲体验 → 礼貌收尾。"},
+2017:{tpl:"E 推荐信主模板",fixed:"I am writing to recommend [推荐对象] to you.",fill:"景点名称和特色保留插槽，必须替换为真实地点及经核实的特色。",logic:"欢迎新到任的James Cook → 点明推荐对象 → 博物馆：历史照片／地方文物／城市变迁 → 河滨公园：自然景色／居民日常 → 解释两处分别提供文化与休闲体验 → 礼貌收尾。"},
 2018:{tpl:"D 邀请信主模板",fixed:"I am writing to invite you to [活动／担任的角色].",fill:"attend our graduation ceremony；时间地点按题干填写；意义填庆祝毕业成果、表达感谢，对方出席令毕业生感到重要。",logic:"发出邀请 → 交代时间地点 → 解释典礼意义 → 说明受邀者出席的价值 → 期待回复。"},
 2019:{tpl:"F 介绍／回复信主模板",fixed:"I am writing to tell you more about [介绍对象／主题].",fill:"Project Hope；项目宗旨、具体资助方式和志愿者参与行动必须按题目要求填充。",logic:"点明介绍对象 → 概述项目宗旨 → 解释帮助方式 → 说明志愿者能做什么 → 礼貌收尾。"},
 2020:{tpl:"B 通知／告示骨架",fixed:"An international singing competition will be held at [地点] on [日期].",fill:"活动为国际歌唱比赛；参与对象明确包括留学生；目的填音乐交流与文化了解；报名部门和截止时间依题干填写。",logic:"标题 → 活动名称与时间地点 → 参与对象 → 活动目的 → 报名方法 → 期待参与。"},
@@ -534,7 +534,7 @@ const yearTeaching={
 2023:{tpl:"B 通知／告示骨架＋研究助理招募模块",fixed:"Professor Smith is recruiting one student to assist with [研究项目].",fill:"his research project on campus sports activities；职责示范可写问卷／数据收集、观察活动、记录研究结果；要求示范可写体育兴趣、沟通能力、细致负责和相关经验。以上是为满足duties and requirements而设计的合理示范内容，不是题干给定的岗位细则。",logic:"NOTICE → 项目背景与招募目的 → 研究助理职责 → 任职要求 → 报名方式 → Li Ming落款。重点是研究项目助理，不是体育活动志愿者。"},
 2024:{tpl:"C 建议信主模板",fixed:"I am writing to offer some suggestions concerning [主题／问题].",fill:"your report on an ancient Chinese scientist；建议填人物背景、成就原理、历史意义、现代联系和可靠资料。",logic:"回应报告任务 → 人物与时代背景 → 解释科学成就 → 说明历史意义 → 联系现代生活并核实来源。按报告本身的论证顺序给建议。"},
 2025:{tpl:"F 介绍／回复主模板＋K 请求模块",fixed:"I am glad to hear from you. I am writing to tell you more about [介绍对象／主题].",fill:"展示内容示范为Chinese paper-cutting和bamboo weaving；Paul的具体任务为把展签翻译成英文、活动前摆放桌台。",logic:"回应Paul → 概括传统技艺与现代创意结合 → 用剪纸和竹编两个例子具体化 → 解释展示过程与文化含义 → 请求Paul翻译展签并布置桌台 → 说明这能帮助国际访客理解和参观 → 感谢并期待合作。"},
-2026:{tpl:"F 介绍／回复主模板",fixed:"I am glad to hear from you. I am writing to tell you more about [介绍对象／主题].",fill:"本篇示范设定为1980年代中国家庭中父母与子女互通信件；内容涉及学习、工作、家庭消息和鼓励；示范展览地点为大学文化展览厅，展期为下周一至周五。上述均为示范情境，不是题干给定事实。",logic:"回应Paul → 介绍信件来源与年代 → 列举信中记录的日常内容 → 解释其家庭情感与时代记录价值 → 明确回答是否可以公开参观 → 给出地点和展期 → 欢迎参观并收尾。"}
+2026:{tpl:"F 介绍／回复主模板",fixed:"I am glad to hear from you. I am writing to tell you more about [介绍对象／主题].",fill:"家书年代和内容按题干提供的信息填充；展出地点与展期为待核实插槽，不得编造。",logic:"回应Paul → 介绍信件来源与年代 → 列举信中记录的日常内容 → 解释其家庭情感与时代记录价值 → 明确回答是否可以公开参观 → 给出地点和展期 → 欢迎参观并收尾。"}
 };
 
 const manualSentenceAudit={
