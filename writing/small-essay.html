@@ -840,7 +840,8 @@ function addBreakdown(article,x){
   if(note){
    audited++;
    const template=document.createElement('p');template.className='template-fill-note';
-   const tb=document.createElement('b');tb.textContent='04栏对应模板：';template.appendChild(tb);template.appendChild(document.createTextNode(note[1]));
+   const tb=document.createElement('b');tb.textContent='04模板来源：'+inferSentenceModule(sentence,combinationPlans[x[0]])+'；对应句型：';template.appendChild(tb);
+   template.appendChild(document.createTextNode(note[1].replace(/^[A-L]\\s+[^：]*：\\s*/,'')));
    li.appendChild(template);
    const fill=document.createElement('p');fill.className='template-fill-note';
    const fb=document.createElement('b');fb.textContent='本句实际填充：';fill.appendChild(fb);fill.appendChild(document.createTextNode(note[2]));
