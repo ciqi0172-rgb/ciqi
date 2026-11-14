@@ -850,6 +850,9 @@ function fallbackTemplate(sentence){
  if(/should|could|would be helpful|it is important/.test(t))return "It would be helpful to [具体行动], which can [直接效果].";
  return "[主体信息] + [具体动作] + [必要细节／作用].";
 }
+function extractTopic(sentence){
+ return sentence.replace(/^(I am writing to|I am glad to hear from you|On behalf of|I would like to invite you to|I would be grateful if you could|We would be grateful if you could|To begin with|First(?:ly)?|Second(?:ly)?|In addition|More importantly|For example|For instance|As for|Thank you for|I hope|Welcome to|Volunteers are wanted for|Applicants should|The volunteers will|To make things right|To make the transition)\\s*/i,'').trim();
+}
 function sentenceRole(sentence,index,total){
  const t=sentence.toLowerCase();let role="补充具体信息：把题目要求的内容说清楚，并为读者提供必要细节。";
  if(index===0)role="开头／交际目的：直接告诉收信人为什么写这封信或这则通知。";
@@ -900,7 +903,7 @@ function addBreakdown(article,x){
    li.appendChild(fill);
    const thought=document.createElement('p');thought.textContent='构思与逻辑：'+note[3];li.appendChild(thought);
   }else{
-   const missing=document.createElement('p');missing.className='template-fill-note';missing.textContent='本句功能：'+sentenceRole(sentence,i,sentences.length)+'\n04可迁移句型：'+fallbackTemplate(sentence)+'\n本题填充：本句中除功能表达外的具体对象、动作和细节。\n构思：先确定本句要完成的任务，再选一个核心动词，把对象和必要细节放入句型；若内容较抽象，再补一个贴题例子或效果。';li.appendChild(missing);
+   const missing=document.createElement('p');missing.className='template-fill-note';missing.textContent=sentenceRole(sentence,i,sentences.length)+'\\n04可迁移句型：'+fallbackTemplate(sentence)+'\\n本题填充：'+(extractTopic(sentence)||'本句主要表达固定交际功能，无需额外填充。')+'\\n构思：先确定本句要完成的任务，再选一个核心动词，把对象和必要细节放入句型；若内容较抽象，再补一个贴题例子或效果。';li.appendChild(missing);
   }
   sentenceList.appendChild(li);
  });
