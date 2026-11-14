@@ -34,6 +34,15 @@
 .breakdown ol,.breakdown ul{padding-left:20px}
 .breakdown .mapping{background:#f3f7f2;padding:10px;border-radius:9px;color:var(--ink)}
 @media(max-width:420px){.template-picker{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* 真题范文荧光标注：模板句、题目信息、逻辑衔接 */
+.en .mark-template{background:#fff1a8;border-bottom:2px solid #d5a52b;border-radius:3px;padding:1px 2px}
+.en .mark-topic{background:#cfe8ff;border-bottom:2px solid #5797d0;border-radius:3px;padding:1px 2px}
+.en .mark-logic{background:#d8f2d9;border-bottom:2px solid #55a36a;border-radius:3px;padding:1px 2px}
+.mark-legend{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px;font-size:11px;color:var(--muted)}
+.mark-legend span{padding:5px 8px;border-radius:5px}
+.mark-legend .l-template{background:#fff1a8}.mark-legend .l-topic{background:#cfe8ff}.mark-legend .l-logic{background:#d8f2d9}
+.breakdown .logic-map{background:#f2f7fb;border-left:3px solid #6c9fc8;padding:9px 11px;border-radius:7px}
 </style>
 </head><body><div class="shell">
 <header class="top"><div class="brand"><div class="mark">小</div><div><small>KAOYAN ENGLISH I · WRITING LAB</small><b>英语一小作文训练室</b></div></div><a class="back" href="index.html">← 返回作文训练首页</a></header>
@@ -339,7 +348,31 @@ function addBreakdown(article,x){
  section('⑤ 使用时必须核对',info.caution);
  box.appendChild(body);article.appendChild(box);
 }
-function renderYear(y){container.innerHTML='';const list=y?years.filter(x=>x[0]===Number(y)):years;list.forEach(x=>{const d=document.createElement('article');d.className='yearitem';d.innerHTML='<h3>'+x[0]+'年 · '+x[1]+'</h3><div class="meta">'+x[2]+'</div><div class="en"></div><p><b>老师拆解：</b>'+x[4]+'</p><button class="btn light copy">复制范文</button>';d.querySelector('.en').textContent=x[3];d.querySelector('.copy').addEventListener('click',()=>navigator.clipboard?.writeText(x[3]));addBreakdown(d,x);container.appendChild(d)})}
+
+function renderMarkedEssay(el,x){
+ const legend=document.createElement('div');legend.className='mark-legend';
+ legend.innerHTML='<span class="l-template">黄色：04栏可复用模板表达</span><span class="l-topic">蓝色：本题专属信息</span><span class="l-logic">绿色：逻辑衔接／关系词</span>';el.appendChild(legend);
+ const templatePatterns=[/I am writing to [^,.!?]+/i,/I would like to invite you to [^,.!?]+/i,/I am writing to offer some suggestions[^.]+/i,/I am writing to recommend [^,.]+/i,/I am writing to apply for [^,.]+/i,/I am writing to apologize for [^,.]+/i,/I am writing to express my sincere gratitude[^.]+/i,/I am writing to inform you of my decision to [^,.]+/i,/I am writing to ask whether[^.]+/i,/I would be grateful if[^.]+/i,/I would appreciate it if[^.]+/i,/I look forward to your reply/i,/Please feel free to contact me[^.]+/i,/I hope these suggestions will be useful/i,/I hope you will find[^.]+/i,/Thank you for your understanding/i,/Please accept my sincere apology/i,/On behalf of [^,]+, I would like to invite you to [^,.]+/i,/I am glad to hear from you/i];
+ const logicPatterns=[/To begin with/i,/First(?:ly)?/i,/Second(?:ly)?/i,/In addition/i,/Furthermore/i,/Moreover/i,/More importantly/i,/Finally/i,/As for/i,/In particular/i,/For this reason/i,/As a result/i,/so that/i,/not only/i,/but also/i,/because/i,/therefore/i,/Unfortunately/i,/Due to/i,/To address this problem/i,/In order to/i,/If you are interested/i,/If it is more convenient/i];
+ const topicPatterns=[/The student comes from[^.]+/i,/The film tells the story[^.]+/i,/The excessive use of[^.]+/i,/The event will be held[^.]+/i,/The exhibition will[^.]+/i,/They are handwritten messages[^.]+/i,/Yes, they are currently[^.]+/i,/Could you \[[^]]+\][^.]+/i];
+ const paragraphs=x[3].split(/\n\s*\n/).filter(Boolean);
+ paragraphs.forEach(par=>{
+  const p=document.createElement('p');p.style.margin='0 0 9px';
+  const sentences=par.match(/[^.!?]+[.!?]?/g)||[par];
+  sentences.forEach(sentence=>{
+   const t=sentence.trim();if(!t)return;
+   const span=document.createElement('span');span.textContent=t+' ';
+   let cls='';
+   if(templatePatterns.some(r=>r.test(t))) cls='mark-template';
+   else if(logicPatterns.some(r=>r.test(t))) cls='mark-logic';
+   else if(topicPatterns.some(r=>r.test(t))) cls='mark-topic';
+   if(cls)span.className=cls;
+   p.appendChild(span);
+  });
+  el.appendChild(p);
+ });
+}
+function renderYear(y){container.innerHTML='';const list=y?years.filter(x=>x[0]===Number(y)):years;list.forEach(x=>{const d=document.createElement('article');d.className='yearitem';d.innerHTML='<h3>'+x[0]+'年 · '+x[1]+'</h3><div class="meta">'+x[2]+'</div><div class="en"></div><p><b>老师拆解：</b>'+x[4]+'</p><button class="btn light copy">复制范文</button>';renderMarkedEssay(d.querySelector('.en'),x);d.querySelector('.copy').addEventListener('click',()=>navigator.clipboard?.writeText(x[3]));addBreakdown(d,x);container.appendChild(d)})}
 sel.addEventListener('change',()=>renderYear(sel.value));document.getElementById('showAll').addEventListener('click',()=>{sel.value='';renderYear('')});renderYear(2005);
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab));window.scrollTo({top:0,behavior:'smooth'})}));
 document.getElementById('methodHint').addEventListener('click',()=>{document.getElementById('methodFeedback').textContent='组织顺序：回应对方／点明介绍目的 → 图书馆资源与开放空间 → 借书所需证件或校园卡 → 借阅步骤与归还要求 → 邀请对方有问题继续联系。只写题干支持或校园常规且确定的信息；具体规则以题目给定为准。'});
