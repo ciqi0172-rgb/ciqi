@@ -130,7 +130,7 @@
 <h3>历年题型分布</h3><table><thead><tr><th>年份</th><th>类型</th><th>题目任务（按你提供的表）</th></tr></thead><tbody id="freqTable"></tbody></table>
 <div class="foot">频率统计口径：以截图中2005—2026年共22条记录为样本；“介绍信”归为介绍／回复介绍；道歉、辞职、申请合并为低频独立类型。统计仅描述该样本。</div>
 </section>
-<section class="panel" id="system"><div class="head"><span class="tag">核心原则：固定表达＋少量扣题插槽</span><h2>模板库：按题材选择，再查看对应模板</h2><p>先选文体，再选交际功能。书信格式固定；主体段根据任务替换。不要把每篇作文背成完全不同的文章。</p></div>
+<section class="panel" id="system"><div class="head"><span class="tag">核心原则：固定表达＋少量扣题插槽</span><h2>小作文万能模板：固定骨架＋交际模块＋扣题填充</h2><p>万能不是一篇文章通吃，而是“书信／通知格式骨架＋交际目的句＋主体信息组织句＋礼貌收尾”。每道真题只替换方括号中的信息，并按任务增删主体模块。</p></div>
 <div class="template-status"><b>版本校准中：</b>这是按真题交际功能重新整理的模板模块库。模板不是一篇篇孤立背诵的范文：先选交际动作，再组合主体段。下方历年范文会标出实际调用的模块及需要改写的部分。</div>
 <div class="template-picker" id="templatePicker" aria-label="模板题材选择">
 <button class="template-tile active" type="button" data-template="tpl-letter"><b>通用书信</b><small>称呼、目的、收尾</small></button>
@@ -354,7 +354,7 @@ function addBreakdown(article,x){
 
 function renderMarkedEssay(el,x){
  const legend=document.createElement('div');legend.className='mark-legend';
- legend.innerHTML='<span class="l-template">黄色：04栏可复用模板表达</span><span class="l-topic">蓝色：本题专属信息</span><span class="l-logic">绿色：逻辑衔接／关系词</span>';el.appendChild(legend);
+ legend.innerHTML='<span class="l-template">黄色：与04栏模板固定表达对应</span><span class="l-topic">蓝色：本题专属信息</span><span class="l-logic">绿色：逻辑衔接／关系词</span>';el.appendChild(legend);
  const templatePatterns=[/I am writing to [^,.!?]+/i,/I would like to invite you to [^,.!?]+/i,/I am writing to offer some suggestions[^.]+/i,/I am writing to recommend [^,.]+/i,/I am writing to apply for [^,.]+/i,/I am writing to apologize for [^,.]+/i,/I am writing to express my sincere gratitude[^.]+/i,/I am writing to inform you of my decision to [^,.]+/i,/I am writing to ask whether[^.]+/i,/I would be grateful if[^.]+/i,/I would appreciate it if[^.]+/i,/I look forward to your reply/i,/Please feel free to contact me[^.]+/i,/I hope these suggestions will be useful/i,/I hope you will find[^.]+/i,/Thank you for your understanding/i,/Please accept my sincere apology/i,/On behalf of [^,]+, I would like to invite you to [^,.]+/i,/I am glad to hear from you/i];
  const logicPatterns=[/To begin with/i,/First(?:ly)?/i,/Second(?:ly)?/i,/In addition/i,/Furthermore/i,/Moreover/i,/More importantly/i,/Finally/i,/As for/i,/In particular/i,/For this reason/i,/As a result/i,/so that/i,/not only/i,/but also/i,/because/i,/therefore/i,/Unfortunately/i,/Due to/i,/To address this problem/i,/In order to/i,/If you are interested/i,/If it is more convenient/i];
  const topicPatterns=[/The student comes from[^.]+/i,/The film tells the story[^.]+/i,/The excessive use of[^.]+/i,/The event will be held[^.]+/i,/The exhibition will[^.]+/i,/They are handwritten messages[^.]+/i,/Yes, they are currently[^.]+/i,/Could you \[[^]]+\][^.]+/i];
