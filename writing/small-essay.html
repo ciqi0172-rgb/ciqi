@@ -124,7 +124,7 @@
 <div class="card"><div class="stat">3 / 22</div><h3>推荐信 · 13.6%</h3><div class="bar"><i style="width:13.6%"></i></div><p>2011、2015、2017。对象可变化，推荐理由可复用。</p></div>
 <div class="card"><div class="stat">3 / 22</div><h3>邀请信 · 13.6%</h3><div class="bar"><i style="width:13.6%"></i></div><p>2013、2018、2022。活动信息和邀请目的最重要。</p></div>
 <div class="card"><div class="stat">3 / 22</div><h3>介绍／回复介绍 · 13.6%</h3><div class="bar"><i style="width:13.6%"></i></div><p>2019、2025、2026。近三次相关题中连续出现，需重视“回复＋介绍”的复合任务。</p></div>
-<div class="card"><div class="stat">3 / 22</div><h3>低频独立类型 · 13.6%</h3><div class="bar"><i style="width:13.6%"></i></div><p>道歉信1次、辞职信1次、申请信1次。无需各背一套长模板，掌握功能模块即可。</p></div>
+<div class="card"><div class="stat">3 / 22</div><h3>低频独立类型 · 13.6%</h3><div class="bar"><i style="width:13.6%"></i></div><p>道歉信1次、辞职信1次、求助／资助请求信1次。无需各背一套长模板，掌握功能模块即可。</p></div>
 </div>
 <div class="note"><b>关键判断：</b>建议信＋通知共10次，占45.5%；再加推荐、邀请、介绍共19次，占86.4%。因此核心准备不是把十几种信件平均用力，而是练熟五类主框架，再掌握道歉、申请、辞职等少量可插拔模块。</div>
 <h3>题目内容的变化</h3><div class="card"><p><b>从校园事务到社会生活：</b>图书馆、留学生、校园活动、志愿者、环保、健康、就业、文化展示等主题都出现过。</p><p><b>从单一文体到复合交际：</b>2026年不是单纯“介绍信”，而是回复Paul，介绍中国家庭手写信并说明展览情况。审题时必须逐项完成题目要求。</p><p><b>题材可以变，交际目的不变：</b>核心动作始终是建议、邀请、推荐、介绍、通知、解释、请求、感谢或回复。</p></div>
@@ -539,7 +539,7 @@ function showTemplate(id){
 templateTiles.forEach(b=>b.addEventListener('click',()=>showTemplate(b.dataset.template)));
 showTemplate('tpl-letter');
 
-const freq=[["建议信",6,"2007、2009、2012、2014、2021、2024"],["通知／告示（含研究项目招募）",4,"2010、2016、2020、2023"],["推荐信",3,"2011、2015、2017"],["邀请信",3,"2013、2018、2022"],["介绍／回复介绍",3,"2019、2025、2026"],["道歉信",1,"2008"],["辞职信",1,"2005"],["申请信",1,"2006"]];
+const freq=[["建议信",6,"2007、2009、2012、2014、2021、2024"],["通知／告示（含研究项目招募）",4,"2010、2016、2020、2023"],["推荐信",3,"2011、2015、2017"],["邀请信",3,"2013、2018、2022"],["介绍／回复介绍",3,"2019、2025、2026"],["道歉信",1,"2008"],["辞职信",1,"2005"],["求助／资助请求信",1,"2006"]];
 const freqTable=document.getElementById('freqTable');years.forEach(y=>{const tr=document.createElement('tr');tr.innerHTML='<td>'+y[0]+'</td><td>'+y[1]+'</td><td>'+y[2]+'</td>';freqTable.appendChild(tr)});
 const sel=document.getElementById('yearSelect'),container=document.getElementById('essayContainer');years.forEach(y=>{const o=document.createElement('option');o.value=y[0];o.textContent=y[0]+' · '+y[1];sel.appendChild(o)});
 
@@ -580,7 +580,7 @@ const yearTeaching={
 2014:{tpl:"C 建议信主模板",fixed:"I am writing to offer some suggestions concerning [主题／问题].",fill:"ways to improve students' physical fitness；建议按运动机会、体育设施、健康教育三个学校管理层面填入。",logic:"点明体质问题 → 提供运动机会 → 改善设施 → 培养长期习惯。由条件供给推进到行为养成。"},
 2015:{tpl:"E 推荐信主模板",fixed:"I am writing to recommend [推荐对象] to you.",fill:"The Old Man and the Sea；这是本篇范文主动选择的示范书目，不是题干指定事实；如果题目给定书名，必须替换书名及与之对应的内容。",logic:"明确推荐哪本书 → 提炼其独特内容 → 补充可读性／讨论价值 → 说明适合读书俱乐部的原因。"},
 2016:{tpl:"B 信息告示骨架＋F 介绍信息模块",fixed:"The university library welcomes [目标对象]. As a [身份], I would like to provide you with [信息].",fill:"all newly admitted international students；图书馆资源、阅览空间／网络资源／开放时间和借阅方式作为可填信息，题干未提供的具体设施与规则须标为示范或保留插槽。",logic:"NOTICE → 欢迎新录取留学生 → 说明发布者身份和告示目的 → 介绍馆藏资源 → 补充空间／网络／开放时间 → 说明借阅方式 → 欢迎收尾。"},
-2017:{tpl:"E 推荐信主模板",fixed:"I am writing to recommend [推荐对象] to you.",fill:"[本市景点一]、[本市景点二]；题干要求推荐你所在城市的景点，并未指定具体景点。名称、特色和体验都必须按本市实际情况填写。",logic:"明确推荐地点 → 讲最有辨识度的特色 → 补充可体验内容 → 解释为何值得去 → 提供后续帮助。"},
+2017:{tpl:"E 推荐信主模板",fixed:"I am writing to recommend [推荐对象] to you.",fill:"[本市景点一]、[本市景点二]；题干要求推荐你所在城市的景点，并未指定具体景点。名称、特色和体验都必须按本市实际情况填写。",logic:"欢迎新到任的James Cook → 推荐本市景点 → 分别说明景点特色与体验 → 解释推荐理由 → 祝愿并提供后续信息。"},
 2018:{tpl:"D 邀请信主模板",fixed:"I am writing to invite you to [活动／担任的角色].",fill:"attend our graduation ceremony；时间地点按题干填写；意义填庆祝毕业成果、表达感谢，对方出席令毕业生感到重要。",logic:"发出邀请 → 交代时间地点 → 解释典礼意义 → 说明受邀者出席的价值 → 期待回复。"},
 2019:{tpl:"F 介绍／回复信主模板",fixed:"I am writing to tell you more about [介绍对象／主题].",fill:"Project Hope；项目宗旨、具体资助方式和志愿者参与行动必须按题目要求填充。",logic:"点明介绍对象 → 概述项目宗旨 → 解释帮助方式 → 说明志愿者能做什么 → 礼貌收尾。"},
 2020:{tpl:"B 通知／告示骨架",fixed:"An international singing competition will be held at [地点] on [日期].",fill:"活动为国际歌唱比赛；参与对象明确包括留学生；目的填音乐交流与文化了解；报名部门和截止时间依题干填写。",logic:"标题 → 活动名称与时间地点 → 参与对象 → 活动目的 → 报名方法 → 期待参与。"},
@@ -602,12 +602,12 @@ const manualSentenceAudit={
 ["Thank you for your understanding","L 礼貌收尾：Thank you for your understanding.","understanding","简短收尾，不再增加新事实。"]
 ],
 2006:[
-["I am writing to apply","G 资助申请变体：I am writing to apply for financial support for [受助对象／项目].","financial support for a student in need；proposed assistance plan","申请目的句要写清申请什么；这是为他人申请资助，不是申请者个人求职。"],
-["The student I hope","G 受助对象句：The student I hope to support is [符合题目要求的帮扶对象]..","[符合题目要求的帮扶对象]","按题干写受助对象特征；不自行添加姓名、年龄或家庭情况。"],
-["The support would","G 资金用途句：The support would be used for [具体用途].","[题目要求的具体用途]","回答资金如何使用，避免只说需要帮助。"],
+["I am writing to ask whether","K 求助目的句：I am writing to ask whether [对方] could [具体协助].","your department could help identify a student in need","请求有关部门协助寻找合适的资助对象。"],
+["The student should meet","F 对象条件句：The student should meet the following conditions: [条件].","[题目要求的受助对象条件]","按题目要求说明受助对象应符合的条件，不虚构个人资料。"],
+["I plan to provide support","F 资助计划句：I plan to provide support by [方式／用途] and [后续安排].","[具体资助方式／用途]；[后续帮扶安排]","把资助用途和后续帮扶安排写清楚。"],
 ["To put the plan","G 实施计划句：To put the plan into practice, I intend to [实施方式].","[具体实施方式一]","把抽象计划变成可执行动作；第一项措施必须符合题干。"],
 ["In addition, I will","G 补充措施句：In addition, I will [实施方式二] so that...","[具体实施方式二]；meet the student's needs","补充第二项措施，并说明其服务对象需求的逻辑。"],
-["I would appreciate it","G 申请收尾：I would appreciate it if you could consider my application.","consider my application","提出明确请求：请对方考虑申请。"],
+["I would be grateful if","K 礼貌请求句：I would be grateful if you could [具体协助].","recommend a suitable student and let me know how the plan could be carried out","请求部门推荐合适对象，并协助落实计划。"],
 ["Thank you for your time","礼貌结束句：Thank you for your time and consideration.","time and consideration","正式感谢，不再重复申请理由。"]
 ],
 2007:[
@@ -680,7 +680,7 @@ const manualSentenceAudit={
 ["What makes it particularly","E 特点一：What makes it particularly worth recommending is [特点一].","[与书籍内容相符的核心特点]","此处必须填与书籍真实内容相符的特点，不能留空或编造书评。"],
 ["In addition,","E 特点二：In addition, [特点二／适用人群].","[另一项具体内容或写作特点]","补充第二个具体特点，与第一点避免重复。"],
 ["I believe it would be","E 推荐理由：I believe it would be an excellent choice for you because [理由].","reflect on [相关主题] and share their different perspectives","把书的特点落到读书俱乐部讨论收益；相关主题也必须与书内容一致。"],
-["I hope you will find","E 礼貌收尾：I hope you will find my recommendation helpful.","my recommendation helpful","收束推荐。"],
+["I hope you will enjoy","E 推荐收尾：I hope you will enjoy your stay here.","enjoy your stay here","结合新到任教授的身份表达祝愿。"],
 ["I look forward to discussing","后续交流句：I look forward to [后续交流].","discussing it with you","把推荐与俱乐部活动联系起来。"]
 ],
 2016:[
@@ -693,9 +693,9 @@ const manualSentenceAudit={
 ],
 2017:[
 ["I am writing to recommend","E 推荐目的句：I am writing to recommend [推荐对象] to you.","[本市景点一] and [本市景点二]","原题没有指定景点名称，必须结合考生所在城市填写，不能默认写故宫。"],
-["What makes it particularly","E 特点一：What makes it particularly worth recommending is [特点一].","its well-preserved palace architecture and rich collection of cultural relics","用与故宫相符的建筑和文物特色支撑推荐，示范地点与后文信息必须一致。"],
-["In addition, visitors can","E 特点二：In addition, [特点二／适用人群].","[与该地点实际情况相符的体验]","补充可体验内容，不能写与景点不符的活动。"],
-["I believe it would be","E 推荐理由：I believe it would be an excellent choice for you because [理由].","appreciate [具体景观／文化价值]","将地点特色转化为对外国教授的访问价值。"],
+["[景点一] is famous for","E 特点句：[景点] is famous for [特色].","[与景点一相符的特色]","将推荐对象与真实特色对应起来。"],
+["while [景点二] offers","E 第二个推荐理由：[景点] offers [体验].","[另一项具体体验]","用第二个景点或体验补充推荐理由。"],
+["Visiting these places will","E 综合价值句：Visiting these places will allow you to [收获].","appreciate the local scenery and learn more about the history and culture of our city","把景点特色转化为对城市风景、历史和文化的体验价值。"],
 ["I hope you will find","E 礼貌收尾：I hope you will find my recommendation helpful.","my recommendation helpful","收束推荐。"],
 ["Please let me know if","E 后续沟通句：Please let me know if you would like to know more.","know more","表示可继续提供信息。"]
 ],
