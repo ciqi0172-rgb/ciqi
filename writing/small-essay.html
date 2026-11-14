@@ -132,7 +132,7 @@
 <div class="foot">频率统计口径：以截图中2005—2026年共22条记录为样本；“介绍信”归为介绍／回复介绍；道歉、辞职、申请合并为低频独立类型。统计仅描述该样本。</div>
 </section>
 <section class="panel" id="system"><div class="head"><span class="tag">核心原则：固定表达＋少量扣题插槽</span><h2>小作文万能模板：固定骨架＋交际模块＋扣题填充</h2><p>万能不是一篇文章通吃，而是“格式骨架＋交际目的句＋主体信息模块＋礼貌收尾”。书信与通知先分开；再判断建议、邀请、推荐、介绍、申请、道歉等交际动作；最后按题干顺序填入对象、内容、时间地点、理由和请求。每道真题只保留完成任务所必需的模块。</p></div>
-<div class="template-status"><b>版本校准中：</b>这是按真题交际功能重新整理的模板模块库。模板不是一篇篇孤立背诵的范文：先选交际动作，再组合主体段。下方历年范文会标出实际调用的模块及需要改写的部分。</div>
+<div class="template-status"><b>逐句校准版：</b>04模板按交际功能拆成可组合模块；2005—2026年22篇范文已逐句建立模板、填充内容与构思映射。黄色标固定表达，蓝色标本题实际填充，绿色标逻辑连接；题干未提供的细节仍保留插槽，不当作真题事实。</div>
 <div class="template-picker" id="templatePicker" aria-label="模板题材选择">
 <button class="template-tile active" type="button" data-template="tpl-letter"><b>通用书信</b><small>称呼、目的、收尾</small></button>
 <button class="template-tile" type="button" data-template="tpl-notice"><b>通知／告示</b><small>发布信息、招募</small></button>
@@ -791,8 +791,9 @@ function renderMarkedEssay(el,x){
    const source=(note[1].split('：').slice(1).join('：')||'').trim();
    const fixedParts=source.split(/\[[^\]]+\]/g).map(t=>t.replace(/[.。\s]+$/,'').trim()).filter(t=>t.length>1);
    fixedParts.forEach(part=>{let from=0,at;while((at=sentence.toLowerCase().indexOf(part.toLowerCase(),from))>=0){hits.push({a:at,b:at+part.length,c:'mark-template',priority:3});from=at+part.length;}});
-   const candidate=(note[2].split(/[；;]/)[0]||'').trim();
-   if(candidate.length>2){const at=sentence.toLowerCase().indexOf(candidate.toLowerCase());if(at>=0)hits.push({a:at,b:at+candidate.length,c:'mark-topic',priority:1});}
+   (note[2].split(/[；;]/)||[]).map(t=>t.trim()).filter(t=>t.length>2&&!t.startsWith('—')).forEach(candidate=>{
+    let from=0,at;while((at=sentence.toLowerCase().indexOf(candidate.toLowerCase(),from))>=0){hits.push({a:at,b:at+candidate.length,c:'mark-topic',priority:1});from=at+candidate.length;}
+   });
   }
   logic.lastIndex=0;let m;while((m=logic.exec(sentence))!==null)hits.push({a:m.index,b:m.index+m[0].length,c:'mark-logic',priority:2});logic.lastIndex=0;
   hits.sort((u,v)=>u.a-v.a||v.priority-u.priority||v.b-u.b);
