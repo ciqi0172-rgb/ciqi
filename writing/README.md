@@ -1,4 +1,11 @@
-# 考研英语一 · 大作文表达训练室
+# 考研英语一 · 写作训练室
+
+## 小作文训练
+- 小作文从0到1：https://ciqi0172-rgb.github.io/ciqi/writing/small-essay.html
+- 按2005—2026年题型清单统计频率，包含书信／通知框架、交际功能模块、22年逐年范文和自检练习。
+
+## 大作文训练
+
 
 ## 访问
 - 学习目录与模板库：https://ciqi0172-rgb.github.io/ciqi/writing/
