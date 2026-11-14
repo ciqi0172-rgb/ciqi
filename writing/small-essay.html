@@ -277,11 +277,6 @@ function showTemplate(id){
 templateTiles.forEach(b=>b.addEventListener('click',()=>showTemplate(b.dataset.template)));
 showTemplate('tpl-letter');
 
-const templateTiles=[...document.querySelectorAll('.template-tile[data-template]')];
-const templateCards=[...document.querySelectorAll('#system .template-card')];
-function showTemplate(id){templateTiles.forEach(b=>b.classList.toggle('active',b.dataset.template===id));templateCards.forEach(c=>c.classList.toggle('template-current',c.id===id));}
-templateTiles.forEach(b=>b.addEventListener('click',()=>showTemplate(b.dataset.template)));
-showTemplate('tpl-letter');
 const freq=[["建议信",6,"2007、2009、2012、2014、2021、2024"],["通知／告示",4,"2010、2016、2020、2023"],["推荐信",3,"2011、2015、2017"],["邀请信",3,"2013、2018、2022"],["介绍／回复介绍",3,"2019、2025、2026"],["道歉信",1,"2008"],["辞职信",1,"2005"],["申请信",1,"2006"]];
 const freqTable=document.getElementById('freqTable');years.forEach(y=>{const tr=document.createElement('tr');tr.innerHTML='<td>'+y[0]+'</td><td>'+y[1]+'</td><td>'+y[2]+'</td>';freqTable.appendChild(tr)});
 const sel=document.getElementById('yearSelect'),container=document.getElementById('essayContainer');years.forEach(y=>{const o=document.createElement('option');o.value=y[0];o.textContent=y[0]+' · '+y[1];sel.appendChild(o)});
