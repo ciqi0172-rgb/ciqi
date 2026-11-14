@@ -862,14 +862,25 @@ const manualSentenceAudit={
 function fallbackTemplate(sentence){
  const t=sentence.toLowerCase();
  if(/i am writing to/.test(t))return "I am writing to [交际动作] [主题／对象].";
+ if(/on behalf of/.test(t))return "On behalf of [组织／群体], I would like to [交际动作].";
  if(/i would be grateful|could you|please let me|we would be grateful/.test(t))return "I would be grateful if you could [对方需要采取的行动].";
  if(/for example|for instance/.test(t))return "For example, [一个具体行为／场景] can [直接作用].";
  if(/because|the reason|due to/.test(t))return "This is because [简洁原因].";
  if(/which|this would|this will|these measures|as a result/.test(t))return "This would help [对象] to [直接效果].";
  if(/thank you|i hope|look forward|best wishes/.test(t))return "I hope [与交际目的相符的期待／结果].";
- if(/will be held|are wanted|is recruiting/.test(t))return "[事项／岗位] will be [活动安排／招募信息].";
+ if(/volunteers are wanted/.test(t))return "Volunteers are wanted for [活动／事项].";
+ if(/applicants should/.test(t))return "Applicants should have [必要能力／条件].";
+ if(/the volunteers will|the selected student will/.test(t))return "The volunteers / selected student will [岗位职责].";
+ if(/is recruiting/.test(t))return "[负责人] is recruiting [岗位／人数] to assist with [项目].";
+ if(/will be held|will take place/.test(t))return "[活动] will be held / take place on [日期] at [地点].";
+ if(/the (film|movie|novel|book) tells the story of/.test(t))return "The [作品] tells the story of [人物／经历].";
+ if(/the program aims to/.test(t))return "The program aims to [目标] by [主要方式].";
+ if(/provides|offers a wide range of/.test(t))return "[机构／场所] provides [资源／服务].";
+ if(/to borrow|to apply|to register/.test(t))return "To [完成事项], simply [具体步骤].";
+ if(/your (experience|presence|support|participation).+would/.test(t))return "Your [经验／出席／支持] would [带来的价值].";
  if(/should|could|would be helpful|it is important/.test(t))return "It would be helpful to [具体行动], which can [直接效果].";
- return "[主体信息] + [具体动作] + [必要细节／作用].";
+ if(/i can|i will/.test(t))return "I will / can [具体行动] to [目的／效果].";
+ return "[主体／对象] + [具体动作] + [必要细节／作用].";
 }
 function extractTopic(sentence){
  return sentence.replace(/^(I am writing to|I am glad to hear from you|On behalf of|I would like to invite you to|I would be grateful if you could|We would be grateful if you could|To begin with|First(?:ly)?|Second(?:ly)?|In addition|More importantly|For example|For instance|As for|Thank you for|I hope|Welcome to|Volunteers are wanted for|Applicants should|The volunteers will|To make things right|To make the transition)\s*/i,'').trim();
