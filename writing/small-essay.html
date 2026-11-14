@@ -504,6 +504,31 @@ const breakdowns={
 2025:{modules:"回复信＋介绍展示内容＋请求协助（复合任务）",fit:"Paul问两个问题：年轻工匠会展示什么、他能帮什么。文章要先具体介绍展示内容，再给Paul明确的筹备任务；不能写成单向邀请或泛泛介绍。",steps:["回应Paul对活动的兴趣。","具体说明展示内容，最好举一至两个传统技艺与创新结合的例子。","回应Paul愿意帮忙，分配明确任务，如宣传、翻译或现场接待，必须符合题目情境。","感谢帮助并表达期待合作。"],caution:"题干没有指定具体工艺或Paul的工作内容时，范文中的示例只能作为可替换方案，不得伪装成题目事实。"},
 2026:{modules:"回复信＋传统文化介绍＋展览信息答疑（复合任务）",fit:"Paul提出两项明确请求：多介绍这些手写信，以及说明它们是否正在公开展出、在哪里。正文必须分别回应，不能把“筹备展览”误写成题目要求。",steps:["回应Paul的感受，感谢他关注这些信件。","介绍信件的来源、内容或情感价值；只写有依据的信息。","明确回答是否公开展出。","若正在展出，给出地点和时间；没有可靠信息时使用待填插槽，不编造。","欢迎Paul前往参观并礼貌收尾。"],caution:"展览地点、日期、门票和预约方式均不是题干提供的信息，必须有可靠依据才能写入。当前范文用方括号保留待核实信息。"}
 };
+const yearTeaching={
+2005:{tpl:"L 辞职／变更告知主模板＋H 道歉模块",fixed:"I am writing to inform you of my decision to [辞职／变更安排].",fill:"resign from my position at the magazine",logic:"先告知决定 → 解释原因 → 承认影响并致歉 → 提供交接安排。告知是主任务，道歉是补充，不可反客为主。"},
+2006:{tpl:"G 申请／请求主模板",fixed:"I am writing to apply for [机会／职位／资助].",fill:"financial support for a student in need；再用主体句填入帮扶对象、资金用途和实施计划。",logic:"申请目的 → 对象与需求 → 计划如何落地 → 请求考虑申请。先说申请什么，再证明计划具体可行。"},
+2007:{tpl:"C 建议信主模板",fixed:"I am writing to offer some suggestions concerning [主题／问题].",fill:"the improvement of our library services；建议插槽填入延长开放时间、增加学习空间等可执行措施。",logic:"点明问题 → 建议一及作用 → 建议二及作用 → 礼貌收尾。每条建议都要对应图书馆能采取的行动。"},
+2008:{tpl:"H 道歉／解释信主模板",fixed:"I am writing to apologize for [具体事情].",fill:"forgetting to return the CD to you as promised；补救插槽填入明天归还或按对方方便的方式寄回。",logic:"承认失误 → 说明影响 → 解释但不推责 → 给出补救 → 再次致歉。注意全文物品统一为CD。"},
+2009:{tpl:"C 建议信主模板",fixed:"I am writing to offer some suggestions concerning [主题／问题].",fill:"the problem of white pollution；建议依次填入个人减少塑料袋、商家减少包装、公众培养环保习惯。",logic:"界定问题 → 个人行动 → 商家行动 → 社会层面倡导。由个人到经营者再到公众，形成责任主体递进。"},
+2010:{tpl:"B 通知／告示骨架",fixed:"Volunteers are wanted for [活动／事项].",fill:"an international conference；职责填接待、引导、现场服务；要求填责任心和英语沟通能力；报名渠道与截止时间按题目。",logic:"标题 → 招募事项 → 工作职责 → 人员要求 → 报名方式。先让读者知道招什么，再判断自己是否符合及如何报名。"},
+2011:{tpl:"E 推荐信主模板",fixed:"I am writing to recommend [推荐对象] to you.",fill:"The Pursuit of Happyness；特点填逆境中坚持的故事、毅力与希望主题；理由落到读者可获得的启发。",logic:"点明推荐对象 → 说明最突出特点 → 补充第二特点 → 解释适合收信人的原因 → 邀请反馈。"},
+2012:{tpl:"C 建议信主模板＋欢迎语",fixed:"I am writing to offer some suggestions concerning [主题／问题].",fill:"suggestions to help you adapt to campus life；社团活动、图书馆资源、向导师同学求助。",logic:"先欢迎建立关系 → 点明帮助适应的目的 → 社交融入 → 学习资源 → 求助渠道 → 祝愿。建议按新生适应需求排序。"},
+2013:{tpl:"D 邀请信主模板",fixed:"I am writing to invite you to [活动／担任的角色].",fill:"serve as a judge for our English speech contest；活动日期地点填题干信息；邀请理由填专业经验和评审价值。",logic:"明确邀请及角色 → 时间地点 → 活动内容 → 对方参与价值 → 请求确认。角色必须写serve as a judge，不能只写attend。"},
+2014:{tpl:"C 建议信主模板",fixed:"I am writing to offer some suggestions concerning [主题／问题].",fill:"ways to improve students' physical fitness；建议按运动机会、体育设施、健康教育三个学校管理层面填入。",logic:"点明体质问题 → 提供运动机会 → 改善设施 → 培养长期习惯。由条件供给推进到行为养成。"},
+2015:{tpl:"E 推荐信主模板",fixed:"I am writing to recommend [推荐对象] to you.",fill:"[书名]；特点和第二理由必须根据实际书籍内容填入，不能保留空泛的“personal growth”代替具体书名。",logic:"明确推荐哪本书 → 提炼其独特内容 → 补充可读性／讨论价值 → 说明适合读书俱乐部的原因。"},
+2016:{tpl:"B 通知／告示骨架＋F 介绍信息模块",fixed:"The university library welcomes all international students.",fill:"资源、空间、数字服务和借阅规则分别填入题干给定信息；未知借阅规则保留待填，不可编造。",logic:"告示标题 → 欢迎对象 → 馆藏资源 → 空间／数字设施 → 借阅方式 → 求助渠道。按使用者实际使用流程排列。"},
+2017:{tpl:"E 推荐信主模板",fixed:"I am writing to recommend [推荐对象] to you.",fill:"[景点名称]；自然／文化特色和游客体验必须与该景点事实相符，不能只写泛化的“distinctive scenery”。",logic:"明确推荐地点 → 讲最有辨识度的特色 → 补充可体验内容 → 解释为何值得去 → 提供后续帮助。"},
+2018:{tpl:"D 邀请信主模板",fixed:"I am writing to invite you to [活动／担任的角色].",fill:"attend our graduation ceremony；时间地点按题干填写；意义填庆祝毕业成果、表达感谢，对方出席令毕业生感到重要。",logic:"发出邀请 → 交代时间地点 → 解释典礼意义 → 说明受邀者出席的价值 → 期待回复。"},
+2019:{tpl:"F 介绍／回复信主模板",fixed:"I am writing to tell you more about [介绍对象／主题].",fill:"Project Hope；项目宗旨、具体资助方式和志愿者参与行动必须按题目要求填充。",logic:"点明介绍对象 → 概述项目宗旨 → 解释帮助方式 → 说明志愿者能做什么 → 礼貌收尾。"},
+2020:{tpl:"B 通知／告示骨架",fixed:"An international singing competition will be held at [地点] on [日期].",fill:"活动为国际歌唱比赛；参与对象明确包括留学生；目的填音乐交流与文化了解；报名部门和截止时间依题干填写。",logic:"标题 → 活动名称与时间地点 → 参与对象 → 活动目的 → 报名方法 → 期待参与。"},
+2021:{tpl:"C 建议信主模板",fixed:"I am writing to offer some suggestions concerning [主题／问题].",fill:"your plan to look for a job in China；建议填简历、了解行业雇主、提升中文并拓展职业联系。",logic:"回应朋友计划 → 简历准备 → 行业信息 → 语言与人脉补充 → 祝愿。由求职材料到市场了解，再到长期竞争力。"},
+2022:{tpl:"D 邀请信主模板",fixed:"I am writing to invite you to [活动／担任的角色].",fill:"attend our innovation competition；若原题角色为评委，必须把插槽替换为serve as a judge；活动内容和价值围绕创新项目。",logic:"明确邀请及角色 → 活动时间地点 → 比赛内容 → 教授参与价值 → 请求确认。不能把attend误当作评委职责。"},
+2023:{tpl:"B 通知／告示骨架",fixed:"Volunteers are wanted for [活动／事项].",fill:"the campus sports program；职责填活动准备、引导参与者、现场协助；要求填责任心与合作能力；报名信息按题干。",logic:"标题 → 招募岗位 → 工作内容 → 人员要求 → 报名方式 → 期待参与。"},
+2024:{tpl:"C 建议信主模板",fixed:"I am writing to offer some suggestions concerning [主题／问题].",fill:"your report on an ancient Chinese scientist；建议填人物背景、成就原理、历史意义、现代联系和可靠资料。",logic:"回应报告任务 → 人物与时代背景 → 解释科学成就 → 说明历史意义 → 联系现代生活并核实来源。按报告本身的论证顺序给建议。"},
+2025:{tpl:"F 介绍／回复主模板＋K 请求模块",fixed:"I am glad to hear from you. I am writing to tell you more about [介绍对象／主题].",fill:"our campus craft demonstration；介绍插槽填传统技艺与现代创意结合、制作过程；请求插槽明确Paul承担的宣传／翻译／接待等具体任务，按题目情境选择。",logic:"回应来信 → 介绍展示内容 → 举例说明工艺 → 回答对方愿意帮忙 → 明确分配任务 → 感谢并期待合作。"},
+2026:{tpl:"F 介绍／回复主模板",fixed:"I am glad to hear from you. I am writing to tell you more about [介绍对象／主题].",fill:"the handwritten letters exchanged among Chinese family members；介绍内容填信件记录的家庭情感与生活；再单独回答是否公开展出、地点和展期，必须有题干依据。",logic:"回应Paul → 介绍信件是什么 → 解释其价值 → 明确回答是否展出 → 给出地点／展期 → 礼貌收尾。两问必须分别作答。"}
+};
+
 function addBreakdown(article,x){
  const info=breakdowns[x[0]];if(!info)return;
  const box=document.createElement('details');box.className='breakdown';
@@ -512,6 +537,13 @@ function addBreakdown(article,x){
  function section(title,content){const h=document.createElement('h4');h.textContent=title;body.appendChild(h);const p=document.createElement('p');p.textContent=content;body.appendChild(p);}
  section('① 这篇实际调用的模板模块',info.modules);
  section('② 为什么这样匹配',info.fit);
+ const teach=yearTeaching[x[0]];
+ if(teach){
+  section('③ 本篇调用04栏的哪一个模板',teach.tpl);
+  const th=document.createElement('h4');th.textContent='④ 模板原句与本题填充';body.appendChild(th);
+  const fp=document.createElement('p');fp.className='template-fill-note';fp.innerHTML='<b>04栏模板句：</b>'+teach.fixed+'<br><b>本题实际填入：</b>'+teach.fill;body.appendChild(fp);
+  section('⑤ 这篇文章的整体思路',teach.logic);
+ }
  const h=document.createElement('h4');h.textContent='③ 从题目到文章：写作顺序';body.appendChild(h);
  const ol=document.createElement('ol');info.steps.forEach(t=>{const li=document.createElement('li');li.textContent=t;ol.appendChild(li)});body.appendChild(ol);
  const logic=document.createElement('p');logic.className='logic-map';
