@@ -728,7 +728,7 @@ const combinationPlans={
 2008:{main:"⑥ 事务处理类（道歉）",aux:"③ 建议解决类的措施—效果环节",why:"道歉、承认影响和承担责任必须由⑥主导；③只借用“具体措施＋预期效果”，帮助补救方案可执行，不能把道歉信改写成一般建议信。",insert:"承认失误、说明影响和原因之后，插入③式补救措施；最后回到⑥再次致歉并承诺避免重犯。",chain:"⑥承认忘还CD → ⑥说明对方受到的影响 → ⑥解释但不推责 → ③提出归还方式与替代安排 → ⑥承诺改进并再次致歉。"},
 2009:{main:"③ 建议解决类",aux:"无（建议主体递进已足够）",why:"白色污染题按责任主体提出措施即可。个人、商家、学校和社区构成递进，不需要插入经历模板，否则容易偏离解决问题的主线。",insert:"不插入辅助模板；在商家措施后用具体折扣例子解释实施方式，再上升到公众倡导。",chain:"③界定白色污染 → ③个人减少一次性塑料袋 → ③商家减少包装 → ③用商店折扣举例 → ③学校社区开展宣传 → 收束。"},
 2010:{main:"⑤ 请求合作类（招募）",aux:"② 活动组织类的工作安排环节",why:"招募的核心是需要什么人、承担什么职责、具备什么条件和如何申请；②只补充岗前说明会等工作流程，不取代⑤的招募主线。",insert:"先说明招募对象，再用⑤交代职责和条件；在申请方式之前插入②式岗前安排，最后回到⑤说明申请渠道和截止时间。",chain:"通知格式 → ⑤说明招募岗位 → ⑤列出职责 → ⑤说明能力要求 → ②补充岗前briefing → ⑤报名方式与截止日期。"},
-2011:{main:"① 介绍推荐类",aux:"④ 经历感受类",why:"推荐电影是全文目的，①负责介绍影片、说明特点并完成推荐；“我最近看过”提供真实体验入口，④用具体情节和个人感受增强说服力。",insert:"先用①点明电影并概述故事；在客观特点之后插入④的观看细节与感受；随后用“What makes the film especially worth watching...”回到①，说明推荐价值。",chain:"①点明推荐对象 → ①概述故事 → ④交代观看体验并抓住父亲坚持的细节 → ④解释触动自己的原因 → ①总结影片价值并完成推荐。"},
+2011:{main:"① 介绍推荐类",aux:"无（题干未提供亲历，不虚构观看经历）",why:"推荐电影的主线是介绍剧情特点并说明推荐理由。题干没有提供个人观看经历，因此不强行插入④；用影片本身的情节作为客观例子即可。",insert:"先点明电影并概述故事，再用父亲照顾孩子、面对挫折仍坚持的情节说明主题，最后回到①说明影片值得推荐的原因。",chain:"①点明推荐对象 → ①概述故事 → ①用剧情细节说明人物特点 → ①提炼毅力、爱与责任的主题 → ①说明适合收信人的理由 → 推荐收束."},
 2012:{main:"③ 建议解决类",aux:"欢迎语（关系句，不另启一套模板）",why:"核心任务是帮助新生适应校园生活，③按社交融入、学习资源、求助渠道逐项给建议即可。开头欢迎只是建立关系，不需要把④或其他模板硬塞进来。",insert:"开头先用简短Welcome完成欢迎，再立即回到③的建议主线；每条建议都对应新生的一种适应需求。",chain:"欢迎新生 → ③点明适应校园目的 → ③参加社团解决社交融入 → ③使用图书馆资源支持学习 → ③提供求助渠道 → 祝愿。"},
 2013:{main:"② 活动组织类（邀请）",aux:"① 介绍推荐类的活动亮点",why:"主交际动作是邀请教授担任评委，②负责邀请、活动安排和期待回复；①只补充比赛内容与价值，让教授明白活动是什么、为什么值得参与。",insert:"发出邀请后，用①介绍参赛者和比赛内容；再说明活动价值及教授专业经验的作用，最后回到②明确接受邀请并期待回复。",chain:"②发出邀请并明确judge角色 → ①介绍比赛参与者与演讲内容 → ①说明比赛对学生的价值 → ②说明教授评审的价值 → ②期待接受邀请与回复。"},
 2014:{main:"③ 建议解决类",aux:"无（建议链完整）",why:"提升体质适合按学校可采取的条件供给和学生行为养成展开；运动机会、设施、健康教育已经形成完整递进。",insert:"不插入辅助模板；每项措施之后说明直接效果，最后总结短期体质与长期健康收益。",chain:"③提出改善体质主题 → ③增加运动机会 → ③改善体育设施 → ③开展健康教育 → ③总结预期效果 → 收尾。"},
@@ -841,7 +841,7 @@ function addBreakdown(article,x){
    li.appendChild(fill);
    const thought=document.createElement('p');thought.textContent='构思与逻辑：'+note[3];li.appendChild(thought);
   }else{
-   const missing=document.createElement('p');missing.className='template-fill-note';const plan=combinationPlans[x[0]];const module=inferSentenceModule(sentence,plan);missing.textContent='04模板来源：'+module+'\\n'+sentenceRole(sentence,i,sentences.length)+'\\n04可迁移句型：'+fallbackTemplate(sentence)+'\\n本题填充：'+sentence+'\\n构思：本句承接全文主线，先确定它承担的交际功能，再把本题的人物、动作和必要细节填入句型；如果它属于辅助模板，完成这一环后必须回到主模板。';li.appendChild(missing);
+   const missing=document.createElement('p');missing.className='template-fill-note';const plan=combinationPlans[x[0]];const module=inferSentenceModule(sentence,plan);missing.textContent='04模板来源：'+module+'\n'+sentenceRole(sentence,i,sentences.length)+'\n04可迁移句型：'+fallbackTemplate(sentence)+'\n本题填充：'+sentence+'\n构思：本句承接全文主线，先确定它承担的交际功能，再把本题的人物、动作和必要细节填入句型；如果它属于辅助模板，完成这一环后必须回到主模板。';li.appendChild(missing);
   }
   sentenceList.appendChild(li);
  });
