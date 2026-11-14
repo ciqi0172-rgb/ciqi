@@ -10,6 +10,14 @@
 .template-nav a:active{background:#e4f0fa}
 .template-card{scroll-margin-top:76px}
 .template-status{font-size:13px;color:#765b27;background:#fff6df;border:1px solid #f0dfb3;border-radius:8px;padding:10px 12px;margin:12px 0 18px}
+
+.template-picker{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:14px 0 8px}
+.template-tile{min-height:70px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:10px 8px;text-align:left;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:5px}
+.template-tile b{font-size:12px}.template-tile small{font-size:10px;color:var(--muted)}
+.template-tile.active{border:2px solid var(--green);background:var(--green2);padding:9px 7px}
+.template-picker-hint{font-size:11px;color:var(--muted);line-height:1.7;margin:8px 0 14px}
+.template-card{display:none}.template-card.template-current{display:block}
+@media(max-width:420px){.template-picker{grid-template-columns:repeat(2,minmax(0,1fr))}.template-tile{min-height:64px}}
 </style>
 </head><body><div class="shell">
 <header class="top"><div class="brand"><div class="mark">小</div><div><small>KAOYAN ENGLISH I · WRITING LAB</small><b>英语一小作文训练室</b></div></div><a class="back" href="index.html">← 返回作文训练首页</a></header>
@@ -101,11 +109,17 @@
 <h3>历年题型分布</h3><table><thead><tr><th>年份</th><th>类型</th><th>题目任务（按你提供的表）</th></tr></thead><tbody id="freqTable"></tbody></table>
 <div class="foot">频率统计口径：以截图中2005—2026年共22条记录为样本；“介绍信”归为介绍／回复介绍；道歉、辞职、申请合并为低频独立类型。统计仅描述该样本。</div>
 </section>
-<section class="panel" id="system"><div class="head"><span class="tag">核心原则：固定表达＋少量扣题插槽</span><h2>一套通用骨架，五类主模板</h2><p>先选文体，再选交际功能。书信格式固定；主体段根据任务替换。不要把每篇作文背成完全不同的文章。</p></div>
+<section class="panel" id="system"><div class="head"><span class="tag">核心原则：固定表达＋少量扣题插槽</span><h2>模板库：按题材选择，再查看对应模板</h2><p>先选文体，再选交际功能。书信格式固定；主体段根据任务替换。不要把每篇作文背成完全不同的文章。</p></div>
 <div class="template-status"><b>版本校准中：</b>以下是网站现存的第一版通用模板。尚未与用户最初提交的模板原稿逐句核对，也尚未完成与22篇真题范文的逐篇匹配；在完成核对前，不把它们标记为最终版。</div>
-<nav class="template-nav" aria-label="按题材查看模板">
-<a href="#tpl-letter">通用书信</a><a href="#tpl-notice">通知／告示</a><a href="#tpl-advice">建议信</a><a href="#tpl-invite">邀请信</a><a href="#tpl-recommend">推荐信</a><a href="#tpl-intro">介绍／回复</a><a href="#tpl-apply">申请／求职</a><a href="#tpl-apology">道歉信</a><a href="#tpl-thanks">感谢信</a><a href="#tpl-request">请求信</a>
-</nav>
+<div class="template-picker" id="templatePicker" aria-label="模板题材选择">
+<button class="template-tile active" type="button" data-template="tpl-letter"><b>书信格式</b><small>通用骨架</small></button>
+<button class="template-tile" type="button" data-template="tpl-notice"><b>通知／告示</b><small>活动与招募</small></button>
+<button class="template-tile" type="button" data-template="tpl-advice"><b>建议信</b><small>提出建议</small></button>
+<button class="template-tile" type="button" data-template="tpl-invite"><b>邀请信</b><small>邀请与安排</small></button>
+<button class="template-tile" type="button" data-template="tpl-recommend"><b>推荐信</b><small>推荐与理由</small></button>
+<button class="template-tile" type="button" data-template="tpl-intro"><b>介绍／回复</b><small>介绍与答复</small></button>
+</div>
+<p class="template-picker-hint">点选一个小方块，下面只显示这一类模板。当前先展示网站已有的第一版六类模板，不把尚未核验的类型冒充成已完成模板。</p>
 <div class="template template-card" id="tpl-letter"><h3>A. 通用书信格式</h3><div class="en">Dear [称呼],
 
 I am writing to [写信目的].
@@ -229,6 +243,16 @@ const years=[
 [2025,"介绍信","介绍手工艺展示及准备工作","Dear Alex,\n\nI am glad to tell you about the traditional handicraft exhibition we are preparing.\n\nThe exhibition will present a selection of traditional crafts and explain the skills and cultural stories behind them. To prepare for it, we are collecting representative works, arranging display materials and preparing brief introductions for visitors. We also hope to make the exhibition interactive so that visitors can better appreciate the craftsmanship.\n\nI hope you will find the exhibition interesting.\n\nYours sincerely,\nLi Ming","介绍展示内容＋准备工作。若题干给出具体工艺、时间、地点，逐项替换，不泛化。"],
 [2026,"回复介绍信","回复Paul，介绍中国家庭手写信，说明展览情况","Dear Paul,\n\nIt is lovely to hear from you. I am happy to tell you about the tradition of handwritten letters in Chinese families and the exhibition we are preparing.\n\nIn many families, handwritten letters have been used to express care, share important news and preserve memories across generations. For the exhibition, we are collecting sample letters, organizing them by theme and preparing explanations to help visitors understand their stories.\n\nI hope this gives you a clearer picture. I would be delighted to show you the exhibition when it is ready.\n\nBest wishes,\nLi Ming","这是复合任务：回复来信＋介绍家庭手写信＋说明展览准备情况。两项内容必须分别写到，不能只泛谈传统文化。"]
 ];
+
+// 模板库：小方块选择器；一次只展示所选题材
+const templateTiles=[...document.querySelectorAll('.template-tile[data-template]')];
+const templateCards=[...document.querySelectorAll('#system .template-card')];
+function showTemplate(id){
+  templateTiles.forEach(b=>b.classList.toggle('active',b.dataset.template===id));
+  templateCards.forEach(card=>card.classList.toggle('template-current',card.id===id));
+}
+templateTiles.forEach(b=>b.addEventListener('click',()=>showTemplate(b.dataset.template)));
+showTemplate('tpl-letter');
 const freq=[["建议信",6,"2007、2009、2012、2014、2021、2024"],["通知／告示",4,"2010、2016、2020、2023"],["推荐信",3,"2011、2015、2017"],["邀请信",3,"2013、2018、2022"],["介绍／回复介绍",3,"2019、2025、2026"],["道歉信",1,"2008"],["辞职信",1,"2005"],["申请信",1,"2006"]];
 const freqTable=document.getElementById('freqTable');years.forEach(y=>{const tr=document.createElement('tr');tr.innerHTML='<td>'+y[0]+'</td><td>'+y[1]+'</td><td>'+y[2]+'</td>';freqTable.appendChild(tr)});
 const sel=document.getElementById('yearSelect'),container=document.getElementById('essayContainer');years.forEach(y=>{const o=document.createElement('option');o.value=y[0];o.textContent=y[0]+' · '+y[1];sel.appendChild(o)});
