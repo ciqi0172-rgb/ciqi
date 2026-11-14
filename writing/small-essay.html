@@ -851,7 +851,7 @@ function fallbackTemplate(sentence){
  return "[主体信息] + [具体动作] + [必要细节／作用].";
 }
 function extractTopic(sentence){
- return sentence.replace(/^(I am writing to|I am glad to hear from you|On behalf of|I would like to invite you to|I would be grateful if you could|We would be grateful if you could|To begin with|First(?:ly)?|Second(?:ly)?|In addition|More importantly|For example|For instance|As for|Thank you for|I hope|Welcome to|Volunteers are wanted for|Applicants should|The volunteers will|To make things right|To make the transition)\\s*/i,'').trim();
+ return sentence.replace(/^(I am writing to|I am glad to hear from you|On behalf of|I would like to invite you to|I would be grateful if you could|We would be grateful if you could|To begin with|First(?:ly)?|Second(?:ly)?|In addition|More importantly|For example|For instance|As for|Thank you for|I hope|Welcome to|Volunteers are wanted for|Applicants should|The volunteers will|To make things right|To make the transition)\s*/i,'').trim();
 }
 function sentenceRole(sentence,index,total){
  const t=sentence.toLowerCase();let role="补充具体信息：把题目要求的内容说清楚，并为读者提供必要细节。";
@@ -915,7 +915,7 @@ function addBreakdown(article,x){
 function renderMarkedEssay(el,x){
  const legend=document.createElement('div');legend.className='mark-legend';
  legend.innerHTML='<span class="l-template">黄色：可迁移固定表达</span><span class="l-topic">蓝色：本题具体信息</span><span class="l-logic">绿色：逻辑关系／衔接</span>';el.appendChild(legend);
- const lines=x[3].split(/\\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$|\\[发布单位|\\[日期)/i.test(t));
+ const lines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$|\[发布单位|\[日期)/i.test(t));
  const sentences=lines.flatMap(line=>line.match(/[^.!?]+[.!?]?/g)||[]).map(t=>t.trim()).filter(Boolean);
  const patterns=[
   {re:/^I am writing to (?:inform you|ask whether|offer|recommend|invite you|apologize|introduce|express|share|tell you)/i,cls:'mark-template'},
@@ -943,7 +943,7 @@ function renderMarkedEssay(el,x){
   {re:/^As for/i,cls:'mark-logic'},
   {re:/^Finally/i,cls:'mark-logic'}
  ];
- const logic=/\\b(which would|which can|so that|because|although|while|as a result|for this reason|in particular|such as)\\b/ig;
+ const logic=/\b(which would|which can|so that|because|although|while|as a result|for this reason|in particular|such as)\b/ig;
  sentences.forEach(sentence=>{
   const p=document.createElement('p');p.style.margin='0 0 9px';
   const matches=[];patterns.forEach(o=>{const m=sentence.match(o.re);if(m)matches.push({a:m.index,b:m.index+m[0].length,c:o.cls,priority:3});});
