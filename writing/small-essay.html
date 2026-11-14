@@ -470,7 +470,7 @@ Li Ming`,
 2026:`Dear Paul,
 
 I am glad to hear from you. I am writing to tell you more about the handwritten letters exchanged among Chinese family members.
-To begin with, these letters record everyday concerns, affection and important moments in family life. Their handwriting and personal details make them valuable records of family relationships.
+To begin with, written by [家庭成员关系] during [时间段], these letters record [日常生活内容], offering a glimpse into how ordinary families expressed care and stayed connected. Their handwriting and personal details make them valuable records of family relationships.
 As for your question about the exhibition, [明确回答目前是否公开展出]. If they are on display, you can see them at [题目或可靠材料提供的具体地点] during [题目或可靠材料提供的展期].
 I hope this information is helpful. Please feel free to ask if you would like to know anything else.
 
@@ -539,7 +539,7 @@ const yearTeaching={
 2023:{tpl:"B 通知／告示骨架＋研究助理招募模块",fixed:"Professor Smith is recruiting one student to assist with [研究项目].",fill:"his research project on campus sports activities；职责填数据收集、观察活动、记录研究结果；要求填体育兴趣、沟通能力、细致负责和相关经验。",logic:"NOTICE → 项目背景与招募目的 → 研究助理职责 → 任职要求 → 报名方式 → Li Ming落款。重点是研究项目助理，不是体育活动志愿者。"},
 2024:{tpl:"C 建议信主模板",fixed:"I am writing to offer some suggestions concerning [主题／问题].",fill:"your report on an ancient Chinese scientist；建议填人物背景、成就原理、历史意义、现代联系和可靠资料。",logic:"回应报告任务 → 人物与时代背景 → 解释科学成就 → 说明历史意义 → 联系现代生活并核实来源。按报告本身的论证顺序给建议。"},
 2025:{tpl:"F 介绍／回复主模板＋K 请求模块",fixed:"I am glad to hear from you. I am writing to tell you more about [介绍对象／主题].",fill:"our campus craft demonstration；介绍插槽填传统技艺与现代创意结合、制作过程；请求插槽明确Paul承担的宣传／翻译／接待等具体任务，按题目情境选择。",logic:"回应来信 → 介绍展示内容 → 举例说明工艺 → 回答对方愿意帮忙 → 明确分配任务 → 感谢并期待合作。"},
-2026:{tpl:"F 介绍／回复主模板",fixed:"I am glad to hear from you. I am writing to tell you more about [介绍对象／主题].",fill:"the handwritten letters exchanged among Chinese family members；介绍内容填信件记录的家庭情感与生活；再单独回答是否公开展出、地点和展期，必须有题干依据。",logic:"回应Paul → 介绍信件是什么 → 解释其价值 → 明确回答是否展出 → 给出地点／展期 → 礼貌收尾。两问必须分别作答。"}
+2026:{tpl:"F 介绍／回复主模板",fixed:"I am glad to hear from you. I am writing to tell you more about [介绍对象／主题].",fill:"the handwritten letters exchanged among Chinese family members；内容插槽填写信人关系、时间段和日常生活记录；展览问题必须明确回答是否公开展出，并在有依据时填写地点与展期。",logic:"回应Paul → 介绍信件来源与内容 → 解释其情感和史料价值 → 明确回答是否展出 → 若展出则给地点／展期 → 欢迎参观并收尾。两问必须分别作答。"}
 };
 
 const manualSentenceAudit={
@@ -719,7 +719,7 @@ const manualSentenceAudit={
 2026:[
 ["I am glad to hear","F 回信回应句：I am glad to hear from you.","—（固定回信回应句，无需填入主题信息）","回应来信，不直接跳入说明。"],
 ["I am writing to tell","F 介绍目的句：I am writing to tell you more about [介绍对象／主题].","the handwritten letters exchanged among Chinese family members","明确介绍对象。"],
-["To begin with, these letters","F 基本情况句：To begin with, [基本情况].","record everyday concerns, affection and important moments in family life","介绍信件内容；须依据题干材料，不自行推定年代、作者或具体故事。"],
+["To begin with, written by","F 基本情况句：To begin with, [基本情况].","[家庭成员关系]","把写信人、时间和信件内容作为可填信息；题干未给的年代和家庭关系必须保留插槽。"],
 ["Their handwriting and personal","F 价值说明句：I believe [简短评价／意义].","handwriting and personal details；records of family relationships","解释其价值，不只是重复“这些是手写信”。"],
 ["As for your question","F 分项答疑句：As for [重点信息二], [具体说明].","[明确回答目前是否公开展出]","直接回答是否公开展出，不能含糊回避。"],
 ["If they are on display","F 地点／时间插槽：If [条件], you can see them at [地点] during [展期].","[题目或可靠材料提供的具体地点]；[可靠展期]","只有确认正在展出时才使用条件句；地点和展期必须有依据。"],
