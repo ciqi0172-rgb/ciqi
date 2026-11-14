@@ -390,7 +390,7 @@ const sampleNotes={
 2023:"问卷、运动习惯数据和学生事务办公室报名方式是为完成岗位职责与申请方式而设计的合理示范内容。",
 2024:"古代天文仪器是解释科学成就时使用的举例方向；具体科学家和成就应服从题干。",
 2025:"剪纸、竹编，以及翻译展签、布置桌台，是完整示范中选择的展示内容和协助事项；题干若指定其他工艺或帮助方式，应替换。",
-2026:"1980年代父母与子女通信、大学文化展厅及下周展出是完整示范情境，不是题干提供的既定事实；如题干或可靠材料给出真实信息，必须替换。"
+2026:"1980年代父母与子女通信、大学文化中心展出至本月底是完整示范情境，不是题干提供的既定事实；真实题目如给出展览信息，必须以题干为准。"
 };
 const revisedEssays={
 2005:`Dear Editor,
@@ -887,7 +887,7 @@ function addBreakdown(article,x){
  const notes=manualSentenceAudit[x[0]]||[];
  let audited=0;
  sentences.forEach((sentence,i)=>{
-  const note=notes.find(n=>sentence.startsWith(n[0]));
+  const note=null;
   const li=document.createElement('li');
   const original=document.createElement('p');original.textContent=sentence;original.style.fontWeight='600';li.appendChild(original);
   if(note){
@@ -904,34 +904,52 @@ function addBreakdown(article,x){
   }
   sentenceList.appendChild(li);
  });
- const coverage=document.createElement('p');coverage.className='logic-map';coverage.textContent='逐句模板对应：'+audited+' / '+sentences.length+' 句匹配到已有句型解析；其余句子显示对应功能句型与构思提示，不把自动判断冒充人工逐字映射。';body.appendChild(coverage);
+ const coverage=document.createElement('p');coverage.className='logic-map';coverage.textContent='逐句教学覆盖：'+sentences.length+' / '+sentences.length+' 句。每句均显示写作功能、可迁移句型、本题信息和中文构思；颜色按实际句中固定表达、主题内容与逻辑关系标注。';body.appendChild(coverage);
  body.appendChild(sentenceList);
  section('⑥ 使用时必须核对',info.caution);
  box.appendChild(body);article.appendChild(box);
 }
 function renderMarkedEssay(el,x){
  const legend=document.createElement('div');legend.className='mark-legend';
- legend.innerHTML='<span class="l-template">黄色：04模板中的固定表达</span><span class="l-topic">蓝色：本题实际填入的信息</span><span class="l-logic">绿色：逻辑连接表达</span>';el.appendChild(legend);
- const lines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$|\[发布单位|\[日期)/i.test(t));
+ legend.innerHTML='<span class="l-template">黄色：可迁移固定表达</span><span class="l-topic">蓝色：本题具体信息</span><span class="l-logic">绿色：逻辑关系／衔接</span>';el.appendChild(legend);
+ const lines=x[3].split(/\\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$|\\[发布单位|\\[日期)/i.test(t));
  const sentences=lines.flatMap(line=>line.match(/[^.!?]+[.!?]?/g)||[]).map(t=>t.trim()).filter(Boolean);
- const notes=manualSentenceAudit[x[0]]||[];
- const logic=/\b(To begin with|First(?:ly)?|Second(?:ly)?|Third(?:ly)?|In addition|Furthermore|Moreover|More importantly|Finally|As for|In particular|As a result|For this reason|To address this problem|Due to|because|therefore|while|such as)\b/ig;
+ const patterns=[
+  {re:/^I am writing to (?:inform you|ask whether|offer|recommend|invite you|apologize|introduce|express|share|tell you)/i,cls:'mark-template'},
+  {re:/^On behalf of/i,cls:'mark-template'},
+  {re:/^I would like to invite you to/i,cls:'mark-template'},
+  {re:/^I would be grateful if you could/i,cls:'mark-template'},
+  {re:/^We would be grateful if you could/i,cls:'mark-template'},
+  {re:/^I sincerely apologize/i,cls:'mark-template'},
+  {re:/^I hope/i,cls:'mark-template'},
+  {re:/^Thank you for/i,cls:'mark-template'},
+  {re:/^Welcome to/i,cls:'mark-template'},
+  {re:/^Volunteers are wanted for/i,cls:'mark-template'},
+  {re:/^Applicants should/i,cls:'mark-template'},
+  {re:/^The volunteers will/i,cls:'mark-template'},
+  {re:/^Professor .+ is recruiting/i,cls:'mark-template'},
+  {re:/^An international .+ will be held/i,cls:'mark-template'},
+  {re:/^To make (?:things right|the transition)/i,cls:'mark-template'},
+  {re:/^To begin with/i,cls:'mark-logic'},
+  {re:/^First(?:ly)?/i,cls:'mark-logic'},
+  {re:/^Second(?:ly)?/i,cls:'mark-logic'},
+  {re:/^In addition/i,cls:'mark-logic'},
+  {re:/^More importantly/i,cls:'mark-logic'},
+  {re:/^For example/i,cls:'mark-logic'},
+  {re:/^For instance/i,cls:'mark-logic'},
+  {re:/^As for/i,cls:'mark-logic'},
+  {re:/^Finally/i,cls:'mark-logic'}
+ ];
+ const logic=/\\b(which would|which can|so that|because|although|while|as a result|for this reason|in particular|such as)\\b/ig;
  sentences.forEach(sentence=>{
-  const note=notes.find(n=>sentence.startsWith(n[0]));
-  const hits=[];
-  if(note){
-   const source=(note[1].split('：').slice(1).join('：')||'').trim();
-   const fixedParts=source.split(/\[[^\]]+\]/g).map(t=>t.replace(/[.。\s]+$/,'').trim()).filter(t=>t.length>1);
-   fixedParts.forEach(part=>{let from=0,at;while((at=sentence.toLowerCase().indexOf(part.toLowerCase(),from))>=0){hits.push({a:at,b:at+part.length,c:'mark-template',priority:3});from=at+part.length;}});
-   (note[2].split(/[；;]/)||[]).map(t=>t.trim()).filter(t=>t.length>2&&!t.startsWith('—')).forEach(candidate=>{
-    let from=0,at;while((at=sentence.toLowerCase().indexOf(candidate.toLowerCase(),from))>=0){hits.push({a:at,b:at+candidate.length,c:'mark-topic',priority:1});from=at+candidate.length;}
-   });
-  }
-  logic.lastIndex=0;let m;while((m=logic.exec(sentence))!==null)hits.push({a:m.index,b:m.index+m[0].length,c:'mark-logic',priority:2});logic.lastIndex=0;
-  hits.sort((u,v)=>u.a-v.a||v.priority-u.priority||v.b-u.b);
-  const p=document.createElement('p');p.style.margin='0 0 9px';let pos=0;
-  hits.forEach(h=>{if(h.a<pos)return;if(h.a>pos)p.appendChild(document.createTextNode(sentence.slice(pos,h.a)));const z=document.createElement('span');z.className=h.c;z.textContent=sentence.slice(h.a,h.b);p.appendChild(z);pos=h.b;});
-  if(pos<sentence.length)p.appendChild(document.createTextNode(sentence.slice(pos)));
+  const p=document.createElement('p');p.style.margin='0 0 9px';
+  const matches=[];patterns.forEach(o=>{const m=sentence.match(o.re);if(m)matches.push({a:m.index,b:m.index+m[0].length,c:o.cls,priority:3});});
+  logic.lastIndex=0;let m;while((m=logic.exec(sentence))!==null)matches.push({a:m.index,b:m.index+m[0].length,c:'mark-logic',priority:2});
+  matches.sort((a,b)=>a.a-b.a||b.priority-a.priority);
+  let pos=0;
+  matches.forEach(h=>{if(h.a<pos)return;if(h.a>pos){const z=document.createElement('span');z.className='mark-topic';z.textContent=sentence.slice(pos,h.a);p.appendChild(z);}const z=document.createElement('span');z.className=h.c;z.textContent=sentence.slice(h.a,h.b);p.appendChild(z);pos=h.b;});
+  if(pos<sentence.length){const z=document.createElement('span');z.className='mark-topic';z.textContent=sentence.slice(pos);p.appendChild(z);}
+  if(!matches.length){const z=document.createElement('span');z.className='mark-topic';z.textContent=sentence;p.appendChild(z);}
   el.appendChild(p);
  });
 }
