@@ -413,7 +413,7 @@ Li Ming`,
 2020:`NOTICE
 
 An international singing competition will be held at [地点] on [日期]. All students, including international students, are welcome to participate.
-The competition is designed to give students an opportunity to share their musical interests and learn about different cultures. Participants may perform songs in different languages, making the event a lively celebration of cultural diversity.
+The competition is designed to give students an opportunity to share their musical interests and learn about different cultures. Participants may perform songs in different languages, making the event a lively celebration of cultural diversity. It will also encourage communication among students from different backgrounds and help create a friendly campus atmosphere.
 Those interested should register with the organizing committee by [截止日期] through [报名方式]. Further details about the schedule and performance requirements will be provided to registered participants.
 We look forward to your participation.
 
@@ -810,14 +810,14 @@ function addBreakdown(article,x){
  section('① 任务拆分与文体判断',info.fit);
  if(combo) section('② 主模板与辅助模板：插入逻辑和闭环', '主模板：'+combo.main+'。\n辅助模板：'+combo.aux+'。\n为什么这样搭配：'+combo.why+'\n辅助模板插入位置：'+combo.insert+'\n完整逻辑链：'+combo.chain);
  if(teach){
-  section('③ 本篇调用的04模板模块',teach.tpl);
+  section('③ 本篇调用的04模板模块',combo ? ('主模板：'+combo.main+'；辅助模板：'+combo.aux) : teach.tpl);
   const th=document.createElement('h4');th.textContent='模板原句与本题填充';body.appendChild(th);
   const fp=document.createElement('p');fp.className='template-fill-note';
   const f1=document.createElement('b');f1.textContent='04栏模板句：';fp.appendChild(f1);fp.appendChild(document.createTextNode(teach.fixed));
   fp.appendChild(document.createElement('br'));
   const f2=document.createElement('b');f2.textContent='本题填充／替换：';fp.appendChild(f2);fp.appendChild(document.createTextNode(teach.fill));
   body.appendChild(fp);
-  section('④ 全文构思路线',teach.logic);
+  section('④ 本篇填充与组织提醒',teach.logic);
  }
  const h=document.createElement('h4');h.textContent='⑤ 从题目到文章：逐项完成任务';body.appendChild(h);
  const ol=document.createElement('ol');info.steps.forEach(t=>{const li=document.createElement('li');li.textContent=t;ol.appendChild(li)});body.appendChild(ol);
