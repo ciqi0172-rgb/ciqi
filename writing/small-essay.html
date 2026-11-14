@@ -750,7 +750,7 @@ function addBreakdown(article,x){
  const ol=document.createElement('ol');info.steps.forEach(t=>{const li=document.createElement('li');li.textContent=t;ol.appendChild(li)});body.appendChild(ol);
  const hh=document.createElement('h4');hh.textContent='⑤ 逐句拆解：句子功能、模板和填充';body.appendChild(hh);
  const sentenceList=document.createElement('ol');
- const essayLines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library|\[发布单位|\[日期)/i.test(t));
+ const essayLines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$|\[发布单位|\[日期)/i.test(t));
  const sentences=essayLines.flatMap(line=>line.match(/[^.!?]+[.!?]?/g)||[]).map(t=>t.trim()).filter(Boolean);
  const notes=manualSentenceAudit[x[0]]||[];
  let audited=0;
@@ -780,7 +780,7 @@ function addBreakdown(article,x){
 function renderMarkedEssay(el,x){
  const legend=document.createElement('div');legend.className='mark-legend';
  legend.innerHTML='<span class="l-template">黄色：04模板中的固定表达</span><span class="l-topic">蓝色：本题实际填入的信息</span><span class="l-logic">绿色：逻辑连接表达</span>';el.appendChild(legend);
- const lines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|\[发布单位|\[日期)/i.test(t));
+ const lines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$|\[发布单位|\[日期)/i.test(t));
  const sentences=lines.flatMap(line=>line.match(/[^.!?]+[.!?]?/g)||[]).map(t=>t.trim()).filter(Boolean);
  const notes=manualSentenceAudit[x[0]]||[];
  const logic=/\b(To begin with|First(?:ly)?|Second(?:ly)?|Third(?:ly)?|In addition|Furthermore|Moreover|More importantly|Finally|As for|In particular|As a result|For this reason|To address this problem|Due to|because|therefore|while|such as)\b/ig;
