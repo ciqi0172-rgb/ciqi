@@ -349,6 +349,16 @@ WHEN / WHERE / HOW：是否需要时间、地点、方式、报名或补救安�
 <label class="check"><input type="checkbox">检查时态、单复数、拼写、标点和字数。</label>
 </div>
 <div class="template"><h3>现在试着写一段</h3><p class="muted">题目：邀请一位外籍教师参加校园文化活动。请写出开头目的句和活动介绍句，不必一次写完整篇。</p><textarea id="draft" placeholder="Dear ..."></textarea><div class="row" style="margin-top:10px"><button class="btn" id="saveDraft">保存本次练习（当前页面）</button><span class="muted" id="saveMsg"></span></div></div>
+<div class="template">
+<h3>迁移训练：2022年邀请教授组织队伍参赛</h3>
+<p><b>任务：</b>邀请英国大学教授组织一支队伍，参加本校举办的国际创新大赛。请不要直接抄范文，按下面顺序自己生成。</p>
+<ol><li><b>选外壳：</b>书信。</li><li><b>选主模块：</b>04-D邀请信；注意核心动作是“组织队伍参赛”，不是担任评委或单纯出席。</li><li><b>主体展开：</b>介绍比赛是什么 → 说明参赛者能展示／交流什么 → 明确请教授组织队伍。</li><li><b>举例空间：</b>可以用一个创新项目示例解释比赛内容，但不能把示例说成题目规定的比赛主题。</li></ol>
+<p><b>请你先写三句：</b>①邀请目的句；②比赛介绍句；③明确请求教授组织队伍的句子。</p>
+<textarea id="transferDraft" placeholder="Dear Professor, ..."></textarea>
+<div class="row"><button class="btn light" id="transferHint">查看构思提示</button><button class="btn" id="transferAnswer">查看示范答案</button></div>
+<div id="transferFeedback" class="note" hidden></div>
+<div id="transferModel" class="en" hidden>On behalf of the organizing committee, I am writing to invite you to organize a team for our university's international innovation contest. The event will bring together students with creative ideas and practical projects, giving them an opportunity to present their work and exchange views. We would be grateful if you could help form a team from your university and encourage interested students to take part.</div>
+</div>
 <div class="note">评分优先级：内容要点完整 ＞ 格式和语气正确 ＞ 语言准确自然 ＞ 词汇句式变化。不要为了“高级”而牺牲清楚准确。</div>
 </section>
 </main></div></div>
@@ -972,4 +982,6 @@ sel.addEventListener('change',()=>renderYear(sel.value));document.getElementById
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab));window.scrollTo({top:0,behavior:'smooth'})}));
 document.getElementById('methodHint').addEventListener('click',()=>{document.getElementById('methodFeedback').textContent='组织顺序：回应对方／点明介绍目的 → 图书馆资源与开放空间 → 借书所需证件或校园卡 → 借阅步骤与归还要求 → 邀请对方有问题继续联系。只写题干支持或校园常规且确定的信息；具体规则以题目给定为准。'});
 document.getElementById('saveDraft').addEventListener('click',()=>{document.getElementById('saveMsg').textContent='本次练习已保留在当前页面；建议复制到你的笔记中。'});
+document.getElementById('transferHint').addEventListener('click',()=>{const e=document.getElementById('transferFeedback');e.hidden=false;e.textContent='先把“邀请组织队伍”写进目的句；第二句介绍比赛的参与者和活动价值；第三句明确教授需要组织一支队伍。不要擅自增加评委职责、具体日期或题干没有给出的比赛主题。'});
+document.getElementById('transferAnswer').addEventListener('click',()=>{document.getElementById('transferModel').hidden=false;});
 </script></body></html>
