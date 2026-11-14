@@ -188,6 +188,23 @@ WHEN / WHERE / HOW：是否需要时间、地点、方式、报名或补救安�
 </section>
 </main></div></div>
 <script>
+/* 独立导航兜底：即使后续练习模块初始化失败，栏目切换仍可用 */
+document.addEventListener('click',function(event){
+  const button=event.target.closest('.nav button[data-tab]');
+  if(!button)return;
+  const target=button.getAttribute('data-tab');
+  const panel=document.getElementById(target);
+  if(!panel)return;
+  document.querySelectorAll('.nav button[data-tab]').forEach(function(item){
+    item.classList.toggle('active',item===button);
+  });
+  document.querySelectorAll('.panel').forEach(function(item){
+    item.classList.toggle('active',item.id===target);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+<script>
 const years=[
 [2005,"辞职信","向杂志社辞职，致歉说明原因","Dear Editor,\n\nI am writing to inform you of my decision to resign from my position at the magazine. I sincerely apologize for any inconvenience this may cause.\n\nDue to changes in my personal circumstances, I am no longer able to devote sufficient time to the work. I have greatly valued this opportunity and appreciate your support. I will do my best to complete my current tasks and ensure a smooth handover.\n\nThank you for your understanding.\n\nYours sincerely,\nLi Ming","辞职目的＋原因＋致歉＋交接。不要编造具体私人细节；原因保持简洁即可。"],
 [2006,"申请信","申请资助对象，介绍帮扶计划","Dear Sir or Madam,\n\nI am writing to apply for support for a student in need and to introduce a plan for providing assistance.\n\nThe student comes from a financially disadvantaged family and needs help with educational expenses. Our plan is to offer financial support, provide necessary learning materials and keep in touch with the student to understand their progress.\n\nI would be grateful if you would consider this application. Thank you for your time and attention.\n\nYours sincerely,\nLi Ming","申请目的＋资助对象情况＋帮扶计划＋礼貌请求。正式申请语气。"],
