@@ -744,49 +744,29 @@ function addBreakdown(article,x){
  const ol=document.createElement('ol');info.steps.forEach(t=>{const li=document.createElement('li');li.textContent=t;ol.appendChild(li)});body.appendChild(ol);
  const hh=document.createElement('h4');hh.textContent='⑤ 逐句拆解：句子功能、模板和填充';body.appendChild(hh);
  const sentenceList=document.createElement('ol');
- const essayLines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students|The University|The Organizing|\[发布单位|\[日期)/i.test(t));
- const phrases=({
- 2005:['resign from my position at the magazine','personal circumstances','complete my current tasks','handover'],
- 2006:['financial support','student in need','assistance plan','educational expenses','learning materials'],
- 2007:['library services','opening hours','examination periods','seats and quiet study areas'],
- 2008:['return the CD','important examination','bring the CD','send it to your address'],
- 2009:['white pollution','reusable bags','disposable plastic bags','plastic packaging','environmentally responsible habits'],
- 2010:['international conference','reception','guidance','on-site services','communicate in English'],
- 2011:['The Pursuit of Happyness','perseverance','responsibility','hope'],
- 2012:['adapt to campus life','student clubs','campus activities','library','learning resources'],
- 2013:['serve as a judge','English speech contest','professional experience','evaluating the speeches'],
- 2014:['physical fitness','sports classes','sports facilities','exercise habits'],
- 2015:['The Old Man and the Sea','reading club','personal growth','different perspectives'],
- 2016:['international students','books','digital resources','study spaces','borrowing services'],
- 2017:['Palace Museum','stay in Beijing','cultural heritage','cultural value'],
- 2018:['graduation ceremony','graduates','achievements','gratitude'],
- 2019:['Project Hope','children’s education','underdeveloped areas','learning conditions','volunteer participation'],
- 2020:['singing competition','international students','musical interests','different cultures'],
- 2021:['job in China','résumé','employers','Chinese','professional connections'],
- 2022:['innovation competition','student projects','creative ideas','practical applications'],
- 2023:['campus sports','event preparation','guide participants','on-site assistance'],
- 2024:['ancient Chinese scientist','historical background','discovery or invention','modern life','reliable sources'],
- 2025:['campus craft demonstration','young craftsmen','traditional skills','modern ideas','making process'],
- 2026:['handwritten letters','Chinese family members','everyday concerns','family life','public display','exhibition']
- })[x[0]]||[];
- essayLines.forEach((sentence,i)=>{
+ const essayLines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library|\[发布单位|\[日期)/i.test(t));
+ const sentences=essayLines.flatMap(line=>line.match(/[^.!?]+[.!?]?/g)||[]).map(t=>t.trim()).filter(Boolean);
+ const notes=manualSentenceAudit[x[0]]||[];
+ let audited=0;
+ sentences.forEach((sentence,i)=>{
+  const note=notes.find(n=>sentence.startsWith(n[0]));
   const li=document.createElement('li');
   const original=document.createElement('p');original.textContent=sentence;original.style.fontWeight='600';li.appendChild(original);
-  const found=phrases.filter(q=>sentence.toLowerCase().includes(q.toLowerCase()));
-  let role='主体展开：本句承接前文，补充完成题目中的一项具体信息。';
-  if(/I am writing|I am glad to hear|Welcome to|Volunteers are wanted|NOTICE/i.test(sentence))role='开头／交际动作：先建立书信关系或直接点明通知、申请、建议、邀请等核心目的。';
-  else if(/I hope|Please feel free|look forward|Thank you|We would be delighted|We would be grateful|I would appreciate/i.test(sentence))role='礼貌收尾／请求确认：结束交际动作，表达期待、感谢或请对方回复。';
-  else if(/because|due to|which|so that|would|can help|may increase|aims to/i.test(sentence))role='解释原因或说明作用：回答“为什么这样做／这件事有什么价值”，避免只罗列信息。';
-  else if(/To begin with|First|In addition|Moreover|More importantly|Finally|As for|In particular/i.test(sentence))role='主体要点展开：连接词提示本句与前文的并列、递进或分项关系。';
-  const p=document.createElement('p');p.textContent='句子作用：'+role;li.appendChild(p);
-  const detail=document.createElement('p');detail.className='template-fill-note';
-  if(i===0&&/I am writing|Welcome to|Volunteers are wanted|NOTICE/i.test(sentence))detail.textContent='模板调用：交际目的／通知主句。把本题的交际动作和主题放入对应插槽。';
-  else if(found.length)detail.textContent='本句主题填充：'+found.join('；')+'。这些是本句实际出现的题目主题信息；继续核对它们是否逐项回应题干。';
-  else if(/To begin with|First|In addition|Moreover|More importantly|Finally|As for|In particular/i.test(sentence))detail.textContent='模板调用：主体展开／逻辑连接模块。本句要填入题目要求的下一项信息，并判断它与上一句的关系。';
-  else if(/I hope|Please feel free|look forward|Thank you|We would be delighted|We would be grateful|I would appreciate/i.test(sentence))detail.textContent='模板调用：礼貌收尾模块。根据本篇交际目的选择感谢、期待回复、邀请确认或后续联系。';
-  else detail.textContent='内容填充：本句承担补充题目细节或解释作用的任务。若信息来自示范扩展而非题干，必须按题目材料替换或删除，不可当作已知事实。';
-  li.appendChild(detail);sentenceList.appendChild(li);
+  if(note){
+   audited++;
+   const template=document.createElement('p');template.className='template-fill-note';
+   const tb=document.createElement('b');tb.textContent='04栏对应模板：';template.appendChild(tb);template.appendChild(document.createTextNode(note[1]));
+   li.appendChild(template);
+   const fill=document.createElement('p');fill.className='template-fill-note';
+   const fb=document.createElement('b');fb.textContent='本句实际填充：';fill.appendChild(fb);fill.appendChild(document.createTextNode(note[2]));
+   li.appendChild(fill);
+   const thought=document.createElement('p');thought.textContent='构思与逻辑：'+note[3];li.appendChild(thought);
+  }else{
+   const missing=document.createElement('p');missing.className='template-fill-note';missing.textContent='人工校准待补：本句尚未在逐句映射表中找到对应项，不能把自动判断当作已审核。';li.appendChild(missing);
+  }
+  sentenceList.appendChild(li);
  });
+ const coverage=document.createElement('p');coverage.className='logic-map';coverage.textContent='逐句人工映射：'+audited+' / '+sentences.length+' 句。只有全部匹配且内容经核对，才算完成本篇逐句校准。';body.appendChild(coverage);
  body.appendChild(sentenceList);
  section('⑥ 使用时必须核对',info.caution);
  box.appendChild(body);article.appendChild(box);
