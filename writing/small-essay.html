@@ -186,7 +186,7 @@ Li Ming</div><p class="muted">建议要可执行，且与题目对象相符。�
 
 I am writing to invite you to [活动／担任的角色].
 
-The event is scheduled to take place on [日期] at [地点]. It will feature [活动内容／亮点]. We believe your participation would [对活动／参与者的价值].
+The event is scheduled to take place on [日期] at [地点]. It will feature [活动内容／亮点]. For a team-based contest, the contest will bring together [参赛队伍／参与者] to [交流／展示]. We believe your participation would [对活动／参与者的价值].
 
 We would be grateful if you could join us. / We would be honored if you could accept our invitation. Please let me know whether you will be available.
 
@@ -217,7 +217,7 @@ Li Ming</div><p class="muted">如果是回复来信，先回应对方来信或�
 
 【个人申请】I am writing to apply for [机会／职位／资助]. I am particularly interested in this opportunity because [申请动机]. I believe my [相关经历／能力] would enable me to [具体行动].
 
-【为他人／项目申请资助】I am writing to apply for financial support for [受助对象／项目]. The support would be used for [具体用途]. To put the plan into practice, I intend to [实施方式一]. In addition, I will [实施方式二] so that the assistance can meet [受助对象／项目]’s needs.
+【为他人／项目申请资助】I am writing to apply for financial support for [受助对象／项目]. The support would be used for [具体用途]. The student I hope to support is [符合题目要求的帮扶对象]. To put the plan into practice, I intend to [实施方式一]. In addition, I will [实施方式二] so that the assistance can meet [受助对象／项目]’s needs.
 
 I would appreciate it if you could consider my application.
 
@@ -552,7 +552,7 @@ const manualSentenceAudit={
 ],
 2006:[
 ["I am writing to apply","G 资助申请变体：I am writing to apply for financial support for [受助对象／项目].","financial support for a student in need；proposed assistance plan","申请目的句要写清申请什么；这是为他人申请资助，不是申请者个人求职。"],
-["The student I hope","G 受助对象插槽：[受助对象的具体情况].","[符合题目要求的帮扶对象]","按题干写受助对象特征；不自行添加姓名、年龄或家庭情况。"],
+["The student I hope","G 受助对象插槽：[符合题目要求的帮扶对象].","[符合题目要求的帮扶对象]","按题干写受助对象特征；不自行添加姓名、年龄或家庭情况。"],
 ["The support would","G 资金用途句：The support would be used for [具体用途].","[题目要求的具体用途]","回答资金如何使用，避免只说需要帮助。"],
 ["To put the plan","G 实施计划句：To put the plan into practice, I intend to [实施方式].","[具体实施方式一]","把抽象计划变成可执行动作；第一项措施必须符合题干。"],
 ["In addition, I will","G 补充措施句：In addition, I will [实施方式二] so that...","[具体实施方式二]；meet the student's needs","补充第二项措施，并说明其服务对象需求的逻辑。"],
@@ -565,13 +565,13 @@ const manualSentenceAudit={
 ["More importantly, the library","C 建议二：More importantly, [建议二].","provide more seats and quiet study areas","从开放时间推进到学习空间供给，补足另一类实际需求。"],
 ["This would not only","C 效果句：This would not only [直接效果] but also [进一步效果].","meet readers' needs；create a better study environment","把第二项建议的双重效果说清楚；不是再提出新建议。"],
 ["I hope these suggestions","C 建议信收尾：I hope these suggestions will be of help.","these suggestions","回扣建议本身，礼貌结束。"],
-["Please feel free to contact","C 后续沟通句：Please feel free to contact me if you need further information.","further information","提供进一步沟通渠道；不是题目核心任务。"]
+["Please feel free to contact","C 后续沟通句：Please feel free to contact me if you need know more.","know more","提供进一步沟通渠道；不是题目核心任务。"]
 ],
 2008:[
 ["I am writing to apologize","H 道歉目的句：I am writing to apologize for [具体事情].","forgetting to return the CD to you as promised","直接承认忘记归还CD；物品名称必须和题干一致。"],
 ["I understand that this","H 影响承认句：I understand that this may have caused you [不便／困扰].","inconvenience","先承认对方受到影响，体现承担责任。"],
 ["The situation occurred","H 原因解释句：The situation occurred because [真实原因].","busy preparing for an important examination；failed to keep track of the return date","解释原因但同时承认本可记住归还日期，避免把忙碌当免责理由。"],
-["To make things right","H 补救句：To make things right, I would like to [补救措施].","bring the CD tomorrow or send it to the recipient's address","给出明确归还方式；当前正文的“I can”可改为模板的“I would like to”以保持对应。"],
+["To make things right","H 补救句：To make things right, I would like to [补救措施].","bring the CD to you tomorrow","给出明确归还方式；当前正文的“I can”可改为模板的“I would like to”以保持对应。"],
 ["Once again, I am sorry","H 再次致歉句：Once again, I am sorry for the inconvenience and appreciate your understanding.","the inconvenience；your understanding","收束道歉并表达理解，不再添加新解释。"]
 ],
 2009:[
@@ -580,17 +580,17 @@ const manualSentenceAudit={
 ["In addition, shops","C 建议二／商家主体：In addition, [另一主体] can [行动].","shops；reduce unnecessary plastic packaging","从个人推进到商家，体现不同责任主体。"],
 ["More importantly, public","C 递进建议／公众层面：More importantly, [社会层面措施].","public campaigns；develop environmentally responsible habits","再上升到公众意识与社会倡导，形成个人—商家—公众的层次。"],
 ["I hope these suggestions","C 建议信收尾：I hope these suggestions will be of help.","these suggestions","简洁回扣建议。"],
-["Please feel free to contact","C 后续沟通句：Please feel free to contact me if you need further information.","further information","礼貌提供进一步沟通渠道。"]
+["Please feel free to contact","C 后续沟通句：Please feel free to contact me if you need know more.","know more","礼貌提供进一步沟通渠道。"]
 ],
 2010:[
 ["Volunteers are wanted","B 招募告示主句：Volunteers are wanted for [活动／事项].","[国际会议名称]；[题目给出的地点]","NOTICE后直接写招募对象和活动；地点按题干填，不得留成未经核实的事实。"],
 ["The volunteers will assist","B 岗位职责句：The volunteers will [岗位职责].","reception, guidance and other on-site services","说明实际工作内容，让读者判断岗位要求。"],
 ["Applicants should be","B 申请条件句：Applicants should be [必要条件].","responsible, helpful and able to communicate in English","列出与国际会议服务相匹配的素质；若题干限定条件不同，以题干为准。"],
-["If you are interested","B 报名句：If you are interested, please [报名方式] before [截止时间].","submit application to [报名部门／渠道] before [题目截止时间]","完成报名动作；渠道和截止时间必须抄准题干。"]
+["If you are interested","B 报名句：If you are interested, please [报名方式] before [截止时间].","submit your application","完成报名动作；渠道和截止时间必须抄准题干。"]
 ],
 2011:[
 ["I am writing to recommend","E 推荐目的句：I am writing to recommend [推荐对象] to you.","The Pursuit of Happyness","明确推荐对象；片名是示范选择，原题若给定对象必须替换。"],
-["What makes it particularly","E 特点一：What makes it particularly worth recommending is [特点一].","a moving story of a man striving despite serious difficulties","用故事核心说明电影吸引人的原因，概述控制在一两句。"],
+["What makes it particularly","E 特点一：What makes it particularly worth recommending is [特点一].","a man who keeps striving for a better life despite serious difficulties","用故事核心说明电影吸引人的原因，概述控制在一两句。"],
 ["In addition, the film","E 特点二：In addition, [特点二／适用人群].","perseverance, responsibility and hope","补充主题价值，避免重复剧情。"],
 ["I believe it would be","E 推荐理由：I believe it would be an excellent choice for you because [理由].","engaging story and meaningful inspiration","把电影特点转化为对收信人的价值，完成推荐逻辑。"],
 ["I hope you will find","E 礼貌收尾：I hope you will find my recommendation helpful.","my recommendation helpful","回扣推荐行为。"],
@@ -603,7 +603,7 @@ const manualSentenceAudit={
 ["In addition, make good","C 建议二：In addition, [建议二].","make good use of the library and online learning resources","再转到学习适应，覆盖校园生活的另一重要方面。"],
 ["If you have any questions","求助渠道模块：If you have any questions, do not hesitate to [求助对象].","ask your tutors or classmates for help","给新生一个遇到困难时的具体求助渠道。"],
 ["I hope these suggestions","C 建议信收尾：I hope these suggestions will be of help.","these suggestions","收束建议。"],
-["Please feel free to contact","C 后续沟通句：Please feel free to contact me if you need further information.","further information","保持友好开放的沟通关系。"]
+["Please feel free to contact","C 后续沟通句：Please feel free to contact me if you need know more.","know more","保持友好开放的沟通关系。"]
 ],
 2013:[
 ["I am writing to invite","D 邀请目的句：I am writing to invite you to [活动／担任的角色].","serve as a judge for our English speech contest","必须写明担任评委，不可只写attend。"],
@@ -615,7 +615,7 @@ const manualSentenceAudit={
 ],
 2014:[
 ["I am writing to offer","C 建议目的句：I am writing to offer some suggestions concerning [主题／问题].","ways to improve students' physical fitness","点明体质提升主题，收信人是校长，后续措施应在学校层面可执行。"],
-["To begin with, it","C 建议一：To begin with, it would be helpful to [建议一], which can [作用].","provide more opportunities for exercise, such as sports classes and after-school activities","先改善运动机会供给。"],
+["To begin with, it","C 建议一：To begin with, it would be helpful to [建议一], which can [作用].","provide more opportunities for physical exercise","先改善运动机会供给。"],
 ["More importantly, the university","C 建议二：More importantly, [建议二].","improve its sports facilities","从活动安排推进到设施条件。"],
 ["This would not only","C 双重效果句：This would not only [直接效果] but also [进一步效果].","make exercise more convenient；encourage regular participation","解释设施改善如何促进运动参与，而非重复建议。"],
 ["In addition, health education","C 可组合补充模块：In addition, [第三项建议].","health education；develop regular exercise habits","第三层补充健康教育；模板允许按题目需要增加建议模块。"],
@@ -626,9 +626,9 @@ const manualSentenceAudit={
 ["I am writing to recommend","E 推荐目的句：I am writing to recommend [推荐对象] to you.","The Old Man and the Sea","书名是示范选择，不是题干给定事实；须核对题目是否指定书籍。"],
 ["What makes it particularly","E 特点一：What makes it particularly worth recommending is [特点一].","[与书籍内容相符的核心特点]","此处必须填与书籍真实内容相符的特点，不能留空或编造书评。"],
 ["In addition,","E 特点二：In addition, [特点二／适用人群].","[另一项具体内容或写作特点]","补充第二个具体特点，与第一点避免重复。"],
-["I believe it would be","E 推荐理由：I believe it would be an excellent choice for you because [理由].","encourage club members to reflect on [相关主题] and share perspectives","把书的特点落到读书俱乐部讨论收益；相关主题也必须与书内容一致。"],
+["I believe it would be","E 推荐理由：I believe it would be an excellent choice for you because [理由].","reflect on [相关主题] and share their different perspectives","把书的特点落到读书俱乐部讨论收益；相关主题也必须与书内容一致。"],
 ["I hope you will find","E 礼貌收尾：I hope you will find my recommendation helpful.","my recommendation helpful","收束推荐。"],
-["I look forward to discussing","后续交流句：I look forward to [后续交流].","discussing it with the club","把推荐与俱乐部活动联系起来。"]
+["I look forward to discussing","后续交流句：I look forward to [后续交流].","discussing it with you","把推荐与俱乐部活动联系起来。"]
 ],
 2016:[
 ["The university library welcomes","B 信息告示句：[机构／场所] welcomes [目标对象].","all international students","直接回应告示面向谁。"],
@@ -644,20 +644,20 @@ const manualSentenceAudit={
 ["In addition, visitors can","E 特点二：In addition, [特点二／适用人群].","[与该地点实际情况相符的体验]","补充可体验内容，不能写与景点不符的活动。"],
 ["I believe it would be","E 推荐理由：I believe it would be an excellent choice for you because [理由].","appreciate [具体景观／文化价值]","将地点特色转化为对外国教授的访问价值。"],
 ["I hope you will find","E 礼貌收尾：I hope you will find my recommendation helpful.","my recommendation helpful","收束推荐。"],
-["Please let me know if","E 后续沟通句：Please let me know if you would like to know more.","further information","表示可继续提供信息。"]
+["Please let me know if","E 后续沟通句：Please let me know if you would like to know more.","know more","表示可继续提供信息。"]
 ],
 2018:[
 ["I am writing to invite","D 邀请目的句：I am writing to invite you to [活动／担任的角色].","attend our graduation ceremony","明确邀请参加毕业典礼。"],
 ["The ceremony is scheduled","D 时间地点句：The event is scheduled to take place on [日期] at [地点].","[题目给出的日期]；[题目给出的地点]","从题干准确填入时间地点。"],
-["It will be a special","D 活动意义／内容句：It will feature [活动内容／亮点].","celebrate graduates' achievements and express gratitude","说明典礼意义，不虚构流程或节目。"],
-["We believe your presence","D 邀请价值句：We believe your participation would [价值].","make the occasion more meaningful to us","解释受邀者出席的情感价值。"],
+["It will be a special","D 活动意义／内容句：It will feature [活动内容／亮点].","celebrate their achievements and express gratitude","说明典礼意义，不虚构流程或节目。"],
+["We believe your presence","D 邀请价值句：We believe your participation would [价值].","make the occasion even more meaningful to us","解释受邀者出席的情感价值。"],
 ["We would be delighted","D 邀请收尾：We would be grateful if you could join us.","join us","表达诚挚期待。"],
 ["Please let me know whether","D 确认请求：Please let me know whether you will be available.","whether you will be available","请对方确认能否出席。"]
 ],
 2019:[
 ["I am writing to tell","F 介绍目的句：I am writing to tell you more about [介绍对象／主题].","Project Hope","点明介绍对象。"],
 ["To begin with, this program","F 基本情况：To begin with, [基本情况].","supporting children's education in underdeveloped areas","介绍项目宗旨和帮助对象。"],
-["In particular, it aims","F 重点信息一：In particular, [题目要求的重点信息].","improve learning conditions by [具体方式]","填入具体项目方式，必须有题干或材料依据。"],
+["In particular, it aims","F 重点信息一：In particular, [题目要求的重点信息].","improve learning conditions by","填入具体项目方式，必须有题干或材料依据。"],
 ["As for volunteer participation","F 重点信息二：As for [重点信息二], [具体说明].","[题目要求的具体参与方式]","回答志愿者怎样参与，不能泛泛说“提供帮助”。"],
 ["I hope this information","F 介绍收尾：I hope this information is helpful.","this information","回扣信息介绍任务。"],
 ["Please feel free to ask","F 后续沟通句：Please feel free to ask if you would like to know anything else.","anything else","开放后续提问。"]
@@ -665,14 +665,14 @@ const manualSentenceAudit={
 2020:[
 ["An international singing","B 活动通知句：[活动] is scheduled for [日期] at [地点].","international singing competition；[日期]；[地点]","写清活动名称、日期和地点；留空信息必须按题干补齐。"],
 ["The event welcomes all","B 活动对象／目的：The event welcomes [参与对象] and aims to [活动目的].","all students, including international students；musical and cultural exchange","明确留学生也可参加，并说明活动交流价值。"],
-["If you are interested","B 报名句：If you are interested, please [报名方式] before [截止时间].","register with [报名部门／渠道] before [截止时间]","说明报名渠道和截止时间。"],
+["If you are interested","B 报名句：If you are interested, please [报名方式] before [截止时间].","register with","说明报名渠道和截止时间。"],
 ["We look forward to","B 告示收尾：We look forward to your participation.","your participation","礼貌号召参与。"]
 ],
 2021:[
 ["I am writing to offer","C 建议目的句：I am writing to offer some suggestions concerning [主题／问题].","your plan to look for a job in China","明确建议情境是外国朋友在中国求职。"],
-["To begin with, it","C 建议一：To begin with, it would be helpful to [建议一], which can [作用].","prepare a clear résumé highlighting relevant skills and experience","从求职材料入手，强调与目标岗位相关的能力。"],
-["In addition, learn","C 建议二：In addition, [建议二].","learn about expectations of employers in the target field","补充行业和雇主信息，避免只讲一般求职鸡汤。"],
-["More importantly, improving","C 递进建议：More importantly, [进一步建议].","improve Chinese and build professional connections","从材料准备推进到语言和职业网络；使用may表达建议效果而非绝对保证。"],
+["To begin with, it","C 建议一：To begin with, it would be helpful to [建议一], which can [作用].","prepare a clear résumé","从求职材料入手，强调与目标岗位相关的能力。"],
+["In addition, learn","C 建议二：In addition, [建议二].","learn about the expectations of employers in your field","补充行业和雇主信息，避免只讲一般求职鸡汤。"],
+["More importantly, improving","C 递进建议：More importantly, [进一步建议].","improving your Chinese and building professional connections","从材料准备推进到语言和职业网络；使用may表达建议效果而非绝对保证。"],
 ["I hope these suggestions","C 建议信收尾：I hope these suggestions will be of help.","these suggestions","收束建议。"],
 ["Best wishes for your job","祝愿收尾：Best wishes for [对方的目标].","your job search","针对求职场景表达祝愿。"]
 ],
@@ -685,23 +685,23 @@ const manualSentenceAudit={
 ],
 2023:[
 ["Volunteers are wanted","B 招募告示主句：Volunteers are wanted for [活动／事项].","[校园体育活动名称]；[日期／地点]","先说明招募岗位及活动；具体信息由题干填入。"],
-["The volunteers will help","B 岗位职责句：The volunteers will [岗位职责].","event preparation, guiding participants, on-site assistance","列明志愿者工作内容。"],
+["The volunteers will help","B 岗位职责句：The volunteers will [岗位职责].","help with event preparation","列明志愿者工作内容。"],
 ["Applicants should be","B 申请条件句：Applicants should be [必要条件].","responsible, cooperative and willing to work with others","说明岗位适合的基本素质，不擅自加硬性资格。"],
-["If you are interested","B 报名句：If you are interested, please [报名方式] before [截止时间].","register with [报名部门／渠道] before [截止时间]","给出报名渠道和期限。"],
+["If you are interested","B 报名句：If you are interested, please [报名方式] before [截止时间].","register with","给出报名渠道和期限。"],
 ["We look forward to","B 告示收尾：We look forward to your participation.","your participation","号召报名参与。"]
 ],
 2024:[
 ["I am writing to offer","C 建议目的句：I am writing to offer some suggestions concerning [主题／问题].","your report on an ancient Chinese scientist","明确建议针对报告准备。"],
-["To begin with, it","C 建议一：To begin with, it would be helpful to [建议一].","introduce the scientist's life and historical background","先搭建报告背景，帮助读者理解成就出现的时代。"],
-["In addition, explain","C 建议二：In addition, [建议二].","explain how the discovery or invention worked and its historical importance","建议解释成就本身和当时意义，内容具体。"],
+["To begin with, it","C 建议一：To begin with, it would be helpful to [建议一].","introduce the scientist's life","先搭建报告背景，帮助读者理解成就出现的时代。"],
+["In addition, explain","C 建议二：In addition, [建议二].","explain how the discovery or invention worked","建议解释成就本身和当时意义，内容具体。"],
 ["Finally, try to connect","C 延伸建议：Finally, [最后一项建议].","connect its influence with modern life；use reliable sources","以现代联系收束，并提醒资料可靠性。"],
 ["I hope these suggestions","C 建议信收尾：I hope these suggestions will be of help.","these suggestions","礼貌结束建议。"],
-["Please feel free to contact","C 后续沟通句：Please feel free to contact me if you need further information.","further information","提供后续沟通。"]
+["Please feel free to contact","C 后续沟通句：Please feel free to contact me if you need know more.","know more","提供后续沟通。"]
 ],
 2025:[
-["I am glad to hear","F 回信回应句：I am glad to hear from you.","Paul's interest in the demonstration","先回应来信，建立回复语境。"],
+["I am glad to hear","F 回信回应句：I am glad to hear from you.","回应Paul来信","先回应来信，建立回复语境。"],
 ["I am writing to tell","F 介绍目的句：I am writing to tell you more about [介绍对象／主题].","our campus craft demonstration","明确介绍活动内容。"],
-["To begin with, the young","F 基本情况句：To begin with, [基本情况].","young craftsmen combining traditional skills with modern ideas","介绍展示核心；具体工艺示例必须明确是题干内容还是自选示范。"],
+["To begin with, the young","F 基本情况句：To begin with, [基本情况].","traditional skills can be combined with modern ideas","介绍展示核心；具体工艺示例必须明确是题干内容还是自选示范。"],
 ["In particular, they will","F 重点信息句：In particular, [题目要求的重点信息].","demonstrate [具体制作过程／作品特点]","补充展示的实际过程或作品特点。"],
 ["I am writing to ask","K 请求目的句：I am writing to ask whether you could [具体请求].","[具体协助事项一]","明确请Paul做什么，不能只说“帮忙”。"],
 ["The reason I am making","K 请求理由句：The reason I am making this request is that [必要背景／理由].","we need extra help with the preparation","说明提出请求的现实原因。"],
@@ -710,7 +710,7 @@ const manualSentenceAudit={
 ["I look forward to working","合作期待句：I look forward to [后续合作].","working with you","以合作期待收尾。"]
 ],
 2026:[
-["I am glad to hear","F 回信回应句：I am glad to hear from you.","Paul's reaction to the letters","回应来信，不直接跳入说明。"],
+["I am glad to hear","F 回信回应句：I am glad to hear from you.","回应Paul来信","回应来信，不直接跳入说明。"],
 ["I am writing to tell","F 介绍目的句：I am writing to tell you more about [介绍对象／主题].","the handwritten letters exchanged among Chinese family members","明确介绍对象。"],
 ["To begin with, these letters","F 基本情况句：To begin with, [基本情况].","letters record everyday concerns, affection and family moments","介绍信件内容；须依据题干材料，不自行推定年代、作者或具体故事。"],
 ["Their handwriting and personal","F 价值说明句：I believe [简短评价／意义].","handwriting and personal details；records of family relationships","解释其价值，不只是重复“这些是手写信”。"],
