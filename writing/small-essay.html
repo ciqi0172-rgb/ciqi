@@ -343,189 +343,223 @@ const years=[
 ];
 
 // 按04栏模板重写的真题范文：正文结构必须先调用模板，再填入本题信息
+const sampleNotes={
+2005:"辞职原因“学业任务增加”是完整范文中的合理示范理由，不是题干给定的私人事实。",
+2006:"低收入家庭、学习态度、教材资助和学期初发放均为完整示范方案，用来展示如何写清受助条件与资助计划。",
+2007:"阅读角和在线目录更新是针对图书馆服务的具体建议示例。",
+2008:"明晚送还CD是范文选择的补救安排示例。",
+2009:"超市折扣是说明商家如何鼓励重复使用购物袋的举例。",
+2010:"“下个月”和“周五”是示范通知中的自拟时间；正式作答须以题干时间为准。",
+2011:"电影及剧情为推荐示例；如题目指定影片，必须替换为题目指定对象。",
+2012:"体育社团和音乐社团是校园融入的示例。",
+2013:"比赛月份及评审维度是示范扩展；如题干给出时间地点，以题干为准。",
+2014:"晚间开放球场、健康讲座和友谊赛是学校可执行的建议示例。",
+2015:"《老人与海》及其主题分析是示范选书，不是题干指定书名。",
+2016:"馆藏、校园卡借阅和四周借期是完整范文采用的示范规则；真实题干有具体规则时必须替换。",
+2017:"City Museum和Riverside Park是为展示推荐逻辑而选的通用示范地点，不代表考生所在城市的真实景点；考场须换成当地真实景点。",
+2018:"“下周六上午”和礼堂安排是示范信息；题干给出日期地点时必须准确替换。",
+2019:"图书募集、整理捐赠物资是说明志愿者参与方式的示范例子。",
+2020:"“下个月”“周五”和提前三十分钟签到是完整通知的自拟安排，题干若有具体信息应优先使用。",
+2021:"阅读招聘广告、浏览公司网站和参加职业活动是针对在华求职的具体建议例子。",
+2022:"日常问题解决方案是创新比赛项目的示范例子，不是题干给定的比赛主题。",
+2023:"问卷、运动习惯数据和学生事务办公室报名方式是为完成岗位职责与申请方式而设计的合理示范内容。",
+2024:"古代天文仪器是解释科学成就时使用的举例方向；具体科学家和成就应服从题干。",
+2025:"剪纸、竹编，以及翻译展签、布置桌台，是完整示范中选择的展示内容和协助事项；题干若指定其他工艺或帮助方式，应替换。",
+2026:"1980年代父母与子女通信、大学文化展厅及下周展出是完整示范情境，不是题干提供的既定事实；如题干或可靠材料给出真实信息，必须替换。"
+};
 const revisedEssays={
 2005:`Dear Editor,
 
-I am writing to inform you of my decision to resign from my position at the magazine.
-This decision is due to [简要、真实的原因], which makes it difficult for me to continue fulfilling my responsibilities. I sincerely apologize for any inconvenience this may cause.
-I have greatly appreciated the opportunity to work with the magazine. To make the transition as smooth as possible, I will complete my current tasks and prepare the necessary handover materials.
+I am writing to inform you of my decision to resign from my position at the magazine, and I sincerely apologize for any inconvenience this may cause.
+Recently, my academic workload has increased considerably, leaving me unable to devote enough time to the editorial work. I have thought carefully about this decision, as working with the magazine has been a valuable experience. I especially appreciate the guidance and encouragement I have received from you and my colleagues.
+To make the transition easier, I will finish the articles currently assigned to me, organize my files and explain the progress of each task to the next editor. I hope this arrangement will reduce the extra work for the team.
 Thank you for your understanding.
 
 Yours sincerely,
 Li Ming`,
 2006:`Dear Sir or Madam,
 
-I am writing to ask whether your department could help identify a student in need who would benefit from financial assistance.
-The student should meet the following conditions: [题目要求的受助对象条件]. I plan to provide support by [具体资助方式／用途] and [后续帮扶安排], so that the assistance can address the student's actual needs.
-I would be grateful if you could recommend a suitable student and advise me on how to carry out the plan.
-
-Thank you for your time and consideration.
+I am writing to ask whether your department could help us identify a student who is in need of financial assistance.
+Ideally, the student should come from a low-income family, show a strong commitment to study and be willing to make good use of the support. Our plan is to provide money for essential school expenses, including textbooks and other learning materials. Besides financial help, we would also like to keep in touch with the student and learn whether further support is needed.
+For example, a small amount of assistance at the beginning of each semester could help the student prepare for classes without worrying too much about basic costs.
+I would be grateful if you could recommend a suitable student and advise us on the next steps.
 
 Yours sincerely,
 Li Ming`,
 2007:`Dear Librarian,
 
-I am writing to offer some suggestions concerning the improvement of our library services.
-To begin with, it would be helpful to extend the opening hours, especially during examination periods, which can give students more time to study. More importantly, the library could provide more seats and quiet study areas. This would not only meet readers' needs but also create a better study environment.
-I hope these suggestions will be of help. Please feel free to contact me if you need further information.
+I am writing to offer some suggestions for improving the services of our university library.
+To begin with, extending the opening hours during examination periods would give students more time to prepare for their tests. In addition, the library could provide more quiet study areas and comfortable seats. For example, an unused corner on each floor could be turned into a small reading space, allowing students to work without disturbing others.
+It would also be helpful to update the online catalogue regularly, so that readers can check the location and availability of books before visiting the shelves. These changes would make the library more convenient and welcoming.
+I hope you will find these suggestions useful.
 
 Yours sincerely,
 Li Ming`,
 2008:`Dear Tom,
 
-I am writing to apologize for forgetting to return the CD to you as promised.
-I understand that this may have caused you inconvenience. The situation occurred because I was busy preparing for an important examination, but I should have kept track of the return date.
-To make things right, I would like to bring the CD to you tomorrow or send it to your address if that is more convenient.
-Once again, I am sorry for the inconvenience and appreciate your understanding.
+I am writing to apologize for forgetting to return your CD as promised.
+I know you may have wanted to use it, and I am sorry for causing you this inconvenience. I have been busy preparing for an important examination recently, but I should have remembered our agreement instead of leaving you waiting.
+To make things right, I can bring the CD to your room tomorrow evening. If that is not convenient, I would be happy to send it to your address or meet you at a time that suits you. I will also check my schedule more carefully in the future so that this kind of mistake does not happen again.
+Once again, please accept my sincere apology.
 
-Yours sincerely,
+Yours,
 Li Ming`,
 2009:`Dear Friend,
 
-I am writing to offer some suggestions concerning the problem of white pollution, which has become a visible environmental concern in many communities.
-To begin with, individuals should use reusable bags instead of disposable plastic bags in their daily lives. In addition, shops can reduce unnecessary plastic packaging. More importantly, public campaigns can encourage people to develop environmentally responsible habits.
-I hope these suggestions will be of help. Please feel free to contact me if you need further information.
+I am writing to share my views on white pollution and suggest several practical ways to reduce it.
+The widespread use of disposable plastic bags creates a large amount of waste, much of which is difficult to deal with properly. To begin with, individuals can carry reusable shopping bags and refuse plastic bags when they are not necessary. Shops could also offer paper packaging or encourage customers to bring their own containers.
+For example, a supermarket might give small discounts to customers who use reusable bags. Such a simple measure can make environmentally friendly choices easier. More importantly, schools and communities can organize campaigns to explain the harm caused by plastic waste.
+I hope these ideas will help make our surroundings cleaner.
 
 Yours sincerely,
 Li Ming`,
 2010:`NOTICE
 
-Volunteers are wanted for an international conference on globalization to be held at [题目给出的地点] during [题目给出的时间].
-The volunteers will assist with reception, document distribution, interpretation and on-site guidance, helping international participants obtain information and move around the venue smoothly. Applicants should have a good command of English and strong communication skills, and be willing to work cooperatively as part of a team. Previous volunteer experience or knowledge of another foreign language would be an advantage. Patience, responsibility and teamwork are also expected.
-If you are interested, please send your résumé and application to [联系邮箱／渠道] before [截止时间].
+Volunteers are wanted for an international conference on globalization to be held on our campus next month.
+The volunteers will help welcome overseas guests, distribute conference materials, provide directions and offer basic language assistance when necessary. Applicants should have a good command of English, communicate patiently and be willing to work as part of a team. Previous experience in student activities would be an advantage.
+For example, volunteers at the reception desk should be able to answer simple questions about the schedule and guide guests to the right rooms. All volunteers will receive a short briefing before the conference.
+If interested, please submit your application to the Postgraduates' Association office by Friday.
 
-Postgraduates' Association
-[日期]`,
+Postgraduates' Association`,
 2011:`Dear Mike,
 
-I am writing to recommend The Pursuit of Happyness to you.
-What makes it particularly worth recommending is its moving story of a man who keeps striving for a better life despite serious difficulties. In addition, the film highlights perseverance, responsibility and hope. I believe it would be an excellent choice for you because it offers both an engaging story and meaningful inspiration.
-I hope you will find my recommendation helpful. Please let me know what you think after watching it.
+I am writing to recommend the film The Pursuit of Happyness, which I watched recently and found deeply inspiring.
+The film tells the story of a father who faces financial difficulties while trying to build a better life for his young son. What makes it especially moving is the way he continues to work hard despite repeated setbacks. One memorable aspect is the close relationship between the father and the child, which reminds viewers of the importance of love and responsibility.
+I think you would enjoy this film because it is not only touching but also encouraging. It shows that patience and determination can help people move forward in difficult situations.
+I hope you enjoy watching it.
 
-Yours sincerely,
+Yours,
 Li Ming`,
 2012:`Dear New Student,
 
-Welcome to our university! I am writing to offer some suggestions concerning how to adapt to campus life.
-To begin with, it would be helpful to take part in student clubs and campus activities, which can help you make friends. In addition, make good use of the library and online learning resources to support your studies. If you have any questions, do not hesitate to ask your tutors or classmates for help.
-I hope these suggestions will be of help. Please feel free to contact me if you need further information.
+Welcome to our university! I am writing to offer a few suggestions that may help you adapt to campus life.
+First, try to take part in student clubs and campus activities. They are excellent opportunities to meet people with similar interests. For example, joining a sports club or a music society can help you make friends while enjoying your free time.
+You should also make full use of the library and online learning resources, which will support your studies outside the classroom. If you have difficulty with a course or campus arrangements, do not hesitate to ask your tutors or senior students for help. Most people will be glad to share their experience.
+I hope you will soon feel at home here.
 
 Yours sincerely,
 Li Ming`,
 2013:`Dear Professor Smith,
 
-I am writing to invite you to serve as a judge for our English speech contest.
-The contest is scheduled to take place on [题目给出的日期] at [题目给出的地点]. It will feature speeches delivered by students on various topics, giving participants an opportunity to demonstrate their communication skills and critical thinking. We believe your professional experience would be valuable in evaluating the speeches and offering constructive advice.
-We would be delighted if you could accept our invitation. Please let me know whether you will be available.
+On behalf of the Students' Union, I am writing to invite you to serve as a judge for our university English speech contest.
+The contest will take place on campus next month and will bring together students from different departments. Each participant will deliver a short speech on a topic of personal or social interest. Your experience in language teaching would help us assess the speeches fairly and offer useful advice to the contestants.
+For example, your comments on pronunciation, organization and the strength of each argument could help students understand how to improve their public speaking. Your presence would also encourage them to take the competition seriously.
+We would be delighted if you could accept our invitation. I look forward to your reply.
 
 Yours sincerely,
 Li Ming`,
 2014:`Dear President,
 
-I am writing to offer some suggestions concerning ways to improve students' physical fitness.
-To begin with, it would be helpful to provide more opportunities for physical exercise, such as sports classes and after-school activities. More importantly, the university could improve its sports facilities. This would not only make exercise more convenient but also encourage students to take part in sports regularly. In addition, health education can encourage students to develop regular exercise habits.
-I hope these suggestions will be of help. Thank you for your consideration.
+I am writing to offer some suggestions on how our university can improve students' physical fitness.
+To begin with, more opportunities for exercise could be included in campus life, such as morning runs, sports classes and weekend matches. In addition, the university could improve sports facilities so that students can exercise safely and conveniently. For instance, keeping the basketball courts open in the evening would be helpful to those who have classes during the day.
+It is also important to encourage students to develop regular exercise habits. Health talks and friendly competitions could make physical activity more attractive.
+These measures would not only improve students' health but also help them manage stress and build stronger relationships.
+I hope you will consider these suggestions.
 
 Yours sincerely,
 Li Ming`,
 2015:`Dear Club Members,
 
-I am writing to recommend The Old Man and the Sea to our reading club.
-What makes it particularly worth recommending is [与书籍内容相符的核心特点], which makes the book both thought-provoking and engaging. In addition, [另一项具体内容或写作特点], making it accessible to readers with different backgrounds. I believe it would be an excellent choice for our club because it can encourage members to reflect on [相关主题] and share their different perspectives during our next meeting.
-I hope you will find my recommendation helpful. I look forward to discussing it with you.
+I am writing to recommend The Old Man and the Sea for our next reading-club discussion.
+The novel tells the story of an old fisherman who struggles for days to catch a huge marlin. Although he faces exhaustion and loss, he refuses to give up. What makes the book worth reading is its simple but powerful language and its exploration of courage, dignity and perseverance.
+For example, the fisherman's determination in the face of repeated difficulties can lead us to think about how we respond to challenges in our own lives. The story is not long, so members with different reading habits can finish it and take part in the discussion.
+I believe it will give us plenty to talk about.
 
 Yours sincerely,
 Li Ming`,
 2016:`NOTICE
 
-The university library welcomes all newly admitted international students and is ready to support your academic life.
-As a librarian, I would like to provide you with some useful information about the library so that you can make full use of its facilities.
-To begin with, the library offers [题目允许的馆藏资源], such as [具体类别]. In addition, you can make use of [阅览空间／网络资源／开放时间等信息], which can provide a quiet and convenient place for study. As for borrowing services, [按题目要求或合理设定说明借阅方式].
-We hope you will find these facilities helpful and enjoy your time at our university.
+The university library welcomes all newly admitted international students.
+It provides a wide range of services to support both study and independent learning. You can find textbooks, reference books, newspapers and academic journals on the shelves. There are also quiet reading rooms, computer areas and online databases that can be accessed through the university network.
+To borrow a book, simply present your campus card at the service desk. Most books may be borrowed for four weeks and can be renewed online before the due date. If you cannot find a book or need help using the catalogue, the librarians will be pleased to assist you.
+We hope you will make full use of the library and enjoy your study here.
 
-Li Ming
-[日期]`,
+Li Ming`,
 2017:`Dear Professor Cook,
 
-Welcome to our city! I am writing to recommend [本市景点一] and [本市景点二] to you.
-
-[景点一] is famous for [与该景点相符的特色], while [景点二] offers [另一项具体体验]. Visiting these places will allow you to appreciate the local scenery and learn more about the history and culture of our city.
-
-I hope you will enjoy your stay here. Please let me know if you would like any further information.
+Welcome to our city! I would be delighted to recommend two places that can help you get to know its history and everyday life.
+The City Museum is a good place to start, as its exhibitions introduce the area's history through old photographs, local objects and clear explanations. You can learn how the city has changed over time. I would also suggest visiting Riverside Park, where you can enjoy the scenery and observe how local residents spend their free time. If you visit in the late afternoon, you may see families walking and people exercising along the river.
+Together, these places offer both a cultural introduction and a relaxing experience.
+I hope you enjoy exploring our city.
 
 Yours sincerely,
 Li Ming`,
 2018:`Dear Professor Brown,
 
-I am writing to invite you to attend our graduation ceremony.
-The ceremony is scheduled to take place on [题目给出的日期] at [题目给出的地点]. It will be a special occasion for graduates to celebrate their achievements and express gratitude to those who have supported them, and it will also bring together graduates, faculty members and invited guests to share this memorable moment. We believe your presence would make the occasion even more meaningful to us.
-We would be delighted if you could join us. Please let me know whether you will be available.
+On behalf of the graduating students, I am writing to invite you to attend our graduation ceremony.
+The ceremony will be held in the university auditorium next Saturday morning. It will bring together graduates, teachers and families to celebrate the students' achievements and mark the beginning of a new stage in their lives. There will be a short address from the university and an opportunity for graduates to express their gratitude to those who have supported them.
+Your presence would mean a great deal to us, as your teaching and encouragement have helped many students grow. We would be honored if you could join this important occasion and share our happiness.
+Please let me know whether you will be available.
 
 Yours sincerely,
 Li Ming`,
 2019:`Dear Volunteer,
 
-I am writing to tell you more about Project Hope.
-To begin with, this program is dedicated to supporting children's education in underdeveloped areas, where access to educational resources may be limited. In particular, it aims to improve learning conditions by [题目要求或材料支持的具体方式], helping children gain better opportunities to continue their studies. As for volunteer participation, you can [题目要求的具体参与方式] or help raise public awareness of the program.
-I hope this information is helpful. Please feel free to ask if you would like to know anything else.
+I am writing to introduce Project Hope, a public welfare program that supports children's education in less-developed areas.
+The program aims to improve learning conditions by helping schools obtain books, teaching materials and other resources. It also encourages people to pay attention to children who have fewer educational opportunities. Volunteers can take part in several ways. For example, they may help organize book collections, sort donated materials or introduce the program to people in their communities.
+Even a small contribution can make a difference when many people work together. By providing children with better learning resources, the program gives them more opportunities to develop their abilities and pursue their goals.
+I hope you will consider joining us.
 
 Yours sincerely,
 Li Ming`,
 2020:`NOTICE
 
-An international singing competition is scheduled for [题目给出的日期] at [题目给出的地点].
-The event welcomes all students, including international students, and aims to provide an opportunity to share musical interests and learn about different cultures. Both solo and group performances are welcome, and participants may choose songs in different languages to showcase their cultural backgrounds and learn from one another.
-If you are interested, please register with [报名部门／渠道] before [题目给出的截止时间]. Please prepare your performance in advance and arrive at [签到时间] for registration. We look forward to your participation.
+An international singing competition will be held at our university next month. All students, including international students, are welcome to take part.
+The event aims to bring students together through music and provide an opportunity to learn about different cultures. Participants may perform alone or in groups and are welcome to choose songs in their own languages. For example, a student group could sing a traditional song and briefly introduce its cultural background before the performance.
+If you would like to participate, please register with the Students' Union office by Friday. Each performer should prepare the music in advance and arrive thirty minutes before the event for a sound check.
+We look forward to hearing your voices.
 
-The Students' Union
-[日期]`,
+The Students' Union`,
 2021:`Dear Alex,
 
-I am writing to offer some suggestions concerning your plan to look for a job in China.
-To begin with, it would be helpful to prepare a clear résumé that highlights your relevant skills and experience. In addition, learn about the expectations of employers in your field and identify the skills most valued in your chosen career. More importantly, improving your Chinese and building professional connections may increase your opportunities.
-I hope these suggestions will be of help. Best wishes for your job search!
+I am glad to hear that you are considering looking for a job in China. I am writing to offer a few suggestions that may help you prepare.
+First, make sure your résumé is clear and highlights the skills and experience relevant to the position. You should also learn about the expectations of employers in your field. For example, reading job advertisements and visiting company websites can help you understand what qualifications are commonly required.
+In addition, improving your Chinese may make daily communication and teamwork easier, while building professional connections can help you learn about suitable opportunities. You could attend career events or contact people working in your field.
+I hope these suggestions will be useful. Best wishes for your job search!
 
-Yours sincerely,
+Yours,
 Li Ming`,
 2022:`Dear Professor,
 
-I am writing to invite you to organize a team to take part in the international innovation contest at our university.
-The contest will bring together students with creative ideas and innovative projects. It will also offer a platform for participants to exchange ideas and present practical solutions to real-world challenges. We believe your academic experience would help you select suitable team members and guide them in preparing their projects, ensuring that the team is well prepared for the event.
-We would be honored if you could accept our invitation. I look forward to your reply.
+On behalf of the organizing committee, I am writing to invite you to organize a team to take part in our university's international innovation contest.
+The competition will bring together students who are interested in developing creative ideas and practical projects. It will provide a platform for teams to present their work, exchange views and learn from one another. For example, a team might introduce a simple solution to an everyday problem and explain how it could be improved.
+Your academic experience would be valuable in selecting team members, guiding their ideas and helping them prepare a clear presentation. We believe your involvement would encourage students to think creatively and work collaboratively.
+We would be grateful if you could accept this invitation and organize a team. I look forward to your reply.
 
 Yours sincerely,
 Li Ming`,
 2023:`NOTICE
 
 Professor Smith is recruiting one student to assist with his research project on campus sports activities.
-Possible duties include collecting and organizing data, observing campus sports activities and recording relevant findings. The student may also assist in arranging meetings and preparing brief progress reports.
-Applicants should have a strong interest in sports, good communication skills and a careful, responsible attitude. Previous research or data-handling experience would be an advantage.
-If interested, please send a brief application to [联系邮箱／渠道] before [截止时间].
+The selected student will help collect information about students' exercise habits, organize questionnaire results and observe participation in campus sports events. The work will also involve recording findings in a shared document and discussing them with the research team.
+Applicants should have a genuine interest in sports, basic computer skills and a careful, responsible attitude. Good communication skills are important because the student may need to contact participants and work with other team members. Previous experience with questionnaires or student research would be an advantage.
+If interested, please submit a short application to the Student Affairs Office by Friday.
 
 Li Ming`,
 2024:`Dear Student,
 
-I am writing to offer some suggestions concerning your report on an ancient Chinese scientist.
-To begin with, it would be helpful to introduce the scientist's life and the historical background of the major achievement. In addition, explain how the discovery or invention worked and why it was important at the time. Finally, try to connect its influence with modern life while relying on reliable sources.
-I hope these suggestions will be of help. Please feel free to contact me if you need further information.
+I am glad to hear that you are preparing a report on an ancient Chinese scientist. Here are a few suggestions that may help you organize it clearly.
+To begin with, introduce the scientist's life and the historical background of the major achievement. Then explain how the discovery or invention worked. For example, when discussing an ancient astronomical instrument, you could describe what it was designed to observe and how people used it. You should also explain why the achievement was important at the time and how its influence can still be seen today.
+Finally, use reliable sources and arrange your information in a clear order. This will make your report both informative and easy to follow.
+I hope these suggestions help.
 
 Yours sincerely,
 Li Ming`,
 2025:`Dear Paul,
 
-I am glad to hear from you. I am writing to tell you more about our campus craft demonstration.
-To begin with, the young craftsmen will show how traditional skills can be combined with modern ideas, such as [题目允许或你选择的具体工艺示例]. In particular, they will demonstrate [具体制作过程／作品特点].
-I am writing to ask whether you could [具体协助事项一]. The reason I am making this request is that we need extra help with the preparation. I would be grateful if you could also take charge of [具体协助事项二].
-Thank you for your help. I look forward to working with you.
+Thank you for your interest in our campus craft demonstration. I am glad to tell you more about what the young craftsmen will present.
+They will show how traditional skills can be combined with modern ideas. For example, one craftsperson will demonstrate Chinese paper-cutting by creating patterns of flowers and animals, while another will show how bamboo can be woven into small everyday objects. They will explain each step and introduce the cultural meaning behind the designs.
+Your help would be greatly appreciated. Could you help us translate the display labels into English and arrange the tables before the event? These tasks would make the exhibition easier for international visitors to understand and enjoy.
+Thank you again for your support. I look forward to working with you.
 
 Yours sincerely,
 Li Ming`,
 2026:`Dear Paul,
 
-I am glad to hear from you. I am writing to tell you more about the handwritten letters exchanged among Chinese family members.
-To begin with, written by [家庭成员关系] during [时间段], these letters record [日常生活内容], offering a glimpse into how ordinary families expressed care and stayed connected. Their handwriting and personal details make them valuable records of family relationships.
-As for your question about the exhibition, [明确回答目前是否公开展出]. If they are on display, you can see them at [题目或可靠材料提供的具体地点] during [题目或可靠材料提供的展期].
-I hope this information is helpful. Please feel free to ask if you would like to know anything else.
+Thank you for your interest in the handwritten letters. I am glad to explain what they are and where you can see them.
+The collection consists of letters exchanged between parents and children in Chinese families during the 1980s. They describe ordinary matters such as school life, work, family news and words of encouragement. Unlike short messages today, these letters often contain personal details and careful expressions of affection. They therefore offer a valuable glimpse into family relationships and everyday life in the past.
+Yes, a selection of the letters will be open to the public at the university's Cultural Exhibition Hall next week, from Monday to Friday. You are welcome to visit, and I would be happy to show you some of the most interesting examples.
+I hope to see you there.
 
 Yours sincerely,
 Li Ming`
