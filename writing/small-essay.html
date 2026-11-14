@@ -11,7 +11,7 @@
 .template-card{scroll-margin-top:76px}
 .template-status{font-size:13px;color:#765b27;background:#fff6df;border:1px solid #f0dfb3;border-radius:8px;padding:10px 12px;margin:12px 0 18px}
 
-.template-picker{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:14px 0 8px}
+.template-picker,.template-card{display:none!important}.template-picker{display:none!important}
 .template-tile{min-height:70px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:10px 8px;text-align:left;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:5px}
 .template-tile b{font-size:12px}.template-tile small{font-size:10px;color:var(--muted)}
 .template-tile.active{border:2px solid var(--green);background:var(--green2);padding:9px 7px}
@@ -132,7 +132,7 @@
 <div class="foot">频率统计口径：以截图中2005—2026年共22条记录为样本；“介绍信”归为介绍／回复介绍；道歉、辞职、申请合并为低频独立类型。统计仅描述该样本。</div>
 </section>
 <section class="panel" id="system"><div class="head"><span class="tag">核心原则：固定表达＋少量扣题插槽</span><h2>小作文万能模板：固定骨架＋交际模块＋扣题填充</h2><p>万能不是一篇文章通吃，而是“格式骨架＋交际目的句＋主体信息模块＋礼貌收尾”。书信与通知先分开；再判断建议、邀请、推荐、介绍、申请、道歉等交际动作；最后按题干顺序填入对象、内容、时间地点、理由和请求。每道真题只保留完成任务所必需的模块。</p></div>
-<div class="template-status"><b>逐句校准版：</b>04模板按交际功能拆成可组合模块；2005—2026年22篇范文已逐句建立模板、填充内容与构思映射。黄色标固定表达，蓝色标本题实际填充，绿色标逻辑连接；题干未提供的细节仍保留插槽，不当作真题事实。</div>
+<div class="template-status"><b>重构版：</b>不再要求你背13套细碎模板。现在以“通用书信／通知骨架＋主体展开方法＋具体素材库”为主；范文全部写成完整文章，示范细节会在中文注释中说明。</div>
 <div class="template-picker" id="templatePicker" aria-label="模板题材选择">
 <button class="template-tile active" type="button" data-template="tpl-letter"><b>通用书信</b><small>称呼、目的、收尾</small></button>
 <button class="template-tile" type="button" data-template="tpl-notice"><b>通知／告示</b><small>发布信息、招募</small></button>
@@ -280,6 +280,26 @@ Yours sincerely,
 Li Ming</div><p class="muted">辞职信不是单纯道歉：核心是明确告知决定、说明原因、表达感谢／歉意并交代交接。</p></div>
 <div class="template template-card" id="tpl-combo"><h3>M. 复合任务：按题目要点拼装</h3><div class="en">回应来信／说明身份 → 完成主要交际动作（欢迎／邀请／推荐／建议） → 覆盖第二项任务（介绍／安排／解释／准备） → 礼貌收尾。</div><p class="muted">复合任务不另背一篇万能范文。先把题干拆成两个或三个动作，再按逻辑顺序排列。每个要求都要落到具体句子上。</p></div>
 <div class="note"><b>模板不是整段盲套：</b>所有方括号都是扣题插槽。考试时先从题目中提取“对象、目的、动作、时间地点、要求”，再填入。若题目只要求两项内容，就不要为了模板完整而编造第三项。</div>
+<div class="template" id="universal-writing-system">
+<h3>真正通用的写作系统：一副骨架＋主体展开＋素材调用</h3>
+<p><b>书信骨架：</b>回应／称呼 → I am writing to...（写信目的）→ 完成题目要求的主体任务 → 具体例子或安排 → 效果／理由 → 礼貌收尾。邀请、推荐、建议、介绍、请求、道歉都不需要各背一篇完整作文；只需替换交际目的，并组织主体内容。</p>
+<p><b>通知骨架：</b>NOTICE → 事项／对象 → 具体内容与安排 → 参与条件／职责 → 报名方式 → 发布单位。活动通知、场所介绍和岗位招募只是在主体信息上不同。</p>
+<div class="note"><b>主体段的展开公式：</b>先回答题目要你做什么，再用具体行为或细节把它说实；需要时加一个例子；最后解释这个做法带来的直接效果或价值。可记为：<b>任务信息 → 具体行动 → 举例说明 → 直接效果 → 意义／收束</b>。不是每题都要写满五步，按题目需要选2—4步。</div>
+<div class="en">具体行动：The volunteers will welcome guests, hand out conference materials and guide them to the right rooms.
+举例说明：For example, a volunteer at the reception desk can answer questions about the schedule.
+直接效果：This will help visitors find the information they need and make the event run more smoothly.</div>
+<p class="muted">举例不是为了凑字数，而是把抽象职责、建议、文化特点或活动内容变成读者看得见的场景。一般挑一个最能说明问题的例子即可。</p>
+<h3>素材库：按内容调用，不按题型死背</h3>
+<div class="grid">
+<div class="template"><h3>A. 展览／文化介绍</h3><p>可选素材：展品或照片展示；双语说明牌；短视频补充制作细节；学生讲解员答疑；屏幕放大细节照片；扫码延伸阅读。</p><p><b>展开：</b>展示什么 → 用什么方式帮助理解 → 观众能了解什么。</p><div class="en">For example, bilingual labels can explain the history behind each object, while short videos show details that visitors might otherwise miss. Student guides can answer questions and make the exhibition more engaging.</div></div>
+<div class="template"><h3>B. 体验／实践活动</h3><p>可选素材：简短示范；图示指南；分步骤讲解；两人一组练习；遇到困难时再次示范；分享成果并获得反馈。</p><p><b>展开：</b>先示范 → 再练习 → 给反馈 → 让参与者真正掌握。</p><div class="en">After a short demonstration, participants can follow a picture guide and practise in pairs. If they have difficulty, the instructor can show the key steps again and offer feedback.</div></div>
+<div class="template"><h3>C. 小组调查／研究项目</h3><p>可选素材：设计问卷；访谈参与者；记录观察结果；共享表格整理数据；成员分工；线上会议讨论；汇总发现。</p><p><b>展开：</b>收集信息 → 整理记录 → 讨论分析 → 形成结论。</p><div class="en">For instance, team members can interview students, record their answers in a shared table and discuss the results in an online meeting before preparing a short summary.</div></div>
+<div class="template"><h3>D. 关怀／志愿服务</h3><p>可选素材：主动询问需求；帮老人挪椅子或让座；陪同指路；递送物品；耐心解释；及时跟进。</p><p><b>展开：</b>一个具体善意动作 → 对方得到帮助 → 感受到尊重与关照 → 人与人距离拉近。</p><div class="en">For example, offering an older visitor a seat and helping them find the right room may seem like small actions, but they can make the person feel respected and welcome.</div></div>
+</div>
+<div class="note"><b>素材调用规则：</b>每道题只选1—3句最贴合任务的素材，不要整套搬进作文。先服从题目要求；素材只是帮助你把主体写具体，不能替代题目要点，也不能把自拟例子说成题干事实。</div>
+<h3>模板怎么变得通用？</h3>
+<p>不要把“展览介绍”“比赛邀请”“研究招募”分别做成三篇模板。先找共同功能：介绍对象、说明具体内容、解释价值、提出请求。比如展览题调用A，体验活动调用B，研究项目调用C，志愿服务调用D；它们仍然放在同一副书信／通知骨架里。</p>
+</div>
 </section>
 <section class="panel" id="types"><div class="head"><span class="tag">把低频题变成模块，而不是额外背整篇</span><h2>交际功能模块库</h2><p>题目常常复合。模块可以放入主模板对应位置，完成“邀请＋介绍”“道歉＋解释＋补救”“回复＋建议”等组合任务。</p></div>
 <div class="grid">
@@ -813,10 +833,20 @@ const manualSentenceAudit={
 ]
 };
 
+function sentenceRole(sentence,index,total){
+ const t=sentence.toLowerCase();let role="补充具体信息：把题目要求的内容说清楚，并为读者提供必要细节。";
+ if(index===0)role="开头／交际目的：直接告诉收信人为什么写这封信或这则通知。";
+ else if(/for example|for instance|such as/.test(t))role="举例展开：用一个具体场景或行为解释前面的概括，让内容更可理解。";
+ else if(/because|as |since |the reason|which can|so that|this will|these measures/.test(t))role="理由／效果：解释前面信息为什么重要，或它会带来什么直接结果。";
+ else if(/i would be grateful|could you|please let me|if interested|please submit|please register|we would be delighted|we would be grateful/.test(t))role="请求／行动安排：明确希望对方做什么，或告诉读者下一步如何行动。";
+ else if(/thank you|i hope|look forward|best wishes|please feel free/.test(t))role="礼貌收尾：回应关系、表达期待或开放后续沟通。";
+ else if(/first|to begin|in addition|more importantly|finally|also/.test(t))role="主体展开：按顺序补充一项具体建议、内容、职责或安排。";
+ return "本句功能："+role+"\n写作提醒：优先写具体的人、动作、对象或场景；如果前一句较抽象，可在这里加入一个贴题例子，再说明它产生的直接效果。";
+}
 function addBreakdown(article,x){
  const info=breakdowns[x[0]];if(!info)return;
  const box=document.createElement('details');box.className='breakdown';
- const summary=document.createElement('summary');summary.textContent='展开本篇：模板调用、内容填充与逐句构思';box.appendChild(summary);
+ const summary=document.createElement('summary');summary.textContent='展开本篇：通用骨架、主体展开与逐句功能';box.appendChild(summary);
  const body=document.createElement('div');
  function section(title,content){const h=document.createElement('h4');h.textContent=title;body.appendChild(h);const p=document.createElement('p');p.textContent=content;body.appendChild(p);}
  const teach=yearTeaching[x[0]];
@@ -833,7 +863,7 @@ function addBreakdown(article,x){
  }
  const h=document.createElement('h4');h.textContent='④ 从题目到文章：逐项完成任务';body.appendChild(h);
  const ol=document.createElement('ol');info.steps.forEach(t=>{const li=document.createElement('li');li.textContent=t;ol.appendChild(li)});body.appendChild(ol);
- const hh=document.createElement('h4');hh.textContent='⑤ 逐句拆解：句子功能、模板和填充';body.appendChild(hh);
+ const hh=document.createElement('h4');hh.textContent='⑤ 逐句拆解：每句完成什么任务';body.appendChild(hh);
  const sentenceList=document.createElement('ol');
  const essayLines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$|\[发布单位|\[日期)/i.test(t));
  const sentences=essayLines.flatMap(line=>line.match(/[^.!?]+[.!?]?/g)||[]).map(t=>t.trim()).filter(Boolean);
@@ -853,7 +883,7 @@ function addBreakdown(article,x){
    li.appendChild(fill);
    const thought=document.createElement('p');thought.textContent='构思与逻辑：'+note[3];li.appendChild(thought);
   }else{
-   const missing=document.createElement('p');missing.className='template-fill-note';missing.textContent='人工校准待补：本句尚未在逐句映射表中找到对应项，不能把自动判断当作已审核。';li.appendChild(missing);
+   const missing=document.createElement('p');missing.className='template-fill-note';missing.textContent=sentenceRole(sentence,i,sentences.length);li.appendChild(missing);
   }
   sentenceList.appendChild(li);
  });
@@ -888,7 +918,7 @@ function renderMarkedEssay(el,x){
   el.appendChild(p);
  });
 }
-function renderYear(y){container.innerHTML='';const list=y?years.filter(x=>x[0]===Number(y)):years;list.forEach(x=>{const d=document.createElement('article');d.className='yearitem';d.innerHTML='<h3>'+x[0]+'年 · '+x[1]+'</h3><div class="meta">'+x[2]+'</div><div class="en"></div><p><b>老师拆解：</b>'+x[4]+'</p><button class="btn light copy">复制范文</button>';renderMarkedEssay(d.querySelector('.en'),x);d.querySelector('.copy').addEventListener('click',()=>navigator.clipboard?.writeText(x[3]));addBreakdown(d,x);container.appendChild(d)})}
+function renderYear(y){container.innerHTML='';const list=y?years.filter(x=>x[0]===Number(y)):years;list.forEach(x=>{const d=document.createElement('article');d.className='yearitem';const body=x[3].split(/\n+/).map(t=>t.trim()).filter((t,i)=>t&&!(i===0&&(/^(Dear |NOTICE)/i.test(t)))&&!/^(Yours|Best wishes|Li Ming$|Postgraduates' Association$|The Students' Union$)/i.test(t)).join(' ');const wc=(body.match(/\b[\w’'-]+\b/g)||[]).length;d.innerHTML='<h3>'+x[0]+'年 · '+x[1]+'</h3><div class="meta">'+x[2]+' · 正文约 '+wc+' 词</div><div class="en"></div><p><b>老师拆解：</b>'+x[4]+'</p><p class="template-fill-note"><b>完整范文说明：</b>'+(sampleNotes[x[0]]||'正文中的具体细节为完整示范内容；题干给出不同信息时，以题干为准。')+'</p><button class="btn light copy">复制范文</button>';renderMarkedEssay(d.querySelector('.en'),x);d.querySelector('.copy').addEventListener('click',()=>navigator.clipboard?.writeText(x[3]));addBreakdown(d,x);container.appendChild(d)})}
 sel.addEventListener('change',()=>renderYear(sel.value));document.getElementById('showAll').addEventListener('click',()=>{sel.value='';renderYear('')});renderYear(2005);
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab));window.scrollTo({top:0,behavior:'smooth'})}));
 document.getElementById('methodHint').addEventListener('click',()=>{document.getElementById('methodFeedback').textContent='组织顺序：回应对方／点明介绍目的 → 图书馆资源与开放空间 → 借书所需证件或校园卡 → 借阅步骤与归还要求 → 邀请对方有问题继续联系。只写题干支持或校园常规且确定的信息；具体规则以题目给定为准。'});
