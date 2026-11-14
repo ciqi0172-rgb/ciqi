@@ -586,7 +586,7 @@ function renderMarkedEssay(el,x){
  const fixed=[
  /I am writing to inform you of my decision to resign from my position at the magazine/i,
  /I am writing to apply for [^,.!?]*/i,
- /I am writing to offer some suggestions (?:concerning|on|for) [^.!?]*/i,
+ /I am writing to offer some suggestions[^.!?]*/i,
  /I am writing to recommend [^,.!?]*/i,
  /I am writing to invite you to [^,.!?]*/i,
  /I am writing to apologize for [^.!?]*/i,
@@ -603,7 +603,7 @@ function renderMarkedEssay(el,x){
  /Thank you for your understanding/i,
  /Once again, I am sorry for the inconvenience and appreciate your understanding/i,
  /The event is scheduled to take place [^.!?]*/i,
- /The event will be held [^.!?]*/i,
+ /The event will be held [^.!?]*/i,/The university library welcomes [^.!?]*/i,
  /What makes it particularly worth recommending is [^.!?]*/i,
  /I believe it would be an excellent choice for you because [^.!?]*/i,
  /To make things right, I can [^.!?]*/i,
