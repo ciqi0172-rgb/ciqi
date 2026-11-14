@@ -3,10 +3,21 @@
 <style>
 :root{--bg:#f5f6f2;--paper:#fff;--ink:#202720;--muted:#778078;--line:#e5e9e2;--green:#426b56;--green2:#eaf1eb;--gold:#b68a48;--gold2:#f7f0e4;--red:#a45b50}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}.shell{max-width:1200px;margin:auto;padding:24px 24px 60px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}.brand{display:flex;gap:12px;align-items:center}.mark{width:42px;height:42px;border-radius:14px;background:var(--green);color:#fff;display:grid;place-items:center;font:22px Georgia}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.14em}.brand b{font-size:15px}.back{color:var(--green);text-decoration:none;font-size:12px}.hero{padding:28px;border-radius:18px;background:linear-gradient(115deg,#eaf1eb,#f8f4e9);margin-bottom:18px}.eyebrow{font-size:10px;letter-spacing:.17em;color:var(--green);font-weight:800}.hero h1{font:500 clamp(27px,4vw,42px)/1.2 Georgia,serif;margin:10px 0}.hero p{font-size:13px;line-height:1.9;color:#657067;max-width:820px;margin:0}.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:18px;align-items:start}.nav{position:sticky;top:12px;background:white;border:1px solid var(--line);border-radius:15px;padding:10px}.nav button{display:block;width:100%;text-align:left;padding:11px;border:0;border-radius:9px;background:transparent;color:#59635b;font-size:12px;cursor:pointer}.nav button.active{background:var(--green2);color:var(--green);font-weight:700}.panel{display:none;background:white;border:1px solid var(--line);border-radius:16px;padding:clamp(18px,3vw,32px);min-height:550px}.panel.active{display:block}.head{margin-bottom:20px}.tag{display:inline-block;background:var(--green2);color:var(--green);border-radius:20px;padding:5px 9px;font-size:10px;font-weight:700}.head h2{font:500 25px Georgia,serif;margin:9px 0}.head p,.muted{font-size:12px;line-height:1.8;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{border:1px solid var(--line);border-radius:12px;padding:15px;margin:10px 0}.card h3{font-size:13px;margin:0 0 9px}.card p{font-size:12px;line-height:1.8;color:#657067}.stat{font:28px Georgia;color:var(--green)}.bar{height:7px;border-radius:9px;background:#edf0eb;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:var(--green)}.tabs{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 17px}.pill{border:1px solid var(--line);background:white;border-radius:20px;padding:7px 11px;font-size:11px;color:#626c63;cursor:pointer}.pill.active{background:var(--green);border-color:var(--green);color:#fff}.template{border:1px solid var(--line);border-radius:13px;padding:17px;margin:12px 0}.template h3{font-size:13px;margin:0 0 10px}.en{font:14px/1.9 Georgia,"Times New Roman",serif;background:#f7f8f5;border-radius:9px;padding:12px;margin:8px 0;white-space:pre-wrap}.slot{color:var(--red);font-weight:700}.note{background:var(--gold2);border-left:3px solid var(--gold);padding:12px 14px;border-radius:0 9px 9px 0;color:#705c3c;font-size:12px;line-height:1.85;margin:12px 0}.btn{border:0;background:var(--green);color:white;border-radius:8px;padding:9px 13px;font-size:11px;cursor:pointer}.btn.light{background:var(--green2);color:var(--green)}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.select{padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:12px;min-width:160px}table{border-collapse:collapse;width:100%;font-size:12px}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--muted);font-weight:600}.yearitem{padding:13px;border:1px solid var(--line);border-radius:11px;margin:10px 0}.yearitem h3{font-size:13px;margin:0 0 7px}.yearitem .meta{font-size:11px;color:var(--green);margin-bottom:7px}.yearitem p{font-size:12px;line-height:1.8;color:#657067;margin:5px 0}.yearitem .en{color:var(--ink)}.check{display:flex;gap:9px;font-size:12px;line-height:1.8;margin:9px 0}.check input{accent-color:var(--green);margin-top:3px}textarea{width:100%;min-height:130px;border:1px solid var(--line);border-radius:10px;padding:12px;font:13px/1.8 Georgia,serif}textarea:focus{outline:2px solid #dce9dd}.foot{font-size:10px;color:var(--muted);line-height:1.8;margin-top:20px;border-top:1px solid var(--line);padding-top:12px}@media(max-width:780px){.shell{padding:14px}.layout{grid-template-columns:1fr}.nav{position:static;display:flex;overflow:auto;gap:4px}.nav button{white-space:nowrap;width:auto}.grid{grid-template-columns:1fr}.hero{padding:20px}.panel{padding:18px 14px}table{font-size:11px}th,td{padding:7px}}
 .hl-template{background:#fff09a;color:#24352a;padding:2px 4px;border-radius:3px;font-weight:700}.hl-topic{background:#d9ecff;color:#174b78;padding:2px 4px;border-radius:3px}.hl-logic{background:#dff1df;color:#285c36;padding:2px 4px;border-radius:3px}
+
+/* 模板题材导航：纯锚点跳转，不依赖主导航脚本 */
+.template-nav{display:flex;gap:8px;overflow-x:auto;padding:10px 0 14px;margin:4px 0 18px;position:sticky;top:0;z-index:5;background:var(--panel,#fff);scrollbar-width:thin}
+.template-nav a{flex:0 0 auto;display:inline-block;padding:9px 13px;border:1px solid #d9e0e7;border-radius:999px;color:#31536b;text-decoration:none;font-size:14px;white-space:nowrap;background:#f7fafc}
+.template-nav a:active{background:#e4f0fa}
+.template-card{scroll-margin-top:76px}
+.template-status{font-size:13px;color:#765b27;background:#fff6df;border:1px solid #f0dfb3;border-radius:8px;padding:10px 12px;margin:12px 0 18px}
 </style>
 </head><body><div class="shell">
 <header class="top"><div class="brand"><div class="mark">小</div><div><small>KAOYAN ENGLISH I · WRITING LAB</small><b>英语一小作文训练室</b></div></div><a class="back" href="index.html">← 返回作文训练首页</a></header>
-<section class="hero"><div class="eyebrow">FROM 0 TO 1 · PRACTICAL WRITING</div><h1>小作文：把固定格式练成稳定得分能力</h1><p>不要求你每次从零创造模板。先掌握书信、通知等文体格式，再调用交际功能模块；真正需要现场组织的，只保留少量扣题信息。每一篇真题都按“审题—选框架—填内容—检查格式”拆解。</p></section>
+<section class="hero"><div class="eyebrow">FROM 0 TO 1 · PRACTICAL WRITING</div><h1>小作文：把固定格式练成稳定得分能力</h1><p>不要求你每次从零创造模板。先掌握书信、通知等文体格式，再调用交际功能模块；真正需要现场组织的，只保留少量扣题信息。每一篇真题都按“审题—选框架—填内容—检查格式”拆解。</p><div class="template template-card" id="tpl-apply"><h3>G. 申请／求职信</h3><p class="muted">第一版暂缺独立模板。不能简单把建议信或介绍信改写成申请信；需要根据历年题目的申请对象、资格、经历、申请理由和请求事项重新构建。</p></div>
+<div class="template template-card" id="tpl-apology"><h3>H. 道歉信</h3><p class="muted">第一版暂缺独立模板。基本功能应覆盖：明确道歉、说明原因（不推责）、提出补救、承诺避免重犯。具体句式待用原稿与真题校准。</p></div>
+<div class="template template-card" id="tpl-thanks"><h3>I. 感谢信</h3><p class="muted">第一版暂缺独立模板。需区分感谢对象、具体帮助、帮助带来的影响和再次致谢，不能只用通用感谢句填充。</p></div>
+<div class="template template-card" id="tpl-request"><h3>J. 请求信</h3><p class="muted">第一版暂缺独立模板。需明确请求事项、提出请求的背景／理由、对对方所需付出的说明及礼貌收尾。</p></div>
+</section>
 <div class="layout"><nav class="nav">
 <button class="active" data-tab="method">01 从0到1：真正学会套模板</button><button data-tab="marked">02 模板荧光拆解</button><button data-tab="overview">03 出题规律</button><button data-tab="system">04 通用模板系统</button><button data-tab="types">05 功能模块库</button><button data-tab="years">06 历年真题范文</button><button data-tab="practice">07 从0到1练习</button>
 </nav><main>
@@ -91,7 +102,11 @@
 <div class="foot">频率统计口径：以截图中2005—2026年共22条记录为样本；“介绍信”归为介绍／回复介绍；道歉、辞职、申请合并为低频独立类型。统计仅描述该样本。</div>
 </section>
 <section class="panel" id="system"><div class="head"><span class="tag">核心原则：固定表达＋少量扣题插槽</span><h2>一套通用骨架，五类主模板</h2><p>先选文体，再选交际功能。书信格式固定；主体段根据任务替换。不要把每篇作文背成完全不同的文章。</p></div>
-<div class="template"><h3>A. 通用书信格式</h3><div class="en">Dear [称呼],
+<div class="template-status"><b>版本校准中：</b>以下是网站现存的第一版通用模板。尚未与用户最初提交的模板原稿逐句核对，也尚未完成与22篇真题范文的逐篇匹配；在完成核对前，不把它们标记为最终版。</div>
+<nav class="template-nav" aria-label="按题材查看模板">
+<a href="#tpl-letter">通用书信</a><a href="#tpl-notice">通知／告示</a><a href="#tpl-advice">建议信</a><a href="#tpl-invite">邀请信</a><a href="#tpl-recommend">推荐信</a><a href="#tpl-intro">介绍／回复</a><a href="#tpl-apply">申请／求职</a><a href="#tpl-apology">道歉信</a><a href="#tpl-thanks">感谢信</a><a href="#tpl-request">请求信</a>
+</nav>
+<div class="template template-card" id="tpl-letter"><h3>A. 通用书信格式</h3><div class="en">Dear [称呼],
 
 I am writing to [写信目的].
 
@@ -102,7 +117,7 @@ I am writing to [写信目的].
 
 Yours sincerely,
 Li Ming</div><p class="muted">称呼、目的句、主体信息、礼貌收尾、落款。注意题目指定收信人时不要写错名字；正式程度要与关系匹配。</p></div>
-<div class="template"><h3>B. 通用通知格式</h3><div class="en">NOTICE
+<div class="template template-card" id="tpl-notice"><h3>B. 通用通知格式</h3><div class="en">NOTICE
 
 [活动目的／通知事项] will be held / is scheduled for [日期] at [地点].
 
@@ -112,7 +127,7 @@ Please [报名／联系／准备事项] before [截止时间]. We look forward t
 
 [发布单位]
 [日期]</div><p class="muted">通知不写Dear，也通常不写Yours sincerely。标题、活动信息、参与方式、发布单位和日期是核心。</p></div>
-<div class="template"><h3>C. 建议信（最高频主模板）</h3><div class="en">Dear [称呼],
+<div class="template template-card" id="tpl-advice"><h3>C. 建议信（最高频主模板）</h3><div class="en">Dear [称呼],
 
 I am writing to offer some suggestions concerning [主题／问题].
 
@@ -122,7 +137,7 @@ I hope these suggestions will be of help. Please feel free to contact me if you 
 
 Yours sincerely,
 Li Ming</div><p class="muted">建议要可执行，且与题目对象相符。避免只写“加强意识、采取措施”而不给具体行动。</p></div>
-<div class="template"><h3>D. 邀请信</h3><div class="en">Dear [称呼],
+<div class="template template-card" id="tpl-invite"><h3>D. 邀请信</h3><div class="en">Dear [称呼],
 
 I am delighted to invite you to [活动].
 
@@ -132,7 +147,7 @@ We would be grateful if you could join us. Please let me know whether you will b
 
 Yours sincerely,
 Li Ming</div></div>
-<div class="template"><h3>E. 推荐信</h3><div class="en">Dear [称呼],
+<div class="template template-card" id="tpl-recommend"><h3>E. 推荐信</h3><div class="en">Dear [称呼],
 
 I am writing to recommend [对象] to you.
 
@@ -142,7 +157,7 @@ I hope you will find my recommendation helpful. Please let me know if you would 
 
 Yours sincerely,
 Li Ming</div></div>
-<div class="template"><h3>F. 介绍／回复介绍信</h3><div class="en">Dear [称呼],
+<div class="template template-card" id="tpl-intro"><h3>F. 介绍／回复介绍信</h3><div class="en">Dear [称呼],
 
 I am glad to hear from you. I am writing to tell you more about [介绍对象／主题].
 
