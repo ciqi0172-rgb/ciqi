@@ -808,6 +808,48 @@ function sentenceTransition(year,index,sentences,module){
  if(index===sentences.length-1)return "闭环关系：本句收束全文，回扣最初任务，不再引入新的信息支线。";
  return "承接关系：本句应从前一句的对象、特点、问题或措施自然推出下一步；优先保持同一主模板逻辑，只有确有任务需要时才插入辅助环节。";
 }
+function templateSkeleton(module,sentence,index,year){
+ const t=sentence.toLowerCase();
+ if(module==="①"){
+  if(/i am writing to recommend/.test(t))return "I am writing to recommend [对象], which I believe will be of great interest to you.";
+  if(/i am writing to introduce/.test(t))return "I am writing to introduce [对象], which I believe will be of great interest to you.";
+  if(/is a drama|is a form of|they are handwritten|the program aims|the film is/.test(t))return "[对象] is a form of [类别] associated with [背景／主题].";
+  if(/one of its most distinctive/.test(t))return "One of its most distinctive features is that [核心特点].";
+  if(/what makes/.test(t))return "What makes [对象] especially worth [观看／了解] is that [深层价值].";
+  if(/in addition|beyond|together|by contrast/.test(t))return "In addition / Beyond [已有特点], [补充特点或更高层价值].";
+  if(/i hope|recommend it|recommend two places/.test(t))return "I would strongly recommend [对象] to anyone interested in [主题／价值].";
+  return "[介绍对象] + [类别／特点／用途] + [对读者的价值].";
+ }
+ if(module==="②"){
+  if(/i am writing to invite|i would like to invite/.test(t))return "I am writing to invite you to [活动／承担的角色].";
+  if(/will be held|will take place/.test(t))return "[活动] will be held on [日期] at [时间／地点].";
+  if(/register|submit your application/.test(t))return "Those interested should register / apply by [截止时间] through [方式].";
+  return "[活动内容／安排] + [参与方式或对参与者的价值].";
+ }
+ if(module==="③"){
+  if(/i am writing to offer/.test(t))return "I am writing to offer some suggestions concerning [问题／目标].";
+  if(/to begin with|first,/.test(t))return "First / To begin with, [具体措施], which can [直接效果].";
+  if(/in addition|more importantly|finally/.test(t))return "In addition / More importantly, [下一项措施] to [效果].";
+  if(/i hope/.test(t))return "I hope these suggestions will help [目标／预期结果].";
+  return "[具体措施] → [直接效果／预期结果].";
+ }
+ if(module==="④")return "During [经历], I was particularly impressed by [细节]; it made me realize that [意义].";
+ if(module==="⑤"){
+  if(/i am writing to ask/.test(t))return "I am writing to ask whether [对方] could [具体协助].";
+  if(/would be grateful|could you/.test(t))return "I would be grateful if you could [具体任务／行动].";
+  if(/if interested/.test(t))return "If interested, please [申请方式] before [截止时间].";
+  return "[请求事项] + [具体任务／合作方式] + [预期帮助].";
+ }
+ if(module==="⑥"){
+  if(/i am writing to inform/.test(t))return "I am writing to inform you of [事项].";
+  if(/apolog/.test(t))return "I sincerely apologize for [具体事情／影响].";
+  if(/because|due to/.test(t))return "The main reason for this is that [原因].";
+  if(/to make|i will|i can/.test(t))return "To address the situation, I will [补救措施] to [预期效果].";
+  return "Thank you for your understanding and consideration.";
+ }
+ if(module==="答疑任务")return "To answer the question directly: [题目要求的事实答案].";
+ return "关系承接句：[回应对方／建立语境]，随后转入主模板任务。";
+}
 function inferSentenceModule(sentence,plan,year,index){
  return getSentenceModule(year,index||0,sentence);
 }
@@ -881,28 +923,30 @@ function addBreakdown(article,x){
  const sentenceList=document.createElement('ol');
  const essayLines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$|\[发布单位|\[日期)/i.test(t));
  const sentences=essayLines.flatMap(line=>line.match(/[^.!?]+[.!?]?/g)||[]).map(t=>t.trim()).filter(Boolean);
- const notes=manualSentenceAudit[x[0]]||[];
  let audited=0;
  sentences.forEach((sentence,i)=>{
-  const note=notes.find(n=>sentence.toLowerCase().startsWith(n[0].toLowerCase()))||null;
   const li=document.createElement('li');
   const original=document.createElement('p');original.textContent=sentence;original.style.fontWeight='600';li.appendChild(original);
-  if(note){
-   audited++;
-   const template=document.createElement('p');template.className='template-fill-note';
-   const tb=document.createElement('b');tb.textContent='04模板来源：'+inferSentenceModule(sentence,combinationPlans[x[0]])+'；对应句型：';template.appendChild(tb);
-   template.appendChild(document.createTextNode(note[1].replace(/^[A-L]\s+[^：]*：\s*/,'')));
-   li.appendChild(template);
-   const fill=document.createElement('p');fill.className='template-fill-note';
-   const fb=document.createElement('b');fb.textContent='本句实际填充：';fill.appendChild(fb);fill.appendChild(document.createTextNode(note[2]));
-   li.appendChild(fill);
-   const thought=document.createElement('p');thought.textContent='构思与逻辑：'+note[3];li.appendChild(thought);
-  }else{
-   const missing=document.createElement('p');missing.className='template-fill-note';const plan=combinationPlans[x[0]];const module=inferSentenceModule(sentence,plan);missing.textContent='04模板来源：'+module+'\n'+sentenceRole(sentence,i,sentences.length)+'\n04可迁移句型：'+fallbackTemplate(sentence)+'\n本题填充：'+sentence+'\n构思：本句承接全文主线，先确定它承担的交际功能，再把本题的人物、动作和必要细节填入句型；如果它属于辅助模板，完成这一环后必须回到主模板。';li.appendChild(missing);
-  }
+  const module=getSentenceModule(x[0],i,sentence);
+  const plan=combinationPlans[x[0]];
+  const isMain=plan?.main?.includes(module);
+  const isAux=plan?.aux?.includes(module);
+  const source=module==="关系句"?"关系承接（不另启模板）":module==="答疑任务"?"题目直接答疑":(isMain?"主模板":"辅助模板／必要信息");
+  const template=document.createElement('p');template.className='template-fill-note';
+  const tb=document.createElement('b');tb.textContent='04模板来源：'+module+'（'+source+'）；对应句型：';template.appendChild(tb);
+  template.appendChild(document.createTextNode(templateSkeleton(module,sentence,i,x[0])));
+  li.appendChild(template);
+  const fill=document.createElement('p');fill.className='template-fill-note';
+  const fb=document.createElement('b');fb.textContent='本题实际填充：';fill.appendChild(fb);fill.appendChild(document.createTextNode(sentence));
+  li.appendChild(fill);
+  const thought=document.createElement('p');
+  thought.textContent='句子功能：'+sentenceFunction(sentence,i,sentences.length)+'\n写作逻辑：'+moduleLogic(module)+'。\n衔接逻辑：'+sentenceTransition(x[0],i,sentences,module);
+  li.appendChild(thought);
+  audited++;
   sentenceList.appendChild(li);
  });
- const coverage=document.createElement('p');coverage.className='logic-map';coverage.textContent='逐句教学覆盖：'+sentences.length+' / '+sentences.length+' 句。每句均显示写作功能、可迁移句型、本题信息和中文构思；颜色按实际句中固定表达、主题内容与逻辑关系标注。';body.appendChild(coverage);
+ });
+ const coverage=document.createElement('p');coverage.className='logic-map';coverage.textContent='逐句教学覆盖：'+audited+' / '+sentences.length+' 句。每句均标注主／辅助模板来源、对应可迁移句型、本题实际填充、句子功能、写作逻辑与前后衔接；辅助环节必须服务主线，完成后回到主模板。';body.appendChild(coverage);
  body.appendChild(sentenceList);
  section('⑦ 使用时必须核对',info.caution);
  box.appendChild(body);article.appendChild(box);
