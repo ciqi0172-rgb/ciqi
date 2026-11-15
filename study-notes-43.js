@@ -151,104 +151,60 @@ const pitfalls=[
 ["逻辑不顺时仍沿着第一个译法硬推","本篇反复出现词义误判、修饰关系错位、句间逻辑未建立。","译文不通顺时依次检查词义、句法主干/修饰、前后句功能，不要只润色原译。"]
 ];
 const questions=[
-{q:"Which of the following best captures the author's central argument?",opts:[
-"Universities should admit fewer students because widening access inevitably lowers academic standards.",
-"Educational fairness requires both access to education and the skills needed to benefit from it; lowering standards alone is not a genuine solution.",
-"The decline in students' abilities is mainly a consequence of the pandemic and can be reversed only by improving schools.",
-"Standardized tests are the most reliable way to ensure that students from disadvantaged backgrounds receive equal treatment."
-],a:1,why:"全文并不是反对扩大教育机会，而是反对用降低标准代替真实支持。第6—8段提出多层面的改革，第9段明确区分“把学生送入更高层级”和“让学生具备应对学习的能力”。",analyses:[
-"A 把作者对降低标准的批评偷换成反对扩大入学机会；inevitably 还把可能的风险说成必然结果。",
-"B 正确。access 与 skills 两个要素同时保留，准确概括结尾并统摄三个解决方向。",
-"C 把疫情夸大成主要且几乎唯一的原因；第4段明确说疫情前成绩已经下降。",
-"D 把第7段重新引入测试的一项措施夸大成最可靠、唯一的公平保障，也忽略了职业路径和中小学改革。"
+{q:"题1｜第1—4段：作者如何建立“教育标准正在下滑”这一问题？",opts:[
+"作者主要依赖教师对学生的主观抱怨，并认为这些抱怨足以证明所有学生的能力都在下降。",
+"作者先呈现教师观察到的具体困难，再用测试结果补充证据，同时区分顶尖学生的表现与基础技能薄弱者增多的趋势。",
+"作者认为疫情是教育标准下滑的唯一原因，并用国际测试证明疫情造成了全部问题。",
+"作者主要想证明标准化考试对少数族裔学生不公平，因此大学应停止使用这些考试。"
+],a:1,why:"第1段先回应“教师只是主观抱怨”的可能质疑；第2段列出基础知识、阅读理解等具体表现；第3段以测试数据支持问题确实存在，同时用 The best... but... 区分顶尖学生与基础技能薄弱者；第4段才转向可能原因。",analyses:[
+"A 把“并非只是教师主观臆想”读反了，也把 a growing number 夸大成 all students。",
+"B 正确。它概括了从现象、数据到限定性判断的证据链，既不忽略数据，也不把局部趋势扩大成全体退步。",
+"C 疫情只是一个解释；原文明确指出疫情前学校成绩已经下滑。",
+"D 把第4段中 Some believe 引出的他人观点偷换成作者的核心目的，且忽略前面三个段落。"
 ]},
-{q:"Why does the author mention that the best students are becoming cleverer while a growing number have very weak basic skills?",opts:[
-"To show that the reported decline in standards is exaggerated because top students continue to excel.",
-"To suggest that universities should concentrate resources on gifted students rather than less capable ones.",
-"To distinguish the success of the strongest students from the widening problem of inadequate basic skills among other students.",
-"To argue that students' basic skills have declined because universities admit too many gifted students."
-],a:2,why:"The best... but a growing number... 通过 but 建立对照。作者没有说所有学生都变差，也没有把两种趋势解释成因果，而是强调顶尖学生表现与基础技能薄弱者增多可以同时存在。",analyses:[
-"A 只抓住前半句，忽略 but 后面才是作者要强调的问题。",
-"B 原文没有主张减少对普通学生的支持；第5段反而担忧补基础挤占帮助尖子生的资源。",
-"C 正确。它保留了两组学生之间的对比，没有把局部情况扩大成全体情况。",
-"D 无中生有地建立了“录取尖子生导致其他学生技能下降”的因果关系。"
+{q:"题2｜第4—6段：以下哪项最准确地概括作者对教育标准下降及其成因的态度？",opts:[
+"作者认为降低大学入学门槛是扩大教育公平的必要代价，因此不应再追究其后果。",
+"作者把问题完全归因于高校招生标准降低，并认为只要恢复考试，教育质量就会自动改善。",
+"作者呈现疫情、既有成绩下滑、入学门槛降低等多种因素，并指出标准下降会带来资源挤占、辍学风险和进一步降低要求等连锁后果。",
+"作者认为基础能力较弱的学生不值得接受高等教育，因为他们会妨碍优秀学生的发展。"
+],a:2,why:"第4段呈现多个可能原因，并非单因解释；第5段用 The costs of all this 转向后果，依次讨论补基础挤占资源、准备不足者辍学风险、院校进一步降低要求，以及成绩膨胀和AI作弊。作者批评制度应对方式，不是把责任简单推给弱势学生。",analyses:[
+"A 将文中被报告的公平性理由误当成作者认可的结论。",
+"B 用 completely 和 automatically 夸大因果；作者提出的是多层面原因和解决方向，不是单一考试万能论。",
+"C 正确。它抓住原因的多元性和第5段明确展开的连锁成本。",
+"D 把“资源可能被挤占”偷换成对弱势学生价值的否定；作者结尾强调教育应为每个人提供机会。"
 ]},
-{q:"In paragraph 4, the references to fairness concerns about tests and the need to fill university places mainly serve to",opts:[
-"establish that the author considers both reasons equally convincing.",
-"present possible motives behind universities' decision to lower entry requirements without necessarily endorsing them.",
-"prove that standardized tests unfairly discriminate against all minority applicants.",
-"show that falling birth rates are the sole cause of lower admission standards."
-],a:1,why:"Some believe... Others are trying... 是在呈现他人的看法和动机。作者并未在此处直接认同考试不公平的判断，也没有说人口下降是唯一原因。",analyses:[
-"A 把“呈现两种理由”偷换成作者认为两种理由同样有说服力；原文没有这样的评价。",
-"B 正确。注意 Some believe / Others are trying 这类表达标示观点归属，不能自动算作作者立场。",
-"C all minority applicants 是范围扩大，原文只说 some believe 这些考试对黑人和西班牙裔学生不公平。",
-"D sole cause 是绝对化；原文还讨论考试公平性争议等其他动机。"
+{q:"题3｜第5—7段：哈佛限制A等级成绩数量的例子，在全文论证中最重要的作用是什么？",opts:[
+"证明成绩膨胀完全由学生作弊造成，因此大学只需加强纪律处分。",
+"说明顶尖大学的学生实际能力已经下降到与普通十岁儿童相当的水平。",
+"把前文关于降低标准及其成本的讨论推进到大学可以采取的具体改革，说明恢复标准不仅是抽象口号，也涉及招生和考核方式。",
+"说明只有哈佛有能力控制成绩，其他大学不应尝试类似改革。"
+],a:2,why:"第5段指出 grade inflation 是新问题之一；第7段提出大学恢复高标准，并从招生测试转向评分制度，哈佛限制每门课A等级成绩数量是具体例子。24%到60%是A等级成绩占全部成绩的比例，用来说明高分普遍化，而非学生人数或奖学金比例。",analyses:[
+"A 把成绩膨胀与AI作弊混为一谈；原文将两者并列为不同问题。",
+"B 将第3段关于部分学生基础技能薄弱的数据错误移接到哈佛学生身上。",
+"C 正确。例子将“恢复标准”落实为评分机制改革，并由数据解释改革背景。",
+"D 原文说这种提议 ought to be more common，恰恰认为它应当更普遍，而非只适用于哈佛。"
 ]},
-{q:"What is the function of the Singapore, England and Mississippi examples in paragraph 6?",opts:[
-"They demonstrate that educational standards can improve through policy and teaching reforms, countering the claim that improvement is impossible.",
-"They prove that all countries should adopt exactly the same curriculum and testing system.",
-"They show that improvements in university admissions automatically raise literacy levels in primary and secondary schools.",
-"They suggest that poverty and screen use have no effect on children's education."
-],a:0,why:"前面有人认为不解决儿童贫困、屏幕诱惑等问题就不可能提高标准；后面用新加坡成绩、英国考试课程改革、密西西比州改变教学做法的例子说明改革并非不可能。",analyses:[
-"A 正确。例子的作用是反驳“无法改善”的绝对判断，并提供不同改革路径的实例。",
-"B 原文没有要求照搬完全相同的课程或考试体系；这些例子来自不同国家和州。",
-"C 把中小学教学改革与大学招生之间建立了原文没有的自动因果关系。",
-"D 原文没有否认贫困和屏幕使用可能造成影响；它反驳的是这些问题使改革完全不可能的说法。"
+{q:"题4｜第6—8段：作者为何在主张恢复标准的同时，又强调学徒制和社区大学等大学以外的路径？",opts:[
+"作者认为大学教育本身没有价值，应该用职业教育全面取代四年制大学。",
+"作者希望标准与机会兼顾：大学不应靠降低要求吸纳学生，社会也应提供多样的学习路径，让不同需求的年轻人获得继续学习和发展的机会。",
+"作者认为社区大学比例下降是四年制大学比例上升的直接原因，因此应强制学生改读社区大学。",
+"作者认为职业路径只适合学业能力较差的学生，与教育公平没有关系。"
+],a:1,why:"第7段要求大学恢复招生和考核标准；第8段随即指出大学以外的选择太少，并用学徒制和社区大学说明替代路径不足。两段共同表达的不是关门，而是既保留标准，也扩充可行的学习选择。原文对两种入学比例的对照没有建立直接因果。",analyses:[
+"A 把拓宽选择偷换成取代大学；原文没有否定四年制大学。",
+"B 正确。它综合了标准和路径多样性两条线索，也为第9段的教育公平结论作铺垫。",
+"C 把同时发生的相反趋势写成直接因果，并擅自加入强制改读的政策。",
+"D 把职业教育污名化为只适合能力较差者，原文没有这样的价值判断。"
 ]},
-{q:"In paragraph 7, what does the rise in A grades from 24% to 60% most directly indicate?",opts:[
-"The proportion of students receiving financial aid has more than doubled.",
-"The number of students graduating from Harvard has increased at the same rate.",
-"High grades have become much more common, supporting the concern that grading standards may have become less demanding.",
-"Students' actual academic abilities have improved substantially over the period."
-],a:2,why:"These 回指 A grades；24%和60%指A等级成绩占全部成绩的比例。这个变化是成绩膨胀的证据，而不能直接证明学生真实能力提高或下降。",analyses:[
-"A 原文没有提到 financial aid（经济资助或奖学金），属于关键词联想造成的无中生有。",
-"B 原文说的是成绩比例，不是毕业生人数；指标被偷换。",
-"C 正确。高分占比大幅上升支持作者对 grade inflation 的担忧，但不等于单凭数据就能断定每个学生的真实能力。",
-"D 把成绩分布直接等同于真实能力变化，混淆评分结果与实际掌握程度。"
-]},
-{q:"Consider the sentence: “But the share of youngsters who go to them is declining, even as the share heading to demanding four-year universities is going up.” Which interpretation is best supported?",opts:[
-"Fewer young people are entering community colleges while a larger share are heading to demanding four-year universities; the sentence contrasts simultaneous trends rather than proving that one causes the other.",
-"The decline in community-college enrollment has caused more students to enter four-year universities.",
-"Community colleges are becoming more demanding, which explains why their share is declining.",
-"The share of young people who need extra help is declining as their academic abilities improve."
-],a:0,why:"them 指 community colleges；两个 share 分别对应进入社区大学和进入要求较高的四年制大学的年轻人比例。even as 在这里把同时发生、方向相反的趋势并列起来，不足以证明因果关系。",analyses:[
-"A 正确。它准确解释指代、比例对象和 even as 的对照功能，同时没有擅自补出因果。",
-"B 把并列趋势解释成因果关系；原文没有说社区大学比例下降导致四年制大学比例上升。",
-"C demanding 修饰 four-year universities，不是 community colleges；修饰对象被错接。",
-"D 把“进入某类学校的比例”偷换成“需要帮助的年轻人比例”，且原文没有说能力正在改善。"
-]},
-{q:"In the final paragraph, the phrase “without granting them the skills they need” is crucial because it",opts:[
-"explains why young people should be prevented from progressing to higher levels of education.",
-"qualifies the criticism by identifying the problem as advancement without the necessary preparation, rather than advancement itself.",
-"shows that the author believes disadvantaged students are incapable of acquiring academic skills.",
-"means that educational institutions should grant students certificates before they complete their training."
-],a:1,why:"主语是 raising young people up its tiers；without granting... 表示“在没有给予他们所需技能的情况下”。作者批评的是缺少能力培养却单纯把学生推向更高层级，不是反对学生进步或接受高等教育。",analyses:[
-"A 把对“缺乏准备的晋升”的批评扩大成应阻止所有年轻人升学，改变了作者立场。",
-"B 正确。without 短语限定了作者批评的具体条件，是理解整句逻辑的关键。",
-"C 把制度未能提供技能偷换成学生自身无能力学习，原文没有这种贬低弱势学生的观点。",
-"D 把 skills 偷换成 certificates（证书），完全改变了句意。"
-]},
-{q:"Which of the following can be inferred from the author's discussion of grade inflation and alternative educational routes?",opts:[
-"The author regards academic standards and educational access as fundamentally incompatible.",
-"The author believes that every student should follow the same university pathway if admission tests are fair.",
-"Restoring standards should be accompanied by credible ways for students with different needs to learn and progress.",
-"Community colleges are responsible for the decline in students' literacy and numeracy."
-],a:2,why:"第7段主张大学恢复标准，第8段又主张拓宽大学以外的学习路径。两者合起来说明作者不是简单关门，而是要求标准与多样化、可行的学习路径并存。",analyses:[
-"A 与全文主张相反；作者认为机会和能力培养应当兼顾。",
-"B 把所有学生都引向同一条大学路径，与拓宽大学以外选择的主张冲突。",
-"C 正确。它综合了相邻两段的解决方案，是合理推断，而不是原句复述。",
-"D 原文没有把学生读写和计算能力下降归咎于社区大学；该选项建立了无依据的因果关系。"
-]},
-{q:"Which option best explains the contrast between “opportunity” in the opening sentence of paragraph 9 and the criticism that follows?",opts:[
-"The author first supports universal access, then rejects it because some students are not academically prepared.",
-"The author distinguishes genuine educational opportunity from the appearance of fairness created by moving students upward without equipping them to succeed.",
-"The author argues that education benefits only a small group and should therefore be restricted.",
-"The author uses the contrast to claim that racial equity should be abandoned in favor of academic excellence."
-],a:1,why:"结尾先承认教育应向所有人提供机会，再反对只把教育好处给少数人、或把学生推向更高层级却不给所需技能。作者反对的是表面公平，不是公平本身。",analyses:[
-"A 把批评的对象偷换成普遍入学机会；作者反对的是缺乏必要能力支持的晋升。",
-"B 正确。它抓住 genuine opportunity 与 superficial advancement 的区别，且保留作者对教育公平的承诺。",
-"C 把作者批评的少数人获益现象误说成作者自己的主张，观点主体完全颠倒。",
-"D 将种族公平与学术标准设为二选一，但作者认为真正的公平应当让学生获得所需能力，而不是放弃公平。"
+{q:"题5｜第7—9段：作者关于教育公平的最终立场最接近哪一项？",opts:[
+"只要所有人都能进入更高层级的教育，技能是否充分可以留待入学之后再解决。",
+"教育公平要求取消学术标准，因为任何筛选都会使处境不利的学生受到伤害。",
+"真正的教育公平既要提供机会，也要提供达到学习要求所需的技能和支持；否则单纯把学生推向更高层级，只会制造表面上的公平。",
+"种族公平与学术标准无法同时实现，因此政策制定者必须明确选择其中一项。"
+],a:2,why:"第8段显示大学以外的路径选择不足，第9段进一步区分“给机会”与“不给必要技能却把学生推向更高层级”。作者批评的是缺乏准备和支持的表面晋升，而不是反对帮助弱势学生或追求种族公平。",analyses:[
+"A 把必要技能推迟到入学之后，忽略 without granting them the skills they need 对整句的限定。",
+"B 把教育公平直接等同于取消标准，与第7段主张恢复高标准相反。",
+"C 正确。它整合了文章对机会、标准、技能支持的整体立场，避免把公平与质量设为二选一。",
+"D 原文明确否定这种二选一：不提供技能却让学生升入更高层级，既不务实，也不是推动种族公平的举措。"
 ]}
 ];
 const personalReview=[
