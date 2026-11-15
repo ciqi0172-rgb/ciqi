@@ -742,7 +742,7 @@ const combinationPlans={
 2022:{main:"② 活动组织类（邀请）",aux:"① 介绍推荐类的比赛亮点",why:"核心动作是请教授组织队伍参赛，不是请教授担任评委或单纯出席。②必须贯穿邀请和组队请求；①负责介绍创新大赛内容和参赛价值。",insert:"开头直接写organize a team；随后用①介绍参赛者、项目展示和交流价值；最后回到②再次明确请教授组队并期待回复。",chain:"②明确邀请教授组织队伍 → ①介绍比赛和参赛项目 → ①说明展示交流价值 → ②说明教授指导的价值 → ②再次提出组队请求并期待回复。"},
 2023:{main:"⑤ 请求合作类（招募）",aux:"② 活动组织类的工作安排",why:"招募研究助理的核心是岗位职责、任职要求和申请方式，⑤负责招募逻辑；②只补充研究工作流程和进度安排。",insert:"先明确招募人数与研究项目，再用⑤列职责和条件；在申请收尾前插入②式工作安排信息，最后回到⑤说明如何申请。",chain:"NOTICE → ⑤说明招募一名研究助理 → ⑤列研究职责 → ⑤列能力要求 → ②补充工作安排／进度 → ⑤报名方式与截止日期。"},
 2024:{main:"③ 建议解决类",aux:"无（建议链完整）",why:"报告准备的核心问题是如何让内容清晰、有说服力。人物背景、成就原理、历史意义、现代联系和可靠来源，正好构成③的实施步骤。",insert:"不插入经历模板；按报告听众的理解顺序给出建议，并说明每项建议怎样帮助听众理解。",chain:"回应报告任务 → ③介绍人物和时代背景 → ③解释科学成就原理 → ③说明历史意义 → ③联系现代生活并核实资料 → 收尾。"},
-2025:{main:"① 介绍推荐类（介绍展示内容）",aux:"⑤ 请求合作类",why:"第一项任务是介绍手工艺展示，①负责展示主题、具体技艺和文化价值；第二项任务是请Paul协助筹备，必须在介绍完成后切换到⑤，明确具体任务。",insert:"先回应来信并用①介绍传统技艺与现代创意，再用具体技艺例子说明展示过程；完成介绍后转入⑤，提出翻译展签和布置展台的请求，最后回到合作期待。",chain:"回应Paul → ①介绍展示主题 → ①举技艺例子 → ①解释现场演示价值 → ⑤提出协助请求 → ⑤列出具体任务 → ⑤说明帮助效果 → 感谢并期待合作。"},
+2025:{main:"① 介绍推荐类（介绍展示内容）",aux:"⑤ 请求合作类＋③措施效果环节",why:"第一项任务是介绍手工艺展示，①负责展示主题、具体技艺和文化价值；介绍完成后再切换到⑤提出具体协助请求，③只用于说明这项协助带来的直接效果。",insert:"先回应来信并用①介绍传统技艺与现代创意，再用具体技艺例子说明展示过程；完成介绍后转入⑤，提出翻译展签和布置展台的请求；用③解释这些行动如何帮助国际访客理解展示，最后回到⑤礼貌收束。",chain:"回应Paul → ①介绍展示主题 → ①举技艺例子 → ①解释现场演示价值 → ⑤提出协助请求 → ⑤列出具体任务 → ③说明任务效果 → ⑤感谢并期待合作。"},
 2026:{main:"① 介绍推荐类（介绍家书）",aux:"无（直接答疑，不虚构个人经历）",why:"家书的来源、内容和价值由①完成；“是否公开展出、在哪里展出”是必须直接回答的事实问题，不需要为了组合而添加④的个人体验。",insert:"先介绍家书是什么，再说明它记录的生活内容；随后说明其情感与史料价值；最后单独直接回答展出状态、地点和展期，缺少题干信息时保留插槽。",chain:"回应Paul → ①说明家书来源与年代 → ①概括信件记录内容 → ①解释情感与历史价值 → 直接回答是否公开展出 → 填入地点和展期 → 邀请参观并收尾。"}
 };
 const sentenceModulePlan={
@@ -766,8 +766,8 @@ const sentenceModulePlan={
 2022:["②","①","①","①","②","②","②"],
 2023:["⑤","⑤","⑤","⑤","⑤","⑤","②"],
 2024:["关系句","③","③","③","③","③","③","③"],
-2025:["关系句","①","①","①","⑤","⑤","③","⑥","⑤"],
-2026:["关系句","①","①","①","答疑任务","①","⑤"]
+2025:["关系句","①","①","①","⑤","⑤","③","⑤","⑤"],
+2026:["关系句","①","①","①","答疑任务","①","①"]
 };
 function getSentenceModule(year,index,sentence){
  const explicit=sentenceModulePlan[year];
@@ -955,7 +955,7 @@ function renderMarkedEssay(el,x){
  const legend=document.createElement('div');legend.className='mark-legend';legend.innerHTML='<span class="l-template">黄色：模板表达</span><span class="l-topic">蓝色：题目专属信息</span><span class="l-logic">绿色：逻辑衔接</span>';el.appendChild(legend);
  const lines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$|\[发布单位|\[日期)/i.test(t));
  const sentences=lines.flatMap(line=>line.match(/[^.!?]+[.!?]?/g)||[]).map(t=>t.trim()).filter(Boolean);
- const fixed=/^(I am writing to|I am glad to hear|Thank you for|On behalf of|I would like to invite|I would be grateful if|We would be grateful if|We would be delighted|I sincerely apologize|I hope|Welcome to|Volunteers are wanted|Applicants should|If interested|The volunteers will|The selected student will|To make things right|It would be helpful|I would also suggest)/i;
+ const fixed=/^(I am writing to|I am glad to hear|Thank you for|On behalf of|I would like to invite|I would be grateful if|We would be grateful if|We would be delighted|I sincerely apologize|I hope|Welcome to|Volunteers are wanted|Applicants should|If interested|The volunteers will|The selected student will|To make things right|It would be helpful|I would also suggest|One of its most distinctive|What makes|The film is|The program aims|The contest will|The ceremony will|The story follows|The book offers|I would strongly recommend|The library provides|The university library welcomes|I am writing to introduce|I am writing to recommend|I am writing to offer|I am writing to invite|I am writing to ask|I am writing to inform|I am writing to apologize)/i;
  const connector=/^(To begin with|First|Second|In addition|More importantly|For example|For instance|As for|Finally|By contrast|Together)/i;
  sentences.forEach((sentence,i)=>{
   const p=document.createElement('p');p.style.margin='0 0 9px';
