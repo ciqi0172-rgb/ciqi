@@ -756,7 +756,7 @@ const sentenceModulePlan={
 2013:["②","①","①","②","①","②","②"],
 2014:["③","③","③","③","③","③","③"],
 2015:["①","①","①","①","①","①","①"],
-2016:["①","①","①","①","①","①"],
+2016:["①","①","①","①","①","①","①"],
 2017:["关系句","①","①","①","①","①","①","①"],
 2018:["②","②","①","①","②","②","②"],
 2019:["①","①","①","⑤","①","①"],
@@ -945,7 +945,6 @@ function addBreakdown(article,x){
   audited++;
   sentenceList.appendChild(li);
  });
- });
  const coverage=document.createElement('p');coverage.className='logic-map';coverage.textContent='逐句教学覆盖：'+audited+' / '+sentences.length+' 句。每句均标注主／辅助模板来源、对应可迁移句型、本题实际填充、句子功能、写作逻辑与前后衔接；辅助环节必须服务主线，完成后回到主模板。';body.appendChild(coverage);
  body.appendChild(sentenceList);
  section('⑦ 使用时必须核对',info.caution);
@@ -953,15 +952,18 @@ function addBreakdown(article,x){
 }
 function renderMarkedEssay(el,x){
  const legend=document.createElement('div');legend.className='mark-legend';legend.innerHTML='<span class="l-template">黄色：模板表达</span><span class="l-topic">蓝色：题目专属信息</span><span class="l-logic">绿色：逻辑衔接</span>';el.appendChild(legend);
- const lines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$)/i.test(t));
+ const lines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$|\[发布单位|\[日期)/i.test(t));
  const sentences=lines.flatMap(line=>line.match(/[^.!?]+[.!?]?/g)||[]).map(t=>t.trim()).filter(Boolean);
- function source(t){
-  const plan=combinationPlans[x[0]];
-  return inferSentenceModule(t,plan);
- }
  const fixed=/^(I am writing to|I am glad to hear|Thank you for|On behalf of|I would like to invite|I would be grateful if|We would be grateful if|We would be delighted|I sincerely apologize|I hope|Welcome to|Volunteers are wanted|Applicants should|If interested|The volunteers will|The selected student will|To make things right|It would be helpful|I would also suggest)/i;
- const connector=/^(To begin with|First|Second|In addition|More importantly|For example|For instance|As for|Finally)/i;
- sentences.forEach(sentence=>{const p=document.createElement('p');p.style.margin='0 0 9px';const span=document.createElement('span');span.className=fixed.test(sentence)?'mark-template':connector.test(sentence)?'mark-logic':'mark-topic';span.textContent=sentence;p.appendChild(span);const tag=document.createElement('small');tag.style.cssText='display:inline-block;margin-left:7px;color:#426b56;font:700 10px sans-serif';const id=source(sentence);tag.textContent=id?'模板来源：'+id:'模板主线：'+(combinationPlans[x[0]]?.main||'按功能选择')+'／题目内容';p.appendChild(tag);el.appendChild(p);});
+ const connector=/^(To begin with|First|Second|In addition|More importantly|For example|For instance|As for|Finally|By contrast|Together)/i;
+ sentences.forEach((sentence,i)=>{
+  const p=document.createElement('p');p.style.margin='0 0 9px';
+  const span=document.createElement('span');span.className=fixed.test(sentence)?'mark-template':connector.test(sentence)?'mark-logic':'mark-topic';span.textContent=sentence;p.appendChild(span);
+  const tag=document.createElement('small');tag.style.cssText='display:inline-block;margin-left:7px;color:#426b56;font:700 10px sans-serif';
+  const module=getSentenceModule(x[0],i,sentence);const plan=combinationPlans[x[0]];
+  const role=module==="关系句"?"关系承接":module==="答疑任务"?"题目直接答疑":(plan?.main?.includes(module)?"主模板":"辅助模板／必要信息");
+  tag.textContent='模板逻辑：'+module+'（'+role+'）';p.appendChild(tag);el.appendChild(p);
+ });
 }
 function renderYear(y){container.innerHTML='';const list=y?years.filter(x=>x[0]===Number(y)):years;list.forEach(x=>{const d=document.createElement('article');d.className='yearitem';const body=x[3].split(/\n+/).map(t=>t.trim()).filter((t,i)=>t&&!(i===0&&(/^(Dear |NOTICE)/i.test(t)))&&!/^(Yours|Best wishes|Li Ming$|Postgraduates' Association$|The Students' Union$)/i.test(t)).join(' ');const wc=(body.match(/\b[\w’'-]+\b/g)||[]).length;d.innerHTML='<h3>'+x[0]+'年 · '+x[1]+'</h3><div class="meta">'+x[2]+' · 正文约 '+wc+' 词</div><div class="en"></div><p><b>老师拆解：</b>'+x[4]+'</p><p class="template-fill-note"><b>完整范文说明：</b>'+(sampleNotes[x[0]]||'正文中的具体细节为完整示范内容；题干给出不同信息时，以题干为准。')+'</p><button class="btn light copy">复制范文</button>';renderMarkedEssay(d.querySelector('.en'),x);d.querySelector('.copy').addEventListener('click',()=>navigator.clipboard?.writeText(x[3]));addBreakdown(d,x);container.appendChild(d)})}
 sel.addEventListener('change',()=>renderYear(sel.value));document.getElementById('showAll').addEventListener('click',()=>{sel.value='';renderYear('')});renderYear(2005);
