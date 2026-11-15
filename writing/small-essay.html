@@ -308,10 +308,10 @@ const sampleNotes={
 const revisedEssays={
 2005:`Dear Editor,
 
-I am writing to tell you that I have decided to leave my position at the magazine. I regret any inconvenience my departure may cause, and I will do what I can to make the transition as smooth as possible.
-Because my personal situation has changed, I can no longer spend enough time on the work. I have enjoyed working with the magazine and am thankful for your help.
-To make the change easier, I will finish my current work, put the files in order and explain the main tasks to the colleague who takes over. I hope this will make things easier for the team.
-Thank you for your understanding.
+I am writing to inform you of my decision to resign from my position at the magazine.
+Due to changes in my personal circumstances, I can no longer devote sufficient time to my work.
+Before my departure, I will complete my current tasks, organize the relevant files and explain my main duties to the colleague who takes over. I will also provide the information needed to ensure that ongoing work can continue smoothly.
+I have greatly valued this opportunity and appreciate your support. Thank you for your understanding.
 
 Yours sincerely,
 Li Ming`,
@@ -521,7 +521,7 @@ const freqTable=document.getElementById('freqTable');years.forEach(y=>{const tr=
 const sel=document.getElementById('yearSelect'),container=document.getElementById('essayContainer');years.forEach(y=>{const o=document.createElement('option');o.value=y[0];o.textContent=y[0]+' · '+y[1];sel.appendChild(o)});
 
 const breakdowns={
-2005:{modules:"⑥辞职事务处理",fit:"主任务是正式告知辞职并安排交接。辞职信的核心不是先道歉，而是把决定、原因和后续安排交代清楚。",steps:["⑥开头明确辞职决定。","⑥简短说明真实原因，不编造题干未提供的私人事实。","⑥交代完成现有工作和移交职责的安排。","⑥感谢对方给予的机会并礼貌收尾。"],caution:"按“辞职决定→原因→交接→感谢收尾”推进；只有题目明确涉及给对方造成不便时才考虑道歉，不能为了凑字数插入无必要句子。"},
+2005:{modules:"⑥辞职事务处理",fit:"主任务是正式告知辞职并安排交接。辞职信按决定、原因、交接和感谢收尾推进，不先道歉，也不把交接承诺放在原因之前。",steps:["⑥开头明确辞职决定。","⑥紧接着说明个人情况变化使自己无法继续投入足够时间。","⑥交代完成现有任务、整理文件并向接手同事说明职责；必要的信息支持也放在这一环节。","⑥感谢编辑给予的机会与支持，并礼貌收尾。"],caution:"按“辞职决定→原因→交接→感谢收尾”推进；不提前道歉，不重复交接，也不为凑字数添加题目未要求的承诺。"},
 2006:{modules:"⑤请求合作类（请求部门协助匹配受助学生）",fit:"主任务是请求有关部门协助寻找受助学生。受助条件、资助用途和后续联系都在限定请求如何落实，功能上仍属于⑤的请求背景与具体需求，不另起①介绍推荐主线。",steps:["⑤提出请求：请部门协助寻找合适的受助学生。","⑤说明受助对象应符合的条件。","⑤说明资助用途和后续支持计划。","⑤补充后续联系安排，说明支持可能如何延续。","⑤回到请求主线，请对方推荐候选人并说明下一步如何落实。","礼貌致谢。"],caution:"必须写清楚是请求部门协助寻找受助者，不是申请者本人申请资助；条件和资助方式依题干填写。"},
 2007:{modules:"③建议解决类",fit:"这是完整的建议解决任务，全文以图书馆服务改进为主线。每项建议都要有可执行动作，必要时补充直接效果或具体例子。",steps:["③点明改善图书馆服务的目的。","③建议延长开放时间，并解释考试期间的实际作用。","③建议增加安静学习空间和座位。","③用闲置角落改造成阅读区的例子把建议具体化。","③提出更新在线目录，并说明它如何帮助读者查找书籍。","③总结改进效果并收尾。"],caution:"建议必须对应具体服务问题；例子用于解释建议，不应扩写成无关故事。"},
 2008:{modules:"⑥道歉事务处理＋③补救措施",fit:"⑥道歉是主线，③只在需要提出可执行补救方案时插入。先承担责任、承认影响并简短解释，再提出归还方式，最后回到⑥收束。",steps:["⑥明确为忘记归还CD道歉。","⑥承认对方可能因此无法使用CD，并表达歉意。","⑥解释备考原因，但明确承认自己仍应记得约定。","③提出明天送还CD的具体方案。","③补充对方不方便时的寄送或另约方案。","⑥承诺以后更好地履行约定并再次致歉。"],caution:"不能把忙碌当作免责理由；物品始终保持为CD，补救措施必须明确。"},
@@ -546,7 +546,7 @@ const breakdowns={
 };
 
 const yearTeaching={
-2005:{tpl:"⑥ 事务处理类（辞职）",fixed:"I am writing to inform you of [事项／决定].",fill:"resign from my position at the magazine；原因保持简洁真实；交接安排填当前任务、文件整理和工作交接。",logic:"⑥主线：告知辞职决定 → 简要解释原因 → 承认可能造成的不便 → 提出可执行的交接措施 → 礼貌收尾。道歉是事务处理中的一环，不取代辞职告知。"},
+2005:{tpl:"⑥ 事务处理类（辞职）",fixed:"I am writing to inform you of my decision to resign from [职位].",fill:"resign from my position at the magazine；随后解释个人情况变化导致无法继续投入足够时间；再写完成现有工作、整理文件、向接手同事说明职责；最后感谢编辑的支持。",logic:"严格按⑥辞职主线：告知辞职决定 → 解释离职原因 → 交代具体交接 → 感谢并礼貌收尾。正文不提前道歉、不重复交接，也不加入题目未要求的补救承诺。"},
 2006:{tpl:"⑤ 请求合作类（请求部门协助匹配受助学生）",fixed:"I am writing to ask whether [对方／部门] could [具体协助].",fill:"请求有关部门推荐符合条件的受助学生；说明受助对象条件、资助用途与后续帮扶计划，均服务于请求如何落实。",logic:"全篇沿⑤请求主线：提出请求 → 说明受助对象条件 → 说明资助用途与后续联系 → 请求推荐合适对象并询问落实步骤。这里的条件和计划是请求的必要信息，不另启①介绍推荐模板。不能写成申请者本人申请资助。"},
 2007:{tpl:"③ 建议解决类",fixed:"To improve [问题／目标], I would suggest taking the following steps.",fill:"improving library services；延长开放时间、增加安静学习区与座位、更新在线目录。",logic:"③主线：界定服务问题 → 提出开放时间措施并解释效果 → 增加学习空间并举例 → 更新检索服务并解释效果 → 收束。每项建议都必须对应一个实际问题。"},
 2008:{tpl:"⑥ 事务处理类（道歉）＋③补救措施",fixed:"I am writing to apologize for [具体事情].",fill:"forgetting to return your CD as promised；说明忙于备考但承认自己仍应记得约定；提出明天送还或按对方方便的方式寄回。",logic:"⑥主线：承认失误与影响 → 简短解释但不推责 → 插入③式具体补救与替代方案 → 回到⑥承诺改进并再次致歉。"},
