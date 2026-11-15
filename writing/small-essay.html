@@ -135,6 +135,16 @@
 <div class="head"><span class="tag">模板04 · 完整复合模板体系</span><h2>六套核心模板｜逻辑、表达与迁移方法</h2><p>每一套模板都不是几句孤立的万能句，而是一条可以直接扩写成完整书信的表达链。同一套模板尽量兼容多个相近任务；题目变化时只替换必要信息，确实无法共用的交际行为才保留专用句。先理解逻辑，再背英文表达，最后学会根据题目填充。</p></div>
 <div class="template-status"><b>使用原则：</b>六套模板按“交际功能＋内容逻辑”分类，不是六种固定题材。先选负责全文任务的主模板，再用题目要求决定主体内容；只有出现独立的第二项任务时才插入辅助模块。模板句是可调用的表达工具，不要求每篇全部使用。编号：①介绍推荐　②活动组织　③建议解决　④经历感受　⑤请求合作　⑥事务处理。</div>
 <div class="template"><h3>六套模板总览</h3><table><tr><th>编号</th><th>模板</th><th>核心逻辑</th><th>典型任务</th></tr><tr><td><b>①</b></td><td>介绍推荐类</td><td>介绍对象 → 描述特点 → 补充具体内容 → 说明价值或推荐理由</td><td>介绍、推荐、展示、评价</td></tr><tr><td><b>②</b></td><td>活动组织类</td><td>活动是什么 → 活动有什么 → 如何参与 → 提供支持 → 邀请或通知</td><td>邀请、通知、活动介绍、招募活动</td></tr><tr><td><b>③</b></td><td>建议解决类</td><td>明确问题 → 提出行动 → 解释实施方法 → 说明预期效果</td><td>建议、计划、指导、问题解决</td></tr><tr><td><b>④</b></td><td>经历感受类</td><td>交代经历 → 抓住细节 → 表达感受 → 上升到意义</td><td>经历、感谢、感受、人物评价</td></tr><tr><td><b>⑤</b></td><td>请求合作类</td><td>提出请求或合作意向 → 说明背景 → 交代具体需求 → 说明参与方式 → 表达期待</td><td>求助、申请、合作、招聘</td></tr><tr><td><b>⑥</b></td><td>事务处理类</td><td>说明事务 → 解释原因或问题 → 承担责任／提出处理办法 → 礼貌收尾</td><td>辞职、道歉、投诉、变更告知</td></tr></table></div>
+<div class="template"><h3>先区分“题材重复”和“模板重复”</h3>
+<p>历年题目会反复出现校园活动、文化与作品、学习／就业建议、公共服务改进、招募与协作等题材；但同一个题材可以要求不同的交际动作。例如“文化活动”可以是介绍活动（①）、邀请参加（②）、提出改进建议（③），也可以是招募志愿者（⑤）。所以不要把“文化题”固定背成①，也不要因为题材相同就照搬上一年的整篇文章。</p>
+<table><tr><th>反复出现的内容领域</th><th>题目可能要求什么</th><th>主模板如何判断</th><th>可迁移的内容思路</th></tr>
+<tr><td>校园活动／比赛／志愿服务</td><td>邀请、通知、招募、介绍活动</td><td>邀请／通知以②为主；招募以⑤为主；单纯介绍活动特色可用①</td><td>活动内容、参与者行动、时间地点、报名方式按题目取舍</td></tr>
+<tr><td>文化、作品、景点、展览</td><td>介绍、推荐、邀请参观、说明展览安排</td><td>介绍／推荐以①为主；邀请参加以②为主；展览事实要直接回答</td><td>类别／背景、具体特点、受众能了解或体验什么</td></tr>
+<tr><td>学习、求职、报告准备</td><td>给建议、指导完成任务、申请岗位</td><td>建议与指导以③为主；个人申请以⑤为主</td><td>目标／困难、可执行行动、直接效果；申请则补充相关能力</td></tr>
+<tr><td>校园服务、环保、健康</td><td>提出改进措施、说明活动计划</td><td>以③为主；若是活动通知则切换②</td><td>具体问题、谁能采取什么行动、行动带来的效果</td></tr>
+<tr><td>道歉、辞职、变更、投诉</td><td>说明事项并处理后续</td><td>以⑥为主，必要时借用③的“措施—效果”</td><td>发生什么、必要原因／影响、实际补救或下一步</td></tr>
+</table>
+<p><b>迁移公式：</b>题材告诉你“写什么材料”；交际任务决定“用哪套主模板”；题目要点决定“从材料里选哪几项”；逻辑链决定“按什么顺序写”。四者不要混为一谈。</p></div>
 <h3 class="subhead">选择一个主题，查看完整模板</h3>
 <div class="template-picker" id="templatePicker">
 <button class="template-tile active" type="button" data-template="tpl-intro"><b>① 介绍推荐类</b><small>对象 · 特点 · 价值</small></button>
@@ -641,44 +651,46 @@ function sentenceTransition(year,index,sentences,module){
 function templateSkeleton(module,sentence,index,year){
  const t=sentence.toLowerCase();
  if(module==="①"){
-  if(/i am writing to recommend/.test(t))return "I am writing to recommend [对象], which I believe will be of great interest to you.";
-  if(/i am writing to introduce/.test(t))return "I am writing to introduce [对象], which I believe will be of great interest to you.";
-  if(/is a drama|is a form of|is a novel|is a historic site|is a public welfare program|is a cultural activity|they are handwritten|the program aims|the film is/.test(t))return "[对象] is a form of [类别] associated with [背景／主题].";
-  if(/one of its most distinctive/.test(t))return "One of its most distinctive features is that [核心特点].";
-  if(/what makes/.test(t))return "What makes [对象] especially worth [观看／了解] is that [深层价值].";
-  if(/in addition|beyond|together|by contrast/.test(t))return "In addition / Beyond [已有特点], [补充特点或更高层价值].";
-  if(/i hope|recommend it|recommend two places/.test(t))return "I would strongly recommend [对象] to anyone interested in [主题／价值].";
-  return "[介绍对象] + [类别／特点／用途] + [对读者的价值].";
+  if(/i am writing to recommend/.test(t))return "I am writing to recommend [对象], which I think you will enjoy / find useful.";
+  if(/i am writing to introduce/.test(t))return "I am writing to introduce [对象], which may be of interest to you.";
+  if(/is a drama|is a form of|is a novel|is a historic site|is a public welfare program|is a cultural activity|they are handwritten|the program aims|the film is/.test(t))return "[对象] is a [类别] that [主要用途／背景].";
+  if(/one of its most distinctive|one of its best features/.test(t))return "One of its best features is that [核心特点].";
+  if(/what makes/.test(t))return "It is worth [了解／观看／参观] because [具体价值].";
+  if(/in addition|beyond|together|by contrast/.test(t))return "It also [补充特点／具体内容], which helps readers understand [相关价值].";
+  if(/i hope|recommend it|recommend two places/.test(t))return "I would recommend [对象] to anyone interested in [主题].";
+  return "[对象是什么] + [代表性特点] + [对读者的具体价值].";
  }
  if(module==="②"){
   if(/i am writing to invite|i would like to invite/.test(t))return "I am writing to invite you to [活动／承担的角色].";
-  if(/will be held|will take place/.test(t))return "[活动] will be held on [日期] at [时间／地点].";
-  if(/register|submit your application/.test(t))return "Those interested should register / apply by [截止时间] through [方式].";
-  return "[活动内容／安排] + [参与方式或对参与者的价值].";
+  if(/will be held|will take place/.test(t))return "[活动] will be held at [地点] on [日期／时间].";
+  if(/register|submit your application/.test(t))return "If you are interested, please [报名／申请方式] by [截止日期].";
+  if(/applicants should|volunteers are wanted/.test(t))return "We are looking for [岗位／人数]; applicants should [必要条件].";
+  return "[活动内容] + [参与者要做什么／能获得什么].";
  }
  if(module==="③"){
-  if(/i am writing to offer/.test(t))return "I am writing to offer some suggestions concerning [问题／目标].";
-  if(/to address|to improve|to help you/.test(t))return "To address [问题／目标], I would suggest taking the following steps.";
-  if(/to begin with|first,/.test(t))return "First / To begin with, [具体措施], which can [直接效果].";
-  if(/in addition|more importantly|finally/.test(t))return "In addition / More importantly, [下一项措施] to [效果].";
-  if(/i hope/.test(t))return "I hope these suggestions will help [目标／预期结果].";
-  return "[具体措施] → [直接效果／预期结果].";
+  if(/i am writing to offer/.test(t))return "I am writing to offer some suggestions to help with [问题／目标].";
+  if(/to address|to improve|to help you/.test(t))return "To help [对象] [目标], I would suggest the following steps.";
+  if(/to begin with|first,/.test(t))return "First, [具体行动]. This can help [对象] [直接效果].";
+  if(/in addition|more importantly|finally/.test(t))return "In addition, [另一项行动]. By doing so, [对象] can [效果].";
+  if(/i hope/.test(t))return "I hope these suggestions will be helpful.";
+  return "[问题／目标] → [可执行行动] → [直接效果].";
  }
- if(module==="④")return "During [经历], I was particularly impressed by [细节]; it made me realize that [意义].";
+ if(module==="④")return "[真实经历／对方的帮助] → [能证明感受的具体细节] → [感受／认识].";
  if(module==="⑤"){
-  if(/i am writing to ask/.test(t))return "I am writing to ask whether [对方] could [具体协助].";
-  if(/would be grateful|could you/.test(t))return "I would be grateful if you could [具体任务／行动].";
-  if(/if interested/.test(t))return "If interested, please [申请方式] before [截止时间].";
-  return "[请求事项] + [具体任务／合作方式] + [预期帮助].";
+  if(/i am writing to ask/.test(t))return "I am writing to ask whether you could help me with [事项].";
+  if(/would be grateful|could you/.test(t))return "Could you [具体行动一] and [具体行动二]?";
+  if(/if interested/.test(t))return "If you are interested, please [回应／申请方式] by [截止日期].";
+  if(/applicants should|we are looking for/.test(t))return "We are looking for [岗位／人数]; applicants should [必要条件].";
+  return "[需要什么／向谁提出] + [具体任务／资格] + [如何回应].";
  }
  if(module==="⑥"){
-  if(/i am writing to inform/.test(t))return "I am writing to inform you of [事项].";
-  if(/apolog/.test(t))return "I sincerely apologize for [具体事情／影响].";
-  if(/because|due to/.test(t))return "The main reason for this is that [原因].";
-  if(/to make|i will|i can/.test(t))return "To address the situation, I will [补救措施] to [预期效果].";
-  return "Thank you for your understanding and consideration.";
+  if(/i am writing to inform|i am writing to let you know/.test(t))return "I am writing to let you know that [事项／变化].";
+  if(/apolog/.test(t))return "I am sorry for [具体问题／造成的影响].";
+  if(/because|due to/.test(t))return "This is because [必要且真实的原因].";
+  if(/to make|i will|i can/.test(t))return "To deal with this, I will [具体处理办法] so that [预期结果].";
+  return "[事务／决定] + [原因／影响] + [与事务匹配的处理办法].";
  }
- if(module==="答疑任务")return "To answer the question directly: [题目要求的事实答案].";
+ if(module==="答疑任务")return "Answer the question directly: [题目要求的事实答案].";
  return "关系承接句：[回应对方／建立语境]，随后转入主模板任务。";
 }
 function inferSentenceModule(sentence,plan,year,index){
