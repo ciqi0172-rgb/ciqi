@@ -744,21 +744,72 @@ const combinationPlans={
 2025:{main:"① 介绍推荐类（介绍展示内容）",aux:"⑤ 请求合作类",why:"第一项任务是介绍手工艺展示，①负责展示主题、具体技艺和文化价值；第二项任务是请Paul协助筹备，必须在介绍完成后切换到⑤，明确具体任务。",insert:"先回应来信并用①介绍传统技艺与现代创意，再用具体技艺例子说明展示过程；完成介绍后转入⑤，提出翻译展签和布置展台的请求，最后回到合作期待。",chain:"回应Paul → ①介绍展示主题 → ①举技艺例子 → ①解释现场演示价值 → ⑤提出协助请求 → ⑤列出具体任务 → ⑤说明帮助效果 → 感谢并期待合作。"},
 2026:{main:"① 介绍推荐类（介绍家书）",aux:"无（直接答疑，不虚构个人经历）",why:"家书的来源、内容和价值由①完成；“是否公开展出、在哪里展出”是必须直接回答的事实问题，不需要为了组合而添加④的个人体验。",insert:"先介绍家书是什么，再说明它记录的生活内容；随后说明其情感与史料价值；最后单独直接回答展出状态、地点和展期，缺少题干信息时保留插槽。",chain:"回应Paul → ①说明家书来源与年代 → ①概括信件记录内容 → ①解释情感与历史价值 → 直接回答是否公开展出 → 填入地点和展期 → 邀请参观并收尾。"}
 };
-function inferSentenceModule(sentence,plan){
+const sentenceModulePlan={
+2005:["⑥","⑥","⑥","⑥","⑥","⑥","⑥"],
+2006:["⑤","①","①","①","⑤","⑤"],
+2007:["③","③","③","③","③","③","③"],
+2008:["⑥","⑥","⑥","③","③","⑥","⑥"],
+2009:["③","③","③","③","③","③","③","③"],
+2010:["⑤","⑤","⑤","⑤","②","⑤"],
+2011:["①","①","①","①","①","①"],
+2012:["关系句","③","③","③","③","③","③","③"],
+2013:["②","①","①","②","①","②","②"],
+2014:["③","③","③","③","③","③","③"],
+2015:["①","①","①","①","①","①","①"],
+2016:["①","①","①","①","①","①"],
+2017:["关系句","①","①","①","①","①","①","①"],
+2018:["②","②","①","①","②","②","②"],
+2019:["①","①","①","⑤","①","①"],
+2020:["②","②","①","①","①","②","②","②"],
+2021:["关系句","③","③","③","③","③","③","③"],
+2022:["②","①","①","①","②","②","②"],
+2023:["⑤","⑤","⑤","⑤","⑤","⑤","②"],
+2024:["关系句","③","③","③","③","③","③","③"],
+2025:["关系句","①","①","①","⑤","⑤","③","⑥","⑤"],
+2026:["关系句","①","①","①","答疑任务","①","⑤"]
+};
+function getSentenceModule(year,index,sentence){
+ const explicit=sentenceModulePlan[year];
+ if(explicit&&explicit[index])return explicit[index];
+ const plan=combinationPlans[year];
+ return plan?.main?.match(/[①②③④⑤⑥]/)?.[0]||"按本句交际功能判断";
+}
+function moduleLogic(module){
+ const logic={
+ "①":"介绍推荐主线：对象／类别与背景 → 特点 → 价值 → 推荐或介绍收束",
+ "②":"活动组织主线：活动／邀请目的 → 内容与安排 → 参与方式／行动信息 → 邀请或通知收束",
+ "③":"建议解决主线：问题／目标 → 可执行措施 → 措施的直接效果 → 预期结果",
+ "④":"经历感受逻辑：经历 → 具体细节 → 感受 → 意义；只有题目支持时才使用亲历内容",
+ "⑤":"请求合作主线：请求事项 → 请求原因／背景 → 具体任务 → 期待对方行动",
+ "⑥":"事务处理主线：说明事项 → 原因／影响 → 处理措施 → 礼貌收尾",
+ "关系句":"关系建立／回信承接：回应来信或建立语境，不独立开启新的模板主线",
+ "答疑任务":"题目明确要求的事实答疑：直接回答问题，再与全文介绍主线衔接"
+ };
+ return logic[module]||"本句属于题目要求的必要信息；先保证事实准确，再接回全文主线";
+}
+function sentenceFunction(sentence,index,total){
  const t=sentence.toLowerCase();
- // 先识别本篇明确规划的辅助环节，避免把活动介绍误标为活动安排。
- if(plan?.main?.includes("⑤") && /volunteers are wanted|the volunteers will|applicants should|recruiting|selected student/.test(t))return "⑤";
- if(plan?.aux?.includes("①") && /student should meet|plan to provide support|contest will bring|event will bring|provide a platform|taking part would|competition is designed|participants may perform|important occasion|opportunity to express our gratitude/.test(t))return "①";
- if(plan?.aux?.includes("②") && /briefing|event schedule|work schedule|schedule will be provided/.test(t))return "②";
- if(plan?.aux?.includes("③") && /to make things right|bring the cd|send it to your address|meet you at a time/.test(t))return "③";
- if(plan?.aux?.includes("⑤") && /if you would like to contribute|you may take part|could you translate|help arrange|your help would be/.test(t))return "⑤";
- if(/apolog|resign|inconvenience|handover|return your|once again, please accept|understanding/.test(t))return "⑥";
- if(/suggest|help .* adapt|would be helpful|could provide|could improve|these measures|first,|to begin with|in addition, improving|try to connect/.test(t))return "③";
- if(/invite|contest|competition|participants|register|volunteers|ceremony|held at|held on|join us/.test(t))return "②";
- if(/impressed|watched recently|one detail|stayed with me|meaningful|experience|moved|感受/.test(t))return "④";
- if(/ask whether|would be grateful|could you|recruiting|applicants|your help|help identify|assist with|if interested|contribute/.test(t))return "⑤";
- if(/introduce|recommend|film|book|story|letters|library|program|features|valuable|worth|cultural|craft|offers|provides|the event is designed/.test(t))return "①";
- return plan?.main||"依句子功能调用04";
+ if(index===0&&/welcome|thank you|glad to hear|i am glad|i am writing|on behalf|volunteers are wanted|professor .* recruiting|an international .* will be held/.test(t))return "开篇定位：建立关系或直接完成交际目的，让读者立即知道写信／通知的目的。";
+ if(/i am writing to (introduce|recommend|offer|invite|ask|inform|apologize)|volunteers are wanted|is recruiting/.test(t))return "任务句：明确交际动作与主题，给后文规定展开方向。";
+ if(/is a drama|is a form of|the program aims|the event will|the contest will|the film is|they are handwritten|the young craftsmen will/.test(t))return "对象／背景说明：解释介绍对象是什么、活动是什么或请求发生的背景，为后面的特点和价值提供落点。";
+ if(/one of its most distinctive|what makes|what makes them|what makes the|is known for|offers \[|the story follows|the widespread use|creates a large amount/.test(t))return "核心特点／问题句：把对象最值得关注的特点或需要解决的问题具体化。";
+ if(/for example|such as|including|may demonstrate|might offer/.test(t))return "具体化／举例：把前一句的概括落到可看见的行为、细节或场景，避免空泛陈述。";
+ if(/because|so that|which will|which can|this would|these changes|such a measure|this will|it would|make it easier|help .* to|allowing/.test(t))return "解释作用／结果：说明前面的特点或措施为什么重要、会产生什么效果，形成“内容／行动→作用”的逻辑链。";
+ if(/in addition|more importantly|by contrast|together|also|finally|first,|to begin with/.test(t))return "衔接与推进：用递进、对比或顺序标记把新信息接到前一环，不能只靠连接词；内容本身也要推进主线。";
+ if(/could you|would be grateful|if interested|please submit|please register|you may take part|your help|i would be happy to|you are welcome/.test(t))return "行动／请求句：把介绍或说明转化为读者下一步可以采取的具体行动，或直接回答题目要求。";
+ if(/apolog|inconvenience|sorry|resign|handover|thank you|i hope|look forward|best wishes|please let me know/.test(t))return "事务处理／礼貌收束：承认影响、表达期待或结束沟通；应回扣主任务，不另开无关话题。";
+ if(index===total-1)return "收束句：回到全文的交际目的，完成邀请、推荐、建议、请求或礼貌结束。";
+ return "主体展开：补充与主线直接相关的内容；本句必须回答“它如何推进前一句、为后一句铺垫什么”。";
+}
+function sentenceTransition(year,index,sentences,module){
+ const next=getSentenceModule(year,index+1,sentences[index+1]||"");
+ if(index===0)return "承接关系：从交际目的／对象出发，为下一句提供主题或背景。";
+ if(module!==next&&next!=="按本句交际功能判断")return "转接关系：本句完成"+module+"环节后，下一句切换到"+next+"环节；切换必须由内容需要推动，而不是把模板机械拼接。";
+ if(index===sentences.length-1)return "闭环关系：本句收束全文，回扣最初任务，不再引入新的信息支线。";
+ return "承接关系：本句应从前一句的对象、特点、问题或措施自然推出下一步；优先保持同一主模板逻辑，只有确有任务需要时才插入辅助环节。";
+}
+function inferSentenceModule(sentence,plan,year,index){
+ return getSentenceModule(year,index||0,sentence);
 }
 
 function fallbackTemplate(sentence){
