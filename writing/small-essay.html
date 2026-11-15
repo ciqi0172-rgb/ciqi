@@ -755,7 +755,7 @@ function sentenceRole(sentence,index,total){
 function addBreakdown(article,x){
  const info=breakdowns[x[0]];if(!info)return;
  const box=document.createElement('details');box.className='breakdown';
- const summary=document.createElement('summary');summary.textContent='展开本篇：题目拆解、核心模板套用、逐句构思';box.appendChild(summary);
+ const summary=document.createElement('summary');summary.textContent='展开本篇：题目拆解、主辅模板调用、逐句构思';box.appendChild(summary);
  const body=document.createElement('div');
  function section(title,content){const h=document.createElement('h4');h.textContent=title;body.appendChild(h);const p=document.createElement('p');p.textContent=content;body.appendChild(p);}
  const teach=yearTeaching[x[0]];
@@ -774,7 +774,7 @@ function addBreakdown(article,x){
  }
  const h=document.createElement('h4');h.textContent='⑤ 从题目到文章：逐项完成任务';body.appendChild(h);
  const ol=document.createElement('ol');info.steps.forEach(t=>{const li=document.createElement('li');li.textContent=t;ol.appendChild(li)});body.appendChild(ol);
- const hh=document.createElement('h4');hh.textContent='⑥ 逐句拆解：原句 → 核心模板句型 → 本题填充 → 中文构思';body.appendChild(hh);
+ const hh=document.createElement('h4');hh.textContent='⑥ 逐句拆解：原句 → 可迁移句型 → 本题填充 → 中文构思';body.appendChild(hh);
  const sentenceList=document.createElement('ol');
  const essayLines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$|\[发布单位|\[日期)/i.test(t));
  const sentences=essayLines.flatMap(line=>line.match(/[^.!?]+[.!?]?/g)||[]).map(t=>t.trim()).filter(Boolean);
