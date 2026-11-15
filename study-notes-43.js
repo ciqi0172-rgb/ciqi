@@ -157,12 +157,50 @@ const questions=[
 {q:"第8段把社区大学比例下降与四年制大学比例上升放在一起，主要是在强调什么？",opts:["进入四年制大学必然导致社区大学关闭。","美国年轻人不再需要职业教育。","两种教育路径的比例出现相反趋势，凸显大学以外的学习途径不足及教育路径失衡问题。","社区大学的教学质量一定比四年制大学差。"],a:2,why:"作者前面指出大学以外的选择太少，接着举学徒制和社区大学为例；最后一句用两种趋势对照，说明替代路径并未发挥应有作用。",analyses:["原文没有建立因果关系，更没说社区大学关闭。","与作者强调应拓宽继续学习途径相反。","正确。它抓住并列趋势的对照作用，但不夸大为直接因果。","原文没有比较两类院校的教学质量。"]},
 {q:"作者对教育公平的理解最接近哪一项？",opts:["公平意味着所有学生都应获得相同的成绩。","公平意味着尽可能降低学术要求，避免任何学生被挡在大学之外。","公平既需要机会，也需要提供必要的技能和支持，使学生能够真正应对更高层级的学习。","公平与学术标准相互冲突，只能选择其中之一。"],a:2,why:"结尾区分表面上的升学机会与真正的能力培养。作者并不反对帮助弱势学生，而是反对在不提供所需技能的情况下单纯提升其教育层级。",analyses:["作者反对成绩膨胀，不主张人人获得相同成绩。","降低标准是作者批评的做法，不是真正的公平。","正确。它整合了全文关于标准、支持和教育机会的主张。","作者认为标准与公平可以兼顾，关键在于让学生获得达到标准的能力。"]}
 ];
+const personalReview=[
+{title:"第1段：词汇盲区与句意",items:[
+["确认不熟的表达","moan about、scholarly effort、be in decline、as never before、know-it-all、a tenth of、laxity、home to。","这些表达会影响整句搭建，尤其 home to 是“拥有……/……所在地”，不能按字面硬译。"],
+["句法与逻辑","But this time 是转折重点；the laxity is not just in lecturers’ heads 表示这种松懈并非教师主观臆想。","先抓主干 the laxity is not just...，再处理 as our International section notes 这个插入说明。"]
+]},
+{title:"第2段：词汇盲区与修饰关系",items:[
+["确认不熟的表达","freshers、pack sb off to、remedial courses、ignorant of、struggle to do、counterpart、grasp、increasingly、cut short。","ask for ... to be cut short 是“要求缩短……”，ask for 不是“询问”。"],
+["长句结构","texts that a decade ago their counterparts would easily have grasped 中，that 引导定语从句修饰 texts；their counterparts 指十年前相对应的同龄学生。","不能把时间、人物关系拆乱；主句是 students are struggling to understand texts。"]
+]},
+{title:"第3段：数量与对比关系",items:[
+["词义辨析","literacy 是读写能力，numeracy 是计算能力；half their age 是年龄只有他们一半。","不要把 less literate 简化成“读书少”，它指读写能力较弱。"],
+["逻辑误读","The best are cleverer than ever, but a growing number... 是对比：顶尖学生更优秀，同时基础技能薄弱者人数增长。","不是所有学生都变差。翻译时保留 but 两侧的对照，不能只概括成整体退步。"]
+]},
+{title:"第4段：原因、观点与语气",items:[
+["信息关系","疫情是一个解释；另一个原因是疫情前学校成绩已经下降。随后转向大学降低入学门槛。","不能把疫情写成唯一原因，also before covid-19 是重要时间限定。"],
+["作者观点辨析","Some believe... Others are trying... 是其他人对考试公平性和招生压力的看法/动机，不等于作者本人直接赞同这些理由。","要区分作者在报告他人观点，还是在表达自己的立场。as the total number... starts to fall 表示随着18岁人口下降。"]
+]},
+{title:"第5段：比较结构与术语",items:[
+["术语纠偏","grade inflation 是“成绩膨胀/分数虚高”，不是“毕业生膨胀”。rampant cheating 是“猖獗的作弊”。","识别 grade 指成绩、评分；inflation 指膨胀、虚高。"],
+["长句关系","Ill-prepared students... , which can hurt their prospects more than if they had never enrolled. which 指辍学这一情况；more than if... 比较辍学造成的伤害与从未入学的情况。","注意比较方向：作者说辍学可能比一开始不入学更损害前途，不要翻反。"]
+]},
+{title:"第6段：例子不能串位",items:[
+["词汇与表达","slide、scourge、baleful allure、inch up、league tables、rigorous、bin、pseudoscience、reverse course、post gains。","尤其 inch up 是缓慢上升，reverse course 是扭转原有做法，post gains 是取得进步。"],
+["复述信息错位","新加坡对应 marks 缓慢上升，英国对应国际排名上升；美国部分州则是改变读写教学方法后取得进步。","你曾把新加坡成绩上升与英国排名上升的内容混在一起。复述每个例子时分别核对“国家—指标—结果”。"]
+]},
+{title:"第7段：by 手段结构与指代",items:[
+["确认不熟的表达","rein in 是“遏制”；impose a hard limit on 是“对……设定严格上限”；hand out 是“授予/发放”；soar 是“飙升”。","rein in grade inflation 是遏制成绩膨胀，不是控制学生人数。"],
+["实际错译","imposing a hard limit on the number of A grades they hand out in each course 被误解成限制毕业生数量；These 指前句的 A grades，24%升至60%说的是A等级成绩占全部成绩的比例，不是奖学金比例。","by imposing... 说明采取什么手段；they hand out 修饰 A grades。读到代词 These 时要回看前一句确定指代。"]
+]},
+{title:"第8段：高中毕业生与 even as",items:[
+["实际错译","high-school graduates 被误读成高等学校毕业生；实际是高中毕业生。who need more help 修饰这些高中毕业生。","先找名词中心词 graduates，再确认 high-school 对它的限定。"],
+["逻辑关系","the share of youngsters who go to them is declining 中 them 指 community colleges；even as 后面说进入高要求四年制大学的比例上升。","两种趋势同时发生且方向相反；原文没有证明前者导致后者。"]
+]},
+{title:"第9段：长句主干与指代",items:[
+["实际词汇盲区","the less fortunate 是处境较不利的人/弱势群体；cowardice 是懦弱；let everybody down 是辜负所有人。","the less fortunate 指人，不是“幸运较少的地方”。"],
+["实际句法困难","raising young people up its tiers 是主语；without granting them the skills they need 表示在没有给予他们所需技能的情况下；they need 修饰 skills。It is a cowardice that lets everybody down 中 that 修饰 cowardice。","不能把 without 从主干中丢掉。作者批评的是“没有提供必要能力却把学生推向更高层级”，不是反对年轻人接受更高层次教育。"]
+]}
+];
 function render43(){
  const root=document.getElementById('studyPanel');if(!root)return;
  const rows=[...document.querySelectorAll('#paragraphs .para')];if(!rows.length)return;
  let selected=Math.min(rows.length,Math.max(1,Number(root.dataset.selected||1)));
  let mode=root.dataset.sideMode||'vocab';
- root.innerHTML='<div class="study-workbench"><section class="study-main"><header class="study-original-head"><div class="kicker">ARTICLE 43 · CLOSE READING</div><h2>University-for-all harms poor students the most</h2><p>Time for sane standards in higher education</p></header><div class="study-original-paragraphs">'+rows.map((r,i)=>'<div class="study-para '+(i+1===selected?'active':'')+'" data-p="'+(i+1)+'"><span class="study-para-num">'+String(i+1).padStart(2,'0')+'</span><p class="study-para-text"></p></div>').join('')+'</div></section><aside class="study-aside"><div class="study-aside-title"><b>精读功能栏</b><span class="study-current"></span></div><div class="study-side-tabs"><button class="study-side-tab" data-mode="vocab">重点词汇</button><button class="study-side-tab" data-mode="logic">段落逻辑</button><button class="study-side-tab" data-mode="grammar">长难句</button><button class="study-side-tab" data-mode="translation">全文翻译</button><button class="study-side-tab" data-mode="pitfalls">易错点</button><button class="study-side-tab" data-mode="questions">精读练习</button></div><div class="study-side-content"></div><div class="study-side-tip">点击左侧段落同步查看对应词汇、逻辑和长难句；全文翻译、易错点与命题练习可通过上方功能栏切换。</div></aside></div>';
+ root.innerHTML='<div class="study-workbench"><section class="study-main"><header class="study-original-head"><div class="kicker">ARTICLE 43 · CLOSE READING</div><h2>University-for-all harms poor students the most</h2><p>Time for sane standards in higher education</p></header><div class="study-original-paragraphs">'+rows.map((r,i)=>'<div class="study-para '+(i+1===selected?'active':'')+'" data-p="'+(i+1)+'"><span class="study-para-num">'+String(i+1).padStart(2,'0')+'</span><p class="study-para-text"></p></div>').join('')+'</div></section><aside class="study-aside"><div class="study-aside-title"><b>精读功能栏</b><span class="study-current"></span></div><div class="study-side-tabs"><button class="study-side-tab" data-mode="vocab">重点词汇</button><button class="study-side-tab" data-mode="logic">段落逻辑</button><button class="study-side-tab" data-mode="grammar">长难句</button><button class="study-side-tab" data-mode="translation">全文翻译</button><button class="study-side-tab" data-mode="pitfalls">易错点</button><button class="study-side-tab" data-mode="personal">我的翻译问题</button><button class="study-side-tab" data-mode="questions">精读练习</button></div><div class="study-side-content"></div><div class="study-side-tip">点击左侧段落同步查看对应词汇、逻辑和长难句；全文翻译、易错点与命题练习可通过上方功能栏切换。</div></aside></div>';
  root.querySelectorAll('.study-para').forEach((el,i)=>{el.querySelector('p').textContent=rows[i].querySelector('.para-text')?.textContent||'';el.onclick=()=>{selected=i+1;root.dataset.selected=String(selected);root.querySelectorAll('.study-para').forEach((x,j)=>x.classList.toggle('active',j===i));draw()}});
  function draw(){
   root.querySelector('.study-current').textContent='第'+selected+'段 / '+rows.length;
@@ -175,6 +213,7 @@ function render43(){
   else if(mode==='grammar'){const items=grammar.filter(g=>g[0].startsWith('第'+selected+'段'));c.innerHTML='<h4>第'+selected+'段 · 长难句拆解</h4>'+(items.length?items.map(g=>'<details open><summary>'+g[0]+'</summary><p class="en-sentence"></p><p></p></details>').join(''):'<p>本段没有单独列出的重点长难句。可先找主句谓语，再判断修饰语、代词指代和逻辑连接。');[...c.querySelectorAll('details')].forEach((d,i)=>{const g=items[i];d.querySelector('.en-sentence').textContent=g[1];d.querySelectorAll('p')[1].textContent=g[2]})}
   else if(mode==='translation'){c.innerHTML='<h4>全文参考翻译（按段对应）</h4>'+translations.map((t,i)=>'<details '+(i+1===selected?'open':'')+'><summary>第'+(i+1)+'段</summary><p></p></details>').join('');[...c.querySelectorAll('details')].forEach((d,i)=>d.querySelector('p').textContent=translations[i])}
   else if(mode==='pitfalls'){c.innerHTML='<h4>本篇易错点与自我纠偏</h4>'+pitfalls.map((p,i)=>'<details '+(i<3?'open':'')+'><summary>'+(i+1)+'. '+p[0]+'</summary><p></p><p class="notes-muted"></p></details>').join('');[...c.querySelectorAll('details')].forEach((d,i)=>{d.querySelectorAll('p')[0].textContent=pitfalls[i][1];d.querySelectorAll('p')[1].textContent=pitfalls[i][2]})}
+  else if(mode==='personal'){const item=personalReview[selected-1];c.innerHTML='<h4>'+item.title+'</h4>'+item.items.map(x=>'<details open><summary></summary><p></p><p class="notes-muted"></p></details>').join('');[...c.querySelectorAll('details')].forEach((d,i)=>{d.querySelector('summary').textContent=item.items[i][0];d.querySelectorAll('p')[0].textContent=item.items[i][1];d.querySelectorAll('p')[1].textContent=item.items[i][2]})}
   else if(mode==='questions'){c.innerHTML='<h4>考研式精读练习</h4><p class="notes-muted">优先训练论证骨架、作者态度、段落功能与逻辑关系。先独立作答，再展开解析。</p>'+questions.map((q,i)=>'<details class="article43-question"><summary>第'+(i+1)+'题 · '+q.q+'</summary><div class="q-options"></div><button class="study-quiz-submit">查看答案与选项分析</button><div class="q-feedback" hidden></div></details>').join('');[...c.querySelectorAll('.article43-question')].forEach((d,i)=>{const q=questions[i],box=d.querySelector('.q-options');q.opts.forEach((o,j)=>{const label=document.createElement('label');label.className='study-quiz-option';const input=document.createElement('input');input.type='radio';input.name='a43q'+i;input.value=String(j);const span=document.createElement('span');span.textContent='ABCD'[j]+'. '+o;label.append(input,span);box.append(label)});d.querySelector('button').onclick=()=>{const fb=d.querySelector('.q-feedback');fb.hidden=false;const picked=d.querySelector('input:checked');fb.innerHTML='';const h=document.createElement('h4');h.textContent='正确答案：'+'ABCD'[q.a]+(picked?(Number(picked.value)===q.a?' · 你的选择正确':' · 你的选择不正确'):' · 尚未作答');fb.append(h);const p=document.createElement('p');p.textContent=q.why;fb.append(p);q.analyses.forEach((a,j)=>{const det=document.createElement('details');const sm=document.createElement('summary');sm.textContent='选项 '+'ABCD'[j]+' · '+(j===q.a?'正确项':'干扰项');const tx=document.createElement('p');tx.textContent=a;det.append(sm,tx);fb.append(det)});d.querySelectorAll('input').forEach(x=>x.disabled=true);d.querySelector('button').disabled=true;d.querySelector('button').textContent='解析已展开'}})}
  }
  root.querySelectorAll('.study-side-tab').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;root.dataset.sideMode=mode;draw()});draw();
