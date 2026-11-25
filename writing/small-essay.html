@@ -1003,7 +1003,7 @@ const sentenceTranslations={
 };
 function renderTranslationBox(article,x){
  const box=document.createElement('details');box.className='translation-box';
- const summary=document.createElement('summary');summary.textContent='展开翻译｜逐句中英对照';box.appendChild(summary);
+ const summary=document.createElement('summary');summary.textContent='展开翻译｜逐句中英对照（点击查看）';box.appendChild(summary);
  const body=document.createElement('div');
  const intro=document.createElement('p');intro.className='translation-intro';intro.textContent='每条先呈现中文意思，再显示对应英文原句。建议先读中文，尝试回忆英文表达，再展开对照。称呼、落款等格式信息不计入正文逐句对照。';body.appendChild(intro);
  const lines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$|\[发布单位|\[日期)/i.test(t));
@@ -1016,7 +1016,10 @@ function renderTranslationBox(article,x){
   zh.appendChild(document.createTextNode(zhList[i]||'（请结合英文原句理解其含义。）'));item.appendChild(zh);
   const en=document.createElement('div');en.className='eng';en.textContent=sentence;item.appendChild(en);body.appendChild(item);
  });
- box.appendChild(body);const prompt=article.querySelector('.prompt-box');if(prompt)prompt.after(box);else article.prepend(box);
+ box.appendChild(body);
+ // 明确插在真题要求之后、英文范文之前，避免被误认为“展开本篇”的一部分。
+ const essay=article.querySelector('.en');
+ if(essay)article.insertBefore(box,essay);else article.appendChild(box);
 }
 
 function addBreakdown(article,x){
