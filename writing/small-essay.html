@@ -1016,7 +1016,7 @@ function renderTranslationBox(article,x){
   zh.appendChild(document.createTextNode(zhList[i]||'（请结合英文原句理解其含义。）'));item.appendChild(zh);
   const en=document.createElement('div');en.className='eng';en.textContent=sentence;item.appendChild(en);body.appendChild(item);
  });
- box.appendChild(body);article.appendChild(box);
+ box.appendChild(body);const essay=article.querySelector('.en');if(essay)essay.after(box);else article.appendChild(box);
 }
 
 function addBreakdown(article,x){
