@@ -45,6 +45,19 @@
 .mark-legend span{padding:5px 8px;border-radius:5px}
 .mark-legend .l-template{background:#fff1a8}.mark-legend .l-topic{background:#cfe8ff}.mark-legend .l-logic{background:#d8f2d9}
 .breakdown .logic-map{background:#f2f7fb;border-left:3px solid #6c9fc8;padding:9px 11px;border-radius:7px}
+
+/* 范文逐句中英对照 */
+.translation-box{margin:12px 0 16px;border:1px solid #dce7dc;border-radius:11px;background:#fbfdf9;padding:0 13px}
+.translation-box summary{cursor:pointer;list-style:none;padding:13px 2px;color:var(--green);font-size:13px;font-weight:700}
+.translation-box summary::-webkit-details-marker{display:none}
+.translation-box summary:before{content:"＋";display:inline-block;margin-right:8px;color:var(--gold)}
+.translation-box[open] summary:before{content:"－"}
+.translation-intro{font-size:11px;line-height:1.8;color:var(--muted);margin:0 0 10px}
+.translation-item{padding:10px 2px;border-top:1px solid var(--line)}
+.translation-item .zh{font-size:13px;line-height:1.85;color:#34483a;font-weight:600;margin-bottom:5px}
+.translation-item .eng{font:14px/1.85 Georgia,"Times New Roman",serif;color:#28312b}
+.translation-item .num{display:inline-block;color:#9a7840;font-size:10px;margin-right:6px}
+
 </style>
 </head><body><div class="shell">
 <header class="top"><div class="brand"><div class="mark">小</div><div><small>KAOYAN ENGLISH I · WRITING LAB</small><b>英语一小作文训练室</b></div></div><a class="back" href="index.html">← 返回作文训练首页</a></header>
@@ -778,6 +791,232 @@ function sentenceRole(sentence,index,total){
  else if(/first|to begin|in addition|more importantly|finally|also/.test(t))role="主体展开：按顺序补充一项具体建议、内容、职责或安排。";
  return "本句功能："+role+"\n写作提醒：优先写具体的人、动作、对象或场景；如果前一句较抽象，可在这里加入一个贴题例子，再说明它产生的直接效果。";
 }
+
+const sentenceTranslations={
+2005:[
+"我写信是想通知您，我决定辞去在杂志社担任的职务。",
+"由于个人情况发生变化，我已经无法再投入足够的时间处理工作。",
+"经过慎重考虑，我认为现阶段辞职是正确的决定。",
+"在离职之前，我会尽最大努力确保工作顺利交接，并帮助同事接手我的职责。",
+"我非常珍惜在杂志社工作的这段时间，也很珍惜与团队共事的机会。",
+"感谢您一直以来给予我的指导和支持。",
+"我衷心祝愿杂志社今后继续蓬勃发展。"
+],
+2006:[
+"我写信是想询问，贵部门是否可以帮助寻找一名需要经济资助的学生。",
+"这名学生应符合项目的要求，例如确实存在经济困难，并且认真对待学业。",
+"我计划帮助支付基本的学习开支，包括课本和其他学习材料。",
+"如果条件允许，我也希望与这名学生保持联系，了解是否还需要进一步帮助，以及这些资助是否真正起到了作用。",
+"如能推荐一名合适的学生，并告知我接下来需要做什么，包括需要准备哪些步骤或表格，我将不胜感激。",
+"感谢您抽出时间考虑我的请求。"
+],
+2007:[
+"为了改善我校图书馆的服务，我建议采取以下措施。",
+"首先，在考试期间延长图书馆的开放时间，可以让学生有更多时间备考。",
+"此外，图书馆可以提供更多安静的学习区域和舒适的座位。",
+"例如，每层楼都可以把一个闲置角落改造成小型阅读区，让学生学习时不打扰他人。",
+"同时，及时更新在线目录也会有所帮助，这样读者在去书架找书之前，就能查看书籍的位置以及是否可借。",
+"这些改变会让图书馆更方便使用，也让使用体验更加舒适。",
+"希望您会认为这些建议有帮助。"
+],
+2008:[
+"我写信是为了向你道歉，因为我没有按承诺的时间归还你的CD。",
+"我知道你可能也想使用它，我也为自己给你带来的不便感到抱歉。",
+"最近我一直忙着准备一场重要考试，但我本应该记住我们的约定，而不是让你一直等着。",
+"为了弥补这件事，我想明天晚上把CD送到你的宿舍。",
+"如果那个时间不方便，我可以把它寄到你的地址，或者与你另约一个合适的时间见面。",
+"今后我也会尽量记好自己作出的承诺。",
+"再次请接受我诚挚的道歉。"
+],
+2009:[
+"为了减少塑料垃圾，我建议采取以下措施。",
+"一次性塑料袋的大量使用制造了许多垃圾。",
+"首先，人们可以随身携带可重复使用的购物袋，并在不需要塑料袋时拒绝使用。",
+"商店也可以减少包装，并鼓励顾客自带购物袋。",
+"例如，商店可以为使用可重复使用购物袋的顾客提供少量折扣。",
+"这会让人们更容易作出环保的选择。",
+"更重要的是，学校和社区可以举办相关活动，帮助人们了解塑料垃圾造成的危害。",
+"希望这些建议有助于保持我们周围环境的整洁。"
+],
+2010:[
+"我校将举办一场关于全球化的国际会议，现招募志愿者协助活动开展。",
+"志愿者将负责接待来宾、分发会议材料、指引路线，并协助处理简单的语言沟通需求。",
+"申请者应具备良好的英语水平、有耐心并善于团队合作；有学生活动经验者更佳。",
+"会议开始前，入选的志愿者将参加一次简短会议，了解自己的任务和活动安排。",
+"如果你有兴趣，请在［截止日期］前将申请提交给研究生会。",
+"这项工作能让你锻炼沟通能力，并了解此类活动是如何组织管理的。",
+"我们欢迎有责任心、能够遵守指示，并能在日程繁忙时依然积极协助的同学。"
+],
+2011:[
+"我写信是想向你推荐《当幸福来敲门》，我觉得你会喜欢这部电影。",
+"这部电影讲述了一位父亲努力工作、希望让年幼的儿子过上更好生活的故事。",
+"它最突出的特点之一是展现了父亲即使遇到挫折，也始终坚持努力。",
+"此外，故事还展现了爱与责任的重要性，因此很适合喜欢家庭故事和个人奋斗题材的观众。",
+"这部电影值得一看，因为它展现了人们如何怀抱希望面对困境并坚持下去。",
+"我会强烈推荐给所有喜欢感人且鼓舞人心的电影的人。"
+],
+2012:[
+"欢迎来到我们学校！为了帮助你适应校园生活，我建议你采取以下做法。",
+"首先，参加学生社团和校园活动。",
+"这些都是结识兴趣相投之人的好机会。",
+"例如，参加体育社团或音乐小组，可以让你在享受空闲时间的同时结交朋友。",
+"你还应该充分利用图书馆和在线学习资料，它们能够帮助你在课堂之外继续学习。",
+"如果你在课程学习或校园生活中遇到困难，尽管向老师或高年级同学求助。",
+"希望你很快就能在这里找到家的感觉。"
+],
+2013:[
+"我谨代表学生会写信邀请您担任我校英语演讲比赛的评委。",
+"比赛将汇集来自不同院系的学生，每位学生都会围绕自己关注的话题进行简短演讲。",
+"这将为学生分享观点提供机会，也能帮助他们在公开演讲时更加自信。",
+"您在语言教学方面的经验将有助于评判这些演讲。",
+"例如，您对发音、组织结构以及学生如何论证观点所提出的意见，可以帮助他们了解如何改进。",
+"如果您能接受邀请，我们将感到十分荣幸。",
+"期待您的回复。"
+],
+2014:[
+"为了改善学生的身体健康，我建议采取以下措施。",
+"首先，学校可以提供更多锻炼机会，例如体育课程和课后活动。",
+"这将帮助学生把锻炼变成日常生活中的固定习惯。",
+"此外，改善体育设施并让学生更方便地使用这些设施，可以帮助他们在课间锻炼，即使在繁忙的日子和考试周也一样。",
+"更重要的是，健康教育能够帮助学生理解锻炼为何重要，并养成长期保持的健康习惯。",
+"这些措施不仅能改善学生的身体素质，还能帮助他们整体状态更好，并缓解日常压力。",
+"希望您能考虑这些建议。"
+],
+2015:[
+"我写信是想向读书俱乐部推荐《老人与海》，我认为这本书会引起大家的兴趣。",
+"这本书讲述了一位老渔夫努力捕获一条大鱼的故事。",
+"它最突出的特点之一是展现了渔夫的勇气、耐心和毅力。",
+"此外，清晰的语言和生动的描写，使它很适合喜欢经典故事的读者。",
+"这本书值得阅读，因为它鼓励读者思考人们如何面对困难与失败。",
+"例如，渔夫的奋斗经历为我们讨论勇气以及坚持尝试为何重要提供了很好的机会。",
+"我会强烈推荐给所有喜欢能引发思考的书籍的人。"
+],
+2016:[
+"大学图书馆欢迎所有新来的国际学生。",
+"图书馆提供大量书籍、期刊和在线资源，以支持你们的学习。",
+"你们还可以使用安静的阅读区和校园在线数据库。",
+"这些服务能帮助大家更容易地查找有用信息、独立学习，并更有效地完成课堂作业，无论是在课堂内外。",
+"借书时，请在服务台出示［校园卡／借阅证］，并按照图书馆工作人员的指引办理。",
+"如果你需要帮助寻找书籍或使用在线服务，工作人员很乐意提供帮助并清楚地说明步骤。",
+"希望你们在整个学习期间都能充分利用图书馆。"
+],
+2017:[
+"欢迎来到我们这座城市！我写信是想向您推荐［景点一］和［景点二］，我相信您会喜欢它们。",
+"［景点一］是一处与［当地真实的历史或文化背景］有关的历史遗址。",
+"它最突出的特点之一是［景点一的真实特色］。",
+"此外，［景点二］能提供［真实的自然景观或生活体验］，因此很适合对［主题］感兴趣的游客。",
+"这两个地方都值得一游，因为它们展现了本市历史、文化和日常生活的不同侧面。",
+"例如，［与景点相关的真实活动或景观］是了解［当地文化／自然环境］并观察当地人如何享受城市生活的好方式。",
+"您可以根据自己的兴趣和可支配时间选择参观其中一处或两处。",
+"我会强烈推荐给所有对［本市文化与风光］感兴趣的人。",
+"如果您需要更多信息，请告诉我。"
+],
+2018:[
+"我谨代表毕业生，邀请您出席我们的毕业典礼。",
+"典礼将于［日期］［时间］在［地点］举行。",
+"这对我们而言是重要的一天，我们将在这一天庆祝已经取得的成就，并开启人生的新阶段。",
+"我们也将有机会感谢在学习期间给予我们帮助的老师。",
+"您的出席对毕业生意义重大，也会让这一天更加特别，因为您一直以来都给予我们指导和支持。",
+"我们真诚地希望您能参加，与我们共同庆祝这一重要里程碑。",
+"期待您的回复。"
+],
+2019:[
+"我写信是想向你介绍希望工程，我认为你会对此感兴趣。",
+"希望工程是一项公益项目，旨在支持欠发达地区儿童接受教育。",
+"它的主要特点之一是帮助有需要的儿童和学校获得更好的学习机会。",
+"此外，该项目还可能提供学习材料并改善学习条件，因此对资源相对匮乏的社区尤其有帮助。",
+"这个项目值得了解，因为它能帮助更多儿童接受教育、创造更好的未来。",
+"如果你愿意提供帮助，可以参加教育活动、向更多人介绍这个项目，或支持项目举办的筹款活动。",
+"希望这份介绍能对你有所帮助，也希望你考虑参与其中。"
+],
+2020:[
+"一场国际歌唱比赛将于［日期］在［地点］举行。",
+"欢迎所有学生，包括国际学生，报名参加。",
+"这场比赛为学生提供了分享音乐热爱、了解不同文化的机会。",
+"参赛者可以用不同语言演唱歌曲，使活动成为促进不同文化交流的生动方式。",
+"它还将帮助不同背景的学生相互认识，并营造友好的校园氛围。",
+"有意参加者请在［截止日期］前通过［报名方式］向组委会报名。",
+"有关日程和表演规则的更多信息将提供给已报名的参赛者。",
+"期待大家踊跃参与，并进行愉快的思想交流。"
+],
+2021:[
+"很高兴得知你正在考虑来中国找工作。",
+"为了帮助你做好准备，我建议采取以下做法。",
+"首先，准备一份清晰的简历，展示你的技能和工作经验。",
+"你还应该通过阅读招聘广告、了解不同公司，弄清楚你所在领域的雇主需要什么样的人才。",
+"此外，提高中文水平并结识行业内的人士，可能会为你带来更多机会。",
+"例如，参加行业活动能帮助你结识业内人士，并进一步了解中国的就业市场。",
+"希望这些建议对你有帮助。",
+"祝你求职顺利！"
+],
+2022:[
+"我谨代表组委会，写信邀请您组建一支队伍参加我校的国际创新竞赛。",
+"这项活动将汇集拥有新想法和实践项目的学生。",
+"它将为参赛者提供展示作品、交流想法和互相学习的机会。",
+"参加比赛还能让学生积累把想法转化为实际项目、并以团队合作解决现实问题的宝贵经验。",
+"您的经验和建议将对队伍很有帮助。",
+"如果您能从贵校组建一支队伍，并鼓励有兴趣的学生参加，我们将不胜感激。",
+"期待您的回复。"
+],
+2023:[
+"史密斯教授正在寻找一名学生，协助开展有关校园体育活动的研究项目。",
+"入选学生将收集信息、观察体育活动并记录研究发现。",
+"工作还可能包括安排会议和撰写进度报告。",
+"申请者应对体育感兴趣、善于沟通，并且认真负责；有研究或数据处理经验者更佳。",
+"如果你有兴趣，请在［截止日期］前将简短申请发送至［联系邮箱／渠道］。",
+"入选者将获得有关工作任务和时间安排的更多信息。",
+"学生应遵守指示、保护研究信息，并在需要时提出问题，以确保工作准确、合作顺畅。"
+],
+2024:[
+"很高兴得知你正在准备一份关于中国古代科学家的报告。",
+"为了帮助你清晰地组织报告，我建议采取以下步骤。",
+"首先，介绍这位科学家的生平以及其重大成就产生的历史背景。",
+"这将帮助听众了解当时的生活状况。",
+"解释这项发现或发明如何运作，以及它在当时为何重要，也会很有帮助。",
+"最后，尝试使用可靠资料说明它与现代生活的联系，以支持你的观点。",
+"这样会让你的报告更加清晰、有说服力。",
+"希望这些建议能对你有所帮助。"
+],
+2025:[
+"感谢你对我们校园手工艺展示活动的关注。",
+"这项展示是一种文化活动，将传统技艺与新想法结合起来。",
+"它最突出的特点之一是，年轻手工艺人会在制作过程中讲解每件作品的制作方法。",
+"此外，他们可能会展示剪纸和竹编，因此活动很适合对传统手工艺感兴趣的参观者。",
+"参观者可以观看手工艺品的制作过程，并了解这些技艺如今仍如何被运用。",
+"你的帮助会很有价值。",
+"你能帮忙翻译展品标签，并在活动前协助摆放桌子吗？",
+"这将让国际参观者更容易理解并欣赏展览。",
+"再次感谢你。",
+"期待与你合作。"
+],
+2026:[
+"很高兴这些信件引起了你的兴趣。",
+"这些是20世纪80年代中国家庭成员之间往来的手写信件，记录了日常烦恼、家人之间的情感以及生活中的重要时刻。",
+"这些信件的笔迹和个人细节，使它们不只是简单的信息传递：它们让我们清楚地看到当时的家庭关系和生活状况。",
+"它们尤其珍贵，因为它们保存了官方记录往往不会呈现的情感与经历。",
+"是的，部分信件将从［展期］起在［展出地点］向公众开放。",
+"欢迎你前来参观，我也很乐意带你看看一些有意思的例子。",
+"希望到时候能见到你。"
+]
+};
+function renderTranslationBox(article,x){
+ const box=document.createElement('details');box.className='translation-box';
+ const summary=document.createElement('summary');summary.textContent='逐句中英对照：先看中文，再对照英文';box.appendChild(summary);
+ const body=document.createElement('div');
+ const intro=document.createElement('p');intro.className='translation-intro';intro.textContent='每条先呈现中文意思，再显示对应英文原句。建议先读中文，尝试回忆英文表达，再展开对照。称呼、落款等格式信息不计入正文逐句对照。';body.appendChild(intro);
+ const lines=x[3].split(/\n+/).map(t=>t.trim()).filter(t=>t&&!/^(Dear |Yours|Best wishes|Li Ming|NOTICE|The Students' Union|The Organizing Committee|The University Library$|Postgraduates' Association$|\[发布单位|\[日期)/i.test(t));
+ const sentences=lines.flatMap(line=>line.match(/[^.!?]+[.!?]?/g)||[]).map(t=>t.trim()).filter(Boolean);
+ const zhList=sentenceTranslations[x[0]]||[];
+ sentences.forEach((sentence,i)=>{
+  const item=document.createElement('div');item.className='translation-item';
+  const zh=document.createElement('div');zh.className='zh';
+  const num=document.createElement('span');num.className='num';num.textContent=String(i+1).padStart(2,'0');zh.appendChild(num);
+  zh.appendChild(document.createTextNode(zhList[i]||'（请结合英文原句理解其含义。）'));item.appendChild(zh);
+  const en=document.createElement('div');en.className='eng';en.textContent=sentence;item.appendChild(en);body.appendChild(item);
+ });
+ box.appendChild(body);article.appendChild(box);
+}
+
 function addBreakdown(article,x){
  const info=breakdowns[x[0]];if(!info)return;
  const box=document.createElement('details');box.className='breakdown';
@@ -846,7 +1085,7 @@ function renderMarkedEssay(el,x){
   tag.textContent='模板逻辑：'+module+'（'+role+'）';p.appendChild(tag);el.appendChild(p);
  });
 }
-function renderYear(y){container.innerHTML='';const list=y?years.filter(x=>x[0]===Number(y)):years;list.forEach(x=>{const d=document.createElement('article');d.className='yearitem';const body=x[3].split(/\n+/).map(t=>t.trim()).filter((t,i)=>t&&!(i===0&&(/^(Dear |NOTICE)/i.test(t)))&&!/^(Yours|Best wishes|Li Ming$|Postgraduates' Association$|The Students' Union$)/i.test(t)).join(' ');const wc=(body.match(/\b[\w’'-]+\b/g)||[]).length;d.innerHTML='<h3>'+x[0]+'年 · '+x[1]+'</h3><div class="meta">'+x[2]+' · 正文约 '+wc+' 词</div><div class="prompt-box"><b>对应年份真题题目与写作要求（题意整理）</b><p>'+(promptNotes[x[0]]||'请以对应年份真题原卷为准，核对具体题干与要求。')+'</p><small>说明：此处为便于训练的题意整理，并非逐字誊录；姓名、日期、字数及所有硬性要求请以原卷为准。</small></div><div class="en"></div><p><b>老师拆解：</b>'+x[4]+'</p><p class="template-fill-note"><b>完整范文说明：</b>'+(sampleNotes[x[0]]||'正文中的具体细节为完整示范内容；题干给出不同信息时，以题干为准。')+'</p><button class="btn light copy">复制范文</button>';renderMarkedEssay(d.querySelector('.en'),x);d.querySelector('.copy').addEventListener('click',()=>navigator.clipboard?.writeText(x[3]));addBreakdown(d,x);container.appendChild(d)})}
+function renderYear(y){container.innerHTML='';const list=y?years.filter(x=>x[0]===Number(y)):years;list.forEach(x=>{const d=document.createElement('article');d.className='yearitem';const body=x[3].split(/\n+/).map(t=>t.trim()).filter((t,i)=>t&&!(i===0&&(/^(Dear |NOTICE)/i.test(t)))&&!/^(Yours|Best wishes|Li Ming$|Postgraduates' Association$|The Students' Union$)/i.test(t)).join(' ');const wc=(body.match(/\b[\w’'-]+\b/g)||[]).length;d.innerHTML='<h3>'+x[0]+'年 · '+x[1]+'</h3><div class="meta">'+x[2]+' · 正文约 '+wc+' 词</div><div class="prompt-box"><b>对应年份真题题目与写作要求（题意整理）</b><p>'+(promptNotes[x[0]]||'请以对应年份真题原卷为准，核对具体题干与要求。')+'</p><small>说明：此处为便于训练的题意整理，并非逐字誊录；姓名、日期、字数及所有硬性要求请以原卷为准。</small></div><div class="en"></div><p><b>老师拆解：</b>'+x[4]+'</p><p class="template-fill-note"><b>完整范文说明：</b>'+(sampleNotes[x[0]]||'正文中的具体细节为完整示范内容；题干给出不同信息时，以题干为准。')+'</p><button class="btn light copy">复制范文</button>';renderMarkedEssay(d.querySelector('.en'),x);renderTranslationBox(d,x);d.querySelector('.copy').addEventListener('click',()=>navigator.clipboard?.writeText(x[3]));addBreakdown(d,x);container.appendChild(d)})}
 sel.addEventListener('change',()=>renderYear(sel.value));document.getElementById('showAll').addEventListener('click',()=>{sel.value='';renderYear('')});renderYear(2005);
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab));window.scrollTo({top:0,behavior:'smooth'})}));
 document.getElementById('methodHint').addEventListener('click',()=>{document.getElementById('methodFeedback').textContent='组织顺序：回应对方／点明介绍目的 → 图书馆资源与开放空间 → 借书所需证件或校园卡 → 借阅步骤与归还要求 → 邀请对方有问题继续联系。只写题干支持或校园常规且确定的信息；具体规则以题目给定为准。'});
